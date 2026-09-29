@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Compendio del Marciano - Arsenal Psiónico</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+    :root {
+        --bg-main: #0a0a0a;
+        --card-bg: #141414;
+        --text-main: #c4c4c4;
+        --green-neon: #00ff66;
+        --purple-neon: #b533ff;
+        --red-neon: #ff2a2a;
+        --border-color: #222;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--bg-main);
+        color: var(--text-main);
+        font-family: 'Space Mono', monospace;
+        overflow-x: hidden;
+        cursor: crosshair;
+    }
+
+    /* PSYCHEDELIC MOUSE LENS */
+    #psychedelic-lens {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        pointer-events: none;
+        z-index: 9999;
+        background: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 102, 0.15), rgba(181, 51, 255, 0.05), transparent 80%);
+        mix-blend-mode: screen;
+        transition: background 0.1s ease;
+    }
+
+    /* HEADER */
+    header {
+        text-align: center;
+        padding: 60px 20px;
+        background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+        border-bottom: 2px solid var(--green-neon);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    header h1 {
+        font-family: 'Cinzel', serif;
+        color: #fff;
+        font-size: 3rem;
+        margin: 0;
+        text-shadow: 0 0 20px var(--green-neon), 0 0 40px var(--purple-neon);
+        animation: glitch 3s infinite alternate;
+    }
+
+    header p {
+        color: var(--green-neon);
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    @keyframes glitch {
+        0% { text-shadow: 2px 0 var(--red-neon), -2px 0 var(--green-neon); }
+        25% { text-shadow: -2px 0 var(--red-neon), 2px 0 var(--green-neon); }
+        50% { text-shadow: 2px 0 var(--purple-neon), -2px 0 var(--green-neon); }
+        75% { text-shadow: -2px 0 var(--red-neon), 2px 0 var(--purple-neon); }
+        100% { text-shadow: 2px 0 var(--green-neon), -2px 0 var(--red-neon); }
+    }
+
+    /* CONTAINER & GRID */
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+    }
+
+    .tier-section {
+        margin-bottom: 80px;
+    }
+
+    .tier-title {
+        font-family: 'Cinzel', serif;
+        font-size: 2.5rem;
+        border-bottom: 2px solid #333;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .tier-uncommon { color: #28a745; text-shadow: 0 0 10px #28a745; }
+    .tier-rare { color: #007bff; text-shadow: 0 0 10px #007bff; }
+    .tier-very-rare { color: #b533ff; text-shadow: 0 0 10px #b533ff; }
+    .tier-legendary { color: #ff8800; text-shadow: 0 0 10px #ff8800; }
+
+    .items-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 30px;
+    }
+
+    /* CARDS */
+    .item-card {
+        background: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        overflow: hidden;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+
+    .item-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 10px 30px rgba(0, 255, 102, 0.2);
+        border-color: var(--green-neon);
+        z-index: 10;
+    }
+
+    .item-card::before {
+        content: '';
+        position: absolute;
+        top: -50%; left: -50%;
+        width: 200%; height: 200%;
+        background: radial-gradient(circle, rgba(181, 51, 255, 0.1) 0%, transparent 50%);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+    }
+
+    .item-card:hover::before {
+        opacity: 1;
+        animation: rotateBg 10s linear infinite;
+    }
+
+    @keyframes rotateBg {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .card-img-container {
+        height: 200px;
+        width: 100%;
+        background: #111;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-color);
+        position: relative;
+    }
+
+    .card-img-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        filter: contrast(1.2) brightness(0.8);
+        transition: filter 0.3s ease;
+    }
+    
+    .item-card:hover .card-img-container img {
+        filter: contrast(1.3) brightness(1.1);
+    }
+
+    .css-icon {
+        font-size: 5rem;
+        filter: drop-shadow(0 0 15px var(--green-neon));
+        transition: transform 0.3s ease;
+    }
+
+    .item-card:hover .css-icon {
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 0 25px var(--purple-neon));
+    }
+
+    .card-content {
+        padding: 20px;
+        position: relative;
+        z-index: 2;
+        background: rgba(20, 20, 20, 0.9);
+    }
+
+    .card-title {
+        font-family: 'Cinzel', serif;
+        color: #fff;
+        margin: 0 0 5px 0;
+        font-size: 1.4rem;
+    }
+
+    .card-meta {
+        font-size: 0.8rem;
+        color: #888;
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .card-mechanics {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 15px;
+    }
+
+    .card-mechanics strong {
+        color: #fff;
+    }
+
+    .reskin-box {
+        background: rgba(0, 255, 102, 0.05);
+        border-left: 3px solid var(--green-neon);
+        padding: 12px;
+        font-size: 0.85rem;
+        color: #aaa;
+        font-style: italic;
+    }
+
+    .reskin-box strong {
+        display: block;
+        color: var(--green-neon);
+        font-style: normal;
+        margin-bottom: 5px;
+        letter-spacing: 1px;
+    }
+
+</style>
+</head>
+<body>
+
+<div id="psychedelic-lens"></div>
+
+<header>
+    <h1>Arsenal del Marciano</h1>
+    <p>El compendio definitivo de ejecución psiónica</p>
+</header>
+
+<div class="container">
+
+    <!-- TIER 1: UNCOMMON -->
+    <section class="tier-section">
+        <h2 class="tier-title tier-uncommon">Tier 1: Poco Común (Uncommon)</h2>
+        <div class="items-grid">
+            
+            <div class="item-card">
+                <div class="card-img-container">
+                    <img src="bloodwell_vial.jpg" alt="Bloodwell Vial">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Vial de Sangre Vital +1</h3>
+                    <p class="card-meta">Foco Arcano | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> +1 a CD de conjuros y ataques mágicos.</p>
+                        <p><strong>Recarga:</strong> Al gastar Dados de Golpe en descanso corto, recuperas 5 Puntos de Hechicería.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Sinergia de ADN</strong>
+                        Un vial con sangre humana y fluidos alienígenas que se iluminan al palpitar. Regenera tu estrés mental al descansar.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">🧥</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Capa de Protección</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> +1 a tu Clase de Armadura (CA) y +1 a TODAS tus tiradas de salvación.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Gabardina Psico-reactiva</strong>
+                        Tu gabardina noir fue reforzada psiónicamente por el Marciano para endurecerse al recibir impactos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">🔮</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Perla de Poder</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Como acción, recuperas un espacio de conjuro gastado de nivel 3 o inferior. Usable 1 vez al día.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Ojo de Esmeralda</strong>
+                        Un globo ocular cristalizado verde incrustado en tu reloj de bolsillo que pulsa absorbiendo energía residual del plano.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">👞</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Botas Aladas</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Obtienes velocidad de vuelo igual a tu velocidad al caminar, hasta 4 horas al día.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Levitación Telequinética</strong>
+                        Tu cuerpo flota 3 metros sobre el suelo sin mover un músculo, suspendido por puro poder mental.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">💍</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Anillo de Escudo Mental</h3>
+                    <p class="card-meta">Anillo | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Inmune a magia que lea pensamientos, determine mentiras o alinee. Tu presencia psíquica queda oculta.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Jaula de Faraday Mental</strong>
+                        Un anillo de metal oscuro que actúa como aislante para la bestia psíquica, haciéndote invisible para otros telépatas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">🎭</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Sombrero del Disfraz</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Lanzas <em>Disguise Self</em> a voluntad, infinitas veces al día, sin usar espacios de conjuro.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Mimetismo Celular</strong>
+                        El Marciano es un cambiaformas. Al alterar la tensión superficial de tu piel, puedes cambiar tu apariencia a voluntad.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TIER 2: RARE -->
+    <section class="tier-section">
+        <h2 class="tier-title tier-rare">Tier 2: Raro (Rare)</h2>
+        <div class="items-grid">
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <img src="far_realm_shard.jpg" alt="Far Realm Shard">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Fragmento del Reino Lejano</h3>
+                    <p class="card-meta">Objeto Mágico | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Al usar Metamagia, un objetivo a 30 pies sufre <strong>3d6 de daño psíquico</strong> y queda <strong>Asustado</strong> si falla la salvación (CHA).</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Trauma Marciano</strong>
+                        Al usar metamagia, la silueta del alienígena emerge de ti y atraviesa el cráneo de la víctima, inyectando milisegundos de pánico genocida.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <img src="dragon_focus.jpg" alt="Dragon Touched Focus">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Foco Tocado por Dragón (Esmeralda)</h3>
+                    <p class="card-meta">Foco Arcano | Variable (Raro en adelante)</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto (Stirring):</strong> +1 a CD. Ganas Resistencia Psíquica. Puedes cambiar el tipo de daño de CUALQUIER hechizo a <strong>Psíquico</strong>.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: El Tótem Alienígena</strong>
+                        La figurilla de arcilla verde. Convierte toda tu magia en agresiones mentales puras.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <img src="shadowfell_shard.jpg" alt="Shadowfell Shard">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Fragmento del Páramo Sombrío</h3>
+                    <p class="card-meta">Objeto Mágico | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Al usar Metamagia, fuerzas a un objetivo a 30 pies a tener <strong>Desventaja</strong> en pruebas y salvaciones de un Atributo (ej. Sabiduría) hasta tu próximo turno. <strong>Sin tirada de salvación</strong>.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Despair-The-Zero</strong>
+                        Inyectas depresión cósmica directamente en su corteza prefrontal, anulando su fuerza de voluntad sin que puedan evitarlo.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">💎</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Anillo de Almacenar Conjuros</h3>
+                    <p class="card-meta">Anillo | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Almacena hasta 5 niveles de conjuros. (Ideal para pre-cargar <em>Shield</em> o <em>Absorb Elements</em> de forma gratuita).</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Ecos de Cristal</strong>
+                        La gema encierra recuerdos de conjuros pasados, permitiendo que el Marciano detone reflejos defensivos instantáneos.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">🌫️</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Capa de Desplazamiento</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Todo ataque contra ti tiene <strong>Desventaja</strong>. Si sufres daño, la ilusión se rompe hasta tu próximo turno.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Refracción Dimensional</strong>
+                        Tu gabardina curva la luz. Tu silueta física y tu proyección astral se desincronizan a los ojos de los demás.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TIER 3: VERY RARE -->
+    <section class="tier-section">
+        <h2 class="tier-title tier-very-rare">Tier 3: Muy Raro (Very Rare)</h2>
+        <div class="items-grid">
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <img src="illusionist_bracers.jpg" alt="Illusionist Bracers">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Brazales del Ilusionista</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Cada vez que lanzas un truco (Cantrip) como Acción, puedes lanzar ese mismo truco como <strong>Acción Adicional</strong> gratis.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Sincronización Hemisférica</strong>
+                        Dispara impulsos de <em>Mind Sliver</em> simultáneamente desde ambas mitades de tu cerebro dual.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">📖</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Tomo de Liderazgo e Influencia</h3>
+                    <p class="card-meta">Objeto Maravilloso</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Tras 48 horas de estudio, tu puntuación de Carisma aumenta permanentemente en +2 (hasta un máximo de 22).</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Diario del Exterminio</strong>
+                        Memorias marcianas cristalizadas que reescriben tu cerebro, empujando tu presencia psíquica más allá del límite humano.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon">⚡</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Bastón de Poder</h3>
+                    <p class="card-meta">Bastón | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> +2 a CD, CA y ataques. Contiene 20 cargas para lanzar magia destructiva masiva.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Espina Dorsal Cósmica</strong>
+                        El resto esquelético de una entidad del Far Realm. Canaliza devastación dimensional en bruto.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TIER 4: LEGENDARY -->
+    <section class="tier-section">
+        <h2 class="tier-title tier-legendary">Tier 4: Legendario (Legendary)</h2>
+        <div class="items-grid">
+
+            <div class="item-card" style="grid-column: span 1 / -1;">
+                <div class="card-img-container" style="height: 300px;">
+                    <img src="noir_cloak.jpg" alt="Robe of the Archmagi">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title" style="color: #ff8800; text-shadow: 0 0 10px #ff8800;">Túnica del Archimago</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Armadura Absoluta:</strong> Si no llevas armadura, tu CA es <strong>15 + Destreza</strong>.</p>
+                        <p><strong>Resistencia:</strong> Tienes <strong>Ventaja</strong> en todas las salvaciones contra magia.</p>
+                        <p><strong>Dominio Mágico:</strong> Tu CD de conjuros y ataques mágicos aumentan en <strong>+2</strong>.</p>
+                    </div>
+                    <div class="reskin-box" style="border-left-color: #ff8800; background: rgba(255, 136, 0, 0.05);">
+                        <strong style="color: #ff8800;">Reskin: La Gabardina Noir Definitiva</strong>
+                        Impregnada de humo dimensional. Las espadas rebotan, la magia hostil se disuelve, y la presencia del detective aplasta las mentes de cualquiera en la habitación. Con esto y tus modificadores, tu CD será inalcanzable.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon" style="color:#ff8800; filter: drop-shadow(0 0 15px #ff8800);">🌠</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Piedra Ioun (Maestría)</h3>
+                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Aumenta tu Bonificador de Competencia (Proficiency Bonus) en +1.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Satélite Alienígena</strong>
+                        Un fragmento de roca que orbita tu cabeza constantemente, sincronizando tus sinapsis humanas con las marcianas al 100%.
+                    </div>
+                </div>
+            </div>
+
+            <div class="item-card">
+                <div class="card-img-container">
+                    <div class="css-icon" style="color:#ff8800; filter: drop-shadow(0 0 15px #ff8800);">🌌</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Bastón del Mago</h3>
+                    <p class="card-meta">Bastón | Requiere Sintonización</p>
+                    <div class="card-mechanics">
+                        <p><strong>Efecto:</strong> Ventaja contra magia. Absorbes conjuros hostiles. 50 cargas para magia legendaria.</p>
+                    </div>
+                    <div class="reskin-box">
+                        <strong>Reskin: Extensión Ectoplásmica</strong>
+                        No es un bastón físico; es un tercer brazo astral verde esmeralda que destroza el tejido de la realidad al mando de la bestia.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<script>
+    // Psychedelic Mouse Tracker
+    document.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        const lens = document.getElementById('psychedelic-lens');
+        lens.style.setProperty('--mouse-x', `${x}px`);
+        lens.style.setProperty('--mouse-y', `${y}px`);
+        
+        // Add random glitch particles
+        if(Math.random() > 0.8) {
+            createParticle(x, y);
+        }
+    });
+
+    function createParticle(x, y) {
+        const particle = document.createElement('div');
+        particle.style.position = 'fixed';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.width = Math.random() * 5 + 'px';
+        particle.style.height = particle.style.width;
+        particle.style.background = Math.random() > 0.5 ? 'var(--green-neon)' : 'var(--purple-neon)';
+        particle.style.borderRadius = '50%';
+        particle.style.pointerEvents = 'none';
+        particle.style.zIndex = '9998';
+        particle.style.opacity = '0.8';
+        particle.style.transition = 'all 1s ease-out';
+        
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+            particle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) scale(0)`;
+            particle.style.opacity = '0';
+        }, 10);
+
+        setTimeout(() => {
+            particle.remove();
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
+
