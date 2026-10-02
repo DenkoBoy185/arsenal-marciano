@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>👽 Guía Completa del Marciano — John Jones</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
+  
+  :root {
+    --bg: #0a0a0f;
+    --card: #12121a;
+    --card-border: #1e1e2e;
+    --green: #00ff88;
+    --green-dim: #00cc6a;
+    --green-glow: rgba(0,255,136,0.15);
+    --purple: #a855f7;
+    --blue: #3b82f6;
+    --red: #ef4444;
+    --gold: #f59e0b;
+    --text: #e2e8f0;
+    --text-dim: #94a3b8;
+    --psychic: #c084fc;
+  }
+  
+  * { margin:0; padding:0; box-sizing:border-box; }
+  
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+  
+  /* NAVIGATION */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(10,10,15,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 1000;
+    padding: 0;
+  }
+  nav .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav .nav-inner::-webkit-scrollbar { display: none; }
+  nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: all 0.2s;
+    border-bottom: 2px solid transparent;
+  }
+  nav a:hover, nav a.active {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+  nav .nav-logo {
+    font-family: 'Cinzel', serif;
+    color: var(--green);
+    font-size: 1rem;
+    font-weight: 900;
+    padding: 14px 20px;
+    letter-spacing: 1px;
+  }
+  
+  /* MAIN */
+  main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 80px 20px 60px;
+  }
+  
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: 2.8rem;
+    color: var(--green);
+    text-shadow: 0 0 40px rgba(0,255,136,0.3);
+    margin-bottom: 10px;
+  }
+  .hero .subtitle {
+    font-size: 1.1rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  
+  /* SECTIONS */
+  section {
+    margin-bottom: 50px;
+    scroll-margin-top: 70px;
+  }
+  
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.8rem;
+    color: var(--green);
+    border-bottom: 2px solid var(--green);
+    padding-bottom: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-title .emoji { font-size: 1.6rem; }
+  
+  .sub-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--psychic);
+    margin: 30px 0 15px;
+    padding-left: 10px;
+    border-left: 3px solid var(--psychic);
+  }
+  
+  /* CARDS */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 16px;
+    transition: border-color 0.3s;
+  }
+  .card:hover { border-color: var(--green); }
+  .card.legendary { border-left: 3px solid var(--gold); }
+  .card.important { border-left: 3px solid var(--red); }
+  .card.psionic { border-left: 3px solid var(--psychic); }
+  
+  .card h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--green);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+  .card h4 {
+    color: var(--psychic);
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+  }
+  .card p, .card li {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+  .card strong { color: var(--text); }
+  .card .highlight { color: var(--green); font-weight: 700; }
+  
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  th {
+    background: rgba(0,255,136,0.08);
+    color: var(--green);
+    font-weight: 600;
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 2px solid var(--green);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-dim);
+  }
+  td strong { color: var(--text); }
+  tr:hover td { background: rgba(0,255,136,0.03); }
+  
+  .tier-s td:first-child { color: var(--gold); font-weight: 700; }
+  
+  /* LEVEL HEADER */
+  .level-header {
+    background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(168,85,247,0.1));
+    border: 1px solid var(--green);
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin: 30px 0 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .level-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--green);
+    text-shadow: 0 0 20px rgba(0,255,136,0.4);
+    min-width: 50px;
+  }
+  .level-info h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--text);
+    font-size: 1.1rem;
+  }
+  .level-info p {
+    color: var(--text-dim);
+    font-size: 0.85rem;
+  }
+  .level-header.critical {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(239,68,68,0.08));
+  }
+  .level-header.critical .level-num { color: var(--gold); text-shadow: 0 0 20px rgba(245,158,11,0.4); }
+  
+  /* COMBO BOX */
+  .combo-box {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--psychic);
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.82rem;
+    color: var(--psychic);
+    line-height: 1.8;
+    white-space: pre-wrap;
+  }
+  .combo-box .action { color: var(--green); }
+  .combo-box .result { color: var(--gold); }
+  .combo-box .note { color: var(--text-dim); }
+  
+  /* QUOTE */
+  .quote {
+    border-left: 3px solid var(--green);
+    padding: 12px 20px;
+    margin: 16px 0;
+    color: var(--text-dim);
+    font-style: italic;
+    background: rgba(0,255,136,0.03);
+    border-radius: 0 8px 8px 0;
+  }
+  .quote .author { color: var(--green); display: block; margin-top: 8px; font-size: 0.85rem; }
+  
+  /* RESKIN */
+  .reskin {
+    background: rgba(0,255,136,0.04);
+    border: 1px solid rgba(0,255,136,0.15);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 10px 0;
+    font-size: 0.85rem;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .reskin::before {
+    content: '🟢 Reskin Marciano: ';
+    color: var(--green);
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+  /* BADGE */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .badge.green { background: rgba(0,255,136,0.15); color: var(--green); }
+  .badge.purple { background: rgba(168,85,247,0.15); color: var(--psychic); }
+  .badge.gold { background: rgba(245,158,11,0.15); color: var(--gold); }
+  .badge.red { background: rgba(239,68,68,0.15); color: var(--red); }
+  .badge.blue { background: rgba(59,130,246,0.15); color: var(--blue); }
+  
+  /* WARNING BOX */
+  .warning {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.3);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .warning::before { content: '⚠️ '; }
+  
+  .tip {
+    background: rgba(0,255,136,0.06);
+    border: 1px solid rgba(0,255,136,0.2);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin: 12px 0;
+    font-size: 0.85rem;
+  }
+  .tip::before { content: '💡 '; }
+  
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 40px;
+    color: var(--text-dim);
+    font-size: 0.8rem;
+    border-top: 1px solid var(--card-border);
+    margin-top: 60px;
+  }
+  
+  /* GLOW CURSOR */
+  .glow {
+    position: fixed;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,255,136,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transform: translate(-50%, -50%);
+    transition: left 0.3s ease, top 0.3s ease;
+  }
+</style>
+</head>
+<body>
+<div class="glow" id="glow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo">👽 MARCIANO</span>
+    <a href="#ficha">Ficha</a>
+    <a href="#progresion">Progresión</a>
+    <a href="#hechizos">Hechizos</a>
+    <a href="#metamagia">Metamagia</a>
+    <a href="#items">Items</a>
+    <a href="#legendarios">Legendarios</a>
+    <a href="#foco">Foco Gema</a>
+    <a href="#combos">Combos</a>
+    <a href="#ejercito">Ejército</a>
+    <a href="#reroll">Re-Roll</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>JOHN JONES</h1>
+  <p class="subtitle">"No encontré estos artefactos. Siempre estuvieron dentro de mí. Solo necesitaba recordar."</p>
+</div>
+
+<!-- ═══════════════════════════════ FICHA ═══════════════════════════════ -->
+<section id="ficha">
+  <h2 class="section-title"><span class="emoji">📋</span> Ficha Base</h2>
+  
+  <div class="card">
+    <table>
+      <tr><th colspan="2">Identidad</th></tr>
+      <tr><td><strong>Nombre</strong></td><td>John Jones</td></tr>
+      <tr><td><strong>Especie</strong></td><td>Humano (Versátil)</td></tr>
+      <tr><td><strong>Clase</strong></td><td>Hechicero — Mente Aberrante</td></tr>
+      <tr><td><strong>Trasfondo</strong></td><td>Investigador</td></tr>
+    </table>
+  </div>
+  
+  <div class="card">
+    <table>
+      <tr><th>Stat</th><th>Valor</th><th>Mod</th><th>Rol</th></tr>
+      <tr class="tier-s"><td>CHA</td><td><strong>20</strong> (18+2)</td><td><strong>+5</strong></td><td>Tu stat principal. CD, ataques, social</td></tr>
+      <tr><td>CON</td><td>14</td><td>+2</td><td>HP, saves concentración</td></tr>
+      <tr><td>DEX</td><td>14</td><td>+2</td><td>CA (Mage Armor), Iniciativa</td></tr>
+      <tr><td>INT</td><td>14</td><td>+2</td><td>Investigación</td></tr>
+      <tr><td>WIS</td><td>13</td><td>+1</td><td>Percepción, Insight</td></tr>
+      <tr><td>STR</td><td>7</td><td>-2</td><td>Dump. No lo necesitas</td></tr>
+    </table>
+  </div>
+  
+  <div class="card">
+    <h3>Dotes de Origen</h3>
+    <table>
+      <tr><th>Dote</th><th>Efecto</th></tr>
+      <tr><td><strong>Alert</strong></td><td>+Prof a Iniciativa. No puedes ser Sorprendido</td></tr>
+      <tr><td><strong>Lucky</strong></td><td>3 usos/DL. Tiras 1d20 extra y eliges cuál usar</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ PROGRESIÓN ═══════════════════════════════ -->
+<section id="progresion">
+  <h2 class="section-title"><span class="emoji">📈</span> Progresión Nivel 3 → 14</h2>
+  
+  <!-- NIVEL 3 -->
+  <div class="level-header">
+    <span class="level-num">3</span>
+    <div class="level-info">
+      <h3>El Marciano Despierta</h3>
+      <p>HP 23 · SP 3 · CD 15/16 · Prof +2</p>
+    </div>
+  </div>
+  <div class="card">
+    <p>Tienes: <strong>Innate Sorcery</strong> (BA, CD+1 por 1 min), <strong>Font of Magic</strong> (SP↔Slots), <strong>Metamagia</strong> (Quickened + Twinned), <strong>Telepathic Speech</strong> (30ft, 3 min).</p>
+    <p>Psiónicos: Mind Sliver, Dissonant Whispers, Arms of Hadar, Detect Thoughts, Calm Emotions.</p>
+  </div>
+
+  <!-- NIVEL 4 -->
+  <div class="level-header">
+    <span class="level-num">4</span>
+    <div class="level-info">
+      <h3>Metamagic Adept — Cuatro Frecuencias</h3>
+      <p>HP 29 · SP <strong>6</strong> · CD 15/16 · Prof +2</p>
+    </div>
+  </div>
+  <div class="card important">
+    <h3>⭐ Feat: Metamagic Adept</h3>
+    <table>
+      <tr><th>Beneficio</th><th>Efecto</th></tr>
+      <tr><td><strong>+2 SP</strong></td><td>Pool sube de 4 a <strong>6</strong>. 50% más combustible</td></tr>
+      <tr><td><strong>+Subtle Spell</strong> (1 SP)</td><td>Sin componentes V/S. Casting invisible</td></tr>
+      <tr><td><strong>+Heightened Spell</strong> (3 SP)</td><td>Desventaja en el save del objetivo</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>5º Cantrip:</strong> Toll the Dead (1d12 necrótico a heridos)</p>
+  </div>
+
+  <!-- NIVEL 5 -->
+  <div class="level-header">
+    <span class="level-num">5</span>
+    <div class="level-info">
+      <h3>La Tormenta Psíquica — Slots Nivel 3</h3>
+      <p>HP 35 · SP 7 · CD <strong>16/17</strong> · Prof <strong>+3</strong></p>
+    </div>
+  </div>
+  <div class="card psionic">
+    <h3>Swap Psiónico</h3>
+    <p>🔄 <del>Hunger of Hadar</del> → <strong>Enemies Abound</strong> (INT save, el objetivo ataca a sus aliados)</p>
+    <p>✅ <strong>Sending</strong> — Mensaje telepático sin límite de distancia</p>
+    <p style="margin-top:10px"><strong>Hechizos clave nv3:</strong> Hypnotic Pattern, Counterspell, Fly</p>
+  </div>
+
+  <!-- NIVEL 6 -->
+  <div class="level-header critical">
+    <span class="level-num">6</span>
+    <div class="level-info">
+      <h3>⭐⭐⭐ Psionic Sorcery — El Noir Silencioso</h3>
+      <p>HP 41 · SP 8 · CD 16/17</p>
+    </div>
+  </div>
+  <div class="card legendary">
+    <h3>Hechicería Psiónica</h3>
+    <p>Lanzas psiónicos con <strong>SP en vez de slots</strong> → <strong class="highlight">SIN componentes V/S/M</strong>. Nadie te ve, oye, ni sabe que lanzaste un hechizo.</p>
+    <table>
+      <tr><th>Hechizo</th><th>Coste SP</th></tr>
+      <tr><td>Dissonant Whispers</td><td>1 SP</td></tr>
+      <tr><td>Suggestion / Detect Thoughts</td><td>2 SP</td></tr>
+      <tr><td>Enemies Abound</td><td>3 SP</td></tr>
+    </table>
+  </div>
+  <div class="card">
+    <h3>🛡️ Defensas Psíquicas</h3>
+    <p><strong>Resistencia a daño psíquico</strong> + <strong>Ventaja vs Hechizado y Asustado</strong></p>
+  </div>
+
+  <!-- NIVEL 7 -->
+  <div class="level-header">
+    <span class="level-num">7</span>
+    <div class="level-info">
+      <h3>Sorcery Incarnate — Slots Nivel 4</h3>
+      <p>HP 47 · SP 9 · CD 16/17</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Sorcery Incarnate</h3>
+    <p>Con Innate Sorcery activa: <strong class="highlight">2 metamagias en 1 conjuro</strong>. Quickened + Heightened = conjuro como BA con Desventaja en el save.</p>
+    <p style="margin-top:8px">🔄 <del>Evard's Black Tentacles</del> → <strong>Confusion</strong></p>
+    <p><strong>Hechizo clave nv4:</strong> Banishment (CHA save, desaparece 1 min)</p>
+  </div>
+
+  <!-- NIVEL 8 -->
+  <div class="level-header">
+    <span class="level-num">8</span>
+    <div class="level-info">
+      <h3>War Caster — Mente Blindada</h3>
+      <p>HP 53 · SP 10 · CD 16/17</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⭐ Feat: War Caster</h3>
+    <p><strong>Ventaja</strong> en saves de Concentración. Conjuro como ataque de oportunidad. Somáticos con manos ocupadas.</p>
+  </div>
+
+  <!-- NIVEL 9 -->
+  <div class="level-header critical">
+    <span class="level-num">9</span>
+    <div class="level-info">
+      <h3>⭐⭐⭐ Synaptic Static — El Arma Definitiva</h3>
+      <p>HP 59 · SP 11 · CD <strong>17/18</strong> · Prof <strong>+4</strong></p>
+    </div>
+  </div>
+  <div class="card legendary">
+    <h3>Synaptic Static — "El Aneurisma Marciano"</h3>
+    <table>
+      <tr><th>Campo</th><th>Valor</th></tr>
+      <tr><td>Daño</td><td><strong>8d6 PSÍQUICO</strong> (~28 medio) AoE 20ft</td></tr>
+      <tr><td>Save</td><td>INT</td></tr>
+      <tr><td>Debuff</td><td><strong>-1d6 a ataques, saves, concentración</strong> por 1 MIN</td></tr>
+      <tr><td>Concentración</td><td><strong class="highlight">NO</strong></td></tr>
+    </table>
+    <p style="margin-top:8px"><strong>Psiónicos nuevos:</strong> Modify Memory ⭐ + Rary's Telepathic Bond ⭐</p>
+    <p><strong>Otros nv5:</strong> Hold Monster, Telekinesis</p>
+  </div>
+
+  <!-- NIVEL 10 -->
+  <div class="level-header">
+    <span class="level-num">10</span>
+    <div class="level-info">
+      <h3>5ª Metamagia — Empowered Spell</h3>
+      <p>HP 65 · SP 12 · CD 17/18</p>
+    </div>
+  </div>
+  <div class="card">
+    <p><strong>Empowered Spell</strong> (1 SP): Re-tira hasta 5 dados de daño. Synaptic Static: 8d6 con hasta 5 re-rolls = ~33 daño medio.</p>
+    <p><strong>6º Cantrip:</strong> Chill Touch (3d8, anti-curación)</p>
+  </div>
+
+  <!-- NIVEL 11 -->
+  <div class="level-header">
+    <span class="level-num">11</span>
+    <div class="level-info">
+      <h3>Mass Suggestion — Control de Masas</h3>
+      <p>HP 71 · SP 13 · CD 17/18 · Slots nv6</p>
+    </div>
+  </div>
+  <div class="card psionic">
+    <h3>Mass Suggestion</h3>
+    <p>12 criaturas, WIS save, <strong>sin concentración</strong>. Duración: 24h (nv6) → <strong class="highlight">1 AÑO a nv9</strong> con Foco Gema.</p>
+    <p><strong>También:</strong> Mental Prison (5d10 + 10d10 psíquico si se mueven)</p>
+  </div>
+
+  <!-- NIVEL 12 -->
+  <div class="level-header">
+    <span class="level-num">12</span>
+    <div class="level-info">
+      <h3>3er Feat — Fortaleza Mental</h3>
+      <p>HP 77 · SP 14 · CD 17/18</p>
+    </div>
+  </div>
+  <div class="card">
+    <p><strong>Resilient (WIS):</strong> WIS saves proficientes (+1 mod + 4 prof = +5). Con Defensas Psíquicas = mente impenetrable.</p>
+    <p><em>Alternativa:</em> +2 CON (14→16, +12 HP retroactivos)</p>
+  </div>
+
+  <!-- NIVEL 13 -->
+  <div class="level-header">
+    <span class="level-num">13</span>
+    <div class="level-info">
+      <h3>Power Word Pain — Sin Salvación</h3>
+      <p>HP 83 · SP 15 · CD <strong>18/19</strong> · Prof <strong>+5</strong></p>
+    </div>
+  </div>
+  <div class="card important">
+    <h3>Power Word Pain</h3>
+    <p><strong class="highlight">SIN SAVE.</strong> Si ≤100 HP: desventaja ataques/checks, no reacciones, CON save para castear. Automático.</p>
+  </div>
+
+  <!-- NIVEL 14 -->
+  <div class="level-header critical">
+    <span class="level-num">14</span>
+    <div class="level-info">
+      <h3>⭐⭐⭐ Revelation in Flesh — EL MARCIANO COMPLETO</h3>
+      <p>HP 89 · SP 16 · CD 18/19 · Prof +5</p>
+    </div>
+  </div>
+  <div class="card legendary">
+    <h3>Revelation in Flesh</h3>
+    <p><strong>BA, gasta 1+ SP.</strong> Por cada SP (duración 10 min):</p>
+    <table>
+      <tr><th>SP</th><th>Poder</th><th>Mecánica</th></tr>
+      <tr><td>1</td><td>👁️ Visión Marciana</td><td>Ver lo invisible a 60ft</td></tr>
+      <tr><td>1</td><td>🕊️ Levitación</td><td>Velocidad de vuelo = tu caminar</td></tr>
+      <tr><td>1</td><td>🫠 Intangibilidad</td><td>Pasar por espacios de 2.5 cm</td></tr>
+      <tr><td>1</td><td>⚡ Descarga</td><td>1d12 psíquico a quien te agarre</td></tr>
+    </table>
+  </div>
+  <div class="reskin">El cuerpo de John se deforma. Su torso se aplana y se desliza bajo la puerta como plastilina verde. Al otro lado, se reconstruye. Los guardias no escucharon nada.</div>
+</section>
+
+<!-- ═══════════════════════════════ HECHIZOS ═══════════════════════════════ -->
+<section id="hechizos">
+  <h2 class="section-title"><span class="emoji">🧠</span> Hechizos Completos (Nivel 14)</h2>
+  
+  <h3 class="sub-title">Cantrips (6)</h3>
+  <div class="card">
+    <table>
+      <tr><th>#</th><th>Cantrip</th><th>Daño (nv14)</th><th>Save</th><th>Nota</th></tr>
+      <tr><td>1</td><td>🧠 Mind Sliver</td><td><strong>3d6 psíquico</strong></td><td>INT</td><td><strong class="highlight">-1d4 al próximo save</strong></td></tr>
+      <tr><td>2</td><td>💀 Toll the Dead</td><td>3d8 / <strong>3d12</strong></td><td>WIS</td><td>3d12 si herido (~19.5 medio)</td></tr>
+      <tr><td>3</td><td>❄️ Chill Touch</td><td>3d8</td><td>—</td><td>Impide curación 1 turno</td></tr>
+      <tr><td>4</td><td>🎭 Minor Illusion</td><td>—</td><td>—</td><td>Sonido o imagen</td></tr>
+      <tr><td>5</td><td>🖐️ Mage Hand</td><td>—</td><td>—</td><td>Utilidad</td></tr>
+      <tr><td>6</td><td>🔮 Prestidigitation</td><td>—</td><td>—</td><td>Efectos menores</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub-title">Hechizos Psiónicos (10 — Gratis, No Cuentan)</h3>
+  <div class="card psionic">
+    <table>
+      <tr><th>#</th><th>Hechizo</th><th>Nv</th><th>Obtenido</th><th>Efecto Clave</th></tr>
+      <tr><td>1</td><td>🧠 Dissonant Whispers</td><td>1</td><td>Nv3</td><td>3d6 psíquico + huye (provoca AoO)</td></tr>
+      <tr><td>2</td><td>🔄 Command</td><td>1</td><td>Swap</td><td>1 palabra: "Huye/Suelta/Quieto"</td></tr>
+      <tr><td>3</td><td>🧠 Detect Thoughts</td><td>2</td><td>Nv3</td><td>Lee mentes, WIS = memorias profundas</td></tr>
+      <tr><td>4</td><td>🧠 Calm Emotions</td><td>2</td><td>Nv3</td><td>Pacifica o neutraliza hostilidad</td></tr>
+      <tr><td>5</td><td>🔄 Enemies Abound</td><td>3</td><td>Swap nv5</td><td>INT save, ataca a sus aliados</td></tr>
+      <tr><td>6</td><td>🧠 Sending</td><td>3</td><td>Nv5</td><td>Mensaje telepático sin límite</td></tr>
+      <tr><td>7</td><td>🧠 Compulsion</td><td>4</td><td>Nv7</td><td>Fuerza movimiento</td></tr>
+      <tr><td>8</td><td>🔄 Confusion</td><td>4</td><td>Swap nv7</td><td>WIS save, atacan aleatoriamente</td></tr>
+      <tr><td>9</td><td>🧠 Modify Memory</td><td>5</td><td>Nv9</td><td>Reescribe recuerdos</td></tr>
+      <tr><td>10</td><td>🧠 Rary's Telepathic Bond</td><td>5</td><td>Nv9</td><td>Red telepática 8 criaturas, sin conc.</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub-title">Hechizos Preparados (19 slots)</h3>
+  <div class="card">
+    <table>
+      <tr><th>Nv</th><th>Hechizos</th></tr>
+      <tr><td><span class="badge blue">1</span></td><td>Shield · Mage Armor · Charm Person</td></tr>
+      <tr><td><span class="badge blue">2</span></td><td>Suggestion · Web · Mirror Image</td></tr>
+      <tr><td><span class="badge blue">3</span></td><td>Hypnotic Pattern · Counterspell · Fly</td></tr>
+      <tr><td><span class="badge purple">4</span></td><td>Banishment</td></tr>
+      <tr><td><span class="badge purple">5</span></td><td><strong>Synaptic Static ⭐</strong> · Hold Monster · Telekinesis</td></tr>
+      <tr><td><span class="badge gold">6</span></td><td><strong>Mass Suggestion</strong> · Mental Prison</td></tr>
+      <tr><td><span class="badge red">7</span></td><td><strong>Power Word Pain</strong></td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ METAMAGIA ═══════════════════════════════ -->
+<section id="metamagia">
+  <h2 class="section-title"><span class="emoji">⚡</span> Metamagia (5 Opciones)</h2>
+  <div class="card">
+    <table>
+      <tr><th>#</th><th>Metamagia</th><th>SP</th><th>Origen</th><th>Uso</th></tr>
+      <tr><td>1</td><td><strong>Quickened</strong></td><td>2</td><td>Clase nv2</td><td>Conjuro → Acción Adicional</td></tr>
+      <tr><td>2</td><td><strong>Twinned</strong></td><td>1/nv</td><td>Clase nv2</td><td>+1 objetivo extra</td></tr>
+      <tr><td>3</td><td><strong>Subtle</strong></td><td>1</td><td>Feat nv4</td><td>Sin V/S. Counterspell sin contra</td></tr>
+      <tr><td>4</td><td><strong>Heightened</strong></td><td>3</td><td>Feat nv4</td><td>Desventaja en save. Ejecución</td></tr>
+      <tr><td>5</td><td><strong>Empowered</strong></td><td>1</td><td>Clase nv10</td><td>Re-tira hasta 5 dados de daño</td></tr>
+    </table>
+  </div>
+  <div class="tip"><strong>Sorcery Incarnate (nv7):</strong> Con Innate Sorcery activa, combina 2 metamagias en 1 conjuro. Quickened + Heightened = conjuro como BA con Desventaja.</div>
+</section>
+
+<!-- ═══════════════════════════════ ITEMS ═══════════════════════════════ -->
+<section id="items">
+  <h2 class="section-title"><span class="emoji">🗡️</span> Objetos Mágicos por Tier</h2>
+  
+  <h3 class="sub-title">🟢 Uncommon (Niveles 3-5)</h3>
+  <div class="card">
+    <table>
+      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
+      <tr><td><strong>Bloodwell Vial +1</strong></td><td>Sí</td><td>+1 CD/ataque. Recupera 5 SP en short rest</td></tr>
+      <tr><td>Cloak of Protection</td><td>Sí</td><td>+1 CA, +1 TODAS las salvaciones</td></tr>
+      <tr><td>Pearl of Power</td><td>Sí</td><td>1/día recupera 1 slot de nv1-3</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub-title">🔵 Rare (Niveles 5-10)</h3>
+  <div class="card">
+    <table>
+      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
+      <tr><td><strong>Bloodwell Vial +2</strong></td><td>Sí</td><td>+2 CD/ataque. Recupera 5 SP</td></tr>
+      <tr><td><strong>Far Realm Shard</strong></td><td>Sí</td><td>Al usar metamagia: 3d6 psíquico gratis</td></tr>
+      <tr><td>Shadowfell Shard</td><td>Sí</td><td>Al usar metamagia vs save: Desventaja</td></tr>
+    </table>
+  </div>
+
+  <h3 class="sub-title">🟣 Very Rare (Niveles 10-14)</h3>
+  <div class="card">
+    <table>
+      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
+      <tr><td><strong>Bloodwell Vial +3</strong></td><td>Sí</td><td>+3 CD/ataque. Recupera 5 SP</td></tr>
+      <tr><td>Illusionist's Bracers</td><td>Sí</td><td>Al lanzar cantrip: lánzalo otra vez como BA</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ LEGENDARIOS ═══════════════════════════════ -->
+<section id="legendarios">
+  <h2 class="section-title"><span class="emoji">🔴</span> Poderes Legendarios (Nivel 15+)</h2>
+  
+  <div class="card legendary">
+    <h3>🛡️ Túnica del Archimago — "Dermis Marciana"</h3>
+    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización</span>
+    <table>
+      <tr><td><strong>CD</strong></td><td>+2</td></tr>
+      <tr><td><strong>CA</strong></td><td>15 + DEX (reemplaza Mage Armor)</td></tr>
+      <tr><td><strong>Defensa</strong></td><td>Ventaja en TODAS las saves contra magia</td></tr>
+    </table>
+    <div class="reskin">La gabardina noir respira. Se endurece ante los impactos. Tiene un brillo verde tenue visible solo bajo luz de luna.</div>
+  </div>
+
+  <div class="card legendary">
+    <h3>🫥 Capa de Invisibilidad — "Desfase Dimensional"</h3>
+    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización</span>
+    <table>
+      <tr><td><strong>Efecto</strong></td><td>Invisible total. <strong class="highlight">NO se rompe</strong> al atacar/castear</td></tr>
+      <tr><td><strong>Duración</strong></td><td>2 horas (bloques de 1 min), recarga al amanecer</td></tr>
+    </table>
+    <p style="margin-top:8px">Con <strong>Psionic Sorcery</strong> (sin V/S/M): eres un fantasma que destruye mentes. Nadie te ve. Nadie te oye. Solo mueren.</p>
+  </div>
+
+  <div class="card legendary">
+    <h3>🧬 Tomo de Liderazgo — "Biblioteca Neural de Ma'aleca'andra"</h3>
+    <span class="badge gold">Legendario</span> <span class="badge green">Sin Sintonización</span>
+    <table>
+      <tr><td><strong>Efecto</strong></td><td>CHA <strong class="highlight">+2 permanente</strong> (→22, +6)</td></tr>
+      <tr><td><strong>Proceso</strong></td><td>48h de estudio en 6 días</td></tr>
+    </table>
+  </div>
+
+  <div class="card legendary">
+    <h3>📊 Loadout Ideal (3 Sintonizaciones)</h3>
+    <table>
+      <tr><th>Slot</th><th>Item</th><th>CD</th></tr>
+      <tr><td><strong>1</strong></td><td>Túnica del Archimago</td><td>+2</td></tr>
+      <tr><td><strong>2</strong></td><td>Foco Gema Ascendente</td><td>—</td></tr>
+      <tr><td><strong>3</strong></td><td>Capa de Invisibilidad</td><td>—</td></tr>
+      <tr><td><em>Gratis</em></td><td>Tomo de Liderazgo</td><td>CHA 22</td></tr>
+    </table>
+    <p style="margin-top:10px"><strong>CD Final:</strong> 8 + 5 + 6 + 2 = <strong class="highlight">21</strong> (22 con Innate)</p>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOCO GEMA ═══════════════════════════════ -->
+<section id="foco">
+  <h2 class="section-title"><span class="emoji">💎</span> Foco Gema Ascendente</h2>
+  <p style="color:var(--text-dim);margin-bottom:16px"><em>Ascendant Dragon-Touched Focus (Gem) — Fizban's Treasury of Dragons p.26</em></p>
+  
+  <div class="card legendary">
+    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización por Caster</span>
+    <table>
+      <tr><th>Poder</th><th>Mecánica</th><th>Usos</th></tr>
+      <tr><td>🎯 <strong>Ventaja Iniciativa</strong></td><td>Tiras 2d20 y eliges el mayor</td><td>Permanente</td></tr>
+      <tr><td>🫥 <strong>Teleport 15ft</strong></td><td>Cada vez que gastas un slot de conjuro → teleport gratis</td><td><strong class="highlight">¡ILIMITADO!</strong></td></tr>
+      <tr><td>🧠 <strong>Psychic Lance</strong></td><td>7d6 psíquico + Incapacitado. Apunta <strong>por nombre</strong> sin ver</td><td>1/día</td></tr>
+      <tr><td>🔗 <strong>Telepathic Bond</strong></td><td>Red telepática grupal, 1 hora, sin concentración</td><td>1/día</td></tr>
+      <tr><td>💀 <strong>Conjuro a Nv 9</strong></td><td>Cualquier conjuro de nv1+ se trata como si fuera <strong class="highlight">nivel 9</strong></td><td>1/día</td></tr>
+    </table>
+  </div>
+
+  <div class="card important">
+    <h3>Combos Exclusivos del Foco</h3>
+    <div class="combo-box"><span class="action">Shield (reacción)</span> → +5 CA <span class="result">Y te teletransportas 15ft fuera del melee</span>
+<span class="note">El ataque falla Y ya no estás a su alcance</span>
+
+<span class="action">Counterspell (reacción)</span> → Cancelas el hechizo <span class="result">Y desapareces 15ft</span>
+<span class="note">Fuera del rango del mago enemigo</span>
+
+<span class="action">Mass Suggestion + Ascendant (nv9)</span> → 12 criaturas <span class="result">obedecen por 1 AÑO</span>
+<span class="note">Sin concentración. Sin componentes (Subtle). Sin rastro.</span></div>
+  </div>
+
+  <div class="reskin">La figurilla de arcilla de Tyler ha cristalizado. Lo que antes era plastilina verde ahora es una gema esmeralda que pulsa con luz propia. Dentro, si miras con atención, ves la silueta del Marciano concentrándose.</div>
+</section>
+
+<!-- ═══════════════════════════════ COMBOS ═══════════════════════════════ -->
+<section id="combos">
+  <h2 class="section-title"><span class="emoji">💀</span> Combos de Combate</h2>
+
+  <h3 class="sub-title">Niveles 3-5: La Kill Box</h3>
+  <div class="card">
+    <div class="combo-box"><span class="action">R1: BA Innate Sorcery (CD+1)</span> → <span class="action">Acción: Web (DEX save)</span>
+<span class="result">→ Grupo Restrained (velocidad 0, ventaja contra ellos)</span>
+
+<span class="action">R2: Mind Sliver al atrapado</span> → <span class="result">-1d4 a su próximo save</span>
+<span class="note">Tu equipo ataca con Ventaja</span>
+
+<span class="action">R3: Quickened Dissonant Whispers</span> + <span class="action">Toll the Dead</span>
+<span class="result">→ Doble daño en un solo turno</span></div>
+  </div>
+
+  <h3 class="sub-title">Niveles 9-11: El Aneurisma Marciano</h3>
+  <div class="card">
+    <div class="combo-box"><span class="action">R1: BA Innate → Synaptic Static (8d6 psíquico AoE)</span>
+<span class="result">→ Grupo: -1d6 a TODO por 1 minuto. Sin concentración.</span>
+
+<span class="action">R2: Web/Hypnotic Pattern ENCIMA</span>
+<span class="result">→ Enemies con -1d6 fallan el save casi garantizado</span>
+<span class="note">Synaptic Static no requiere concentración → puedes concentrarte en Web</span></div>
+  </div>
+
+  <h3 class="sub-title">Nivel 14+: El Asesinato Perfecto</h3>
+  <div class="card legendary">
+    <div class="combo-box"><span class="note">PRE: Invisible (Capa) + Revelation in Flesh (Compresión)</span>
+<span class="action">→ Te deslizas bajo la puerta. Invisible. Silencioso.</span>
+
+<span class="action">BA: Innate Sorcery (CD 19)</span>
+<span class="action">Acción: Feeblemind (INT save CD 19)</span>
+<span class="result">→ INT y CHA bajan a 1. PERMANENTE hasta Greater Restoration.</span>
+<span class="note">Con Psionic Sorcery: sin V/S/M. Nadie sabe que estuviste ahí.</span>
+<span class="note">Te comprimes y sales por debajo de la puerta.</span>
+<span class="result">→ A la mañana lo encuentran babeando. Nadie sabe qué pasó.</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ EJÉRCITO ═══════════════════════════════ -->
+<section id="ejercito">
+  <h2 class="section-title"><span class="emoji">👑</span> El Ejército del Marciano</h2>
+  <p style="color:var(--text-dim);margin-bottom:16px"><em>Mass Suggestion a nivel 9 (Foco Gema Ascendente) · 1/día · Sin concentración</em></p>
+
+  <div class="card legendary">
+    <h3>La Matemática del Ejército</h3>
+    <p>Mass Suggestion a nv9 = <strong>12 criaturas</strong> obedecen <strong class="highlight">1 año y 1 día</strong>. Sin concentración. Cada día, 12 más.</p>
+    <table>
+      <tr><th>Tiempo</th><th>Soldados</th></tr>
+      <tr><td>1 día</td><td>12</td></tr>
+      <tr><td>1 semana</td><td>84</td></tr>
+      <tr><td>1 mes</td><td><strong>360</strong></td></tr>
+      <tr><td>6 meses</td><td><strong>2,160</strong></td></tr>
+      <tr><td>1 año</td><td><strong class="highlight">4,380</strong></td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Plan Operativo</h3>
+    <div class="combo-box"><span class="action">Fase 1 — Red de Inteligencia (Mes 1):</span>
+<span class="note">12 espías/día en diferentes ciudades. 360 informantes al mes.</span>
+
+<span class="action">Fase 2 — Guardia Personal (Mes 2):</span>
+<span class="note">Mercenarios y veteranos. 360 soldados profesionales.</span>
+
+<span class="action">Fase 3 — Infiltración Política (Mes 3+):</span>
+<span class="note">Asesores de nobles: "Aconseja paz y cooperación con Jones."</span>
+<span class="result">→ No conquistas reinos. Los reinos se conquistan solos.</span></div>
+  </div>
+
+  <div class="tip"><strong>Indetectable:</strong> Subtle Spell (sin V/S) + Sin concentración (sin aura) + Los afectados creen que actúan por voluntad propia. Solo Dispel Magic o Greater Restoration lo rompe, y nadie va a lanzar eso en alguien que parece actuar normalmente.</div>
+</section>
+
+<!-- ═══════════════════════════════ REROLL ═══════════════════════════════ -->
+<section id="reroll">
+  <h2 class="section-title"><span class="emoji">🎲</span> Guía de Re-Roll Mensual</h2>
+
+  <div class="card">
+    <h3>Stats Actuales vs Ideales</h3>
+    <table>
+      <tr><th>Stat</th><th>Actual</th><th>Ideal</th><th>Prioridad</th></tr>
+      <tr><td>CHA</td><td><strong>18</strong> (+2=20)</td><td>18</td><td><span class="badge red">🚫 NUNCA</span></td></tr>
+      <tr><td>CON</td><td>14</td><td><strong>16</strong></td><td><span class="badge gold">#1</span></td></tr>
+      <tr><td>DEX</td><td>14</td><td><strong>16</strong></td><td><span class="badge purple">#2</span></td></tr>
+      <tr><td>WIS</td><td>13</td><td><strong>14</strong></td><td><span class="badge green">#3</span></td></tr>
+      <tr><td>INT</td><td>14</td><td>14</td><td>✅ OK</td></tr>
+      <tr><td>STR</td><td>7</td><td>7-8</td><td>🚫 Da igual</td></tr>
+    </table>
+  </div>
+
+  <div class="card important">
+    <h3>Regla Rápida: ¿Cambio el set?</h3>
+    <p>Solo cambia si el nuevo set tiene:</p>
+    <p>✅ <strong>Un 18</strong> (obligatorio, sin excepciones)</p>
+    <p>✅ <strong>Un 15 o 16+</strong> (para CON o DEX)</p>
+    <p>✅ <strong>Total ≥ 80</strong></p>
+    <p style="margin-top:10px">Con 5 tiradas/mes: <strong class="highlight">~16% de probabilidad mensual</strong> de sacar el set dulce. Estimación: <strong>4-8 meses</strong>.</p>
+  </div>
+</section>
+
+<!-- QUOTE FINAL -->
+<div class="quote" style="margin-top:40px;text-align:center">
+  "Nivel 3: un detective con migrañas. Nivel 14: un dios psíquico que se desliza por debajo de las puertas. El viaje no fue bonito. Pero el Marciano nunca prometió que lo fuera."
+  <span class="author">— John Jones</span>
+</div>
+
+</main>
+
+<footer>
+  👽 Arsenal del Marciano — John Jones · Hechicero de Mente Aberrante · D&D 5e (2024)<br>
+  <em>"No encontré estos artefactos. Siempre estuvieron dentro de mí."</em>
+</footer>
+
+<script>
+  // Glow cursor
+  const glow = document.getElementById('glow');
+  document.addEventListener('mousemove', e => {
+    glow.style.left = e.clientX + 'px';
+    glow.style.top = e.clientY + 'px';
+  });
+
+  // Active nav on scroll
+  const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 100) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+</script>
+</body>
+</html>
