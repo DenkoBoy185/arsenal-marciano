@@ -13,7 +13,7 @@
 | **Clase** | Hechicero — Mente Aberrante |
 | **Trasfondo** | Investigador (Personalizado) |
 | **Alineamiento** | Neutral Bueno |
-| **STR** | 7 (-2) |
+| **STR** | 10 (+0) |
 | **DEX** | 14 (+2) |
 | **CON** | 14 (+2) |
 | **INT** | 14 (+2) |

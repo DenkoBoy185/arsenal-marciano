@@ -12,7 +12,7 @@
 | **DEX** | **14** | +2 | **16** | +3 | CA sube de 15→16 (Mage Armor), +1 Iniciativa, +1 saves DEX | 🟡 **#2** |
 | **WIS** | **13** | +1 | **14** | +2 | Percepción +1, Insight +1, WIS saves +1. Y REDONDEA el impar | 🟢 **#3** |
 | **INT** | **14** | +2 | 14 | +2 | ✅ Ya está bien. Investigation +4 es suficiente | ⚪ Opcional |
-| **STR** | **7** | -2 | 7-8 | -2/-1 | No importa. Dump stat. No pierdas un re-roll aquí | 🚫 NUNCA |
+| **STR** | **10** | +0 | 10 | +0 | No importa. Dump stat. No pierdas un re-roll aquí | 🚫 NUNCA |
 
 ---
 
@@ -92,7 +92,7 @@
 | WIS 13 | **51.2%** de sacar 12 o menos | ⚠️ MEDIO |
 | INT 14 | **64.5%** de sacar 13 o menos | ⚠️ ALTO |
 | CHA 18 | **98.4%** de sacar 17 o menos | 🚫 SUICIDA |
-| STR 7 | **5.7%** de sacar 6 o menos | ✅ Casi seguro que mejora, pero no importa |
+| STR 10 | **16.2%** de sacar 9 o menos | ⚪ No importa |
 
 > [!CAUTION]
 > **Si NO puedes quedarte con el mayor:** Solo re-rollea WIS (13). Es la stat donde tienes más chance de mejorar (35.5%) y menos chance de que la pérdida duela (WIS 12 vs 13 no cambia el modificador, sigue siendo +1).
@@ -110,7 +110,7 @@
 | **DEX** | 16 | — | **16** | **+3** |
 | **WIS** | 14 | — | **14** | **+2** |
 | **INT** | 14 | — | **14** | **+2** |
-| **STR** | 7 | — | **7** | **-2** |
+| **STR** | 10 | — | **10** | **+0** |
 
 ### Impacto vs tus stats actuales:
 
