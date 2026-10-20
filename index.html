@@ -1,515 +1,1088 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El Compendio del Marciano - Arsenal Psiónico</title>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ðŸ•µï¸â€â™‚ï¸ðŸŸ¢ John Jones â€” Ficha Maestra Nivel 6 (D&D 5.5e)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <style>
     :root {
-        --bg-main: #0a0a0a;
-        --card-bg: #141414;
-        --text-main: #c4c4c4;
-        --green-neon: #00ff66;
-        --purple-neon: #b533ff;
-        --red-neon: #ff2a2a;
-        --border-color: #222;
+      --background: #090b10;
+      --card: #12151f;
+      --border: #23293a;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
     }
-
-    body {
-        margin: 0;
-        padding: 0;
-        background-color: var(--bg-main);
-        color: var(--text-main);
-        font-family: 'Space Mono', monospace;
-        overflow-x: hidden;
-        cursor: crosshair;
+    .tab-btn.active {
+      background-color: rgba(16, 185, 129, 0.18);
+      border-color: #10b981;
+      color: #10b981;
     }
-
-    /* PSYCHEDELIC MOUSE LENS */
-    #psychedelic-lens {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        pointer-events: none;
-        z-index: 9999;
-        background: radial-gradient(circle 150px at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(0, 255, 102, 0.15), rgba(181, 51, 255, 0.05), transparent 80%);
-        mix-blend-mode: screen;
-        transition: background 0.1s ease;
+    .lvl-btn.active {
+      background-color: #10b981;
+      color: #052e16;
+      border-color: #10b981;
+      font-weight: 700;
     }
-
-    /* HEADER */
-    header {
-        text-align: center;
-        padding: 60px 20px;
-        background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
-        border-bottom: 2px solid var(--green-neon);
-        position: relative;
-        overflow: hidden;
+    .filter-pill.active {
+      background-color: #10b981;
+      color: #052e16;
+      border-color: #10b981;
+      font-weight: 700;
     }
-    
-    header h1 {
-        font-family: 'Cinzel', serif;
-        color: #fff;
-        font-size: 3rem;
-        margin: 0;
-        text-shadow: 0 0 20px var(--green-neon), 0 0 40px var(--purple-neon);
-        animation: glitch 3s infinite alternate;
+    .slot-dot.used {
+      background-color: transparent !important;
+      border-color: rgba(148, 163, 184, 0.4) !important;
     }
-
-    header p {
-        color: var(--green-neon);
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
     }
-
-    @keyframes glitch {
-        0% { text-shadow: 2px 0 var(--red-neon), -2px 0 var(--green-neon); }
-        25% { text-shadow: -2px 0 var(--red-neon), 2px 0 var(--green-neon); }
-        50% { text-shadow: 2px 0 var(--purple-neon), -2px 0 var(--green-neon); }
-        75% { text-shadow: -2px 0 var(--red-neon), 2px 0 var(--purple-neon); }
-        100% { text-shadow: 2px 0 var(--green-neon), -2px 0 var(--red-neon); }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
     }
-
-    /* CONTAINER & GRID */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-    }
-
-    .tier-section {
-        margin-bottom: 80px;
-    }
-
-    .tier-title {
-        font-family: 'Cinzel', serif;
-        font-size: 2.5rem;
-        border-bottom: 2px solid #333;
-        padding-bottom: 10px;
-        margin-bottom: 30px;
-        display: flex;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .tier-uncommon { color: #28a745; text-shadow: 0 0 10px #28a745; }
-    .tier-rare { color: #007bff; text-shadow: 0 0 10px #007bff; }
-    .tier-very-rare { color: #b533ff; text-shadow: 0 0 10px #b533ff; }
-    .tier-legendary { color: #ff8800; text-shadow: 0 0 10px #ff8800; }
-
-    .items-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: 30px;
-    }
-
-    /* CARDS */
-    .item-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 8px;
-        overflow: hidden;
-        position: relative;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .item-card:hover {
-        transform: translateY(-5px) scale(1.02);
-        box-shadow: 0 10px 30px rgba(0, 255, 102, 0.2);
-        border-color: var(--green-neon);
-        z-index: 10;
-    }
-
-    .item-card::before {
-        content: '';
-        position: absolute;
-        top: -50%; left: -50%;
-        width: 200%; height: 200%;
-        background: radial-gradient(circle, rgba(181, 51, 255, 0.1) 0%, transparent 50%);
-        opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
-    }
-
-    .item-card:hover::before {
-        opacity: 1;
-        animation: rotateBg 10s linear infinite;
-    }
-
-    @keyframes rotateBg {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    .card-img-container {
-        height: 200px;
-        width: 100%;
-        background: #111;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        overflow: hidden;
-        border-bottom: 1px solid var(--border-color);
-        position: relative;
-    }
-
-    .card-img-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: contrast(1.2) brightness(0.8);
-        transition: filter 0.3s ease;
-    }
-    
-    .item-card:hover .card-img-container img {
-        filter: contrast(1.3) brightness(1.1);
-    }
-
-    .css-icon {
-        font-size: 5rem;
-        filter: drop-shadow(0 0 15px var(--green-neon));
-        transition: transform 0.3s ease;
-    }
-
-    .item-card:hover .css-icon {
-        transform: scale(1.2) rotate(5deg);
-        filter: drop-shadow(0 0 25px var(--purple-neon));
-    }
-
-    .card-content {
-        padding: 20px;
-        position: relative;
-        z-index: 2;
-        background: rgba(20, 20, 20, 0.9);
-    }
-
-    .card-title {
-        font-family: 'Cinzel', serif;
-        color: #fff;
-        margin: 0 0 5px 0;
-        font-size: 1.4rem;
-    }
-
-    .card-meta {
-        font-size: 0.8rem;
-        color: #888;
-        font-style: italic;
-        margin-bottom: 15px;
-    }
-
-    .card-mechanics {
-        font-size: 0.9rem;
-        line-height: 1.5;
-        margin-bottom: 15px;
-    }
-
-    .card-mechanics strong {
-        color: #fff;
-    }
-
-    .reskin-box {
-        background: rgba(0, 255, 102, 0.05);
-        border-left: 3px solid var(--green-neon);
-        padding: 12px;
-        font-size: 0.85rem;
-        color: #aaa;
-        font-style: italic;
-    }
-
-    .reskin-box strong {
-        display: block;
-        color: var(--green-neon);
-        font-style: normal;
-        margin-bottom: 5px;
-        letter-spacing: 1px;
-    }
-    
-    .combo-section {
-        background: #111;
-        border: 2px solid var(--red-neon);
-        padding: 40px;
-        margin-top: 60px;
-        border-radius: 8px;
-        box-shadow: 0 0 30px rgba(255, 42, 42, 0.2);
-    }
-    .combo-section h2 {
-        color: var(--red-neon);
-        text-align: center;
-        font-family: 'Cinzel', serif;
-        font-size: 2.2rem;
-        text-transform: uppercase;
-        margin-top: 0;
-    }
-    .combo-section ul {
-        list-style: none;
-        padding: 0;
-    }
-    .combo-section li {
-        margin-bottom: 20px;
-        padding-left: 20px;
-        border-left: 3px solid var(--red-neon);
-    }
-
-</style>
+  </style>
 </head>
-<body>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen pb-16">
 
-<div id="psychedelic-lens"></div>
+  <!-- ===================================================================== -->
+  <!-- TOP STICKY COMMAND HEADER & LIVE HUD                                  -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 bg-[var(--card)]/95 backdrop-blur border-b border-[var(--border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-3">
 
-<header>
-    <h1>Arsenal del Marciano</h1>
-    <p>El compendio definitivo de ejecución psiónica</p>
-</header>
+      <!-- Row 1: Character Title + Mode Switcher -->
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-11 h-11 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-2xl shadow-inner">
+            ðŸ•µï¸â€â™‚ï¸
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-[var(--foreground)]">
+                JOHN JONES â€” EL DETECTIVE MARCIANO
+              </h1>
+              <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                HechicerÃ­a Aberrante 5.5e (XPHB)
+              </span>
+              <span id="badge-mode" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                ðŸ‘‘ Trial Nv 6 Â· TrÃ­o Legendario Esmeralda
+              </span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              CAR 20 (+5) Â· CON 14 (+2) Â· DES 14 (+2) Â· INT 14 (+2) Â· SAB 14 (+2) Â· FUE 10 (+0) Â· Dote Nv4: Adepto a la Metamagia
+            </p>
+          </div>
+        </div>
 
-<div class="container">
+        <!-- Mode Presets -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="applyPreset('valka6')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-500 bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition">
+            ðŸŸ¢ Ficha Maestra Nv 6 (TrÃ­o Legendario)
+          </button>
+          <button onclick="applyPreset('nv3')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500/50 transition">
+            ðŸ“‹ Nv 3 (Roll20 Base)
+          </button>
+          <button onclick="applyPreset('nv14')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-purple-500/40 bg-purple-500/10 text-purple-300 hover:bg-purple-500/20 transition">
+            ðŸ‘½ Nv 14 (RevelaciÃ³n en la Carne)
+          </button>
+        </div>
+      </div>
 
-    <!-- TIER 1: UNCOMMON -->
-    <section class="tier-section">
-        <h2 class="tier-title tier-uncommon">Tier 1: Poco Común (Uncommon)</h2>
-        <div class="items-grid">
-            
-            <div class="item-card">
-                <div class="card-img-container">
-                    <img src="bloodwell_vial.jpg" alt="Bloodwell Vial">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Vial de Sangre Vital +1</h3>
-                    <p class="card-meta">Foco Arcano | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>El Motor de Ejecución:</strong> +1 a CD de conjuros y ataques mágicos.</p>
-                        <p><strong>Recarga:</strong> Al gastar Dados de Golpe en descanso corto, recuperas 5 Puntos de Hechicería.</p>
-                    </div>
-                    <div class="reskin-box">
-                        <strong>Reskin: Sinergia de ADN</strong>
-                        Un vial con sangre humana y fluidos alienígenas que se iluminan al palpitar. Regenera tu estrés mental al descansar.
-                    </div>
-                </div>
+      <!-- Row 2: Interactive Combat Toggles -->
+      <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[var(--border)]">
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scroll py-0.5">
+          <span class="text-xs font-bold text-[var(--muted-foreground)] mr-1">NIVEL:</span>
+          <div id="level-buttons" class="flex items-center gap-1"></div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="toggle-trio" onclick="toggleBuff('trio')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-amber-500/50 bg-amber-500/15 text-amber-300 transition flex items-center gap-1.5">
+            <span id="dot-trio" class="w-2 h-2 rounded-full bg-amber-400"></span>
+            ðŸ’Ž TrÃ­o Legendario Esmeralda (ON)
+          </button>
+
+          <button id="toggle-innate" onclick="toggleBuff('innate')" class="px-2.5 py-1 rounded-lg text-xs font-bold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 transition flex items-center gap-1.5">
+            <span id="dot-innate" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            ðŸŸ¢ HechicerÃ­a Innata (+1 CD / Ventaja)
+          </button>
+
+          <button id="toggle-shield" onclick="toggleBuff('shield')" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition">
+            ðŸ›¡ï¸ ReacciÃ³n Escudo (+5 CA)
+          </button>
+        </div>
+      </div>
+
+      <!-- Row 3: 6 Live Dynamic KPI Cards -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2">
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Puntos de Golpe</div>
+            <div id="hud-hp" class="text-base font-extrabold text-emerald-400">48 / 48 PG</div>
+          </div>
+          <span id="hud-pb" class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">Comp +3</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-sky-500/40 rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-sky-300 font-medium">Clase Armadura</div>
+            <div id="hud-ac" class="text-lg font-extrabold text-sky-400">18</div>
+          </div>
+          <span id="hud-ac-note" class="text-xs text-[var(--muted-foreground)] text-right">16+DES (23 Escudo)</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-purple-500/50 rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-purple-300 font-medium">CD SalvaciÃ³n</div>
+            <div id="hud-dc" class="text-lg font-extrabold text-purple-300">19</div>
+          </div>
+          <span id="hud-dc-note" class="text-xs px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 font-semibold">18 Pasiva</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-emerald-500/40 rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-emerald-300 font-medium">Ataque Conjuro</div>
+            <div id="hud-atk" class="text-lg font-extrabold text-emerald-400">+10</div>
+          </div>
+          <span id="hud-atk-adv" class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">VENTAJA</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-amber-500/40 rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-amber-300 font-medium">Iniciativa</div>
+            <div id="hud-init" class="text-base font-extrabold text-amber-400">+5</div>
+          </div>
+          <span id="hud-init-adv" class="text-xs px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300 font-bold">VENTAJA</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-xl px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Movilidad</div>
+            <div id="hud-move" class="text-xs font-bold text-emerald-300">Vuelo 30ft Hover</div>
+          </div>
+          <span id="hud-tp" class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-semibold">+TP 15ft</span>
+        </div>
+      </div>
+
+      <!-- Row 4: Navigation Tabs -->
+      <nav class="flex items-center gap-2 overflow-x-auto custom-scroll pt-1">
+        <button onclick="switchTab('tab-master6')" id="btn-tab-master6" class="tab-btn active px-3.5 py-2 rounded-lg text-xs font-bold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ•µï¸â€â™‚ï¸ðŸŸ¢ 1. Ficha Maestra Nv 6 & TrÃ­o Legendario
+        </button>
+        <button onclick="switchTab('tab-combos')" id="btn-tab-combos" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-bold border border-[var(--border)] transition whitespace-nowrap">
+          âš¡ 2. Los 6 Combos 5.5e & Simulador de Dados
+        </button>
+        <button onclick="switchTab('tab-grimoire')" id="btn-tab-grimoire" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-bold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ§  3. Arsenal de Conjuros (16 + Foco)
+        </button>
+        <button onclick="switchTab('tab-roll20')" id="btn-tab-roll20" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-bold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ› ï¸ 4. AuditorÃ­a Roll20 (Nv 3) & ProgresiÃ³n Nv 14
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===================================================================== -->
+  <!-- MAIN CONTENT                                                          -->
+  <!-- ===================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 pt-6 space-y-6">
+
+    <!-- =================================================================== -->
+    <!-- TAB 1: FICHA MAESTRA NIVEL 6 & TRÃO LEGENDARIO                      -->
+    <!-- =================================================================== -->
+    <section id="tab-master6" class="space-y-6">
+
+      <!-- Top Grid: Live Resource Tracker (Left 5 cols) + Defenses & Psychic Absorption (Right 7 cols) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left 5 Cols: Interactive Live Table Tracker (HP, 8 SP, Slots 4/3/3, Daily Legendaries) -->
+        <div class="lg:col-span-5 bg-[var(--card)] border border-emerald-500/40 rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+              ðŸ”‹ Panel de Recursos en Mesa (Nivel 6)
+            </h2>
+            <button onclick="longRest()" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">
+              ðŸŒ™ Descanso Largo (Reset)
+            </button>
+          </div>
+
+          <!-- HP Tracker + Psychic Absorption Calculator -->
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-xs text-[var(--muted-foreground)] font-semibold">PUNTOS DE GOLPE ACTUALES</div>
+                <div class="text-2xl font-extrabold text-emerald-400"><span id="live-hp">48</span> / <span id="live-max-hp">48</span> PG</div>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="changeHP(-5)" class="px-2.5 py-1 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30 text-xs font-bold">-5</button>
+                <button onclick="changeHP(-1)" class="px-2.5 py-1 rounded bg-rose-500/15 text-rose-300 border border-rose-500/30 text-xs font-bold">-1</button>
+                <button onclick="changeHP(1)" class="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-bold">+1</button>
+                <button onclick="changeHP(5)" class="px-2.5 py-1 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-bold">+5</button>
+              </div>
             </div>
 
-            <!-- Other Uncommon items omitted for brevity but keeping core ones -->
-            <div class="item-card">
-                <div class="card-img-container">
-                    <div class="css-icon">🛡️</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Amuleto Anti-Detección</h3>
-                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Efecto:</strong> Inmune a magia de adivinación y percibido por sensores mágicos. Perfecto para el camuflaje total.</p>
-                    </div>
-                    <div class="reskin-box">
-                        <strong>Reskin: Placa Absorbente</strong>
-                        Un disco oscuro que absorbe las ondas de adivinación.
-                    </div>
-                </div>
+            <!-- Psychic Absorption Reaction Calculator -->
+            <div class="pt-2 border-t border-[var(--border)] space-y-1.5">
+              <div class="text-xs font-bold text-emerald-300 flex items-center justify-between">
+                <span>ðŸªª ReacciÃ³n: AbsorciÃ³n PsÃ­quica (Ornamento Esmeralda)</span>
+                <span class="text-[var(--muted-foreground)] font-normal">0 DaÃ±o + Curas 50%</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="number" id="psy-dmg-input" value="22" min="1" class="w-20 px-2.5 py-1 rounded-lg text-xs font-bold bg-[var(--card)] border border-[var(--border)] text-[var(--foreground)]" />
+                <button onclick="absorbPsychicDamage()" class="flex-1 py-1.5 px-3 rounded-lg text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
+                  âš¡ Absorber DaÃ±o PsÃ­quico y Curar Mitad
+                </button>
+              </div>
+              <div id="psy-heal-msg" class="text-xs text-emerald-400 hidden"></div>
             </div>
+          </div>
+
+          <!-- Sorcery Points Tracker (8 PH + Short Rest +3 PH) -->
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-purple-300">PUNTOS DE HECHICERÃA (8 PH = 6 Clase + 2 Dote)</span>
+              <span id="sp-counter-label" class="text-sm font-extrabold text-purple-300">8 / 8 PH</span>
+            </div>
+            <div id="sp-dots" class="flex flex-wrap gap-1.5"></div>
+            <div class="flex items-center justify-between pt-1">
+              <div class="flex gap-1.5">
+                <button onclick="spendSP(1)" class="px-2 py-1 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30">-1 PH (Gemelo/Cuidadoso/Psi Nv1)</button>
+                <button onclick="spendSP(2)" class="px-2 py-1 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30">-2 PH (Elevado/Acelerado)</button>
+              </div>
+              <button id="btn-short-rest-sp" onclick="shortRestSP()" class="px-2 py-1 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                â˜• RestauraciÃ³n (+3 PH)
+              </button>
+            </div>
+          </div>
+
+          <!-- Spell Slots Tracker (4 Nv1 / 3 Nv2 / 3 Nv3) -->
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-2 text-xs">
+            <div class="font-bold text-[var(--foreground)]">ESPACIOS DE CONJURO (Clic para gastar/recuperar):</div>
+            <div class="flex items-center justify-between">
+              <span>Nivel 1 (4 espacios):</span>
+              <div id="slots-1" class="flex gap-1.5"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Nivel 2 (3 espacios):</span>
+              <div id="slots-2" class="flex gap-1.5"></div>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Nivel 3 (3 espacios):</span>
+              <div id="slots-3" class="flex gap-1.5"></div>
+            </div>
+          </div>
+
+          <!-- Daily Powers (Foco Gema + Innate Sorcery + Lucky) -->
+          <div class="p-3.5 rounded-xl bg-[var(--background)] border border-amber-500/40 space-y-2 text-xs">
+            <div class="font-bold text-amber-300">PODERES DIARIOS DEL FOCO GEMA & DOTES:</div>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span>ðŸ‘‘ <strong>Jugada Maestra:</strong> 1 Conjuro a Nivel 9 Gratis (1/DÃ­a)</span>
+              <input type="checkbox" class="w-4 h-4 accent-amber-500" />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span>ðŸ§  <strong>Raulothim's Psychic Lance</strong> Gratis (7d6 + Incapacitar, 1/DÃ­a)</span>
+              <input type="checkbox" class="w-4 h-4 accent-amber-500" />
+            </label>
+            <label class="flex items-center justify-between cursor-pointer">
+              <span>ðŸ”— <strong>Rary's Telepathic Bond</strong> Gratis (Red TelepÃ¡tica, 1/DÃ­a)</span>
+              <input type="checkbox" class="w-4 h-4 accent-amber-500" />
+            </label>
+            <div class="flex items-center justify-between pt-1 border-t border-[var(--border)]">
+              <span>ðŸŸ¢ <strong>HechicerÃ­a Innata</strong> (2/DL) & ðŸ€ <strong>Lucky</strong> (3/DL):</span>
+              <div class="flex gap-1">
+                <input type="checkbox" class="w-4 h-4 accent-emerald-500" title="Innate 1" />
+                <input type="checkbox" class="w-4 h-4 accent-emerald-500" title="Innate 2" />
+                <span class="mx-1 text-[var(--muted-foreground)]">|</span>
+                <input type="checkbox" class="w-4 h-4 accent-sky-400" title="Lucky 1" />
+                <input type="checkbox" class="w-4 h-4 accent-sky-400" title="Lucky 2" />
+                <input type="checkbox" class="w-4 h-4 accent-sky-400" title="Lucky 3" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 7 Cols: El TrÃ­o Legendario + Inmunidades y Defensas -->
+        <div class="lg:col-span-7 space-y-4">
+
+          <!-- TrÃ­o Legendario Cards -->
+          <div class="bg-[var(--card)] border border-amber-500/40 rounded-xl p-5 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+                  3 / 3 SINTONIZACIONES ACTIVAS
+                </span>
+                <h2 class="text-lg font-bold text-[var(--foreground)] mt-1">ðŸ’Ž Tu TrÃ­o Legendario en Valka</h2>
+              </div>
+              <span class="text-xs text-[var(--muted-foreground)]">Clic en 5e.tools para ver la referencia oficial</span>
+            </div>
+
+            <div class="space-y-3">
+              <!-- Item 1: Ascendant Dragon-Touched Focus -->
+              <div class="p-4 rounded-xl bg-[var(--background)] border border-emerald-500/40 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="text-xs font-bold text-emerald-400 uppercase">SintonizaciÃ³n 1 Â· Wondrous Item (Legendary, FTD)</span>
+                    <h3 class="text-base font-bold text-[var(--foreground)]">1. Ascendant Dragon-Touched Focus (Gem / Emerald)</h3>
+                  </div>
+                  <a href="https://5e.tools/items.html#ascendant%20dragon-touched%20focus_ftd" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 whitespace-nowrap">
+                    5e.tools â†—
+                  </a>
+                </div>
+                <p class="text-xs italic text-emerald-300/90">
+                  ðŸŸ¢ Reskin: El cristal/figurilla alienÃ­gena de Tyler oculto en el bolsillo interior de John.
+                </p>
+                <ul class="text-xs text-[var(--muted-foreground)] space-y-1 list-disc pl-4">
+                  <li><strong class="text-[var(--foreground)]">Ventaja en Iniciativa</strong> permanente mientras lo sostienes.</li>
+                  <li><strong class="text-[var(--foreground)]">Teletransporte Gema (Ilimitado):</strong> Cada vez que usas un espacio de conjuro (nv 1+), te <strong>teletransportas 15 pies</strong> gratis a un espacio desocupado que veas.</li>
+                  <li><strong class="text-[var(--foreground)]">Conjuros Despiertos (1/dÃ­a gratis c/u):</strong> <em>Raulothim's Psychic Lance</em> (7d6 psÃ­quico + Incapacitado) y <em>Rary's Telepathic Bond</em>.</li>
+                  <li><strong class="text-amber-300">Poder Ascendente (1/dÃ­a):</strong> Cuando lanzas un conjuro de nivel 1+, <strong>se trata como si fuera lanzado con un espacio de Nivel 9</strong>.</li>
+                </ul>
+              </div>
+
+              <!-- Item 2: Robe of the Archmagi -->
+              <div class="p-4 rounded-xl bg-[var(--background)] border border-purple-500/40 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="text-xs font-bold text-purple-300 uppercase">SintonizaciÃ³n 2 Â· Wondrous Item (Legendary, XDMG)</span>
+                    <h3 class="text-base font-bold text-[var(--foreground)]">2. Robe of the Archmagi</h3>
+                  </div>
+                  <a href="https://5e.tools/items.html#robe%20of%20the%20archmagi_xdmg" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-purple-500/15 text-purple-300 border border-purple-500/30 hover:bg-purple-500/25 whitespace-nowrap">
+                    5e.tools â†—
+                  </a>
+                </div>
+                <p class="text-xs italic text-purple-300/90">
+                  ðŸŸ¢ Reskin: La gabardina negra de detective reforzada con la densidad dimensional del Marciano.
+                </p>
+                <ul class="text-xs text-[var(--muted-foreground)] space-y-1 list-disc pl-4">
+                  <li><strong class="text-[var(--foreground)]">Armadura Dimensional:</strong> Tu CA base es <strong>15 + DES (17)</strong>.</li>
+                  <li><strong class="text-[var(--foreground)]">Amplificador PsiÃ³nico:</strong> <strong>+2 a la CD de SalvaciÃ³n y Ataques de Conjuro</strong> (tu CD sube a <strong>18 pasiva / 19 con Innata</strong> y ataque a <strong>+10</strong>).</li>
+                  <li><strong class="text-[var(--foreground)]">Resistencia MÃ¡gica:</strong> Tienes <strong>Ventaja</strong> en todas las tiradas de salvaciÃ³n contra conjuros y efectos mÃ¡gicos.</li>
+                </ul>
+              </div>
+
+              <!-- Item 3: Ascendant Scaled Ornament (Emerald Dragon) -->
+              <div class="p-4 rounded-xl bg-[var(--background)] border border-sky-500/40 space-y-1.5">
+                <div class="flex items-start justify-between gap-2">
+                  <div>
+                    <span class="text-xs font-bold text-sky-300 uppercase">SintonizaciÃ³n 3 Â· Wondrous Item (Legendary, FTD)</span>
+                    <h3 class="text-base font-bold text-[var(--foreground)]">3. Ascendant Scaled Ornament (Emerald Dragon)</h3>
+                  </div>
+                  <a href="https://5e.tools/items.html#ascendant%20scaled%20ornament_ftd" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 whitespace-nowrap">
+                    5e.tools â†—
+                  </a>
+                </div>
+                <p class="text-xs italic text-sky-300/90">
+                  ðŸŸ¢ Reskin: La Placa del FBI de John fusionada con el nÃºcleo esmeralda del Marciano.
+                </p>
+                <ul class="text-xs text-[var(--muted-foreground)] space-y-1 list-disc pl-4">
+                  <li><strong class="text-[var(--foreground)]">+1 a la CA:</strong> Se suma a la TÃºnica para darte <strong>CA 16 + DES = 18</strong> (y <strong>CA 23</strong> con <em>Escudo</em>).</li>
+                  <li><strong class="text-[var(--foreground)]">LevitaciÃ³n Marciana:</strong> Velocidad de <strong>Vuelo de 30 pies con Hover</strong> permanente.</li>
+                  <li><strong class="text-[var(--foreground)]">Fortaleza Mental + Aura:</strong> Eres <strong>Inmune</strong> a <em>Hechizado (Charmed)</em> y <em>Asustado (Frightened)</em>, y tus aliados a 30 pies tienen Ventaja contra ellos.</li>
+                  <li><strong class="text-emerald-400">AbsorciÃ³n PsÃ­quica (ReacciÃ³n):</strong> Cuando vayas a recibir daÃ±o <strong>PsÃ­quico</strong>, usas tu ReacciÃ³n para recibir <strong>0 de daÃ±o y curarte PG igual a la mitad</strong> del daÃ±o que ibas a sufrir.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Summary of 4 Metamagics (5.5e) -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3">
+            <h3 class="text-base font-bold text-[var(--foreground)]">âš¡ Tus 4 Opciones de Metamagia (D&D 5.5e)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-emerald-400">1. Conjuro Cuidadoso (Careful Spell Â· 1 PH)</div>
+                <p class="text-[var(--muted-foreground)] mt-0.5">En 5.5e, hasta <strong>5 aliados</strong> pasan automÃ¡ticamente la salvaciÃ³n y reciben <strong>0 daÃ±o</strong>.</p>
+              </div>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-purple-300">2. Conjuro Gemelo (Twinned Spell Â· 1 PH)</div>
+                <p class="text-[var(--muted-foreground)] mt-0.5">Agrega 1 objetivo adicional a conjuros que escalen por nivel (<em>LÃ¡tigo Mental, Inmovilizar Persona, Risa Horrible</em>).</p>
+              </div>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-amber-300">3. Conjuro Elevado (Heightened Spell Â· 2 PH)</div>
+                <p class="text-[var(--muted-foreground)] mt-0.5">En 5.5e bajÃ³ a 2 PH e impone <strong>Desventaja en TODAS las salvaciones</strong> contra el conjuro (inicial y en cada turno).</p>
+              </div>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-sky-300">4. Conjuro Acelerado (Quickened Spell Â· 2 PH)</div>
+                <p class="text-[var(--muted-foreground)] mt-0.5">Lanzas un conjuro de 1 AcciÃ³n como <strong>AcciÃ³n Adicional</strong>.</p>
+              </div>
+            </div>
+          </div>
 
         </div>
+      </div>
     </section>
 
-    <!-- TIER 2: RARE -->
-    <section class="tier-section">
-        <h2 class="tier-title tier-rare">Tier 2: Raro (Rare)</h2>
-        <div class="items-grid">
+    <!-- =================================================================== -->
+    <!-- TAB 2: LOS 6 COMBOS MAESTROS 5.5e & SIMULADOR DE DADOS              -->
+    <!-- =================================================================== -->
+    <section id="tab-combos" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-            <div class="item-card">
-                <div class="card-img-container">
-                    <img src="far_realm_shard.jpg" alt="Far Realm Shard">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Fragmento del Reino Lejano</h3>
-                    <p class="card-meta">Objeto Mágico | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Efecto:</strong> Al usar Metamagia, un objetivo a 30 pies sufre <strong>3d6 de daño psíquico</strong> y queda <strong>Asustado</strong> si falla la salvación (CHA).</p>
-                    </div>
-                    <div class="reskin-box">
-                        <strong>Reskin: Trauma Marciano</strong>
-                        Al usar metamagia, la silueta del alienígena emerge de ti y atraviesa el cráneo de la víctima, inyectando pánico genocida.
-                    </div>
-                </div>
+        <!-- Left 7 Cols: The 6 Clickable Combo Cards -->
+        <div class="lg:col-span-7 space-y-3">
+          <h2 class="text-lg font-bold text-[var(--foreground)]">ðŸ”¥ Tus 6 Combos Oficiales (Haz clic para ejecutar y tirar dados)</h2>
+
+          <!-- Master Play Lv 9 -->
+          <div onclick="executeCombo('jugada_maestra')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border-2 border-amber-500/60 hover:bg-amber-500/10 transition space-y-1.5">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950">ðŸ‘‘ LA JUGADA MAESTRA DE NIVEL 9 (1/DÃA FOCO GEMA)</span>
+              <span class="text-xs font-mono text-amber-300">Coste: 1 Slot Nv2 + Poder Ascendente</span>
             </div>
+            <h3 class="text-base font-bold text-[var(--foreground)]">LÃ¡tigo Mental / Inmovilizar Persona a Nivel 9 (8 Enemigos a la vez)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Activas <strong>HechicerÃ­a Innata (CD 19)</strong> + gastas un slot de Nivel 2 en <em>LÃ¡tigo Mental de Tasha</em> (o <em>Inmovilizar Persona</em>) convertido a <strong>Nivel 9 gratis</strong> por el Foco. Golpeas el cerebro de <strong>8 enemigos simultÃ¡neamente contra CD 19</strong> (24d6 psÃ­quico total + los 8 pierden turno y reacciÃ³n, o quedan los 8 paralizados) + <strong>Teleport 15ft volando</strong>.
+            </p>
+          </div>
 
-            <div class="item-card">
-                <div class="card-img-container">
-                    <img src="shadowfell_shard.jpg" alt="Shadowfell Shard">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Fragmento del Páramo Sombrío</h3>
-                    <p class="card-meta">Objeto Mágico | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Efecto:</strong> Al usar Metamagia, fuerzas a un objetivo a 30 pies a tener <strong>Desventaja</strong> en pruebas y salvaciones de un Atributo (ej. Sabiduría) hasta tu próximo turno. <strong>Sin tirada de salvación</strong>.</p>
-                    </div>
-                    <div class="reskin-box">
-                        <strong>Reskin: Despair-The-Zero</strong>
-                        Inyectas depresión cósmica directamente en su corteza prefrontal, anulando su fuerza de voluntad. Fallo garantizado.
-                    </div>
-                </div>
+          <!-- Combo 1 -->
+          <div onclick="executeCombo('combo1')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border border-purple-500/40 hover:border-purple-400 transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-purple-300 uppercase">Combo 1 Â· Conjuro Elevado 5.5e (2 PH)</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-purple-500/15 text-purple-300">Desventaja en CADA turno</span>
             </div>
+            <h3 class="text-sm font-bold text-[var(--foreground)]">"Tortura Mental Permanente" (Fuerza Fantasmal / Inmovilizar Persona + Elevado)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              El jefe debe superar tu <strong>CD 19 con Desventaja en cada turno</strong> mientras sufre <strong>2d8 de daÃ±o psÃ­quico automÃ¡tico por ronda</strong> (<em>Fuerza Fantasmal 5.5e</em>) o permanece paralizado + Teleport 15ft.
+            </p>
+          </div>
 
+          <!-- Combo 2 -->
+          <div onclick="executeCombo('combo2')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border border-emerald-500/40 hover:border-emerald-400 transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-400 uppercase">Combo 2 Â· Conjuro Gemelo 5.5e (1 PH)</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300">2 Objetivos por 1 PH</span>
+            </div>
+            <h3 class="text-sm font-bold text-[var(--foreground)]">"Doble Cortocircuito por 1 Punto" (LÃ¡tigo Mental / Risa Horrible / Hold Person)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Por solo <strong>1 PH</strong>, golpeas a <strong>2 enemigos</strong> con <em>LÃ¡tigo Mental de Tasha</em> (<strong>3d6 psÃ­quico a cada uno</strong> y ambos pierden reacciÃ³n y turno normal) o incapacitas a 2 objetivos con <em>Risa Horrible</em> + Teleport 15ft.
+            </p>
+          </div>
+
+          <!-- Combo 3 -->
+          <div onclick="executeCombo('combo3')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border border-sky-500/40 hover:border-sky-400 transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-sky-300 uppercase">Combo 3 Â· HechicerÃ­a Innata + Estallido Hechicero x2</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-sky-500/15 text-sky-300">0 Slots Â· Dados Explosivos</span>
+            </div>
+            <h3 class="text-sm font-bold text-[var(--foreground)]">"Francotirador PsÃ­quico Explosivo" (Sorcerous Burst + Conjuro Acelerado 2 PH)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Dos disparos en el mismo turno con <strong>Ventaja (+10 al impacto)</strong> de <strong>2d8 daÃ±o psÃ­quico cada uno</strong>; cada <code>8</code> en los dados explota y regala otro d8 adicional (hasta +5d8 extra).
+            </p>
+          </div>
+
+          <!-- Combo 4 -->
+          <div onclick="executeCombo('combo4')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border border-amber-500/40 hover:border-amber-400 transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-amber-300 uppercase">Combo 4 Â· Astilla Mental + Conjuro Acelerado (2 PH)</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-amber-500/15 text-amber-300">CD 19 y -1d4 al Save</span>
+            </div>
+            <h3 class="text-sm font-bold text-[var(--foreground)]">"Asalto Mental Indetectable" (Mind Sliver + SugestiÃ³n / Enemies Abound / Susurros)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              AcciÃ³n: <strong>Astilla Mental (2d6 psÃ­quico y -1d4 al save)</strong> + AcciÃ³n Adicional: <strong>Los Enemigos Abundan, SugestiÃ³n o Susurros Disonantes</strong> contra tu CD 18/19 restando 1d4 en ese mismo instante.
+            </p>
+          </div>
+
+          <!-- Combo 5 -->
+          <div onclick="executeCombo('combo5')" class="cursor-pointer p-4 rounded-xl bg-[var(--card)] border border-[var(--border)] hover:border-emerald-400 transition space-y-1">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-emerald-300 uppercase">Combo 5 Â· Conjuro Cuidadoso 5.5e (1 PH)</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300">5 Aliados Inmunes</span>
+            </div>
+            <h3 class="text-sm font-bold text-[var(--foreground)]">"Cero DaÃ±o Colateral" (PatrÃ³n HipnÃ³tico / Miedo / Brazos de Hadar)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Lanzas tu control o Ã¡rea encima de tus compaÃ±eros por <strong>1 PH</strong>: tus <strong>5 aliados pasan automÃ¡ticamente la salvaciÃ³n y reciben 0 daÃ±o</strong>.
+            </p>
+          </div>
         </div>
-    </section>
 
-    <!-- TIER 3: VERY RARE -->
-    <section class="tier-section">
-        <h2 class="tier-title tier-very-rare">Tier 3: Muy Raro (Very Rare)</h2>
-        <div class="items-grid">
-
-            <div class="item-card">
-                <div class="card-img-container">
-                    <img src="illusionist_bracers.jpg" alt="Illusionist Bracers">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title">Brazales del Ilusionista</h3>
-                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>La Metralleta de Trucos:</strong> Cada vez que lanzas un truco (Cantrip) como Acción, puedes lanzar ese mismo truco como <strong>Acción Adicional</strong> gratis.</p>
-                    </div>
-                    <div class="reskin-box">
-                        <strong>Sinergia Letal</strong>
-                        Lanzas <em>Mind Sliver</em> dos veces por turno gratis, haciendo doble daño psíquico a distancia y restándole 1d4 a las tiradas del enemigo de forma constante.
-                    </div>
-                </div>
+        <!-- Right 5 Cols: Live Dice Log & Individual Spell Rollers -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4 sticky top-48">
+            <div class="flex items-center justify-between">
+              <h3 class="text-base font-bold text-[var(--foreground)]">ðŸŽ² Consola de Tiradas PsÃ­quicas</h3>
+              <button onclick="clearCombatLog()" class="px-2 py-1 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+                Limpiar
+              </button>
             </div>
 
+            <div class="flex flex-wrap gap-1.5">
+              <button onclick="rollSpell('mind_sliver')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400">
+                ðŸ§  Astilla Mental (2d6)
+              </button>
+              <button onclick="rollSpell('sorcerous_burst')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-emerald-400">
+                ðŸ’¥ Estallido Hechicero (2d8 Exp.)
+              </button>
+              <button onclick="rollSpell('dissonant')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400">
+                ðŸ”Š Susurros Disonantes (3d6)
+              </button>
+              <button onclick="rollSpell('mind_whip')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400">
+                âš¡ LÃ¡tigo Mental (3d6)
+              </button>
+              <button onclick="rollSpell('phantasmal')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400">
+                ðŸ‘ï¸ Fuerza Fantasmal (2d8)
+              </button>
+              <button onclick="rollSpell('lance')" class="px-2.5 py-1 rounded text-xs font-semibold bg-[var(--background)] border border-amber-500/40 text-amber-300 hover:bg-amber-500/15">
+                ðŸ’Ž Psychic Lance Foco (7d6)
+              </button>
+            </div>
+
+            <div id="combat-log" class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-3.5 font-mono text-xs space-y-2.5 max-h-96 overflow-y-auto custom-scroll">
+              <div class="text-[var(--muted-foreground)]">
+                ðŸŸ¢ Haz clic en cualquiera de los 6 combos a la izquierda o en un botÃ³n de conjuro arriba para tirar los dados...
+              </div>
+            </div>
+          </div>
         </div>
+
+      </div>
     </section>
 
-    <!-- TIER 4: LEGENDARY -->
-    <section class="tier-section">
-        <h2 class="tier-title tier-legendary">Tier 4: Legendario (Legendary)</h2>
-        <div class="items-grid">
-            
-            <div class="item-card" style="grid-column: span 1 / -1;">
-                <div class="card-img-container" style="height: 300px;">
-                    <img src="dragon_focus.jpg" alt="Ascendant Dragon-Touched Focus (Gem)">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title" style="color: #ff8800;">Foco Tocado por Dragón (Ascendido / Gema Psíquica)</h3>
-                    <p class="card-meta">Foco Arcano | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Slumbering:</strong> Tienes <strong>Ventaja en las tiradas de Iniciativa</strong> (sumado a tu dote Alerta, siempre actúas primero).</p>
-                        <p><strong>Stirring (Gema):</strong> Cada vez que gastas un espacio de conjuro, te <strong>teletransportas gratis 15 pies</strong> a un espacio que puedas ver, sin gastar acciones.</p>
-                        <p><strong>Wakened (Gema):</strong> Lanzas <em>Telequinesis</em> y <em>Vínculo Telepático de Rary</em> gratis una vez al día.</p>
-                        <p><strong>Ascended (El Disparo de Nivel 9):</strong> 1/día, cuando lanzas un conjuro de nivel 1 o superior, el objeto lo eleva automáticamente como si lo hubieras lanzado con un <strong>espacio de Nivel 9</strong>, sin importar qué nivel seas tú.</p>
-                    </div>
-                    <div class="reskin-box" style="border-left-color: #ff8800;">
-                        <strong style="color: #ff8800;">El Desfase Dimensional y Ejecución de Nivel 9</strong>
-                        La escultura de arcilla verde del Marciano en su estado de "actualización de consciencia completa". Te permite parpadear por el espacio y desatar un ataque psíquico de escala cósmica.
-                    </div>
-                </div>
-            </div>
+    <!-- =================================================================== -->
+    <!-- TAB 3: ARSENAL COMPLETO DE CONJUROS (6 TRUCOS + 6 PSI + 10 PREP)     -->
+    <!-- =================================================================== -->
+    <section id="tab-grimoire" class="hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button onclick="setSpellFilter('all')" id="pill-all" class="filter-pill active px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Todos (24)
+            </button>
+            <button onclick="setSpellFilter('0')" id="pill-0" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              ðŸŒŸ 6 Trucos
+            </button>
+            <button onclick="setSpellFilter('psi')" id="pill-psi" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              ðŸ§¬ 6 PsiÃ³nicos (1-3 PH sin V/S/M)
+            </button>
+            <button onclick="setSpellFilter('prep')" id="pill-prep" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              ðŸ“‹ 10 Preparados Hechicero
+            </button>
+            <button onclick="setSpellFilter('foco')" id="pill-foco" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              ðŸ’Ž 2 Conjuros del Foco Gema
+            </button>
+          </div>
 
-            <div class="item-card" style="grid-column: span 1 / -1;">
-                <div class="card-img-container" style="height: 300px;">
-                    <div class="css-icon" style="color:#ff8800; filter: drop-shadow(0 0 30px rgba(255,136,0,0.8));">👁️‍🗨️</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title" style="color: #ff8800;">Capa de Invisibilidad</h3>
-                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Invisibilidad Absoluta:</strong> Al subirte la capucha, te vuelves completamente invisible. A diferencia del hechizo normal, esta invisibilidad <strong>NO se rompe cuando atacas ni cuando lanzas conjuros.</strong> Dura 2 horas en bloques de 1 minuto.</p>
-                    </div>
-                    <div class="reskin-box" style="border-left-color: #ff8800;">
-                        <strong style="color: #ff8800;">El Camuflaje Fantasma (Asesinato Indetectable)</strong>
-                        Tu habilidad de nivel 6 (Hechicería Psiónica) elimina los componentes verbales y somáticos. Con esta capa puesta, no te ven, no te escuchan y no pierdes la invisibilidad al hacer daño. No pueden seleccionarte como objetivo ni lanzarte Contrahechizo. Para tus víctimas, están solos en una habitación mientras sus cerebros colapsan uno por uno.
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <div class="card-img-container" style="height: 300px;">
-                    <img src="noir_cloak.jpg" alt="Robe of the Archmagi">
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title" style="color: #ff8800;">Túnica del Archimago</h3>
-                    <p class="card-meta">Objeto Maravilloso | Requiere Sintonización</p>
-                    <div class="card-mechanics">
-                        <p><strong>Precisión Letal:</strong> Tu CD de salvación y ataques mágicos aumentan en <strong>+2</strong>.</p>
-                        <p><strong>Blindaje Pasivo:</strong> Si no llevas armadura, tu CA base es <strong>15 + Destreza</strong>.</p>
-                        <p><strong>Mente Blindada:</strong> Tienes <strong>Ventaja</strong> en todas las salvaciones contra magia.</p>
-                    </div>
-                    <div class="reskin-box" style="border-left-color: #ff8800;">
-                        <strong style="color: #ff8800;">La Gabardina Noir Implacable (CD Insuperable)</strong>
-                        Impregnada de humo psíquico multicolor que distorsiona la realidad a su alrededor y hace que tus invasiones mentales sean imposibles de resistir.
-                    </div>
-                </div>
-            </div>
-
-            <div class="item-card">
-                <div class="card-img-container">
-                    <div class="css-icon" style="color:#ff8800; filter: drop-shadow(0 0 15px #ff8800);">📖</div>
-                </div>
-                <div class="card-content">
-                    <h3 class="card-title" style="color: #ff8800;">Tomo de Liderazgo e Influencia</h3>
-                    <p class="card-meta">Objeto Maravilloso | <strong>NO Requiere Sintonización</strong></p>
-                    <div class="card-mechanics">
-                        <p><strong>Efecto Permanente:</strong> Tras 48 horas de estudio, tu puntuación de Carisma aumenta permanentemente en +2, y tu límite máximo sube a 22.</p>
-                    </div>
-                    <div class="reskin-box" style="border-left-color: #ff8800;">
-                        <strong style="color: #ff8800;">El Cuarto Legendario "Gratis"</strong>
-                        Una vez leído, el efecto es permanente en tu cuerpo y no ocupa ningún espacio de sintonización, dándote Carisma 22 (+6).
-                    </div>
-                </div>
-            </div>
-
+          <input
+            type="text"
+            id="spell-search"
+            oninput="renderSpells()"
+            placeholder="Buscar conjuro..."
+            class="px-3 py-1 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-emerald-400"
+          />
         </div>
+      </div>
+
+      <div id="spells-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
     </section>
 
-    <!-- MATH OF MURDER SECTION -->
-    <section class="combo-section">
-        <h2>💀 La Matemática del Asesinato en el Turno 1</h2>
-        <p style="text-align: center; color: #fff; font-size: 1.1rem;">Con estos objetos equipados y tu Carisma en 22 (+6), así funciona tu ejecución perfecta:</p>
-        
-        <ul>
-            <li><strong>CD de Salvación Absurda:</strong> Tu dificultad base pasa a ser 8 + Competencia + 6 (Carisma 22) + 2 (Túnica) = <strong>CD 18 a nivel 3</strong> (llegando hasta CD 22 en niveles altos).</li>
-            <li><strong>Iniciativa Garantizada:</strong> Con la dote Alerta y la <em>Ventaja</em> del Foco Ascendido, ganas el primer turno de la pelea para eliminar al líder antes de que actúe.</li>
-            <li><strong>El Golpe de Nivel 9 Invisible:</strong> Estando <em>invisible y en total silencio</em> (gracias a Hechicería Psiónica), lanzas un conjuro devastador (como Lanza Psíquica de Raúlothim o Estática Sináptica) y activas la propiedad Ascendida de tu foco para convertirlo en un <strong>Hechizo de Nivel 9 instantáneo</strong>.</li>
-            <li><strong>Fuga Fantasma:</strong> Por el simple hecho de haber gastado ese espacio de conjuro, la propiedad de Gema del foco te <strong>teletransporta 15 pies hacia las sombras</strong> de forma gratuita, manteniendo tu invisibilidad intacta mientras el jefe enemigo cae fulminado sin saber de dónde vino el ataque.</li>
-        </ul>
+    <!-- =================================================================== -->
+    <!-- TAB 4: AUDITORÃA ROLL20 (NV 3) & PROGRESIÃ“N NIVEL 3 â†’ 14            -->
+    <!-- =================================================================== -->
+    <section id="tab-roll20" class="hidden space-y-6">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3 overflow-x-auto custom-scroll">
+        <h2 class="text-base font-bold text-[var(--foreground)]">ðŸ“ˆ Tabla de ProgresiÃ³n Nivel 3 â†’ 14 (D&D 5.5e `sorcerer_xphb`)</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">Haz clic en cualquier nivel para simular sus estadÃ­sticas en el HUD superior:</p>
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-[var(--border)] text-emerald-400">
+              <th class="py-2 px-3">Nv</th>
+              <th class="py-2 px-3">PG</th>
+              <th class="py-2 px-3">Comp.</th>
+              <th class="py-2 px-3">PH (Clase+Dote)</th>
+              <th class="py-2 px-3">Preparados (+Psi)</th>
+              <th class="py-2 px-3">Hito Clave 5.5e</th>
+            </tr>
+          </thead>
+          <tbody id="prog-table-body" class="divide-y divide-[var(--border)]"></tbody>
+        </table>
+      </div>
     </section>
 
-</div>
+  </main>
 
-<script>
-    document.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
-        const lens = document.getElementById('psychedelic-lens');
-        lens.style.setProperty('--mouse-x', `${x}px`);
-        lens.style.setProperty('--mouse-y', `${y}px`);
-        
-        if(Math.random() > 0.8) { createParticle(x, y); }
-    });
+  <script>
+    // =========================================================================
+    // DATA: LEVEL PROGRESSION (5.5e)
+    // =========================================================================
+    const LEVEL_DATA = {
+      3:  { hp: 24, pb: 2, spBase: 3,  spFeat: 0, prep: 6,  psi: 4, milestone: "Subclase HechicerÃ­a Aberrante: Conjuros PsiÃ³nicos + Habla TelepÃ¡tica" },
+      4:  { hp: 32, pb: 2, spBase: 4,  spFeat: 2, prep: 7,  psi: 4, milestone: "â­ Dote: Adepto a la Metamagia (+2 PH, 4 Metamagias totales)" },
+      5:  { hp: 40, pb: 3, spBase: 5,  spFeat: 2, prep: 9,  psi: 6, milestone: "RestauraciÃ³n Hechicera (+2 PH en DC) Â· Hambre de Hadar + Recado Â· Trucos a 2 dados" },
+      6:  { hp: 48, pb: 3, spBase: 6,  spFeat: 2, prep: 10, psi: 6, milestone: "â­â­â­ HechicerÃ­a PsiÃ³nica (PsiÃ³nicos con PH sin V/S/M) + Defensas PsÃ­quicas" },
+      7:  { hp: 56, pb: 3, spBase: 7,  spFeat: 2, prep: 11, psi: 8, milestone: "HechicerÃ­a Encarnada (2 Metamagias por conjuro) Â· Summon Aberration + TentÃ¡culos de Evard" },
+      8:  { hp: 64, pb: 3, spBase: 8,  spFeat: 2, prep: 12, psi: 8, milestone: "â­ Dote: Conjurador de Guerra (Ventaja ConcentraciÃ³n + Conjuro en ReacciÃ³n)" },
+      9:  { hp: 72, pb: 4, spBase: 9,  spFeat: 2, prep: 14, psi: 10, milestone: "â­â­â­ EstÃ¡tica SinÃ¡ptica (8d6 PsÃ­quico AoE sin conc.) Â· Telequinesis + VÃ­nculo de Rary gratis" },
+      10: { hp: 80, pb: 4, spBase: 10, spFeat: 2, prep: 15, psi: 10, milestone: "+2 Opciones de Metamagia adicionales (6 totales)" },
+      11: { hp: 88, pb: 4, spBase: 11, spFeat: 2, prep: 16, psi: 10, milestone: "SugestiÃ³n de Masas (12 criaturas) + PrisiÃ³n Mental Â· Trucos a 3 dados" },
+      12: { hp: 96, pb: 4, spBase: 12, spFeat: 2, prep: 16, psi: 10, milestone: "â­ Dote: Resiliente (SAB)" },
+      13: { hp: 104, pb: 5, spBase: 13, spFeat: 2, prep: 18, psi: 10, milestone: "Competencia +5 Â· Conjuros de Nivel 7" },
+      14: { hp: 112, pb: 5, spBase: 14, spFeat: 2, prep: 18, psi: 10, milestone: "â­â­â­ RevelaciÃ³n en la Carne (Vuelo, CompresiÃ³n 1 pulgada, Ver Invisible 60ft)" }
+    };
 
-    function createParticle(x, y) {
-        const particle = document.createElement('div');
-        particle.style.position = 'fixed';
-        particle.style.left = x + 'px';
-        particle.style.top = y + 'px';
-        particle.style.width = Math.random() * 5 + 'px';
-        particle.style.height = particle.style.width;
-        particle.style.background = Math.random() > 0.5 ? 'var(--green-neon)' : 'var(--purple-neon)';
-        particle.style.borderRadius = '50%';
-        particle.style.pointerEvents = 'none';
-        particle.style.zIndex = '9998';
-        particle.style.opacity = '0.8';
-        particle.style.transition = 'all 1s ease-out';
-        
-        document.body.appendChild(particle);
+    // =========================================================================
+    // DATA: EXACT LEVEL 6 SPELL ARSENAL FROM USER'S MASTER SHEET
+    // =========================================================================
+    const SPELLS = [
+      // 6 TRUCOS
+      { name: "Astilla Mental (Mind Sliver)", cat: "0", level: 0, badge: "Truco â˜…PSI", time: "1 AcciÃ³n", save: "INT Save", dmg: "2d6 PsÃ­quico + -1d4 a la siguiente salvaciÃ³n del enemigo", combo: "Combo 4: AcciÃ³n Astilla Mental + BA Conjuro Acelerado", url: "https://5e.tools/spells.html#mind%20sliver_xphb" },
+      { name: "Estallido Hechicero (Sorcerous Burst)", cat: "0", level: 0, badge: "Truco 5.5e", time: "1 AcciÃ³n", save: "Ataque Conjuro", dmg: "2d8 PsÃ­quico (120ft). Cada 8 en el dado explota (+1d8 extra hasta 5d8)", combo: "Combo 3: Con Ventaja por HechicerÃ­a Innata (+10 al impacto)", url: "https://5e.tools/spells.html#sorcerous%20burst_xphb" },
+      { name: "Amigos (Friends 5.5e)", cat: "0", level: 0, badge: "Truco 5.5e", time: "1 AcciÃ³n", save: "SAB Save", dmg: "Sin concentraciÃ³n en 5.5e: objetivo a 10ft queda Hechizado al instante", combo: "InfiltraciÃ³n rÃ¡pida", url: "https://5e.tools/spells.html#friends_xphb" },
+      { name: "IlusiÃ³n Menor (Minor Illusion)", cat: "0", level: 0, badge: "Truco", time: "1 AcciÃ³n", save: "InvestigaciÃ³n", dmg: "Sonido o imagen estÃ¡tica en cubo de 5 pies durante 1 min", combo: "DistracciÃ³n tÃ¡ctica", url: "https://5e.tools/spells.html#minor%20illusion_xphb" },
+      { name: "Mano de Mago (Mage Hand)", cat: "0", level: 0, badge: "Truco", time: "1 AcciÃ³n", save: "Telequinesis", dmg: "Mano espectral invisible/verde a 30 pies (manipula hasta 10 lb)", combo: "Telequinesis menor", url: "https://5e.tools/spells.html#mage%20hand_xphb" },
+      { name: "Mensaje (Message)", cat: "0", level: 0, badge: "Truco", time: "1 AcciÃ³n", save: "TelepatÃ­a", dmg: "Susurro mental a 120 pies a travÃ©s de obstÃ¡culos", combo: "ComunicaciÃ³n tÃ¡ctica", url: "https://5e.tools/spells.html#message_xphb" },
 
-        setTimeout(() => {
-            particle.style.transform = `translate(${(Math.random() - 0.5) * 100}px, ${(Math.random() - 0.5) * 100}px) scale(0)`;
-            particle.style.opacity = '0';
-        }, 10);
+      // 6 CONJUROS PSIÃ“NICOS (1, 2 o 3 PH SIN COMPONENTES)
+      { name: "Susurros Disonantes (Dissonant Whispers)", cat: "psi", level: 1, badge: "â˜… PsiÃ³nico (1 PH)", time: "1 AcciÃ³n", save: "SAB Save", dmg: "3d6 PsÃ­quico + gasta su ReacciÃ³n para huir corriendo (provoca AoO)", combo: "Se lanza sin hablar ni moverse por 1 PH", url: "https://5e.tools/spells.html#dissonant%20whispers_xphb" },
+      { name: "Calmar Emociones (Calm Emotions)", cat: "psi", level: 2, badge: "â˜… PsiÃ³nico (2 PH)", time: "1 AcciÃ³n (Conc.)", save: "CAR Save", dmg: "Suprime Hechizado/Asustado en aliados o apaga la hostilidad de un grupo enemigo", combo: "Ola de calor del cÃ³mic: pacificaciÃ³n sin componentes", url: "https://5e.tools/spells.html#calm%20emotions_xphb" },
+      { name: "Brazos de Hadar (Arms of Hadar)", cat: "psi", level: 1, badge: "â˜… PsiÃ³nico (1 PH)", time: "1 AcciÃ³n", save: "FUE Save", dmg: "2d6 en Ã¡rea de 10 pies y quita reacciones para escapar sin ataques de oportunidad", combo: "Combo 5: Con Conjuro Cuidadoso (1 PH) no toca a tus aliados", url: "https://5e.tools/spells.html#arms%20of%20hadar_xphb" },
+      { name: "Detectar Pensamientos (Detect Thoughts)", cat: "psi", level: 2, badge: "â˜… PsiÃ³nico (2 PH)", time: "1 AcciÃ³n (Conc.)", save: "SAB Save", dmg: "Lee mentes de forma 100% indetectable al lanzarlo con 2 PH", combo: "Interrogatorio silencioso del Detective", url: "https://5e.tools/spells.html#detect%20thoughts_xphb" },
+      { name: "Hambre de Hadar (Hunger of Hadar)", cat: "psi", level: 3, badge: "â˜… PsiÃ³nico (3 PH)", time: "1 AcciÃ³n (Conc.)", save: "Ãrea 20ft", dmg: "Esfera de oscuridad ancestral que ciega, ralentiza y daÃ±a en Ã¡rea", combo: "3 PH sin componentes V/S/M", url: "https://5e.tools/spells.html#hunger%20of%20hadar_xphb" },
+      { name: "Recado (Sending)", cat: "psi", level: 3, badge: "â˜… PsiÃ³nico (3 PH)", time: "1 AcciÃ³n", save: "TelepatÃ­a Global", dmg: "TelepatÃ­a a distancia ilimitada e interplanar de 25 palabras", combo: "3 PH sin componentes", url: "https://5e.tools/spells.html#sending_xphb" },
 
-        setTimeout(() => { particle.remove(); }, 1000);
+      // 10 CONJUROS PREPARADOS DE HECHICERO
+      { name: "Escudo (Shield)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "ReacciÃ³n", save: "Defensa", dmg: "+5 a la CA (subes de CA 18 a CA 23) + Teleport 15ft gratis por el Foco", combo: "PrecogniciÃ³n defensiva + reposicionamiento", url: "https://5e.tools/spells.html#shield_xphb" },
+      { name: "Absorber Elementos (Absorb Elements)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "ReacciÃ³n", save: "Defensa", dmg: "Mitad de daÃ±o de Ãcido, FrÃ­o, Fuego, Rayo o Trueno + Teleport 15ft por el Foco", combo: "Cubre el daÃ±o elemental mientras el Ornamento cubre el PsÃ­quico", url: "https://5e.tools/spells.html#absorb%20elements_xge" },
+      { name: "Risa Horrible de Tasha (Hideous Laughter)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "1 AcciÃ³n (Conc.)", save: "SAB Save", dmg: "Deja al enemigo Derribado (Prone) e Incapacitado", combo: "Combo 1 (Elevado 2 PH) o Combo 2 (Gemelo 1 PH = 2 objetivos)", url: "https://5e.tools/spells.html#tasha's%20hideous%20laughter_xphb" },
+      { name: "Fuerza Fantasmal (Phantasmal Force 5.5e)", cat: "prep", level: 2, badge: "Preparado Nv 2", time: "1 AcciÃ³n (Conc.)", save: "INT Save", dmg: "2d8 de daÃ±o PsÃ­quico automÃ¡tico por turno; gasta su AcciÃ³n entera para intentar superarlo", combo: "Combo 1: Con Conjuro Elevado (2 PH) tiene Desventaja cada turno", url: "https://5e.tools/spells.html#phantasmal%20force_xphb" },
+      { name: "LÃ¡tigo Mental de Tasha (Tasha's Mind Whip)", cat: "prep", level: 2, badge: "Preparado Nv 2", time: "1 AcciÃ³n (Sin Conc.)", save: "INT Save", dmg: "3d6 de daÃ±o PsÃ­quico, sin reacciÃ³n y solo puede Moverse O Actuar", combo: "ðŸ‘‘ Jugada Maestra Nv9 (8 objetivos) o Gemelo 1 PH (2 objetivos)", url: "https://5e.tools/spells.html#tasha's%20mind%20whip_tce" },
+      { name: "SugestiÃ³n (Suggestion 5.5e)", cat: "prep", level: 2, badge: "Preparado Nv 2", time: "1 AcciÃ³n (Conc. 8h)", save: "SAB Save", dmg: "En 5.5e ya no exige que 'suene razonable'; basta con que sea realizable y no se daÃ±e", combo: "Combo 4: Astilla Mental (-1d4) + Quickened Suggestion", url: "https://5e.tools/spells.html#suggestion_xphb" },
+      { name: "Inmovilizar Persona (Hold Person)", cat: "prep", level: 2, badge: "Preparado Nv 2", time: "1 AcciÃ³n (Conc.)", save: "SAB Save", dmg: "Paraliza humanoides (CrÃ­ticos AutomÃ¡ticos cuerpo a cuerpo para tu grupo)", combo: "ðŸ‘‘ Jugada Maestra Nv9 (8 paralizados) o Gemelo 1 PH (2 paralizados)", url: "https://5e.tools/spells.html#hold%20person_xphb" },
+      { name: "Los Enemigos Abundan (Enemies Abound)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "1 AcciÃ³n (Conc.)", save: "INT Save", dmg: "Paranoia pura: el monstruo mÃ¡s fuerte ve a todos como enemigos y ataca a sus aliados", combo: "Combo 4: Astilla Mental (-1d4) + Quickened Enemies Abound", url: "https://5e.tools/spells.html#enemies%20abound_xge" },
+      { name: "PatrÃ³n HipnÃ³tico / Miedo (Hypnotic Pattern / Fear)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "1 AcciÃ³n (Conc.)", save: "SAB Save", dmg: "Colapso mental en Ã¡rea (Cubo 30ft Incapacitados o Cono 30ft huyen soltando armas)", combo: "Combo 5: Conjuro Cuidadoso (1 PH) protege a tus 5 aliados", url: "https://5e.tools/spells.html#hypnotic%20pattern_xphb" },
+      { name: "Contrahechizo (Counterspell 5.5e)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "ReacciÃ³n", save: "CON Save", dmg: "Obliga al lanzador enemigo a superar SalvaciÃ³n de CON contra tu CD 18/19 o pierde el conjuro y la acciÃ³n", combo: "+ Teletransporte gratis de 15 pies al lanzarlo por tu Foco Gema", url: "https://5e.tools/spells.html#counterspell_xphb" },
+
+      // 2 CONJUROS DEL FOCO GEMA (1/DÃA GRATIS)
+      { name: "Lanza PsÃ­quica de Raulothim (Psychic Lance)", cat: "foco", level: 4, badge: "ðŸ’Ž Foco Gema (1/DÃ­a Gratis)", time: "1 AcciÃ³n", save: "INT Save", dmg: "7d6 de daÃ±o PsÃ­quico + Incapacitado hasta tu prÃ³ximo turno (puedes apuntar por nombre sin ver)", combo: "1/dÃ­a sin gastar espacio de conjuro", url: "https://5e.tools/spells.html#raulothim's%20psychic%20lance_ftd" },
+      { name: "VÃ­nculo TelepÃ¡tico de Rary (Telepathic Bond)", cat: "foco", level: 5, badge: "ðŸ’Ž Foco Gema (1/DÃ­a Gratis)", time: "1 AcciÃ³n", save: "Red Grupal", dmg: "Conecta mentalmente hasta a 8 criaturas durante 1 hora sin concentraciÃ³n", combo: "1/dÃ­a sin gastar espacio de conjuro", url: "https://5e.tools/spells.html#rary's%20telepathic%20bond_xphb" }
+    ];
+
+    // =========================================================================
+    // STATE
+    // =========================================================================
+    let currentLevel = 6;
+    let buffs = { trio: true, innate: true, shield: false };
+    let currentSpellFilter = "all";
+    let liveHP = 48;
+    let liveSP = 8;
+    let shortRestUsed = false;
+    let slotsState = { 1: [true, true, true, true], 2: [true, true, true], 3: [true, true, true] };
+
+    function initApp() {
+      const lvlContainer = document.getElementById("level-buttons");
+      lvlContainer.innerHTML = "";
+      for (let lvl = 3; lvl <= 14; lvl++) {
+        const btn = document.createElement("button");
+        btn.id = `lvl-btn-${lvl}`;
+        btn.className = `lvl-btn px-2.5 py-1 rounded text-xs border border-[var(--border)] transition ${lvl === currentLevel ? "active" : "bg-[var(--background)] text-[var(--muted-foreground)]"}`;
+        btn.textContent = lvl;
+        btn.onclick = () => selectLevel(lvl);
+        lvlContainer.appendChild(btn);
+      }
+      updateHUD();
+      renderTrackers();
+      renderSpells();
+      renderProgressionTable();
     }
-</script>
 
+    function selectLevel(lvl) {
+      currentLevel = lvl;
+      for (let i = 3; i <= 14; i++) {
+        const b = document.getElementById(`lvl-btn-${i}`);
+        if (b) b.classList.toggle("active", i === lvl);
+      }
+      liveHP = LEVEL_DATA[lvl].hp;
+      liveSP = LEVEL_DATA[lvl].spBase + LEVEL_DATA[lvl].spFeat;
+      updateHUD();
+      renderTrackers();
+      renderSpells();
+      renderProgressionTable();
+    }
+
+    function applyPreset(mode) {
+      if (mode === "valka6") {
+        buffs.trio = true;
+        buffs.innate = true;
+        buffs.shield = false;
+        selectLevel(6);
+        switchTab("tab-master6");
+      } else if (mode === "nv3") {
+        buffs.trio = false;
+        buffs.innate = true;
+        buffs.shield = false;
+        selectLevel(3);
+        switchTab("tab-roll20");
+      } else if (mode === "nv14") {
+        buffs.trio = true;
+        buffs.innate = true;
+        buffs.shield = false;
+        selectLevel(14);
+        switchTab("tab-roll20");
+      }
+      syncToggleStyles();
+      updateHUD();
+    }
+
+    function toggleBuff(key) {
+      buffs[key] = !buffs[key];
+      syncToggleStyles();
+      updateHUD();
+      renderSpells();
+    }
+
+    function syncToggleStyles() {
+      const btnTrio = document.getElementById("toggle-trio");
+      const dotTrio = document.getElementById("dot-trio");
+      btnTrio.className = buffs.trio
+        ? "px-2.5 py-1 rounded-lg text-xs font-bold border border-amber-500/50 bg-amber-500/15 text-amber-300 transition flex items-center gap-1.5"
+        : "px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition flex items-center gap-1.5";
+      dotTrio.className = buffs.trio ? "w-2 h-2 rounded-full bg-amber-400" : "w-2 h-2 rounded-full bg-slate-500";
+      btnTrio.innerHTML = `<span id="dot-trio" class="${dotTrio.className}"></span> ðŸ’Ž TrÃ­o Legendario Esmeralda (${buffs.trio ? "ON" : "OFF"})`;
+
+      const btnInnate = document.getElementById("toggle-innate");
+      const dotInnate = buffs.innate ? "w-2 h-2 rounded-full bg-emerald-400" : "w-2 h-2 rounded-full bg-slate-500";
+      btnInnate.className = buffs.innate
+        ? "px-2.5 py-1 rounded-lg text-xs font-bold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 transition flex items-center gap-1.5"
+        : "px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition flex items-center gap-1.5";
+      btnInnate.innerHTML = `<span id="dot-innate" class="${dotInnate}"></span> ðŸŸ¢ HechicerÃ­a Innata (+1 CD / Ventaja)`;
+
+      const btnShield = document.getElementById("toggle-shield");
+      btnShield.className = buffs.shield
+        ? "px-2.5 py-1 rounded-lg text-xs font-bold border border-sky-500/50 bg-sky-500/15 text-sky-300 transition"
+        : "px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition";
+    }
+
+    function getCalculatedStats() {
+      const d = LEVEL_DATA[currentLevel];
+      const chaMod = 5;
+      const dexMod = 2;
+      const trioBonus = buffs.trio ? 2 : 0; // Robe +2 DC/Atk
+      const baseAC = buffs.trio ? (15 + 1 + dexMod) : (13 + dexMod); // 18 with Robe+Ornament, 15 with Mage Armor
+      const ac = baseAC + (buffs.shield ? 5 : 0);
+      const passiveDC = 8 + d.pb + chaMod + trioBonus;
+      const activeDC = passiveDC + (buffs.innate ? 1 : 0);
+      const atk = d.pb + chaMod + trioBonus;
+      const init = dexMod + d.pb;
+      const maxSP = d.spBase + d.spFeat;
+      return { ...d, ac, baseAC, passiveDC, activeDC, atk, init, maxSP };
+    }
+
+    function updateHUD() {
+      const s = getCalculatedStats();
+      document.getElementById("hud-hp").textContent = `${liveHP} / ${s.hp} PG`;
+      document.getElementById("hud-pb").textContent = `Comp +${s.pb}`;
+      document.getElementById("hud-ac").textContent = s.ac;
+      document.getElementById("hud-ac-note").textContent = buffs.shield ? `Escudo ON (Base ${s.baseAC})` : `Base ${s.baseAC} (${s.baseAC + 5} Escudo)`;
+      document.getElementById("hud-dc").textContent = s.activeDC;
+      document.getElementById("hud-dc-note").textContent = buffs.innate ? `${s.passiveDC} Pasiva â†’ ${s.activeDC} Innata` : `${s.passiveDC} Pasiva`;
+      document.getElementById("hud-atk").textContent = `+${s.atk}`;
+      document.getElementById("hud-atk-adv").textContent = buffs.innate ? "VENTAJA" : "Normal";
+      document.getElementById("hud-init").textContent = `+${s.init}`;
+      document.getElementById("hud-init-adv").textContent = buffs.trio ? "VENTAJA" : "Alerta";
+      document.getElementById("hud-move").textContent = buffs.trio ? "Vuelo 30ft Hover" : "30 pies";
+      document.getElementById("hud-tp").textContent = buffs.trio ? "+TP 15ft" : "Base";
+      document.getElementById("badge-mode").textContent = buffs.trio
+        ? `ðŸ‘‘ Nivel ${currentLevel} Â· TrÃ­o Legendario Esmeralda`
+        : `ðŸ“‹ Nivel ${currentLevel} Â· EstadÃ­sticas Base`;
+    }
+
+    // =========================================================================
+    // LIVE RESOURCE TRACKERS (HP, ABSORCIÃ“N PSÃQUICA, SP, SLOTS)
+    // =========================================================================
+    function renderTrackers() {
+      const s = getCalculatedStats();
+      document.getElementById("live-hp").textContent = liveHP;
+      document.getElementById("live-max-hp").textContent = s.hp;
+      document.getElementById("sp-counter-label").textContent = `${liveSP} / ${s.maxSP} PH`;
+
+      const spDots = document.getElementById("sp-dots");
+      spDots.innerHTML = "";
+      for (let i = 0; i < s.maxSP; i++) {
+        const used = i >= liveSP;
+        const btn = document.createElement("button");
+        btn.className = `w-6 h-6 rounded-lg border text-xs font-bold transition ${used ? "slot-dot used text-[var(--muted-foreground)]" : "bg-purple-500 text-slate-950 border-purple-400"}`;
+        btn.textContent = i + 1;
+        btn.onclick = () => { liveSP = used ? i + 1 : i; renderTrackers(); };
+        spDots.appendChild(btn);
+      }
+
+      [1, 2, 3].forEach(lvl => {
+        const container = document.getElementById(`slots-${lvl}`);
+        container.innerHTML = "";
+        slotsState[lvl].forEach((avail, idx) => {
+          const btn = document.createElement("button");
+          btn.className = `w-6 h-6 rounded-md border text-xs font-bold transition ${avail ? "bg-emerald-500 text-slate-950 border-emerald-400" : "slot-dot used text-[var(--muted-foreground)]"}`;
+          btn.textContent = idx + 1;
+          btn.onclick = () => {
+            slotsState[lvl][idx] = !slotsState[lvl][idx];
+            renderTrackers();
+          };
+          container.appendChild(btn);
+        });
+      });
+    }
+
+    function changeHP(delta) {
+      const s = getCalculatedStats();
+      liveHP = Math.max(0, Math.min(s.hp, liveHP + delta));
+      renderTrackers();
+      updateHUD();
+    }
+
+    function absorbPsychicDamage() {
+      const dmg = parseInt(document.getElementById("psy-dmg-input").value, 10) || 0;
+      const heal = Math.floor(dmg / 2);
+      changeHP(heal);
+      const msg = document.getElementById("psy-heal-msg");
+      msg.textContent = `âœ¨ Â¡ReacciÃ³n activada! Anulaste ${dmg} de daÃ±o psÃ­quico a 0 y te curaste +${heal} PG.`;
+      msg.classList.remove("hidden");
+    }
+
+    function spendSP(amount) {
+      liveSP = Math.max(0, liveSP - amount);
+      renderTrackers();
+    }
+
+    function shortRestSP() {
+      const s = getCalculatedStats();
+      const rec = Math.floor(currentLevel / 2);
+      liveSP = Math.min(s.maxSP, liveSP + rec);
+      renderTrackers();
+    }
+
+    function longRest() {
+      const s = getCalculatedStats();
+      liveHP = s.hp;
+      liveSP = s.maxSP;
+      slotsState = { 1: [true, true, true, true], 2: [true, true, true], 3: [true, true, true] };
+      document.getElementById("psy-heal-msg").classList.add("hidden");
+      renderTrackers();
+      updateHUD();
+    }
+
+    // =========================================================================
+    // TAB SWITCHER
+    // =========================================================================
+    function switchTab(tabId) {
+      ["tab-master6", "tab-combos", "tab-grimoire", "tab-roll20"].forEach(id => {
+        document.getElementById(id).classList.toggle("hidden", id !== tabId);
+        document.getElementById(`btn-${id}`).classList.toggle("active", id === tabId);
+      });
+    }
+
+    // =========================================================================
+    // DICE & COMBO SIMULATOR
+    // =========================================================================
+    function rollDice(count, sides) {
+      const rolls = [];
+      for (let i = 0; i < count; i++) rolls.push(Math.floor(Math.random() * sides) + 1);
+      return { rolls, sum: rolls.reduce((a, b) => a + b, 0) };
+    }
+
+    function rollExplodingD8(baseCount, maxExtra = 5) {
+      const baseRolls = [];
+      let extraToRoll = 0;
+      for (let i = 0; i < baseCount; i++) {
+        const r = Math.floor(Math.random() * 8) + 1;
+        baseRolls.push(r);
+        if (r === 8 && extraToRoll < maxExtra) extraToRoll++;
+      }
+      const extraRolls = [];
+      while (extraToRoll > 0 && extraRolls.length < maxExtra) {
+        extraToRoll--;
+        const r = Math.floor(Math.random() * 8) + 1;
+        extraRolls.push(r);
+        if (r === 8 && extraRolls.length + extraToRoll < maxExtra) extraToRoll++;
+      }
+      const total = [...baseRolls, ...extraRolls].reduce((a, b) => a + b, 0);
+      return { baseRolls, extraRolls, total };
+    }
+
+    function appendLog(html) {
+      const log = document.getElementById("combat-log");
+      const entry = document.createElement("div");
+      entry.className = "p-3 rounded-lg bg-[var(--card)] border border-[var(--border)] space-y-1";
+      entry.innerHTML = html;
+      log.prepend(entry);
+    }
+
+    function clearCombatLog() {
+      document.getElementById("combat-log").innerHTML = `<div class="text-[var(--muted-foreground)]">ðŸŸ¢ Consola limpia. Haz clic en un combo o conjuro...</div>`;
+    }
+
+    function executeCombo(id) {
+      const s = getCalculatedStats();
+      if (id === "jugada_maestra") {
+        let totalDmg = 0;
+        const perTarget = [];
+        for (let i = 1; i <= 8; i++) {
+          const r = rollDice(3, 6);
+          totalDmg += r.sum;
+          perTarget.push(`E${i}: ${r.sum}`);
+        }
+        appendLog(`
+          <div class="flex justify-between text-amber-300 font-bold">
+            <span>ðŸ‘‘ JUGADA MAESTRA NIVEL 9 (8 OBJETIVOS)</span>
+            <span>CD ${s.activeDC}</span>
+          </div>
+          <div class="text-[var(--foreground)]">Lanzas <strong>LÃ¡tigo Mental de Tasha a Nivel 9</strong> con el Foco Gema Ascendente:</div>
+          <div class="text-purple-300 font-bold">DaÃ±o Total a los 8 enemigos: ${totalDmg} PsÃ­quico (${perTarget.join(" Â· ")})</div>
+          <div class="text-emerald-300">Efecto: Los 8 pierden ReacciÃ³n y turno normal (o quedan 8 Paralizados con Hold Person) + <strong>Te teletransportas 15 pies volando</strong>.</div>
+        `);
+      } else if (id === "combo1") {
+        const pf = rollDice(2, 8);
+        appendLog(`
+          <div class="flex justify-between text-purple-300 font-bold">
+            <span>ðŸ”¥ COMBO 1: TORTURA MENTAL PERMANENTE (2 PH)</span>
+            <span>CD ${s.activeDC} C/DESVENTAJA</span>
+          </div>
+          <div class="text-[var(--foreground)]"><strong>Fuerza Fantasmal + Conjuro Elevado (2 PH):</strong> El jefe tiene <strong>Desventaja en TODAS las salvaciones</strong> (inicial y cada turno).</div>
+          <div class="text-emerald-400 font-bold">DaÃ±o automÃ¡tico por turno: ${pf.sum} PsÃ­quico [${pf.rolls.join(", ")}] + Teleport 15ft.</div>
+        `);
+      } else if (id === "combo2") {
+        const t1 = rollDice(3, 6);
+        const t2 = rollDice(3, 6);
+        appendLog(`
+          <div class="flex justify-between text-emerald-400 font-bold">
+            <span>âš¡ COMBO 2: DOBLE CORTOCIRCUITO (1 PH)</span>
+            <span>CD ${s.activeDC}</span>
+          </div>
+          <div class="text-[var(--foreground)]"><strong>LÃ¡tigo Mental + Conjuro Gemelo (1 PH):</strong></div>
+          <div class="text-purple-300 font-bold">Enemigo 1: ${t1.sum} PsÃ­quico [${t1.rolls.join(", ")}] Â· Enemigo 2: ${t2.sum} PsÃ­quico [${t2.rolls.join(", ")}]</div>
+          <div class="text-[var(--muted-foreground)]">Ambos pierden reacciÃ³n y acciÃ³n/movimiento + Teleport 15ft gratis.</div>
+        `);
+      } else if (id === "combo3") {
+        const s1 = rollExplodingD8(2, 5);
+        const s2 = rollExplodingD8(2, 5);
+        const exp1 = s1.extraRolls.length ? ` (Â¡ExplotÃ³ +${s1.extraRolls.join(",")}!)` : "";
+        const exp2 = s2.extraRolls.length ? ` (Â¡ExplotÃ³ +${s2.extraRolls.join(",")}!)` : "";
+        appendLog(`
+          <div class="flex justify-between text-sky-300 font-bold">
+            <span>ðŸŽ¯ COMBO 3: FRANCOTIRADOR PSÃQUICO EXPLOSIVO (2 PH)</span>
+            <span>TOTAL: ${s1.total + s2.total} PSÃQUICO</span>
+          </div>
+          <div class="text-[var(--foreground)]">Disparo 1 (+${s.atk} c/Ventaja): <strong>${s1.total} PsÃ­quico</strong> [${s1.baseRolls.join(", ")}]${exp1}</div>
+          <div class="text-[var(--foreground)]">Disparo 2 Acelerado (+${s.atk} c/Ventaja): <strong>${s2.total} PsÃ­quico</strong> [${s2.baseRolls.join(", ")}]${exp2}</div>
+        `);
+      } else if (id === "combo4") {
+        const ms = rollDice(2, 6);
+        const d4 = rollDice(1, 4).sum;
+        const dw = rollDice(3, 6);
+        appendLog(`
+          <div class="flex justify-between text-amber-300 font-bold">
+            <span>ðŸ”‡ COMBO 4: ASALTO MENTAL INDETECTABLE (2 PH)</span>
+            <span>CD EFECTIVA ${s.activeDC + d4}</span>
+          </div>
+          <div class="text-[var(--foreground)]">1. <strong>Astilla Mental:</strong> ${ms.sum} PsÃ­quico [${ms.rolls.join(", ")}] y resta <strong>-${d4}</strong> a su siguiente salvaciÃ³n.</div>
+          <div class="text-purple-300">2. <strong>BA Acelerado (SugestiÃ³n / Enemies Abound / Susurros ${dw.sum} PsÃ­quico):</strong> El enemigo salva contra CD ${s.activeDC} con -${d4} de penalizador + Teleport 15ft.</div>
+        `);
+      } else if (id === "combo5") {
+        appendLog(`
+          <div class="flex justify-between text-emerald-300 font-bold">
+            <span>ðŸ›¡ï¸ COMBO 5: CERO DAÃ‘O COLATERAL (1 PH)</span>
+            <span>CD ${s.activeDC}</span>
+          </div>
+          <div class="text-[var(--foreground)]">Lanzas <strong>PatrÃ³n HipnÃ³tico / Miedo / Brazos de Hadar</strong> con <strong>Conjuro Cuidadoso (1 PH)</strong>: tus <strong>5 aliados superan automÃ¡ticamente la salvaciÃ³n y reciben 0 daÃ±o</strong>.</div>
+        `);
+      }
+    }
+
+    function rollSpell(type) {
+      const s = getCalculatedStats();
+      if (type === "mind_sliver") {
+        const r = rollDice(2, 6);
+        appendLog(`ðŸ§  <strong>Astilla Mental (INT CD ${s.activeDC}):</strong> <span class="text-purple-300 font-bold">${r.sum} PsÃ­quico</span> [${r.rolls.join(", ")}] + <strong>-1d4</strong> a su siguiente save.`);
+      } else if (type === "sorcerous_burst") {
+        const r = rollExplodingD8(2, 5);
+        const exp = r.extraRolls.length ? ` ðŸ’¥ Â¡ExplosiÃ³n: +[${r.extraRolls.join(", ")}]!` : "";
+        appendLog(`ðŸ’¥ <strong>Estallido Hechicero (+${s.atk} c/Ventaja):</strong> <span class="text-emerald-400 font-bold">${r.total} PsÃ­quico</span> [${r.baseRolls.join(", ")}]${exp}`);
+      } else if (type === "dissonant") {
+        const r = rollDice(3, 6);
+        appendLog(`ðŸ”Š <strong>Susurros Disonantes (1 PH sin V/S/M, SAB CD ${s.activeDC}):</strong> <span class="text-purple-300 font-bold">${r.sum} PsÃ­quico</span> [${r.rolls.join(", ")}] + huye con ReacciÃ³n.`);
+      } else if (type === "mind_whip") {
+        const r = rollDice(3, 6);
+        appendLog(`âš¡ <strong>LÃ¡tigo Mental de Tasha (INT CD ${s.activeDC}):</strong> <span class="text-purple-300 font-bold">${r.sum} PsÃ­quico</span> [${r.rolls.join(", ")}] + sin ReacciÃ³n/Turno + Teleport 15ft.`);
+      } else if (type === "phantasmal") {
+        const r = rollDice(2, 8);
+        appendLog(`ðŸ‘ï¸ <strong>Fuerza Fantasmal 5.5e (INT CD ${s.activeDC}):</strong> <span class="text-purple-300 font-bold">${r.sum} PsÃ­quico</span> [${r.rolls.join(", ")}] este turno.`);
+      } else if (type === "lance") {
+        const r = rollDice(7, 6);
+        appendLog(`ðŸ’Ž <strong>Raulothim's Psychic Lance (1/DÃ­a Gratis Foco, INT CD ${s.activeDC}):</strong> <span class="text-amber-300 font-bold">${r.sum} PsÃ­quico</span> [${r.rolls.join(", ")}] + <strong>Incapacitado</strong>.`);
+      }
+    }
+
+    // =========================================================================
+    // GRIMOIRE RENDERER
+    // =========================================================================
+    function setSpellFilter(cat) {
+      currentSpellFilter = cat;
+      ["all", "0", "psi", "prep", "foco"].forEach(id => {
+        const el = document.getElementById(`pill-${id}`);
+        if (el) el.classList.toggle("active", id === cat);
+      });
+      renderSpells();
+    }
+
+    function renderSpells() {
+      const grid = document.getElementById("spells-grid");
+      const query = (document.getElementById("spell-search").value || "").toLowerCase();
+      const s = getCalculatedStats();
+
+      const filtered = SPELLS.filter(sp => {
+        if (currentSpellFilter !== "all" && sp.cat !== currentSpellFilter) return false;
+        if (query && !(`${sp.name} ${sp.dmg} ${sp.combo}`).toLowerCase().includes(query)) return false;
+        return true;
+      });
+
+      grid.innerHTML = filtered.map(sp => {
+        const saveDisplay = sp.save.includes("Save")
+          ? `${sp.save} <strong>CD ${s.activeDC}</strong>`
+          : sp.save.includes("Ataque")
+          ? `Ataque <strong>+${s.atk} (Ventaja)</strong>`
+          : sp.save;
+        return `
+          <div class="bg-[var(--card)] border border-[var(--border)] hover:border-emerald-500/50 rounded-xl p-4 flex flex-col justify-between gap-2.5 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">${sp.badge}</span>
+                <a href="${sp.url}" target="_blank" class="text-xs font-bold text-emerald-400 hover:underline">5e.tools â†—</a>
+              </div>
+              <h3 class="text-sm font-bold text-[var(--foreground)]">${sp.name}</h3>
+              <div class="text-xs text-[var(--muted-foreground)]">â±ï¸ ${sp.time} Â· ðŸŽ¯ ${saveDisplay}</div>
+              <p class="text-xs text-[var(--foreground)] bg-[var(--background)] p-2.5 rounded-lg border border-[var(--border)]">${sp.dmg}</p>
+            </div>
+            <div class="text-xs text-purple-300 border-t border-[var(--border)] pt-2">
+              <strong>âš¡ Combo:</strong> ${sp.combo}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // PROGRESSION RENDERER
+    // =========================================================================
+    function renderProgressionTable() {
+      const tbody = document.getElementById("prog-table-body");
+      let html = "";
+      for (let lvl = 3; lvl <= 14; lvl++) {
+        const d = LEVEL_DATA[lvl];
+        const active = lvl === currentLevel;
+        html += `
+          <tr onclick="selectLevel(${lvl})" class="cursor-pointer transition ${active ? "bg-emerald-500/15 font-bold" : "hover:bg-[var(--background)]"}">
+            <td class="py-2.5 px-3 text-emerald-400">Nv ${lvl}</td>
+            <td class="py-2.5 px-3">${d.hp} PG</td>
+            <td class="py-2.5 px-3">+${d.pb}</td>
+            <td class="py-2.5 px-3 text-purple-300">${d.spBase + d.spFeat} PH</td>
+            <td class="py-2.5 px-3">${d.prep} + ${d.psi} Psi (${d.prep + d.psi})</td>
+            <td class="py-2.5 px-3 text-[var(--foreground)]">${d.milestone}</td>
+          </tr>
+        `;
+      }
+      tbody.innerHTML = html;
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
 </body>
 </html>
+

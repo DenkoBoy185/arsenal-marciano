@@ -1,154 +1,110 @@
-# 🧠👽 TRIAL BUILD NIVEL 6 — 100% DAÑO PSÍQUICO
-## John Jones | `sorcerer_xphb` + `sub_aberrant_xphb` | Cero Elemental, Puro Trauma Mental
+# 🕵️‍♂️🟢 FICHA MAESTRA: JOHN JONES — TRIAL NIVEL 6 (D&D 5.5e)
+## Hechicero (Hechicería Aberrante `sorcerer_xphb` + `sub_aberrant_xphb`) | El Detective Marciano en Valka
 
-> *"No quemo. No congelo. No corroo con ácido. Simplemente apago el interruptor detrás de tus ojos."*
+> *"Cuando las abominaciones telépatas de Valka intentan romper mi mente, sus ataques me curan. Yo no estoy encerrado en su frecuencia; ellos están encerrados en la mía."*
 
 ---
 
-## 📊 1. TUS NÚMEROS A NIVEL 6 (Con Bloodwell Vial +2)
+## 📊 1. ESTADÍSTICAS DE COMBATE Y DEFENSAS (NIVEL 6)
 
-| Estadística | Base (Sin Items) | Con **Bloodwell Vial +2** | Desglose Exacto |
+| Estadística | Valor Activo | Desglose Exacto (5.5e + Trío Legendario) |
+|---|---|---|
+| **Puntos de Golpe (PG)** | **48 PG** | $6\text{ niveles} \times (6 + 2\text{ CON})$ |
+| **Clase de Armadura (CA)** | **18** (**23** con *Escudo*) | $15\text{ (Túnica)} + 1\text{ (Ornamento)} + 2\text{ (DES)} = \mathbf{18}$ · Con *Shield*: **23** |
+| **CD de Salvación de Conjuros** | **18 pasiva** $\rightarrow$ **19** con *Hechicería Innata* | $8\text{ base} + 3\text{ comp} + 5\text{ CAR} + 2\text{ Túnica} (+1\text{ Innata})$ |
+| **Ataque de Conjuro** | **+10 al impacto** (**Ventaja** con *Innata*) | $+3\text{ comp} + 5\text{ CAR} + 2\text{ Túnica}$ |
+| **Iniciativa** | **+5** con **Ventaja Permanente** | $+2\text{ DES} + 3\text{ comp (Alerta)}$ + Ventaja por *Foco Gema* |
+| **Velocidad y Movilidad** | **30 ft caminar** · **30 ft Vuelo (*Hover*)** | + **Teletransporte gratis de 15 pies** cada vez que gastas un slot de Nv 1+ |
+| **Atributos** | FUE 10 (+0) · DES 14 (+2) · CON 14 (+2) | INT 14 (+2) · SAB 14 (+2) · **CAR 20 (+5)** |
+
+### 🛡️ Inmunidades, Resistencias y Reacciones Defensivas
+- **Inmunidad Mental Total + Aura (Ornamento Escalado Ascendente):** Eres **Inmune** a los estados *Hechizado* (*Charmed*) y *Asustado* (*Frightened*), y todas las criaturas aliadas a 30 pies de ti tienen **Ventaja** en salvaciones contra ser Hechizadas o Asustadas.
+- **Absorción Psíquica (Reacción — Ornamento Esmeralda):** Cuando vayas a recibir daño **Psíquico**, puedes usar tu Reacción para recibir **0 de daño y recuperar PG igual a la mitad** del daño que ibas a sufrir. *(Además, pasivamente tienes Resistencia al daño Psíquico por Defensas Psíquicas de subclase).*
+- **Resistencia Mágica (Túnica del Archimago):** **Ventaja** en todas las tiradas de salvación contra conjuros y otros efectos mágicos.
+- **Resistencia Elemental (Reacción — *Absorber Elementos*):** Mitad de daño de Ácido, Frío, Fuego, Rayo o Trueno.
+
+---
+
+## 💎 2. TU TRÍO LEGENDARIO (3/3 SINTONIZACIONES)
+
+| # | Objeto (Link 5e.tools) | Reskin Marciano | Efectos Mecánicos Clave |
 |---|---|---|---|
-| **Nivel** | Hechicero 6 | Hechicero 6 | Mente Aberrante (`sub_aberrant_xphb`) |
-| **HP** | **42** (48 máx.) | **42** (48 máx.) | 6d6 + CON (+2 × 6) |
-| **CA** | **15** (*Mage Armor*) / **20** (*Shield*) | **16** (*Elven Chain*) / **21** (*Shield*) | Sin gastar slot de *Mage Armor* |
-| **Iniciativa** | **+5** | **+5** *(+Ventaja con Foco Gema)* | +2 DES + 3 Competencia (*Alert*) |
-| **CD de Salvación** | **16** (**17** c/*Innate*) | **18** (**19** c/*Innate Sorcery*) | 8 + 3 (Prof) + 5 (CAR) + 2 (Vial) |
-| **Ataque de Conjuro** | **+8** (Ventaja c/*Innate*) | **+10** (Ventaja c/*Innate*) | +3 (Prof) + 5 (CAR) + 2 (Vial) |
-| **Puntos de Hechicería (PH)** | **8 PH** base | **16 PH efectivos / día** | 8 base + 3 (*Sorcerous Restoration*) + 5 (*Bloodwell Vial* en Descanso Corto) |
-| **Espacios de Conjuro** | 4×Nv1 · 3×Nv2 · 3×Nv3 | 4×Nv1 · 3×Nv2 · 3×Nv3 | + lanzamientos directos con PH vía *Psionic Sorcery* |
+| **1** | 🟢 **[Ascendant Dragon-Touched Focus (Gem / Emerald)](https://5e.tools/items.html#ascendant%20dragon-touched%20focus_ftd)** | La figurilla/cristal alienígena de Tyler oculto en el bolsillo interior de John. | • **Ventaja en Iniciativa** permanente.<br>• **Gem Teleport:** Al gastar un slot de conjuro (nv 1+), te **teletransportas 15 pies** gratis a un espacio visible.<br>• **Wakened (1/día gratis c/u):** *[Raulothim's Psychic Lance](https://5e.tools/spells.html#raulothim's%20psychic%20lance_ftd)* ($7\text{d}6$ psíquico + Incapacitado, INT CD 18/19) y *[Rary's Telepathic Bond](https://5e.tools/spells.html#rary's%20telepathic%20bond_xphb)*.<br>• **Ascendant (1/día):** Cuando lanzas un conjuro con slot de nv 1+, **cuenta como si fuera lanzado con un slot de Nivel 9**. |
+| **2** | 🧥 **[Robe of the Archmagi](https://5e.tools/items.html#robe%20of%20the%20archmagi_xdmg)** | La gabardina negra de detective reforzada con la densidad dimensional del Marciano. | • **CA base $15 + \text{DES}$** (17 antes del Ornamento).<br>• **+2 a la CD de salvación y tiradas de ataque de conjuro.**<br>• **Ventaja** en todas las tiradas de salvación contra conjuros y efectos mágicos. |
+| **3** | 🪪 **[Ascendant Scaled Ornament (Emerald Dragon)](https://5e.tools/items.html#ascendant%20scaled%20ornament_ftd)** | La Placa del FBI de John fusionada con el núcleo esmeralda del Marciano. | • **+1 a la CA** (sube tu CA base a **18**, o **23** con *Shield*).<br>• **Vuelo de 30 pies con Levitación (*Hover*)** permanente.<br>• **Inmunidad** a *Charmed* y *Frightened* + Aura de 30 pies que da Ventaja a tus aliados.<br>• **Absorción Psíquica (Reacción):** Anulas el daño Psíquico recibido a **0 y te curas la mitad**. |
 
 ---
 
-## ⚡ 2. EL DESPERTAR DE NIVEL 6 (`sub_aberrant_xphb`)
+## 🔋 3. RECURSOS Y METAMAGIA (D&D 5.5e)
 
-A nivel 6 se activan los dos rasgos que convierten a John Jones en una pesadilla silenciosa:
+- **Puntos de Hechicería (PH):** **8 puntos** (6 de clase + 2 de la dote *Adepto a la Metamagia*).
+  - **Restauración Hechicera (*Sorcerous Restoration* — Nv 5):** Recuperas **3 PH** al terminar un Descanso Corto (1/día).
+- **Hechicería Innata (*Innate Sorcery* — Nv 1):** Acción Adicional, 1 minuto (2 usos/DL): **+1 a tu CD (sube a 19)** y **Ventaja** en ataques de conjuro.
+- **Hechicería Psiónica (*Psionic Sorcery* — Nv 6):** Lanzas tus 6 conjuros psiónicos gastando PH igual a su nivel (1, 2 o 3 PH) **sin componentes Verbales, Somáticos ni Materiales**.
+- **Espacios de Conjuro:** **4** (Nivel 1) · **3** (Nivel 2) · **3** (Nivel 3).
 
-1. **🔇 [Psionic Sorcery](https://5e.tools/classes.html#sorcerer_xphb,state:sub_aberrant_xphb=b1) (Hechicería Psiónica):**
-   - Puedes lanzar **cualquier conjuro de nivel 1+ de tu lista de Hechizos Psiónicos** gastando **PH igual a su nivel** (1 PH = nv1, 2 PH = nv2, 3 PH = nv3) en vez de gastar un slot.
-   - Al hacerlo, el conjuro **NO requiere componentes Verbales, Somáticos ni Materiales**.
-   - **Resultado:** Lanzas *Dissonant Whispers* por **1 PH** (en vez de los 2 PH que costaría crear un slot de nv1) con las manos en los bolsillos de tu gabardina y sin abrir la boca.
-2. **🛡️ [Psychic Defenses](https://5e.tools/classes.html#sorcerer_xphb,state:sub_aberrant_xphb=b1) (Defensas Psíquicas):**
-   - **Resistencia al daño Psíquico** permanente.
-   - **Ventaja en salvaciones contra ser Hechizado (*Charmed*) o Asustado (*Frightened*)**.
-3. **🔋 [Sorcerous Restoration](https://5e.tools/classes.html#sorcerer_xphb,state:sub_aberrant_xphb=b1) (Nivel 5):**
-   - 1/día al terminar un Descanso Corto recuperas **3 PH** (la mitad de tu nivel de Hechicero).
-
-### Tus 4 Metamagias a Nivel 6 (Clase Nv2 + *Metamagic Adept* Nv4)
-- **Quickened Spell (2 PH):** Conjuro de 1 Acción → Acción Adicional.
-- **Twinned Spell (1 PH):** Sube 1 nivel efectivo un conjuro que agregue un objetivo extra al subir de nivel (*Tasha's Mind Whip*, *Hold Person*, *Charm Person*).
-- **Subtle Spell (1 PH):** Sin componentes V, S ni M para tus conjuros que *no* son de la lista psiónica (como *Counterspell*, *Hypnotic Pattern* o *Hold Person*).
-- **Heightened Spell (2 PH en XPHB):** Un objetivo tiene **Desventaja** en su primera salvación contra el conjuro.
+### Tus 4 Opciones de Metamagia (5.5e)
+1. **Conjuro Cuidadoso (*Careful Spell* — 1 PH):** Hasta **5 aliados** (tu mod. CAR) superan automáticamente la salvación de tu conjuro y reciben **0 de daño**.
+2. **Conjuro Gemelo (*Twinned Spell* — 1 PH):** Aumenta en 1 el nivel efectivo de un conjuro que agregue un objetivo adicional al subir de nivel (*Látigo Mental de Tasha*, *Inmovilizar Persona*, *Risa Horrible de Tasha*).
+3. **Conjuro Elevado (*Heightened Spell* — 2 PH):** En 5.5e cuesta solo 2 PH e impone **Desventaja en TODAS las salvaciones** de un objetivo contra el conjuro (tanto la inicial como las de cada turno subsiguiente).
+4. **Conjuro Acelerado (*Quickened Spell* — 2 PH):** Lanzas un conjuro de 1 Acción como **Acción Adicional**.
 
 ---
 
-## 📖 3. GRIMORIO 100% DAÑO PSÍQUICO (NIVEL 6)
+## 📖 4. ARSENAL COMPLETO DE CONJUROS (100% MENTAL + DEFENSA ATÓMICA)
 
-> [!IMPORTANT]
-> **Regla de Oro de esta Build:** CERO hechizos de fuego, ácido, frío, rayo o veneno. Todo tu daño es **100% PSÍQUICO** y todo tu control es **mental o telequinético**.
+### 🌟 Trucos (6 = 5 de Hechicero + *Astilla Mental* Gratis)
+1. **[Astilla Mental (*Mind Sliver*)](https://5e.tools/spells.html#mind%20sliver_xphb):** **$2\text{d}6$ psíquico** (Salvación INT CD 18/19) y resta **$-1\text{d}4$** a la siguiente salvación del objetivo.
+2. **[Estallido Hechicero (*Sorcerous Burst*)](https://5e.tools/spells.html#sorcerous%20burst_xphb):** Ataque de conjuro **+10** (con **Ventaja** bajo *Hechicería Innata*). Eliges daño **Psíquico**: hace **$2\text{d}8$ psíquico** y cada `8` en los dados explota sumando otro d8 extra (hasta +5d8 adicionales).
+3. **[Amigos (*Friends* — 5.5e)](https://5e.tools/spells.html#friends_xphb):** Sin concentración; objetivo a 10 pies hace salvación SAB o queda *Hechizado*.
+4. **[Ilusión Menor (*Minor Illusion*)](https://5e.tools/spells.html#minor%20illusion_xphb)** · 5. **[Mano de Mago (*Mage Hand*)](https://5e.tools/spells.html#mage%20hand_xphb)** · 6. **[Mensaje (*Message*)](https://5e.tools/spells.html#message_xphb)**
 
-### 🌟 Trucos (6 = 5 de Hechicero + *Mind Sliver* Gratis)
-*(A nivel 5+ todos tus trucos de daño ya escalaron a **2 dados**)*
+### 🧬 6 Conjuros Psiónicos (Se lanzan sin V/S/M por 1, 2 o 3 PH)
+- **Nivel 1 (1 PH):** **[Susurros Disonantes (*Dissonant Whispers*)](https://5e.tools/spells.html#dissonant%20whispers_xphb)** ($3\text{d}6$ psíquico + huida con Reacción), **[Brazos de Hadar (*Arms of Hadar*)](https://5e.tools/spells.html#arms%20of%20hadar_xphb)** ($2\text{d}6$ + quita reacciones en 10ft), **[Calmar Emociones (*Calm Emotions*)](https://5e.tools/spells.html#calm%20emotions_xphb)** (2 PH).
+- **Nivel 2 (2 PH):** **[Detectar Pensamientos (*Detect Thoughts*)](https://5e.tools/spells.html#detect%20thoughts_xphb)**.
+- **Nivel 3 (3 PH):** **[Hambre de Hadar (*Hunger of Hadar*)](https://5e.tools/spells.html#hunger%20of%20hadar_xphb)**, **[Recado (*Sending*)](https://5e.tools/spells.html#sending_xphb)**.
 
-| # | Truco (Link 5e.tools) | Ataque / Save | Daño / Efecto a Nivel 6 |
-|---|---|---|---|
-| 1 | 🧠 **[Mind Sliver](https://5e.tools/spells.html#mind%20sliver_xphb) ★PSI** | Salvación INT | **`2d6 Psíquico`** + **`-1d4`** al próximo save del objetivo antes del final de tu siguiente turno |
-| 2 | 💥 **[Sorcerous Burst](https://5e.tools/spells.html#sorcerous%20burst_xphb)** *(Elegir: Psíquico)* | Ataque de Conjuro (**Ventaja** c/*Innate*) | **`2d8 Psíquico`** (120 pies). Cada `8` que saques en los d8 explota y tiras otro d8 adicional (hasta +5d8 extra) |
-| 3 | 🎭 **[Minor Illusion](https://5e.tools/spells.html#minor%20illusion_xphb)** | Investigación vs tu CD | Sonido o imagen estática (cubo 5 pies) por 1 min |
-| 4 | 🖐️ **[Mage Hand](https://5e.tools/spells.html#mage%20hand_xphb)** | — | Telekinesis menor a 30 pies (10 lb) |
-| 5 | 🔮 **[Prestidigitation](https://5e.tools/spells.html#prestidigitation_xphb)** | — | Efectos sensoriales menores |
-| 6 | 📡 **[Message](https://5e.tools/spells.html#message_xphb)** *(o **[Friends](https://5e.tools/spells.html#friends_xphb)**)* | — | Susurro mental a 120 pies a través de paredes |
-
----
-
-### 🧬 Hechizos Psiónicos de Subclase (6 Gratis — Se lanzan con PH sin V/S/M)
-
-| Nv | Coste PH | Hechizo (Link 5e.tools) | Daño / Efecto Psíquico |
-|---|---|---|---|
-| **1** | **1 PH** | 🔊 **[Dissonant Whispers](https://5e.tools/spells.html#dissonant%20whispers_xphb) ★PSI** | **`3d6 Psíquico`** (WIS save) + el enemigo gasta su Reacción para huir (provoca Ataques de Oportunidad de todo tu equipo). |
-| **1** | **1 PH** | 🦑 **[Arms of Hadar](https://5e.tools/spells.html#arms%20of%20hadar_xphb) ★PSI** | *(Si tu DM permite el swap de Tasha: cámbialo por **[Command](https://5e.tools/spells.html#command_xphb)** o **[Tasha's Hideous Laughter](https://5e.tools/spells.html#tasha's%20hideous%20laughter_xphb)**. Si usan XPHB fijo, pide reskin a 2d6 Psíquico).* |
-| **2** | **2 PH** | 🔍 **[Detect Thoughts](https://5e.tools/spells.html#detect%20thoughts_xphb) ★PSI** | Lees pensamientos a 30ft **sin componentes** (nadie en la sala sabe que estás escaneando su mente). |
-| **2** | **2 PH** | 🕊️ **[Calm Emotions](https://5e.tools/spells.html#calm%20emotions_xphb) ★PSI** | Esfera 20ft (CHA save). Suprime *Charmed/Frightened* en aliados o apaga la hostilidad enemiga. |
-| **3** | **3 PH** | 📡 **[Sending](https://5e.tools/spells.html#sending_xphb) ★PSI** | Mensaje telepático instantáneo a cualquier distancia o plano de existencia sin hablar. |
-| **3** | **3 PH** | 🕳️ **[Hunger of Hadar](https://5e.tools/spells.html#hunger%20of%20hadar_xphb) ★PSI** | *(Si tu DM permite swap de Tasha: cámbialo por **[Enemies Abound](https://5e.tools/spells.html#enemies%20abound_xge)** [INT save, el jefe ataca a sus propios aliados] o **[Antagonize](https://5e.tools/spells.html#antagonize_bmt)** [`4d4 Psíquico` + obliga al enemigo a atacar a un aliado con su Reacción]).* |
+### 📋 10 Conjuros Preparados de Hechicero
+- **Nivel 1 (3):**
+  1. **[Escudo (*Shield*)](https://5e.tools/spells.html#shield_xphb):** Reacción, +5 CA (llegas a **CA 23**) + Teletransporte 15ft por el Foco.
+  2. **[Absorber Elementos (*Absorb Elements*)](https://5e.tools/spells.html#absorb%20elements_xge):** Reacción, resistencia elemental + Teleport 15ft.
+  3. **[Risa Horrible de Tasha (*Tasha's Hideous Laughter*)](https://5e.tools/spells.html#tasha's%20hideous%20laughter_xphb):** Salvación SAB CD 18/19 $\rightarrow$ Derribado (*Prone*) e Incapacitado. *(Escala con Conjuro Gemelo).*
+- **Nivel 2 (4):**
+  4. **[Fuerza Fantasmal (*Phantasmal Force* — 5.5e)](https://5e.tools/spells.html#phantasmal%20force_xphb):** Salvación INT CD 18/19 $\rightarrow$ **$2\text{d}8$ psíquico automático por turno** y requiere su Acción de Estudio para intentar liberarse.
+  5. **[Látigo Mental de Tasha (*Tasha's Mind Whip*)](https://5e.tools/spells.html#tasha's%20mind%20whip_tce):** Salvación INT CD 18/19 $\rightarrow$ **$3\text{d}6$ psíquico**, sin reacción y solo puede Moverse O Actuar. *(Escala con Conjuro Gemelo y con el Foco a Nivel 9).*
+  6. **[Sugestión (*Suggestion* — 5.5e)](https://5e.tools/spells.html#suggestion_xphb):** Salvación SAB CD 18/19 $\rightarrow$ Obedece una orden realizable sin requisito de "sonar razonable".
+  7. **[Inmovilizar Persona (*Hold Person*)](https://5e.tools/spells.html#hold%20person_xphb)** *(o **[Púa Mental / Mind Spike](https://5e.tools/spells.html#mind%20spike_xphb)**)*: Paraliza humanoides (críticos automáticos). *(Escala con Conjuro Gemelo y con el Foco a Nivel 9).*
+- **Nivel 3 (3):**
+  8. **[Los Enemigos Abundan (*Enemies Abound*)](https://5e.tools/spells.html#enemies%20abound_xge):** Salvación INT CD 18/19 $\rightarrow$ El monstruo más peligroso considera enemigos a todos y ataca a sus propios aliados.
+  9. **[Patrón Hipnótico (*Hypnotic Pattern*)](https://5e.tools/spells.html#hypnotic%20pattern_xphb)** *(o **[Miedo / Fear](https://5e.tools/spells.html#fear_xphb)**)*: Cubo 30ft, Salvación SAB CD 18/19 $\rightarrow$ Incapacitados.
+  10. **[Contrahechizo (*Counterspell* — 5.5e)](https://5e.tools/spells.html#counterspell_xphb):** Reacción $\rightarrow$ Obliga al caster enemigo a superar **Salvación CON CD 18/19** o pierde su conjuro y su Acción (+ te teletransportas 15ft por el Foco).
 
 ---
 
-### 📋 Tus 10 Conjuros Preparados de Hechicero (`sorcerer_xphb` Tabla Nivel 6)
+## 💀 5. TUS 6 COMBOS MAESTROS EN 5.5e
 
-| # | Nv | Conjuro (Link 5e.tools) | Daño / Salvación | Por qué es META en la Build 100% Psíquica |
-|---|---|---|---|---|
-| **1** | 1 | 🛡️ **[Shield](https://5e.tools/spells.html#shield_xphb)** | Reacción | **+5 CA** hasta tu próximo turno. Barrera telequinética. |
-| **2** | 1 | 🧥 **[Mage Armor](https://5e.tools/spells.html#mage%20armor_xphb)** *(o **[Charm Person](https://5e.tools/spells.html#charm%20person_xphb)** si llevas Elven Chain)* | 8 horas (Sin conc.) | CA = 13 + DES (15). Si consigues *Elven Chain*, cámbialo por *Charm Person* o *Silvery Barbs*. |
-| **3** | 2 | 🧠 **[Tasha's Mind Whip](https://5e.tools/spells.html#tasha's%20mind%20whip_tce)** *(o **[Mind Spike](https://5e.tools/spells.html#mind%20spike_xphb)** en XPHB puro)* | **`3d6 Psíquico`** (INT save) | **Sin concentración.** Si falla el save de INT: sin reacciones y en su turno **solo puede elegir 1 cosa** (Moverse, Acción O Bonus Action). **¡Con Twinned Spell (1 PH) golpeas a 2 enemigos por 3d6 Psíquico a cada uno!** *(Si es solo XPHB: **Mind Spike** hace **`3d8 Psíquico`** + rastreo mental).* |
-| **4** | 2 | 👁️ **[Phantasmal Force](https://5e.tools/spells.html#phantasmal%20force_xphb)** *(Buffeado en XPHB)* | **`2d8 Psíquico / turno`** (INT save) | En el PHB 2024 subió de 1d6 a **`2d8 Psíquico` cada turno**. Creas un horror marciano dentro de su cabeza que solo él ve y lo daña cada ronda. |
-| **5** | 2 | ⛓️ **[Hold Person](https://5e.tools/spells.html#hold%20person_xphb)** | WIS save (Conc.) | **Paralizado** (críticos automáticos cuerpo a cuerpo). **Con Twinned Spell (1 PH): paralizas a 2 enemigos.** |
-| **6** | 2 | 💬 **[Suggestion](https://5e.tools/spells.html#suggestion_xphb)** | WIS save (Conc. 8h) | Control mental absoluto de un objetivo fuera o dentro de combate. |
-| **7** | 2 | 🕸️ **[Web](https://5e.tools/spells.html#web_xphb)** | DEX save (Conc. 1h) | Cubo 20ft *Restrained* (velocidad 0, ventaja al atacarlos, desventaja en sus ataques). |
-| **8** | 3 | 🌀 **[Hypnotic Pattern](https://5e.tools/spells.html#hypnotic%20pattern_xphb)** | WIS save (Conc. 1m) | Cubo 30ft. Todos los que fallen quedan **Incapacitados** con velocidad 0. Apagas medio encuentro en el Turno 1. |
-| **9** | 3 | 🚫 **[Counterspell](https://5e.tools/spells.html#counterspell_xphb)** | Reacción (CON save en XPHB) | Con **Subtle Spell (1 PH)** anulas el conjuro del mago enemigo sin que nadie pueda hacerte Counterspell de vuelta. |
-| **10** | 3 | 😱 **[Fear](https://5e.tools/spells.html#fear_xphb)** *(o **[Slow](https://5e.tools/spells.html#slow_xphb)**)* | WIS save (Conc. 1m) | Cono 30ft: sueltan lo que tengan en las manos y huyen en pánico. *(O **Slow**: 6 enemigos elegidos sin fuego amigo pierden reacciones, CA -2 y la mitad de sus acciones).* |
+### 👑 LA JUGADA MAESTRA DE NIVEL 9 (1/Día con el Foco Gema Ascendente)
+1. **Acción Adicional:** Activas **Hechicería Innata** ($\rightarrow$ **CD 19**).
+2. **Acción:** Gastas un simple espacio de Nivel 2 para lanzar **Látigo Mental de Tasha** (o **Inmovilizar Persona**) y activas la propiedad *Ascendente* de tu Foco para **convertirlo gratis en Nivel 9**.
+3. **Resultado:** Golpeas el cerebro de **8 enemigos a la vez contra CD 19** ($3\text{d}6$ psíquico a cada uno = **$24\text{d}6$ psíquico total** y los 8 pierden su reacción y su turno normal, o quedan los **8 paralizados** en el acto) y te **teletransportas 15 pies volando** a una posición segura.
 
----
+### 🔥 COMBO 1: "Tortura Mental Permanente" (*Conjuro Elevado* 5.5e — 2 PH)
+- **Mecánica 5.5e:** *Conjuro Elevado* cuesta solo **2 PH** e impone **Desventaja en TODAS las salvaciones** contra el conjuro (inicial y en cada turno).
+- **Ejecución:** *Hechicería Innata* (**CD 19**) + **Fuerza Fantasmal**, **Inmovilizar Persona**, **Risa Horrible de Tasha** o **Miedo** con **Conjuro Elevado (2 PH)**.
+- **Resultado:** El jefe tiene que superar **CD 19 con Desventaja cada turno** mientras recibe **$2\text{d}8$ psíquico por ronda** o está paralizado.
 
-## 🗡️ 4. ITEMS QUE NECESITAS A NIVEL 6 (Links Directos a 5e.tools)
+### ⚡ COMBO 2: "Doble Cortocircuito por 1 Punto" (*Conjuro Gemelo* 5.5e — 1 PH)
+- **Ejecución:** Lanzas **Látigo Mental de Tasha** (Nv 2), **Risa Horrible de Tasha** (Nv 1) o **Inmovilizar Persona** (Nv 2) + **1 PH en Conjuro Gemelo**.
+- **Resultado:** Golpeas a **2 enemigos** con **$3\text{d}6$ psíquico a cada uno** y ambos pierden reacción y turno normal (o incapacitas/paralizas a 2 objetivos) + **Teleport 15ft gratis**.
 
-A Nivel 6 estás en **Tier 2 (Niveles 5–10)**, donde se desbloquean objetos **Uncommon (Poco Comunes)** y **Rare (Raros)**. Tienes **3 ranuras de Sintonización (Attunement)**:
+### 🎯 COMBO 3: "Francotirador Psíquico Explosivo" (*Hechicería Innata + Estallido Hechicero*)
+- **Ejecución:** Con *Hechicería Innata* activa, lanzas **Estallido Hechicero (Psíquico)** y gastas **2 PH en Conjuro Acelerado** para lanzarlo dos veces en el mismo turno.
+- **Resultado:** Dos ataques con **Ventaja (+10 al impacto)** de **$2\text{d}8$ psíquico cada uno**, y cada `8` en los dados explota sumando otro d8 extra.
 
-### 🔴 Tus 3 Sintonizaciones META a Nivel 6
+### 🔇 COMBO 4: "Asalto Mental Indetectable" (*Astilla Mental + Conjuro Acelerado*)
+- **Ejecución:** Acción para **Astilla Mental** ($2\text{d}6$ psíquico y **$-1\text{d}4$** a su siguiente salvación) + Acción Adicional con **Conjuro Acelerado (2 PH)** para lanzar **Sugestión**, **Los Enemigos Abundan** o **Susurros Disonantes**.
+- **Resultado:** Daño psíquico de entrada + el objetivo tira contra tu **CD 18/19 restando $-1\text{d}4$** en ese mismo instante + **Teleport 15ft gratis**.
 
-| Ranura | Objeto (Link 5e.tools) | Rareza | Qué hace exactamente y por qué es ROTO en ti |
-|---|---|---|---|
-| **Sint. 1** | 🩸 **[Bloodwell Vial (+1 o +2)](https://5e.tools/items.html#bloodwell%20vial_tce)** *(+1 Uncommon / +2 Rare)* | Uncommon / Rare | **+1 o +2 a tu CD de conjuros y ataque de conjuros.** Además, 1/día cuando gastas un Dado de Golpe en un Descanso Corto, **recuperas 5 PH**. Junto con *Sorcerous Restoration* (+3 PH), ¡recuperas **8 PH en un descanso corto**! |
-| **Sint. 2** | 🦑 **[Far Realm Shard](https://5e.tools/items.html#far%20realm%20shard_tce)** | **Rare** | **TU ITEM NÚCLEO DE DAÑO PSÍQUICO.** Se acopla a tu foco. **Cada vez que usas Metamagia en un conjuro**, una fisura mental golpea a 1 criatura que veas a 30 pies: **Salvación de CAR (contra tu CD 18/19) o sufre `3d6 de daño Psíquico` y queda `Asustada (Frightened)` de ti hasta el final de tu próximo turno.** ¡Gratis, sin usar acción, y se activa todos los turnos que uses Metamagia! |
-| **Sint. 3** | 🌑 **[Shadowfell Shard](https://5e.tools/items.html#shadowfell%20shard_tce)** *(o **[Stirring Dragon-Touched Focus (Gem)](https://5e.tools/items.html#stirring%20dragon-touched%20focus_ftd)**)* | **Rare** | **Opción A (Shadowfell Shard):** Al usar Metamagia, 1 objetivo del conjuro tiene **Desventaja en tiradas de salvación y pruebas** de 1 atributo que elijas (ej. **Sabiduría** o **Inteligencia**) hasta el final de tu siguiente turno.<br>**Opción B (Stirring Gem Focus):** **Ventaja en Iniciativa** permanente + **Teletransporte gratis de 15 pies** cada vez que gastas un slot de conjuro. |
-
-### 🟢 Alternativas *Uncommon* (Fáciles de conseguir antes de tener los *Rare*)
-- 🛡️ **[Cloak of Protection](https://5e.tools/items.html#cloak%20of%20protection_xdmg)** (*Uncommon*, Sintonización): **+1 CA** y **+1 a todas las tiradas de salvación**.
-- 🔮 **[Pearl of Power](https://5e.tools/items.html#pearl%20of%20power_xdmg)** (*Uncommon*, Sintonización): Acción para recuperar **1 slot de conjuro de hasta Nivel 3** cada día (que puedes convertir en **3 PH gratis** sin acción).
-
-### ⚪ Items SIN Sintonización que debes buscar a Nivel 6
-- 🧥 **[Elven Chain](https://5e.tools/items.html#elven%20chain_xdmg)** (*Rare*, **Sin sintonización**): Camisa de malla alienígena bajo tu gabardina. Te da **CA 14 + DES (+2) = CA 16** incluso sin tener competencia en armadura media, y te **libera el conjuro preparado y el slot diario de *Mage Armor***.
-- 🧹 **[Broom of Flying](https://5e.tools/items.html#broom%20of%20flying_xdmg)** (*Uncommon*, **Sin sintonización**): Vuelo de 50 pies sin gastar concentración ni slots de *Fly*.
-
----
-
-## 🎬 5. SIMULACIÓN DE COMBATE ("TRIAL RUN" NIVEL 6)
-
-Imagina un combate real a Nivel 6 con tu **Bloodwell Vial +2** y tu **Far Realm Shard** equipados.
-**Tus estadísticas:** Iniciativa **+5**, CD **18** (**19** con *Innate Sorcery*), **8 PH** iniciales.
-
-### ⚡ TURNO 1: El Apagón Cerebral + Daño Psíquico Gratis
-1. **Acción Adicional:** Activas **Hechicería Innata** → Tus ojos brillan en verde esmeralda. Tu CD sube a **19** y tus ataques de conjuro tienen **Ventaja**.
-2. **Acción:** Lanzas **[Hypnotic Pattern](https://5e.tools/spells.html#hypnotic%20pattern_xphb)** (Slot Nv3) sobre el escuadrón enemigo con **Subtle Spell (1 PH)**.
-   - Nadie te vio ni te oyó lanzar nada (inmune a *Counterspell*).
-   - Todos los enemigos en el cubo de 30 pies hacen salvación de **SAB CD 19** o quedan **Incapacitados**.
-3. **Efecto Automático del [Far Realm Shard](https://5e.tools/items.html#far%20realm%20shard_tce) (por haber usado *Subtle Spell*):**
-   - Al instante, el jefe enemigo a 30 pies sufre el latigazo del Far Realm Shard: **Salvación de CAR CD 19** o recibe **`3d6 de daño Psíquico`** y queda **Asustado** de ti (desventaja en todos sus ataques y pruebas mientras te vea).
-   - **Gasto del turno:** 1 Slot Nv3 + 1 PH. **Daño:** `3d6 Psíquico` al jefe + todo su grupo incapacitado.
-
----
-
-### 💀 TURNO 2: Doble Latigazo Mental ("Nova Psíquica" de `11d6 Psíquico`)
-El jefe sigue en pie (o quedaron 2 élites despiertos). Quieres derretirles el cerebro en un solo turno sin romper tu concentración en *Hypnotic Pattern*:
-
-1. **Acción:** Lanzas **[Mind Sliver](https://5e.tools/spells.html#mind%20sliver_xphb)** al Jefe → Salvación **INT CD 19**:
-   - Recibe **`2d6 de daño Psíquico`** y tiene **`-1d4`** a su siguiente salvación.
-2. **Acción Adicional (*Quickened Spell* — 2 PH):** Lanzas **[Tasha's Mind Whip](https://5e.tools/spells.html#tasha's%20mind%20whip_tce)** (Slot Nv2) sobre el Jefe (que ahora tiene `-1d4` a su salvación de INT contra tu **CD 19**):
-   - Recibe **`3d6 de daño Psíquico`**, **pierde las Reacciones** y en su turno **solo puede moverse O atacar, no ambos**.
-   - *(O si usas **Twinned Spell [1 PH]** con tu Acción en vez de Quickened: golpeas a **2 élites** con `3d6 Psíquico` a cada uno = `6d6 Psíquico` + ambos pierden su turno).*
-3. **Efecto Automático del [Far Realm Shard](https://5e.tools/items.html#far%20realm%20shard_tce) (por haber usado Metamagia):**
-   - Otra vez se dispara gratis contra el Jefe: **Salvación CAR CD 19** o recibe otros **`3d6 de daño Psíquico`** y sigue **Asustado**.
-   - **Total en el Turno 2:** **`8d6 a 11d6 de daño 100% Psíquico`** (~28 a 38 de daño), el Jefe está Asustado, sin reacciones, y no puede acercarse y atacar en el mismo turno.
-
----
-
-### 🔇 TURNO 3: Ejecución Silenciosa con *Psionic Sorcery*
-Un enemigo intenta flanquearte cuerpo a cuerpo:
-
-1. **Acción (*Psionic Sorcery* — 1 PH, CERO slots, CERO componentes):**
-   - Miras fijamente al enemigo y gastas **1 PH** para lanzar **[Dissonant Whispers](https://5e.tools/spells.html#dissonant%20whispers_xphb)** (o **2 PH** para lanzarlo a Nivel 2 = `4d6 Psíquico`).
-   - Salvación **SAB CD 19**: sufre **`3d6 Psíquico`** y está obligado a gastar su Reacción para **huir corriendo de ti**, provocando **Ataques de Oportunidad** de tus aliados cuerpo a cuerpo.
-2. **Acción Adicional (*Quickened Spell* — 2 PH):**
-   - Lanzas **[Sorcerous Burst (Psíquico)](https://5e.tools/spells.html#sorcerous%20burst_xphb)** con **Ventaja** (+10 al ataque por *Innate Sorcery*): **`2d8 Psíquico`** (con dados explosivos en los 8s) + activas **otra vez** el **[Far Realm Shard](https://5e.tools/items.html#far%20realm%20shard_tce)** por otros **`3d6 Psíquico`** gratis.
-   - **Total del Turno 3:** **`6d6 + 2d8 de daño 100% Psíquico`** + ataques de oportunidad de tu grupo.
+### 🛡️ COMBO 5: "Cero Daño Colateral" (*Conjuro Cuidadoso* 5.5e — 1 PH)
+- **Ejecución:** Lanzas **Patrón Hipnótico**, **Miedo** o **Brazos de Hadar** en medio de tus compañeros por **1 PH**.
+- **Resultado:** Tus **5 aliados** pasan automáticamente la salvación y reciben **0 de daño**, mientras todos los enemigos sufren el impacto mental completo.
