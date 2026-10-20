@@ -1,913 +1,1585 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>👽 Guía Completa del Marciano — John Jones</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap');
-  
-  :root {
-    --bg: #0a0a0f;
-    --card: #12121a;
-    --card-border: #1e1e2e;
-    --green: #00ff88;
-    --green-dim: #00cc6a;
-    --green-glow: rgba(0,255,136,0.15);
-    --purple: #a855f7;
-    --blue: #3b82f6;
-    --red: #ef4444;
-    --gold: #f59e0b;
-    --text: #e2e8f0;
-    --text-dim: #94a3b8;
-    --psychic: #c084fc;
-  }
-  
-  * { margin:0; padding:0; box-sizing:border-box; }
-  
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
-  
-  /* NAVIGATION */
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(10,10,15,0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--card-border);
-    z-index: 1000;
-    padding: 0;
-  }
-  nav .nav-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    gap: 0;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-  nav .nav-inner::-webkit-scrollbar { display: none; }
-  nav a {
-    color: var(--text-dim);
-    text-decoration: none;
-    padding: 14px 16px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    white-space: nowrap;
-    transition: all 0.2s;
-    border-bottom: 2px solid transparent;
-  }
-  nav a:hover, nav a.active {
-    color: var(--green);
-    border-bottom-color: var(--green);
-  }
-  nav .nav-logo {
-    font-family: 'Cinzel', serif;
-    color: var(--green);
-    font-size: 1rem;
-    font-weight: 900;
-    padding: 14px 20px;
-    letter-spacing: 1px;
-  }
-  
-  /* MAIN */
-  main {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 80px 20px 60px;
-  }
-  
-  /* HERO */
-  .hero {
-    text-align: center;
-    padding: 60px 20px 40px;
-    position: relative;
-  }
-  .hero h1 {
-    font-family: 'Cinzel', serif;
-    font-size: 2.8rem;
-    color: var(--green);
-    text-shadow: 0 0 40px rgba(0,255,136,0.3);
-    margin-bottom: 10px;
-  }
-  .hero .subtitle {
-    font-size: 1.1rem;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-  
-  /* SECTIONS */
-  section {
-    margin-bottom: 50px;
-    scroll-margin-top: 70px;
-  }
-  
-  .section-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.8rem;
-    color: var(--green);
-    border-bottom: 2px solid var(--green);
-    padding-bottom: 10px;
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .section-title .emoji { font-size: 1.6rem; }
-  
-  .sub-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    color: var(--psychic);
-    margin: 30px 0 15px;
-    padding-left: 10px;
-    border-left: 3px solid var(--psychic);
-  }
-  
-  /* CARDS */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 16px;
-    transition: border-color 0.3s;
-  }
-  .card:hover { border-color: var(--green); }
-  .card.legendary { border-left: 3px solid var(--gold); }
-  .card.important { border-left: 3px solid var(--red); }
-  .card.psionic { border-left: 3px solid var(--psychic); }
-  
-  .card h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--green);
-    font-size: 1.1rem;
-    margin-bottom: 8px;
-  }
-  .card h4 {
-    color: var(--psychic);
-    font-size: 0.95rem;
-    margin-bottom: 6px;
-  }
-  .card p, .card li {
-    color: var(--text-dim);
-    font-size: 0.9rem;
-    line-height: 1.7;
-  }
-  .card strong { color: var(--text); }
-  .card .highlight { color: var(--green); font-weight: 700; }
-  
-  /* TABLES */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 12px 0;
-    font-size: 0.85rem;
-  }
-  th {
-    background: rgba(0,255,136,0.08);
-    color: var(--green);
-    font-weight: 600;
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 2px solid var(--green);
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  td {
-    padding: 8px 12px;
-    border-bottom: 1px solid var(--card-border);
-    color: var(--text-dim);
-  }
-  td strong { color: var(--text); }
-  tr:hover td { background: rgba(0,255,136,0.03); }
-  
-  .tier-s td:first-child { color: var(--gold); font-weight: 700; }
-  
-  /* LEVEL HEADER */
-  .level-header {
-    background: linear-gradient(135deg, rgba(0,255,136,0.1), rgba(168,85,247,0.1));
-    border: 1px solid var(--green);
-    border-radius: 12px;
-    padding: 20px 24px;
-    margin: 30px 0 16px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .level-num {
-    font-family: 'Cinzel', serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    color: var(--green);
-    text-shadow: 0 0 20px rgba(0,255,136,0.4);
-    min-width: 50px;
-  }
-  .level-info h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--text);
-    font-size: 1.1rem;
-  }
-  .level-info p {
-    color: var(--text-dim);
-    font-size: 0.85rem;
-  }
-  .level-header.critical {
-    border-color: var(--gold);
-    background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(239,68,68,0.08));
-  }
-  .level-header.critical .level-num { color: var(--gold); text-shadow: 0 0 20px rgba(245,158,11,0.4); }
-  
-  /* COMBO BOX */
-  .combo-box {
-    background: rgba(0,0,0,0.4);
-    border: 1px solid var(--psychic);
-    border-radius: 8px;
-    padding: 16px;
-    margin: 12px 0;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.82rem;
-    color: var(--psychic);
-    line-height: 1.8;
-    white-space: pre-wrap;
-  }
-  .combo-box .action { color: var(--green); }
-  .combo-box .result { color: var(--gold); }
-  .combo-box .note { color: var(--text-dim); }
-  
-  /* QUOTE */
-  .quote {
-    border-left: 3px solid var(--green);
-    padding: 12px 20px;
-    margin: 16px 0;
-    color: var(--text-dim);
-    font-style: italic;
-    background: rgba(0,255,136,0.03);
-    border-radius: 0 8px 8px 0;
-  }
-  .quote .author { color: var(--green); display: block; margin-top: 8px; font-size: 0.85rem; }
-  
-  /* RESKIN */
-  .reskin {
-    background: rgba(0,255,136,0.04);
-    border: 1px solid rgba(0,255,136,0.15);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin: 10px 0;
-    font-size: 0.85rem;
-    color: var(--text-dim);
-    font-style: italic;
-  }
-  .reskin::before {
-    content: '🟢 Reskin Marciano: ';
-    color: var(--green);
-    font-weight: 700;
-    font-style: normal;
-  }
-  
-  /* BADGE */
-  .badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  .badge.green { background: rgba(0,255,136,0.15); color: var(--green); }
-  .badge.purple { background: rgba(168,85,247,0.15); color: var(--psychic); }
-  .badge.gold { background: rgba(245,158,11,0.15); color: var(--gold); }
-  .badge.red { background: rgba(239,68,68,0.15); color: var(--red); }
-  .badge.blue { background: rgba(59,130,246,0.15); color: var(--blue); }
-  
-  /* WARNING BOX */
-  .warning {
-    background: rgba(239,68,68,0.08);
-    border: 1px solid rgba(239,68,68,0.3);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin: 12px 0;
-    font-size: 0.85rem;
-  }
-  .warning::before { content: '⚠️ '; }
-  
-  .tip {
-    background: rgba(0,255,136,0.06);
-    border: 1px solid rgba(0,255,136,0.2);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin: 12px 0;
-    font-size: 0.85rem;
-  }
-  .tip::before { content: '💡 '; }
-  
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 40px;
-    color: var(--text-dim);
-    font-size: 0.8rem;
-    border-top: 1px solid var(--card-border);
-    margin-top: 60px;
-  }
-  
-  /* GLOW CURSOR */
-  .glow {
-    position: fixed;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(0,255,136,0.06) 0%, transparent 70%);
-    pointer-events: none;
-    z-index: 0;
-    transform: translate(-50%, -50%);
-    transition: left 0.3s ease, top 0.3s ease;
-  }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Jones â€” Panel TÃ¡ctico del Marciano (XPHB 2024)</title>
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #090b10;
+      --card: #12151f;
+      --border: #23293a;
+      --foreground: #f1f5f9;
+      --muted-foreground: #94a3b8;
+    }
+    .tab-btn.active {
+      background-color: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      color: #10b981;
+    }
+    .lvl-btn.active {
+      background-color: #10b981;
+      color: #052e16;
+      border-color: #10b981;
+      font-weight: 700;
+    }
+    .filter-pill.active {
+      background-color: #a855f7;
+      color: #ffffff;
+      border-color: #a855f7;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+  </style>
 </head>
-<body>
-<div class="glow" id="glow"></div>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen pb-16">
 
-<nav>
-  <div class="nav-inner">
-    <span class="nav-logo">👽 MARCIANO</span>
-    <a href="#ficha">Ficha</a>
-    <a href="#progresion">Progresión</a>
-    <a href="#hechizos">Hechizos</a>
-    <a href="#metamagia">Metamagia</a>
-    <a href="#items">Items</a>
-    <a href="#legendarios">Legendarios</a>
-    <a href="#foco">Foco Gema</a>
-    <a href="#combos">Combos</a>
-    <a href="#ejercito">Ejército</a>
-    <a href="#reroll">Re-Roll</a>
-  </div>
-</nav>
+  <!-- TOP COMMAND HEADER & LIVE HUD -->
+  <header class="sticky top-0 z-40 bg-[var(--card)]/95 backdrop-blur border-b border-[var(--border)] shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 py-3 space-y-3">
+      
+      <!-- Row 1: Identity + Quick Preset Buttons -->
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-xl">
+            ðŸ‘½
+          </div>
+          <div>
+            <div class="flex items-center gap-2 flex-wrap">
+              <h1 class="text-base sm:text-lg font-bold tracking-tight text-[var(--foreground)]">JOHN JONES</h1>
+              <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                HechicerÃ­a Aberrante (XPHB 2024)
+              </span>
+              <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-purple-500/15 text-purple-300 border border-purple-500/30">
+                100% DaÃ±o PsÃ­quico
+              </span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Humano Investigador Â· FUE 10 (+0) Â· DES 14 (+2) Â· CON 14 (+2) Â· INT 14 (+2) Â· SAB 14 (+2) Â· CAR 20 (+5)
+            </p>
+          </div>
+        </div>
 
-<main>
+        <!-- Quick Presets -->
+        <div class="flex items-center gap-2 flex-wrap">
+          <button onclick="applyPreset('nv3')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500/50 transition">
+            ðŸ•µï¸ Nv 3 (Roll20 Actual)
+          </button>
+          <button onclick="applyPreset('nv6')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-purple-500/50 bg-purple-500/15 text-purple-300 hover:bg-purple-500/25 transition">
+            ðŸ§  Nv 6 (Trial PsÃ­quico)
+          </button>
+          <button onclick="applyPreset('nv9')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] hover:border-emerald-500/50 transition">
+            âš¡ Nv 9 (Synaptic Static)
+          </button>
+          <button onclick="applyPreset('nv14')" class="px-3 py-1.5 rounded-lg text-xs font-semibold border border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20 transition">
+            ðŸ‘‘ Nv 14 (Marciano Completo)
+          </button>
+        </div>
+      </div>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>JOHN JONES</h1>
-  <p class="subtitle">"No encontré estos artefactos. Siempre estuvieron dentro de mí. Solo necesitaba recordar."</p>
-</div>
+      <!-- Row 2: Interactive Level Selector (3 to 14) + Live Buff Toggles -->
+      <div class="flex flex-wrap items-center justify-between gap-3 pt-1 border-t border-[var(--border)]">
+        <!-- Level Selector -->
+        <div class="flex items-center gap-1.5 overflow-x-auto custom-scroll py-1">
+          <span class="text-xs font-semibold text-[var(--muted-foreground)] mr-1">NIVEL:</span>
+          <div id="level-buttons" class="flex items-center gap-1"></div>
+        </div>
 
-<!-- ═══════════════════════════════ FICHA ═══════════════════════════════ -->
-<section id="ficha">
-  <h2 class="section-title"><span class="emoji">📋</span> Ficha Base</h2>
-  
-  <div class="card">
-    <table>
-      <tr><th colspan="2">Identidad</th></tr>
-      <tr><td><strong>Nombre</strong></td><td>John Jones</td></tr>
-      <tr><td><strong>Especie</strong></td><td>Humano (Versátil)</td></tr>
-      <tr><td><strong>Clase</strong></td><td>Hechicero — Mente Aberrante</td></tr>
-      <tr><td><strong>Trasfondo</strong></td><td>Investigador</td></tr>
-    </table>
-  </div>
-  
-  <div class="card">
-    <table>
-      <tr><th>Stat</th><th>Valor</th><th>Mod</th><th>Rol</th></tr>
-      <tr class="tier-s"><td>CHA</td><td><strong>20</strong> (18+2)</td><td><strong>+5</strong></td><td>Tu stat principal. CD, ataques, social</td></tr>
-      <tr><td>CON</td><td>14</td><td>+2</td><td>HP, saves concentración</td></tr>
-      <tr><td>DEX</td><td>14</td><td>+2</td><td>CA (Mage Armor), Iniciativa</td></tr>
-      <tr><td>INT</td><td>14</td><td>+2</td><td>Investigación</td></tr>
-      <tr><td>WIS</td><td>13</td><td>+1</td><td>Percepción, Insight</td></tr>
-      <tr><td>STR</td><td>10</td><td>+0</td><td>Dump. Promedio humano.</td></tr>
-    </table>
-  </div>
-  
-  <div class="card">
-    <h3>Dotes de Origen</h3>
-    <table>
-      <tr><th>Dote</th><th>Efecto</th></tr>
-      <tr><td><strong>Alert</strong></td><td>+Prof a Iniciativa. No puedes ser Sorprendido</td></tr>
-      <tr><td><strong>Lucky</strong></td><td>3 usos/DL. Tiras 1d20 extra y eliges cuál usar</td></tr>
-    </table>
-  </div>
-</section>
+        <!-- Live Combat Toggles -->
+        <div class="flex flex-wrap items-center gap-2">
+          <button id="toggle-innate" onclick="toggleBuff('innate')" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 transition flex items-center gap-1.5">
+            <span id="dot-innate" class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            HechicerÃ­a Innata (+1 CD / Ventaja)
+          </button>
 
-<!-- ═══════════════════════════════ PROGRESIÓN ═══════════════════════════════ -->
-<section id="progresion">
-  <h2 class="section-title"><span class="emoji">📈</span> Progresión Nivel 3 → 14</h2>
-  
-  <!-- NIVEL 3 -->
-  <div class="level-header">
-    <span class="level-num">3</span>
-    <div class="level-info">
-      <h3>El Marciano Despierta</h3>
-      <p>HP 23 · SP 3 · CD 15/16 · Prof +2</p>
+          <select id="select-vial" onchange="updateHUD()" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+            <option value="0">ðŸ©¸ Sin Bloodwell Vial (+0)</option>
+            <option value="1">ðŸ©¸ Bloodwell Vial +1 (Uncommon)</option>
+            <option value="2">ðŸ©¸ Bloodwell Vial +2 (Rare Nv6)</option>
+            <option value="3">ðŸ©¸ Bloodwell Vial +3 (Very Rare)</option>
+          </select>
+
+          <select id="select-armor" onchange="updateHUD()" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--foreground)]">
+            <option value="12">ðŸ§¥ Gabardina Base (CA 12)</option>
+            <option value="15" selected>ðŸ§¥ Mage Armor (CA 15)</option>
+            <option value="16">â›“ï¸ Elven Chain Nv6 (CA 16)</option>
+            <option value="17">ðŸ‘‘ TÃºnica Archimago (+2 CD, CA 17)</option>
+          </select>
+
+          <button id="toggle-shield" onclick="toggleBuff('shield')" class="px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition">
+            ðŸ›¡ï¸ ReacciÃ³n Shield (+5 CA)
+          </button>
+        </div>
+      </div>
+
+      <!-- Row 3: Live Calculated KPI Strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 pt-1">
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">HP MÃ¡x.</div>
+            <div id="hud-hp" class="text-base font-bold text-[var(--foreground)]">24</div>
+          </div>
+          <span id="hud-pb" class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-mono">Prof +2</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Clase Armadura</div>
+            <div id="hud-ac" class="text-base font-bold text-sky-400">15</div>
+          </div>
+          <span id="hud-ac-note" class="text-xs text-[var(--muted-foreground)]">Mage Armor</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-purple-500/40 rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-purple-300 font-medium">CD Conjuros</div>
+            <div id="hud-dc" class="text-lg font-extrabold text-purple-300">16</div>
+          </div>
+          <span id="hud-dc-note" class="text-xs px-1.5 py-0.5 rounded bg-purple-500/15 text-purple-300">Innata ON</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Ataque Conjuro</div>
+            <div id="hud-atk" class="text-base font-bold text-emerald-400">+7</div>
+          </div>
+          <span id="hud-atk-adv" class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-semibold">VENTAJA</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Iniciativa (Alert)</div>
+            <div id="hud-init" class="text-base font-bold text-amber-400">+4</div>
+          </div>
+          <span class="text-xs text-[var(--muted-foreground)]">DES+Prof</span>
+        </div>
+
+        <div class="bg-[var(--background)] border border-[var(--border)] rounded-lg px-3 py-2 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-[var(--muted-foreground)]">Puntos HechicerÃ­a</div>
+            <div id="hud-sp" class="text-base font-bold text-emerald-400">3 PH</div>
+          </div>
+          <span id="hud-prep" class="text-xs text-[var(--muted-foreground)]">6+4 Prep.</span>
+        </div>
+      </div>
+
+      <!-- Row 4: Main Navigation Tabs -->
+      <nav class="flex items-center gap-2 overflow-x-auto custom-scroll pt-1">
+        <button onclick="switchTab('tab-trial6')" id="btn-tab-trial6" class="tab-btn active px-3.5 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ§  1. Trial Nivel 6 (100% PsÃ­quico + Simulador)
+        </button>
+        <button onclick="switchTab('tab-roll20')" id="btn-tab-roll20" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ•µï¸ 2. Ficha Nv 3 & AuditorÃ­a Roll20
+        </button>
+        <button onclick="switchTab('tab-grimoire')" id="btn-tab-grimoire" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ“– 3. Grimorio Interactivo (5e.tools)
+        </button>
+        <button onclick="switchTab('tab-items')" id="btn-tab-items" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ—¡ï¸ 4. Items Nivel 6 â†’ Legendarios
+        </button>
+        <button onclick="switchTab('tab-prog')" id="btn-tab-prog" class="tab-btn px-3.5 py-2 rounded-lg text-xs font-semibold border border-[var(--border)] transition whitespace-nowrap">
+          ðŸ“ˆ 5. ProgresiÃ³n Nv 3â€“14 & EjÃ©rcito
+        </button>
+      </nav>
     </div>
-  </div>
-  <div class="card">
-    <p>Tienes: <strong>Innate Sorcery</strong> (BA, CD+1 por 1 min), <strong>Font of Magic</strong> (SP↔Slots), <strong>Metamagia</strong> (Quickened + Twinned), <strong>Telepathic Speech</strong> (30ft, 3 min).</p>
-    <p>Psiónicos: Mind Sliver, Dissonant Whispers, Arms of Hadar, Detect Thoughts, Calm Emotions.</p>
-  </div>
+  </header>
 
-  <!-- NIVEL 4 -->
-  <div class="level-header">
-    <span class="level-num">4</span>
-    <div class="level-info">
-      <h3>Metamagic Adept — Cuatro Frecuencias</h3>
-      <p>HP 29 · SP <strong>6</strong> · CD 15/16 · Prof +2</p>
-    </div>
-  </div>
-  <div class="card important">
-    <h3>⭐ Feat: Metamagic Adept</h3>
-    <table>
-      <tr><th>Beneficio</th><th>Efecto</th></tr>
-      <tr><td><strong>+2 SP</strong></td><td>Pool sube de 4 a <strong>6</strong>. 50% más combustible</td></tr>
-      <tr><td><strong>+Subtle Spell</strong> (1 SP)</td><td>Sin componentes V/S. Casting invisible</td></tr>
-      <tr><td><strong>+Heightened Spell</strong> (3 SP)</td><td>Desventaja en el save del objetivo</td></tr>
-    </table>
-    <p style="margin-top:10px"><strong>5º Cantrip:</strong> Toll the Dead (1d12 necrótico a heridos)</p>
-  </div>
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="max-w-7xl mx-auto px-4 pt-6 space-y-6">
 
-  <!-- NIVEL 5 -->
-  <div class="level-header">
-    <span class="level-num">5</span>
-    <div class="level-info">
-      <h3>La Tormenta Psíquica — Slots Nivel 3</h3>
-      <p>HP 35 · SP 7 · CD <strong>16/17</strong> · Prof <strong>+3</strong></p>
-    </div>
-  </div>
-  <div class="card psionic">
-    <h3>Swap Psiónico</h3>
-    <p>🔄 <del>Hunger of Hadar</del> → <strong>Enemies Abound</strong> (INT save, el objetivo ataca a sus aliados)</p>
-    <p>✅ <strong>Sending</strong> — Mensaje telepático sin límite de distancia</p>
-    <p style="margin-top:10px"><strong>Hechizos clave nv3:</strong> Hypnotic Pattern, Counterspell, Fly</p>
-  </div>
+    <!-- =================================================================== -->
+    <!-- TAB 1: TRIAL NIVEL 6 (100% DAÃ‘O PSÃQUICO + SIMULADOR DE COMBATE) -->
+    <!-- =================================================================== -->
+    <section id="tab-trial6" class="space-y-6">
+      
+      <!-- Banner Overview -->
+      <div class="bg-[var(--card)] border border-purple-500/40 rounded-xl p-5 shadow-sm">
+        <div class="flex flex-wrap items-start justify-between gap-4">
+          <div class="space-y-1 max-w-3xl">
+            <div class="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30">
+              âš¡ POWER SPIKE DE NIVEL 6 Â· SUB_ABERRANT_XPHB
+            </div>
+            <h2 class="text-xl font-bold text-[var(--foreground)]">
+              Build "Silencio de Ma'aleca'andra" â€” 100% DaÃ±o PsÃ­quico
+            </h2>
+            <p class="text-sm text-[var(--muted-foreground)]">
+              A Nivel 6 desbloqueas <strong>HechicerÃ­a PsiÃ³nica (Psionic Sorcery)</strong>: lanzas tus hechizos psiÃ³nicos pagando Puntos de HechicerÃ­a igual a su nivel <strong>SIN componentes Verbales, SomÃ¡ticos ni Materiales</strong>. Combinado con <strong>Metamagic Adept</strong>, <strong>Bloodwell Vial +2</strong> y el <strong>Far Realm Shard</strong>, cada vez que usas Metamagia disparas un tentÃ¡culo mental que inflige <strong>3d6 PsÃ­quico + Asustado gratis</strong>.
+            </p>
+          </div>
+          <div class="flex flex-col gap-2 min-w-[220px] bg-[var(--background)] p-3.5 rounded-xl border border-[var(--border)]">
+            <div class="text-xs font-semibold text-[var(--muted-foreground)] uppercase">BaterÃ­a Diaria de PH (Nivel 6)</div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs text-[var(--muted-foreground)]">Base (6 Clase + 2 Dote):</span>
+              <span class="text-sm font-bold text-emerald-400">8 PH</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs text-[var(--muted-foreground)]">Sorcerous Restoration (DC):</span>
+              <span class="text-sm font-bold text-emerald-400">+3 PH</span>
+            </div>
+            <div class="flex items-baseline justify-between">
+              <span class="text-xs text-[var(--muted-foreground)]">Bloodwell Vial (DC):</span>
+              <span class="text-sm font-bold text-emerald-400">+5 PH</span>
+            </div>
+            <div class="border-t border-[var(--border)] pt-1.5 flex items-baseline justify-between">
+              <span class="text-xs font-semibold text-[var(--foreground)]">Total Diario (sin quemar slots):</span>
+              <span class="text-base font-extrabold text-purple-300">16 PH</span>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <!-- NIVEL 6 -->
-  <div class="level-header critical">
-    <span class="level-num">6</span>
-    <div class="level-info">
-      <h3>⭐⭐⭐ Psionic Sorcery — El Noir Silencioso</h3>
-      <p>HP 41 · SP 8 · CD 16/17</p>
-    </div>
-  </div>
-  <div class="card legendary">
-    <h3>Hechicería Psiónica</h3>
-    <p>Lanzas psiónicos con <strong>SP en vez de slots</strong> → <strong class="highlight">SIN componentes V/S/M</strong>. Nadie te ve, oye, ni sabe que lanzaste un hechizo.</p>
-    <table>
-      <tr><th>Hechizo</th><th>Coste SP</th></tr>
-      <tr><td>Dissonant Whispers</td><td>1 SP</td></tr>
-      <tr><td>Suggestion / Detect Thoughts</td><td>2 SP</td></tr>
-      <tr><td>Enemies Abound</td><td>3 SP</td></tr>
-    </table>
-  </div>
-  <div class="card">
-    <h3>🛡️ Defensas Psíquicas</h3>
-    <p><strong>Resistencia a daño psíquico</strong> + <strong>Ventaja vs Hechizado y Asustado</strong></p>
-  </div>
+      <!-- Grid: Combat Simulator (Left) + Level 6 Core Loadout (Right) -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Interactive Combat & Psychic Dice Simulator (7 cols) -->
+        <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <h3 class="text-base font-bold text-[var(--foreground)] flex items-center gap-2">
+                ðŸŽ² Simulador TÃ¡ctico de Combate (Nivel 6)
+              </h3>
+              <p class="text-xs text-[var(--muted-foreground)]">
+                Haz clic en cada turno o conjuro para simular las tiradas reales de daÃ±o 100% PsÃ­quico (incluye dados explosivos de <em>Sorcerous Burst</em>).
+              </p>
+            </div>
+            <button onclick="clearCombatLog()" class="px-2.5 py-1 rounded text-xs border border-[var(--border)] text-[var(--muted-foreground)] hover:text-[var(--foreground)]">
+              Limpiar Registro
+            </button>
+          </div>
 
-  <!-- NIVEL 7 -->
-  <div class="level-header">
-    <span class="level-num">7</span>
-    <div class="level-info">
-      <h3>Sorcery Incarnate — Slots Nivel 4</h3>
-      <p>HP 47 · SP 9 · CD 16/17</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>Sorcery Incarnate</h3>
-    <p>Con Innate Sorcery activa: <strong class="highlight">2 metamagias en 1 conjuro</strong>. Quickened + Heightened = conjuro como BA con Desventaja en el save.</p>
-    <p style="margin-top:8px">🔄 <del>Evard's Black Tentacles</del> → <strong>Confusion</strong></p>
-    <p><strong>Hechizo clave nv4:</strong> Banishment (CHA save, desaparece 1 min)</p>
-  </div>
+          <!-- 3 Turn Combo Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <button onclick="simulateTurn(1)" class="text-left p-3.5 rounded-xl border border-emerald-500/40 bg-emerald-500/10 hover:bg-emerald-500/20 transition space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-emerald-400 uppercase">Turno 1 Â· Apertura</span>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">1 Slot Nv3 + 1 PH</span>
+              </div>
+              <div class="text-sm font-bold text-[var(--foreground)]">ApagÃ³n Cerebral</div>
+              <p class="text-xs text-[var(--muted-foreground)]">
+                BA Innate Sorcery â†’ Subtle Hypnotic Pattern (Cubo 30ft) + Far Realm Shard (3d6 PsÃ­quico + Fear).
+              </p>
+            </button>
 
-  <!-- NIVEL 8 -->
-  <div class="level-header">
-    <span class="level-num">8</span>
-    <div class="level-info">
-      <h3>War Caster — Mente Blindada</h3>
-      <p>HP 53 · SP 10 · CD 16/17</p>
-    </div>
-  </div>
-  <div class="card">
-    <h3>⭐ Feat: War Caster</h3>
-    <p><strong>Ventaja</strong> en saves de Concentración. Conjuro como ataque de oportunidad. Somáticos con manos ocupadas.</p>
-  </div>
+            <button onclick="simulateTurn(2)" class="text-left p-3.5 rounded-xl border border-purple-500/50 bg-purple-500/10 hover:bg-purple-500/20 transition space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-purple-300 uppercase">Turno 2 Â· Nova</span>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">1 Slot Nv2 + 2 PH</span>
+              </div>
+              <div class="text-sm font-bold text-[var(--foreground)]">Doble Latigazo (8d6)</div>
+              <p class="text-xs text-[var(--muted-foreground)]">
+                Mind Sliver (2d6 y -1d4 save) â†’ Quickened Mind Whip (3d6 + sin reacciÃ³n/acciÃ³n) + Shard (3d6).
+              </p>
+            </button>
 
-  <!-- NIVEL 9 -->
-  <div class="level-header critical">
-    <span class="level-num">9</span>
-    <div class="level-info">
-      <h3>⭐⭐⭐ Synaptic Static — El Arma Definitiva</h3>
-      <p>HP 59 · SP 11 · CD <strong>17/18</strong> · Prof <strong>+4</strong></p>
-    </div>
-  </div>
-  <div class="card legendary">
-    <h3>Synaptic Static — "El Aneurisma Marciano"</h3>
-    <table>
-      <tr><th>Campo</th><th>Valor</th></tr>
-      <tr><td>Daño</td><td><strong>8d6 PSÍQUICO</strong> (~28 medio) AoE 20ft</td></tr>
-      <tr><td>Save</td><td>INT</td></tr>
-      <tr><td>Debuff</td><td><strong>-1d6 a ataques, saves, concentración</strong> por 1 MIN</td></tr>
-      <tr><td>Concentración</td><td><strong class="highlight">NO</strong></td></tr>
-    </table>
-    <p style="margin-top:8px"><strong>Psiónicos nuevos:</strong> Modify Memory ⭐ + Rary's Telepathic Bond ⭐</p>
-    <p><strong>Otros nv5:</strong> Hold Monster, Telekinesis</p>
-  </div>
+            <button onclick="simulateTurn(3)" class="text-left p-3.5 rounded-xl border border-amber-500/40 bg-amber-500/10 hover:bg-amber-500/20 transition space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-amber-300 uppercase">Turno 3 Â· EjecuciÃ³n</span>
+                <span class="text-xs px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">3 PH (0 Slots)</span>
+              </div>
+              <div class="text-sm font-bold text-[var(--foreground)]">Noir Silencioso</div>
+              <p class="text-xs text-[var(--muted-foreground)]">
+                Psionic Dissonant Whispers (3d6 + AoO) + Quickened Sorcerous Burst (2d8 explosivo) + Shard (3d6).
+              </p>
+            </button>
+          </div>
 
-  <!-- NIVEL 10 -->
-  <div class="level-header">
-    <span class="level-num">10</span>
-    <div class="level-info">
-      <h3>5ª Metamagia — Empowered Spell</h3>
-      <p>HP 65 · SP 12 · CD 17/18</p>
-    </div>
-  </div>
-  <div class="card">
-    <p><strong>Empowered Spell</strong> (1 SP): Re-tira hasta 5 dados de daño. Synaptic Static: 8d6 con hasta 5 re-rolls = ~33 daño medio.</p>
-    <p><strong>6º Cantrip:</strong> Chill Touch (3d8, anti-curación)</p>
-  </div>
+          <!-- Individual Psychic Spell Rollers -->
+          <div class="pt-2 border-t border-[var(--border)]">
+            <div class="text-xs font-semibold text-[var(--muted-foreground)] mb-2">TIRAR HECHIZO INDIVIDUAL (ESCALADO AL NIVEL DEL HUD):</div>
+            <div class="flex flex-wrap gap-2">
+              <button onclick="rollSpell('mind_sliver')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400 transition">
+                ðŸ§  Mind Sliver (PsÃ­quico + -1d4)
+              </button>
+              <button onclick="rollSpell('sorcerous_burst')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-emerald-400 transition">
+                ðŸ’¥ Sorcerous Burst (PsÃ­quico Explosivo)
+              </button>
+              <button onclick="rollSpell('dissonant')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400 transition">
+                ðŸ”Š Dissonant Whispers (3d6 PsÃ­quico)
+              </button>
+              <button onclick="rollSpell('mind_whip')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400 transition">
+                âš¡ Twinned Mind Whip (2Ã— 3d6 PsÃ­quico)
+              </button>
+              <button onclick="rollSpell('phantasmal')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-purple-400 transition">
+                ðŸ‘ï¸ Phantasmal Force XPHB (2d8 PsÃ­quico)
+              </button>
+              <button onclick="rollSpell('shard')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-amber-400 transition">
+                ðŸ¦‘ Far Realm Shard (3d6 PsÃ­quico Gratis)
+              </button>
+              <button onclick="rollSpell('synaptic')" class="px-3 py-1.5 rounded-lg text-xs font-semibold bg-[var(--background)] border border-[var(--border)] hover:border-rose-400 transition">
+                ðŸ’€ Synaptic Static Nv9 (8d6 PsÃ­quico AoE)
+              </button>
+            </div>
+          </div>
 
-  <!-- NIVEL 11 -->
-  <div class="level-header">
-    <span class="level-num">11</span>
-    <div class="level-info">
-      <h3>Mass Suggestion — Control de Masas</h3>
-      <p>HP 71 · SP 13 · CD 17/18 · Slots nv6</p>
-    </div>
-  </div>
-  <div class="card psionic">
-    <h3>Mass Suggestion</h3>
-    <p>12 criaturas, WIS save, <strong>sin concentración</strong>. Duración: 24h (nv6) → <strong class="highlight">1 AÑO a nv9</strong> con Foco Gema.</p>
-    <p><strong>También:</strong> Mental Prison (5d10 + 10d10 psíquico si se mueven)</p>
-  </div>
+          <!-- Live Output Console -->
+          <div id="combat-log" class="bg-[var(--background)] border border-[var(--border)] rounded-xl p-4 font-mono text-xs space-y-2 max-h-64 overflow-y-auto custom-scroll">
+            <div class="text-[var(--muted-foreground)]">
+              ðŸŸ¢ Sistema PsiÃ³nico de Ma'aleca'andra listo. Selecciona un turno o conjuro arriba para simular daÃ±o...
+            </div>
+          </div>
+        </div>
 
-  <!-- NIVEL 12 -->
-  <div class="level-header">
-    <span class="level-num">12</span>
-    <div class="level-info">
-      <h3>3er Feat — Fortaleza Mental</h3>
-      <p>HP 77 · SP 14 · CD 17/18</p>
-    </div>
-  </div>
-  <div class="card">
-    <p><strong>Resilient (WIS):</strong> WIS saves proficientes (+1 mod + 4 prof = +5). Con Defensas Psíquicas = mente impenetrable.</p>
-    <p><em>Alternativa:</em> +2 CON (14→16, +12 HP retroactivos)</p>
-  </div>
+        <!-- Right Column: Level 6 Item Checklist & Metamagics (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3">
+            <h3 class="text-base font-bold text-[var(--foreground)] flex items-center justify-between">
+              <span>ðŸ—¡ï¸ Items que Necesitas a Nivel 6</span>
+              <span class="text-xs font-normal text-emerald-400">Links a 5e.tools</span>
+            </h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Estos son los objetos exactos para tu pico de poder en Tier 2 (3 ranuras de sintonizaciÃ³n + 1 sin sintonizaciÃ³n):
+            </p>
 
-  <!-- NIVEL 13 -->
-  <div class="level-header">
-    <span class="level-num">13</span>
-    <div class="level-info">
-      <h3>Power Word Pain — Sin Salvación</h3>
-      <p>HP 83 · SP 15 · CD <strong>18/19</strong> · Prof <strong>+5</strong></p>
-    </div>
-  </div>
-  <div class="card important">
-    <h3>Power Word Pain</h3>
-    <p><strong class="highlight">SIN SAVE.</strong> Si ≤100 HP: desventaja ataques/checks, no reacciones, CON save para castear. Automático.</p>
-  </div>
+            <div class="space-y-2.5">
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-emerald-500/40 flex items-start justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300">Sint. 1</span>
+                    <span class="text-sm font-bold text-[var(--foreground)]">Bloodwell Vial (+1 o +2)</span>
+                  </div>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-1">
+                    +1/+2 a tu CD y Ataque de conjuros. 1/dÃ­a al gastar Dado de Golpe en Descanso Corto recuperas <strong>5 PH</strong>.
+                  </p>
+                </div>
+                <a href="https://5e.tools/items.html#bloodwell%20vial_tce" target="_blank" class="px-2.5 py-1 rounded text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 whitespace-nowrap">
+                  5e.tools â†—
+                </a>
+              </div>
 
-  <!-- NIVEL 14 -->
-  <div class="level-header critical">
-    <span class="level-num">14</span>
-    <div class="level-info">
-      <h3>⭐⭐⭐ Revelation in Flesh — EL MARCIANO COMPLETO</h3>
-      <p>HP 89 · SP 16 · CD 18/19 · Prof +5</p>
-    </div>
-  </div>
-  <div class="card legendary">
-    <h3>Revelation in Flesh</h3>
-    <p><strong>BA, gasta 1+ SP.</strong> Por cada SP (duración 10 min):</p>
-    <table>
-      <tr><th>SP</th><th>Poder</th><th>Mecánica</th></tr>
-      <tr><td>1</td><td>👁️ Visión Marciana</td><td>Ver lo invisible a 60ft</td></tr>
-      <tr><td>1</td><td>🕊️ Levitación</td><td>Velocidad de vuelo = tu caminar</td></tr>
-      <tr><td>1</td><td>🫠 Intangibilidad</td><td>Pasar por espacios de 2.5 cm</td></tr>
-      <tr><td>1</td><td>⚡ Descarga</td><td>1d12 psíquico a quien te agarre</td></tr>
-    </table>
-  </div>
-  <div class="reskin">El cuerpo de John se deforma. Su torso se aplana y se desliza bajo la puerta como plastilina verde. Al otro lado, se reconstruye. Los guardias no escucharon nada.</div>
-</section>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-purple-500/40 flex items-start justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300">Sint. 2</span>
+                    <span class="text-sm font-bold text-[var(--foreground)]">Far Realm Shard (Rare)</span>
+                  </div>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-1">
+                    <strong>Motor de DaÃ±o PsÃ­quico:</strong> Cada vez que usas Metamagia, 1 enemigo a 30ft hace save CAR o sufre <strong>3d6 PsÃ­quico + Asustado</strong>.
+                  </p>
+                </div>
+                <a href="https://5e.tools/items.html#far%20realm%20shard_tce" target="_blank" class="px-2.5 py-1 rounded text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30 hover:bg-purple-500/25 whitespace-nowrap">
+                  5e.tools â†—
+                </a>
+              </div>
 
-<!-- ═══════════════════════════════ HECHIZOS ═══════════════════════════════ -->
-<section id="hechizos">
-  <h2 class="section-title"><span class="emoji">🧠</span> Hechizos Completos (Nivel 14)</h2>
-  
-  <h3 class="sub-title">Cantrips (6)</h3>
-  <div class="card">
-    <table>
-      <tr><th>#</th><th>Cantrip</th><th>Daño (nv14)</th><th>Save</th><th>Nota</th></tr>
-      <tr><td>1</td><td>🧠 Mind Sliver</td><td><strong>3d6 psíquico</strong></td><td>INT</td><td><strong class="highlight">-1d4 al próximo save</strong></td></tr>
-      <tr><td>2</td><td>💀 Toll the Dead</td><td>3d8 / <strong>3d12</strong></td><td>WIS</td><td>3d12 si herido (~19.5 medio)</td></tr>
-      <tr><td>3</td><td>❄️ Chill Touch</td><td>3d8</td><td>—</td><td>Impide curación 1 turno</td></tr>
-      <tr><td>4</td><td>🎭 Minor Illusion</td><td>—</td><td>—</td><td>Sonido o imagen</td></tr>
-      <tr><td>5</td><td>🖐️ Mage Hand</td><td>—</td><td>—</td><td>Utilidad</td></tr>
-      <tr><td>6</td><td>🔮 Prestidigitation</td><td>—</td><td>—</td><td>Efectos menores</td></tr>
-    </table>
-  </div>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-amber-500/40 flex items-start justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-300">Sint. 3</span>
+                    <span class="text-sm font-bold text-[var(--foreground)]">Shadowfell Shard / Stirring Gem Focus</span>
+                  </div>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-1">
+                    <strong>Shadowfell:</strong> Al usar Metamagia impone Desventaja en saves de SAB/INT. <strong>Gem Focus:</strong> Ventaja Iniciativa + Teleport 15ft por slot.
+                  </p>
+                </div>
+                <a href="https://5e.tools/items.html#shadowfell%20shard_tce" target="_blank" class="px-2.5 py-1 rounded text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30 hover:bg-amber-500/25 whitespace-nowrap">
+                  5e.tools â†—
+                </a>
+              </div>
 
-  <h3 class="sub-title">Hechizos Psiónicos (10 — Gratis, No Cuentan)</h3>
-  <div class="card psionic">
-    <table>
-      <tr><th>#</th><th>Hechizo</th><th>Nv</th><th>Obtenido</th><th>Efecto Clave</th></tr>
-      <tr><td>1</td><td>🧠 Dissonant Whispers</td><td>1</td><td>Nv3</td><td>3d6 psíquico + huye (provoca AoO)</td></tr>
-      <tr><td>2</td><td>🔄 Command</td><td>1</td><td>Swap</td><td>1 palabra: "Huye/Suelta/Quieto"</td></tr>
-      <tr><td>3</td><td>🧠 Detect Thoughts</td><td>2</td><td>Nv3</td><td>Lee mentes, WIS = memorias profundas</td></tr>
-      <tr><td>4</td><td>🧠 Calm Emotions</td><td>2</td><td>Nv3</td><td>Pacifica o neutraliza hostilidad</td></tr>
-      <tr><td>5</td><td>🔄 Enemies Abound</td><td>3</td><td>Swap nv5</td><td>INT save, ataca a sus aliados</td></tr>
-      <tr><td>6</td><td>🧠 Sending</td><td>3</td><td>Nv5</td><td>Mensaje telepático sin límite</td></tr>
-      <tr><td>7</td><td>🧠 Compulsion</td><td>4</td><td>Nv7</td><td>Fuerza movimiento</td></tr>
-      <tr><td>8</td><td>🔄 Confusion</td><td>4</td><td>Swap nv7</td><td>WIS save, atacan aleatoriamente</td></tr>
-      <tr><td>9</td><td>🧠 Modify Memory</td><td>5</td><td>Nv9</td><td>Reescribe recuerdos</td></tr>
-      <tr><td>10</td><td>🧠 Rary's Telepathic Bond</td><td>5</td><td>Nv9</td><td>Red telepática 8 criaturas, sin conc.</td></tr>
-    </table>
-  </div>
+              <div class="p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] flex items-start justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300">Sin Sint.</span>
+                    <span class="text-sm font-bold text-[var(--foreground)]">Elven Chain (Rare)</span>
+                  </div>
+                  <p class="text-xs text-[var(--muted-foreground)] mt-1">
+                    CA 14 + DES (+2) = <strong>CA 16 permanente</strong> sin requerir competencia y te ahorra preparar/lanzar <em>Mage Armor</em>.
+                  </p>
+                </div>
+                <a href="https://5e.tools/items.html#elven%20chain_xdmg" target="_blank" class="px-2.5 py-1 rounded text-xs font-semibold bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 whitespace-nowrap">
+                  5e.tools â†—
+                </a>
+              </div>
+            </div>
+          </div>
 
-  <h3 class="sub-title">Hechizos Preparados (19 slots)</h3>
-  <div class="card">
-    <table>
-      <tr><th>Nv</th><th>Hechizos</th></tr>
-      <tr><td><span class="badge blue">1</span></td><td>Shield · Mage Armor · Charm Person</td></tr>
-      <tr><td><span class="badge blue">2</span></td><td>Suggestion · Web · Mirror Image</td></tr>
-      <tr><td><span class="badge blue">3</span></td><td>Hypnotic Pattern · Counterspell · Fly</td></tr>
-      <tr><td><span class="badge purple">4</span></td><td>Banishment</td></tr>
-      <tr><td><span class="badge purple">5</span></td><td><strong>Synaptic Static ⭐</strong> · Hold Monster · Telekinesis</td></tr>
-      <tr><td><span class="badge gold">6</span></td><td><strong>Mass Suggestion</strong> · Mental Prison</td></tr>
-      <tr><td><span class="badge red">7</span></td><td><strong>Power Word Pain</strong></td></tr>
-    </table>
-  </div>
-</section>
+          <!-- 4 Metamagics Card -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-2.5">
+            <h3 class="text-sm font-bold text-[var(--foreground)]">âš¡ Tus 4 Metamagias a Nivel 6 (Clase + Metamagic Adept)</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-emerald-400">Quickened Spell (2 PH)</div>
+                <p class="text-[var(--muted-foreground)]">Conjuro de 1 AcciÃ³n pasa a Bonus Action.</p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-purple-300">Twinned Spell (1 PH)</div>
+                <p class="text-[var(--muted-foreground)]">+1 objetivo en <em>Mind Whip</em>, <em>Hold Person</em> o <em>Charm Person</em>.</p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-sky-300">Subtle Spell (1 PH)</div>
+                <p class="text-[var(--muted-foreground)]">Sin V, S ni M. Activa tu Far Realm Shard por solo 1 PH.</p>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="font-bold text-amber-300">Heightened Spell (2 PH)</div>
+                <p class="text-[var(--muted-foreground)]">En XPHB cuesta solo 2 PH. Impone Desventaja en el save.</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
-<!-- ═══════════════════════════════ METAMAGIA ═══════════════════════════════ -->
-<section id="metamagia">
-  <h2 class="section-title"><span class="emoji">⚡</span> Metamagia (5 Opciones)</h2>
-  <div class="card">
-    <table>
-      <tr><th>#</th><th>Metamagia</th><th>SP</th><th>Origen</th><th>Uso</th></tr>
-      <tr><td>1</td><td><strong>Quickened</strong></td><td>2</td><td>Clase nv2</td><td>Conjuro → Acción Adicional</td></tr>
-      <tr><td>2</td><td><strong>Twinned</strong></td><td>1/nv</td><td>Clase nv2</td><td>+1 objetivo extra</td></tr>
-      <tr><td>3</td><td><strong>Subtle</strong></td><td>1</td><td>Feat nv4</td><td>Sin V/S. Counterspell sin contra</td></tr>
-      <tr><td>4</td><td><strong>Heightened</strong></td><td>3</td><td>Feat nv4</td><td>Desventaja en save. Ejecución</td></tr>
-      <tr><td>5</td><td><strong>Empowered</strong></td><td>1</td><td>Clase nv10</td><td>Re-tira hasta 5 dados de daño</td></tr>
-    </table>
-  </div>
-  <div class="tip"><strong>Sorcery Incarnate (nv7):</strong> Con Innate Sorcery activa, combina 2 metamagias en 1 conjuro. Quickened + Heightened = conjuro como BA con Desventaja.</div>
-</section>
+      </div>
+    </section>
 
-<!-- ═══════════════════════════════ ITEMS ═══════════════════════════════ -->
-<section id="items">
-  <h2 class="section-title"><span class="emoji">🗡️</span> Objetos Mágicos por Tier</h2>
-  
-  <h3 class="sub-title">🟢 Uncommon (Niveles 3-5)</h3>
-  <div class="card">
-    <table>
-      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
-      <tr><td><strong>Bloodwell Vial +1</strong></td><td>Sí</td><td>+1 CD/ataque. Recupera 5 SP en short rest</td></tr>
-      <tr><td>Cloak of Protection</td><td>Sí</td><td>+1 CA, +1 TODAS las salvaciones</td></tr>
-      <tr><td>Pearl of Power</td><td>Sí</td><td>1/día recupera 1 slot de nv1-3</td></tr>
-    </table>
-  </div>
+    <!-- =================================================================== -->
+    <!-- TAB 2: FICHA NIVEL 3 & AUDITORÃA INTERACTIVA DE ROLL20              -->
+    <!-- =================================================================== -->
+    <section id="tab-roll20" class="hidden space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Left: Interactive Audit Checklist for Roll20 PDF (7 cols) -->
+        <div class="lg:col-span-7 bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h2 class="text-lg font-bold text-[var(--foreground)]">ðŸ› ï¸ AuditorÃ­a de tu PDF de Roll20 (Nivel 3)</h2>
+              <p class="text-xs text-[var(--muted-foreground)]">
+                Marca cada casilla a medida que vayas corrigiendo estos 6 puntos en tu hoja de Roll20 para que quede 100% legal segÃºn <code>sorcerer_xphb</code>:
+              </p>
+            </div>
+            <span id="audit-progress" class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+              0 / 6 Completados
+            </span>
+          </div>
 
-  <h3 class="sub-title">🔵 Rare (Niveles 5-10)</h3>
-  <div class="card">
-    <table>
-      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
-      <tr><td><strong>Bloodwell Vial +2</strong></td><td>Sí</td><td>+2 CD/ataque. Recupera 5 SP</td></tr>
-      <tr><td><strong>Far Realm Shard</strong></td><td>Sí</td><td>Al usar metamagia: 3d6 psíquico gratis</td></tr>
-      <tr><td>Shadowfell Shard</td><td>Sí</td><td>Al usar metamagia vs save: Desventaja</td></tr>
-    </table>
-  </div>
+          <div class="space-y-2.5" id="audit-list">
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">1. Subir Iniciativa de +2 a +4 (PÃ¡gina 1)</div>
+                <p class="text-[var(--muted-foreground)]">Tienes DES +2 y la dote <strong>Alerta (+2 de Competencia)</strong>. Tu Iniciativa total a nivel 3 es <strong>+4</strong>.</p>
+              </div>
+            </label>
 
-  <h3 class="sub-title">🟣 Very Rare (Niveles 10-14)</h3>
-  <div class="card">
-    <table>
-      <tr><th>Item</th><th>Sint.</th><th>Efecto</th></tr>
-      <tr><td><strong>Bloodwell Vial +3</strong></td><td>Sí</td><td>+3 CD/ataque. Recupera 5 SP</td></tr>
-      <tr><td>Illusionist's Bracers</td><td>Sí</td><td>Al lanzar cantrip: lánzalo otra vez como BA</td></tr>
-    </table>
-  </div>
-</section>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">2. Poner Dote Afortunado (Lucky) en "VersÃ¡til" (PÃ¡ginas 2, 3 y 5)</div>
+                <p class="text-[var(--muted-foreground)]">En tu PDF pusiste que <em>VersÃ¡til</em> otorga <em>Alerta</em> (duplicada). CÃ¡mbialo por <strong>Afortunado (Lucky): 3 Puntos de Suerte/DL</strong> para darte Ventaja en d20 o imponer Desventaja a un ataque contra ti.</p>
+              </div>
+            </label>
 
-<!-- ═══════════════════════════════ LEGENDARIOS ═══════════════════════════════ -->
-<section id="legendarios">
-  <h2 class="section-title"><span class="emoji">🔴</span> Poderes Legendarios (Nivel 15+)</h2>
-  
-  <div class="card legendary">
-    <h3>🛡️ Túnica del Archimago — "Dermis Marciana"</h3>
-    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización</span>
-    <table>
-      <tr><td><strong>CD</strong></td><td>+2</td></tr>
-      <tr><td><strong>CA</strong></td><td>15 + DEX (reemplaza Mage Armor)</td></tr>
-      <tr><td><strong>Defensa</strong></td><td>Ventaja en TODAS las saves contra magia</td></tr>
-    </table>
-    <div class="reskin">La gabardina noir respira. Se endurece ante los impactos. Tiene un brillo verde tenue visible solo bajo luz de luna.</div>
-  </div>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">3. Corregir CD de Mind Sliver a DC 15 / 16 con Innata (PÃ¡ginas 1 y 6)</div>
+                <p class="text-[var(--muted-foreground)]">En la PÃ¡gina 1 tu <em>Mind Sliver</em> dice <code>DC14</code>. Con CAR 20 (+5) y Competencia (+2), tu CD base es <strong>15</strong> (y <strong>16</strong> con HechicerÃ­a Innata).</p>
+              </div>
+            </label>
 
-  <div class="card legendary">
-    <h3>🫥 Capa de Invisibilidad — "Desfase Dimensional"</h3>
-    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización</span>
-    <table>
-      <tr><td><strong>Efecto</strong></td><td>Invisible total. <strong class="highlight">NO se rompe</strong> al atacar/castear</td></tr>
-      <tr><td><strong>Duración</strong></td><td>2 horas (bloques de 1 min), recarga al amanecer</td></tr>
-    </table>
-    <p style="margin-top:8px">Con <strong>Psionic Sorcery</strong> (sin V/S/M): eres un fantasma que destruye mentes. Nadie te ve. Nadie te oye. Solo mueren.</p>
-  </div>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">4. Corregir descripciÃ³n de HechicerÃ­a Innata a CD 16 (PÃ¡gina 5)</div>
+                <p class="text-[var(--muted-foreground)]">El texto dice <em>"CD de conjuros sube a 15 (+1)"</em>. CÃ¡mbialo a <strong>"CD de conjuros sube a 16 (+1)"</strong>.</p>
+              </div>
+            </label>
 
-  <div class="card legendary">
-    <h3>🧬 Tomo de Liderazgo — "Biblioteca Neural de Ma'aleca'andra"</h3>
-    <span class="badge gold">Legendario</span> <span class="badge green">Sin Sintonización</span>
-    <table>
-      <tr><td><strong>Efecto</strong></td><td>CHA <strong class="highlight">+2 permanente</strong> (→22, +6)</td></tr>
-      <tr><td><strong>Proceso</strong></td><td>48h de estudio en 6 días</td></tr>
-    </table>
-  </div>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">5. Cambiar Toll the Dead por Sorcerous Burst PsÃ­quico (PÃ¡gina 4 y 6)</div>
+                <p class="text-[var(--muted-foreground)]">En XPHB 2024, <em>Toll the Dead</em> no es de Hechicero y hace daÃ±o necrÃ³tico. Pon <strong>Sorcerous Burst (XPHB)</strong>: hace <strong>1d8 PsÃ­quico</strong> a 120ft, explota en los 8s y aprovecha la <strong>Ventaja de HechicerÃ­a Innata</strong> (+7 al ataque).</p>
+              </div>
+            </label>
 
-  <div class="card legendary">
-    <h3>📊 Loadout Ideal (3 Sintonizaciones)</h3>
-    <table>
-      <tr><th>Slot</th><th>Item</th><th>CD</th></tr>
-      <tr><td><strong>1</strong></td><td>Túnica del Archimago</td><td>+2</td></tr>
-      <tr><td><strong>2</strong></td><td>Foco Gema Ascendente</td><td>—</td></tr>
-      <tr><td><strong>3</strong></td><td>Capa de Invisibilidad</td><td>—</td></tr>
-      <tr><td><em>Gratis</em></td><td>Tomo de Liderazgo</td><td>CHA 22</td></tr>
-    </table>
-    <p style="margin-top:10px"><strong>CD Final:</strong> 8 + 5 + 6 + 2 = <strong class="highlight">21</strong> (22 con Innate)</p>
-  </div>
-</section>
+            <label class="flex items-start gap-3 p-3 rounded-lg bg-[var(--background)] border border-[var(--border)] cursor-pointer hover:border-emerald-500/40 transition">
+              <input type="checkbox" onchange="updateAuditProgress()" class="mt-1 accent-emerald-500 w-4 h-4" />
+              <div class="text-xs space-y-0.5">
+                <div class="font-bold text-[var(--foreground)]">6. Ajustar los 6 Preparados XPHB y mover Suggestion a Nivel 2 (PÃ¡gina 4)</div>
+                <p class="text-[var(--muted-foreground)]">Mueve <em>Suggestion</em> a Nivel 2. Deja tus <strong>6 Preparados XPHB</strong>: <em>Shield, Mage Armor, Web, Suggestion, Hold Person</em> (para Twinned Spell por 1 PH) y <em>Mirror Image / Mind Whip</em> + tus 4 PsiÃ³nicos gratis.</p>
+              </div>
+            </label>
+          </div>
+        </div>
 
-<!-- ═══════════════════════════════ FOCO GEMA ═══════════════════════════════ -->
-<section id="foco">
-  <h2 class="section-title"><span class="emoji">💎</span> Foco Gema Ascendente</h2>
-  <p style="color:var(--text-dim);margin-bottom:16px"><em>Ascendant Dragon-Touched Focus (Gem) — Fizban's Treasury of Dragons p.26</em></p>
-  
-  <div class="card legendary">
-    <span class="badge gold">Legendario</span> <span class="badge red">Sintonización por Caster</span>
-    <table>
-      <tr><th>Poder</th><th>Mecánica</th><th>Usos</th></tr>
-      <tr><td>🎯 <strong>Ventaja Iniciativa</strong></td><td>Tiras 2d20 y eliges el mayor</td><td>Permanente</td></tr>
-      <tr><td>🫥 <strong>Teleport 15ft</strong></td><td>Cada vez que gastas un slot de conjuro → teleport gratis</td><td><strong class="highlight">¡ILIMITADO!</strong></td></tr>
-      <tr><td>🧠 <strong>Psychic Lance</strong></td><td>7d6 psíquico + Incapacitado. Apunta <strong>por nombre</strong> sin ver</td><td>1/día</td></tr>
-      <tr><td>🔗 <strong>Telepathic Bond</strong></td><td>Red telepática grupal, 1 hora, sin concentración</td><td>1/día</td></tr>
-      <tr><td>💀 <strong>Conjuro a Nv 9</strong></td><td>Cualquier conjuro de nv1+ se trata como si fuera <strong class="highlight">nivel 9</strong></td><td>1/día</td></tr>
-    </table>
-  </div>
+        <!-- Right: Core Stats, Skills & Resource Trackers (5 cols) -->
+        <div class="lg:col-span-5 space-y-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3">
+            <h3 class="text-base font-bold text-[var(--foreground)]">ðŸ“Š EstadÃ­sticas y Habilidades (Roll20 PDF)</h3>
+            <div class="grid grid-cols-3 gap-2 text-center">
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="text-xs text-[var(--muted-foreground)]">FUE</div>
+                <div class="text-base font-bold">10 (+0)</div>
+                <div class="text-xs text-[var(--muted-foreground)]">Save +0</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="text-xs text-[var(--muted-foreground)]">DES</div>
+                <div class="text-base font-bold">14 (+2)</div>
+                <div class="text-xs text-[var(--muted-foreground)]">Save +2</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-emerald-500/40">
+                <div class="text-xs text-emerald-400">CON â˜…</div>
+                <div class="text-base font-bold">14 (+2)</div>
+                <div class="text-xs text-emerald-400">Save +4</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="text-xs text-[var(--muted-foreground)]">INT</div>
+                <div class="text-base font-bold">14 (+2)</div>
+                <div class="text-xs text-[var(--muted-foreground)]">Save +2</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <div class="text-xs text-[var(--muted-foreground)]">SAB</div>
+                <div class="text-base font-bold">14 (+2)</div>
+                <div class="text-xs text-[var(--muted-foreground)]">Save +2</div>
+              </div>
+              <div class="p-2.5 rounded-lg bg-[var(--background)] border border-purple-500/50">
+                <div class="text-xs text-purple-300">CAR â˜…</div>
+                <div class="text-base font-bold text-purple-300">20 (+5)</div>
+                <div class="text-xs text-purple-300">Save +7</div>
+              </div>
+            </div>
 
-  <div class="card important">
-    <h3>Combos Exclusivos del Foco</h3>
-    <div class="combo-box"><span class="action">Shield (reacción)</span> → +5 CA <span class="result">Y te teletransportas 15ft fuera del melee</span>
-<span class="note">El ataque falla Y ya no estás a su alcance</span>
+            <div class="pt-2 border-t border-[var(--border)] space-y-1 text-xs">
+              <div class="font-semibold text-[var(--muted-foreground)] mb-1">HABILIDADES COMPETENTES (NIVEL 3):</div>
+              <div class="flex justify-between"><span>EngaÃ±o (CAR)</span><span class="font-bold text-emerald-400">+7</span></div>
+              <div class="flex justify-between"><span>PersuasiÃ³n (CAR)</span><span class="font-bold text-emerald-400">+7</span></div>
+              <div class="flex justify-between"><span>InvestigaciÃ³n (INT)</span><span class="font-bold text-[var(--foreground)]">+4</span></div>
+              <div class="flex justify-between"><span>Perspicacia (SAB)</span><span class="font-bold text-[var(--foreground)]">+4</span></div>
+              <div class="flex justify-between"><span>PercepciÃ³n (SAB Â· HÃ¡bil)</span><span class="font-bold text-[var(--foreground)]">+4 (Pasiva 14)</span></div>
+            </div>
+          </div>
 
-<span class="action">Counterspell (reacción)</span> → Cancelas el hechizo <span class="result">Y desapareces 15ft</span>
-<span class="note">Fuera del rango del mago enemigo</span>
+          <!-- Interactive Daily Trackers -->
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3">
+            <h3 class="text-sm font-bold text-[var(--foreground)]">ðŸ”‹ Contadores de Mesa (Descanso Largo)</h3>
+            <div class="space-y-2 text-xs">
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <span class="font-semibold">ðŸ€ Puntos de Suerte (Lucky):</span>
+                <div class="flex gap-1.5">
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500" />
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500" />
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500" />
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <span class="font-semibold">ðŸŸ¢ HechicerÃ­a Innata (2/DL):</span>
+                <div class="flex gap-1.5">
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500" />
+                  <input type="checkbox" class="w-4 h-4 accent-emerald-500" />
+                </div>
+              </div>
+              <div class="flex items-center justify-between p-2.5 rounded-lg bg-[var(--background)] border border-[var(--border)]">
+                <span class="font-semibold">âœ¨ InspiraciÃ³n Heroica (Humano):</span>
+                <input type="checkbox" checked class="w-4 h-4 accent-amber-500" />
+              </div>
+            </div>
+          </div>
+        </div>
 
-<span class="action">Mass Suggestion + Ascendant (nv9)</span> → 12 criaturas <span class="result">obedecen por 1 AÑO</span>
-<span class="note">Sin concentración. Sin componentes (Subtle). Sin rastro.</span></div>
-  </div>
+      </div>
+    </section>
 
-  <div class="reskin">La figurilla de arcilla de Tyler ha cristalizado. Lo que antes era plastilina verde ahora es una gema esmeralda que pulsa con luz propia. Dentro, si miras con atención, ves la silueta del Marciano concentrándose.</div>
-</section>
+    <!-- =================================================================== -->
+    <!-- TAB 3: GRIMORIO INTERACTIVO (FILTROS + BUSCADOR + 5E.TOOLS)         -->
+    <!-- =================================================================== -->
+    <section id="tab-grimoire" class="hidden space-y-4">
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-4 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <div class="flex flex-wrap items-center gap-1.5">
+            <button onclick="setSpellFilter('all')" id="pill-all" class="filter-pill active px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Todos
+            </button>
+            <button onclick="setSpellFilter('psychic')" id="pill-psychic" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              ðŸ§  DaÃ±o 100% PsÃ­quico
+            </button>
+            <button onclick="setSpellFilter('psi')" id="pill-psi" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              â˜… PsiÃ³nicos Subclase (Sin V/S/M nv6)
+            </button>
+            <button onclick="setSpellFilter('0')" id="pill-0" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Trucos
+            </button>
+            <button onclick="setSpellFilter('1')" id="pill-1" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Nivel 1
+            </button>
+            <button onclick="setSpellFilter('2')" id="pill-2" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Nivel 2
+            </button>
+            <button onclick="setSpellFilter('3')" id="pill-3" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Nivel 3
+            </button>
+            <button onclick="setSpellFilter('high')" id="pill-high" class="filter-pill px-3 py-1 rounded-full text-xs font-semibold border border-[var(--border)] transition">
+              Nivel 4â€“7
+            </button>
+          </div>
 
-<!-- ═══════════════════════════════ COMBOS ═══════════════════════════════ -->
-<section id="combos">
-  <h2 class="section-title"><span class="emoji">💀</span> Combos de Combate</h2>
+          <div class="flex items-center gap-2">
+            <label class="flex items-center gap-1.5 text-xs text-[var(--muted-foreground)] cursor-pointer">
+              <input type="checkbox" id="filter-by-hud-level" onchange="renderSpells()" class="accent-emerald-500" />
+              Solo desbloqueados a mi Nivel (<span id="lbl-hud-lvl">3</span>)
+            </label>
+            <input
+              type="text"
+              id="spell-search"
+              oninput="renderSpells()"
+              placeholder="Buscar conjuro o efecto..."
+              class="px-3 py-1 rounded-lg text-xs bg-[var(--background)] border border-[var(--border)] text-[var(--foreground)] focus:outline-none focus:border-purple-400"
+            />
+          </div>
+        </div>
+      </div>
 
-  <h3 class="sub-title">Niveles 3-5: La Kill Box</h3>
-  <div class="card">
-    <div class="combo-box"><span class="action">R1: BA Innate Sorcery (CD+1)</span> → <span class="action">Acción: Web (DEX save)</span>
-<span class="result">→ Grupo Restrained (velocidad 0, ventaja contra ellos)</span>
+      <!-- Dynamic Spell Cards Grid -->
+      <div id="spells-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
 
-<span class="action">R2: Mind Sliver al atrapado</span> → <span class="result">-1d4 a su próximo save</span>
-<span class="note">Tu equipo ataca con Ventaja</span>
+    <!-- =================================================================== -->
+    <!-- TAB 4: ARSENAL & ITEMS (NIVEL 6 TRIAL â†’ NIVEL 15 LEGENDARIO)        -->
+    <!-- =================================================================== -->
+    <section id="tab-items" class="hidden space-y-6">
+      <!-- Interactive 3-Slot Attunement Loadout Bar -->
+      <div class="bg-[var(--card)] border border-emerald-500/40 rounded-xl p-5 space-y-3">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-base font-bold text-[var(--foreground)]">ðŸ”— Tus 3 Ranuras de SintonizaciÃ³n Activas</h2>
+            <p class="text-xs text-[var(--muted-foreground)]">Haz clic en cualquier objeto de abajo con sintonizaciÃ³n para equiparlo en tu Loadout:</p>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="setLoadoutPreset('nv6')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-purple-500/15 text-purple-300 border border-purple-500/30">
+              Cargar Loadout Nivel 6 (Trial)
+            </button>
+            <button onclick="setLoadoutPreset('nv15')" class="px-3 py-1 rounded-lg text-xs font-semibold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+              Cargar Loadout Legendario (Nv14+)
+            </button>
+          </div>
+        </div>
+        <div id="attunement-slots" class="grid grid-cols-1 sm:grid-cols-3 gap-3"></div>
+      </div>
 
-<span class="action">R3: Quickened Dissonant Whispers</span> + <span class="action">Toll the Dead</span>
-<span class="result">→ Doble daño en un solo turno</span></div>
-  </div>
+      <!-- All Magic Items Grid -->
+      <div id="items-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
 
-  <h3 class="sub-title">Niveles 9-11: El Aneurisma Marciano</h3>
-  <div class="card">
-    <div class="combo-box"><span class="action">R1: BA Innate → Synaptic Static (8d6 psíquico AoE)</span>
-<span class="result">→ Grupo: -1d6 a TODO por 1 minuto. Sin concentración.</span>
+    <!-- =================================================================== -->
+    <!-- TAB 5: PROGRESIÃ“N NIVEL 3 â†’ 14 & CALCULADORA DEL EJÃ‰RCITO           -->
+    <!-- =================================================================== -->
+    <section id="tab-prog" class="hidden space-y-6">
+      
+      <!-- Progression Table XPHB -->
+      <div class="bg-[var(--card)] border border-[var(--border)] rounded-xl p-5 space-y-3 overflow-x-auto custom-scroll">
+        <h2 class="text-base font-bold text-[var(--foreground)]">ðŸ“ˆ Tabla Oficial de ProgresiÃ³n (`sorcerer_xphb` + `sub_aberrant_xphb`)</h2>
+        <p class="text-xs text-[var(--muted-foreground)]">Haz clic en cualquier fila para cargar ese nivel automÃ¡ticamente en el HUD superior:</p>
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-[var(--border)] text-emerald-400">
+              <th class="py-2 px-3">Nv</th>
+              <th class="py-2 px-3">HP</th>
+              <th class="py-2 px-3">Prof</th>
+              <th class="py-2 px-3">PH Totales</th>
+              <th class="py-2 px-3">Trucos</th>
+              <th class="py-2 px-3">Prep. XPHB (+Psi)</th>
+              <th class="py-2 px-3">Hito Clave de Clase / Subclase / Dote</th>
+            </tr>
+          </thead>
+          <tbody id="prog-table-body" class="divide-y divide-[var(--border)]"></tbody>
+        </table>
+      </div>
 
-<span class="action">R2: Web/Hypnotic Pattern ENCIMA</span>
-<span class="result">→ Enemies con -1d6 fallan el save casi garantizado</span>
-<span class="note">Synaptic Static no requiere concentración → puedes concentrarte en Web</span></div>
-  </div>
+      <!-- Martian Army Calculator (Mass Suggestion Lv9) -->
+      <div class="bg-[var(--card)] border border-amber-500/40 rounded-xl p-5 space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
+              COMBO FOCO GEMA ASCENDENTE (1/DÃA CONJURO A NIVEL 9)
+            </span>
+            <h3 class="text-lg font-bold text-[var(--foreground)] mt-1">ðŸ‘‘ Calculadora del EjÃ©rcito Marciano (Mass Suggestion Nv 9)</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              <em>Mass Suggestion</em> lanzado a Nivel 9 dura <strong>1 aÃ±o y 1 dÃ­a</strong>, afecta hasta a <strong>12 criaturas por dÃ­a</strong> y <strong>NO requiere concentraciÃ³n</strong>.
+            </p>
+          </div>
+          <div class="text-right">
+            <div class="text-xs text-[var(--muted-foreground)]">Soldados / EspÃ­as Activos:</div>
+            <div id="army-count" class="text-3xl font-extrabold text-emerald-400">360</div>
+          </div>
+        </div>
 
-  <h3 class="sub-title">Nivel 14+: El Asesinato Perfecto</h3>
-  <div class="card legendary">
-    <div class="combo-box"><span class="note">PRE: Invisible (Capa) + Revelation in Flesh (Compresión)</span>
-<span class="action">→ Te deslizas bajo la puerta. Invisible. Silencioso.</span>
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs">
+            <span>DÃ­as consecutivos lanzando Mass Suggestion Nv9: <strong id="army-days-label" class="text-amber-300">30 dÃ­as (1 mes)</strong></span>
+            <span>DuraciÃ³n de cada vÃ­nculo: <strong>366 dÃ­as (Sin ConcentraciÃ³n)</strong></span>
+          </div>
+          <input type="range" id="army-slider" min="1" max="365" value="30" oninput="updateArmyCalc()" class="w-full accent-emerald-500" />
+        </div>
+      </div>
 
-<span class="action">BA: Innate Sorcery (CD 19)</span>
-<span class="action">Acción: Feeblemind (INT save CD 19)</span>
-<span class="result">→ INT y CHA bajan a 1. PERMANENTE hasta Greater Restoration.</span>
-<span class="note">Con Psionic Sorcery: sin V/S/M. Nadie sabe que estuviste ahí.</span>
-<span class="note">Te comprimes y sales por debajo de la puerta.</span>
-<span class="result">→ A la mañana lo encuentran babeando. Nadie sabe qué pasó.</span></div>
-  </div>
-</section>
+    </section>
 
-<!-- ═══════════════════════════════ EJÉRCITO ═══════════════════════════════ -->
-<section id="ejercito">
-  <h2 class="section-title"><span class="emoji">👑</span> El Ejército del Marciano</h2>
-  <p style="color:var(--text-dim);margin-bottom:16px"><em>Mass Suggestion a nivel 9 (Foco Gema Ascendente) · 1/día · Sin concentración</em></p>
+  </main>
 
-  <div class="card legendary">
-    <h3>La Matemática del Ejército</h3>
-    <p>Mass Suggestion a nv9 = <strong>12 criaturas</strong> obedecen <strong class="highlight">1 año y 1 día</strong>. Sin concentración. Cada día, 12 más.</p>
-    <table>
-      <tr><th>Tiempo</th><th>Soldados</th></tr>
-      <tr><td>1 día</td><td>12</td></tr>
-      <tr><td>1 semana</td><td>84</td></tr>
-      <tr><td>1 mes</td><td><strong>360</strong></td></tr>
-      <tr><td>6 meses</td><td><strong>2,160</strong></td></tr>
-      <tr><td>1 año</td><td><strong class="highlight">4,380</strong></td></tr>
-    </table>
-  </div>
+  <script>
+    // =========================================================================
+    // DATA: XPHB 2024 SORCERER & ABERRANT SORCERY PROGRESSION (LEVELS 3 TO 14)
+    // =========================================================================
+    const LEVEL_DATA = {
+      3:  { hp: 24, pb: 2, spBase: 3,  spFeat: 0, cantrips: 4, prep: 6,  psi: 4, slots: "4Ã—Nv1, 2Ã—Nv2", milestone: "Subclase HechicerÃ­a Aberrante: Psionic Spells (Nv1-2) + Telepathic Speech" },
+      4:  { hp: 30, pb: 2, spBase: 4,  spFeat: 2, cantrips: 5, prep: 7,  psi: 4, slots: "4Ã—Nv1, 3Ã—Nv2", milestone: "â­ Dote: Metamagic Adept (+2 PH, +Subtle Spell, +Heightened Spell)" },
+      5:  { hp: 36, pb: 3, spBase: 5,  spFeat: 2, cantrips: 5, prep: 9,  psi: 6, slots: "4Ã—Nv1, 3Ã—Nv2, 2Ã—Nv3", milestone: "Sorcerous Restoration (+2 PH en DC) Â· PsiÃ³nicos: Hunger of Hadar, Sending Â· Trucos a 2 dados" },
+      6:  { hp: 42, pb: 3, spBase: 6,  spFeat: 2, cantrips: 5, prep: 10, psi: 6, slots: "4Ã—Nv1, 3Ã—Nv2, 3Ã—Nv3", milestone: "â­â­â­ Psionic Sorcery (PsiÃ³nicos con PH sin V/S/M) + Psychic Defenses (Resistencia PsÃ­quica)" },
+      7:  { hp: 48, pb: 3, spBase: 7,  spFeat: 2, cantrips: 5, prep: 11, psi: 8, slots: "4Ã—Nv1, 3Ã—Nv2, 3Ã—Nv3, 1Ã—Nv4", milestone: "Sorcery Incarnate (2 Metamagias en 1 conjuro) Â· PsiÃ³nicos: Summon Aberration, Evard's Black Tentacles" },
+      8:  { hp: 54, pb: 3, spBase: 8,  spFeat: 2, cantrips: 5, prep: 12, psi: 8, slots: "4Ã—Nv1, 3Ã—Nv2, 3Ã—Nv3, 2Ã—Nv4", milestone: "â­ Dote: War Caster (Ventaja ConcentraciÃ³n, Conjuro en Ataque de Oportunidad, +1 SAB)" },
+      9:  { hp: 60, pb: 4, spBase: 9,  spFeat: 2, cantrips: 5, prep: 14, psi: 10, slots: "4Ã—Nv1, 3Ã—Nv2, 3Ã—Nv3, 2Ã—Nv4, 1Ã—Nv5", milestone: "â­â­â­ Synaptic Static (8d6 PsÃ­quico AoE sin conc.) Â· PsiÃ³nicos Gratis: Telekinesis + Rary's Telepathic Bond" },
+      10: { hp: 66, pb: 4, spBase: 10, spFeat: 2, cantrips: 6, prep: 15, psi: 10, slots: "4Ã—Nv1, 3Ã—Nv2, 3Ã—Nv3, 3Ã—Nv4, 2Ã—Nv5", milestone: "Â¡2 Metamagias adicionales en XPHB! (+Empowered Spell, +Careful Spell = 6 totales)" },
+      11: { hp: 72, pb: 4, spBase: 11, spFeat: 2, cantrips: 6, prep: 16, psi: 10, slots: "+1Ã—Nv6", milestone: "Mass Suggestion (12 criaturas sin conc.) + Mental Prison Â· Trucos escalan a 3 dados" },
+      12: { hp: 78, pb: 4, spBase: 12, spFeat: 2, cantrips: 6, prep: 16, psi: 10, slots: "+1Ã—Nv6", milestone: "â­ Dote: Resilient (SAB 16 â†’ SalvaciÃ³n SAB +7 con ventaja vs Charmed/Frightened)" },
+      13: { hp: 84, pb: 5, spBase: 13, spFeat: 2, cantrips: 6, prep: 18, psi: 10, slots: "+1Ã—Nv7", milestone: "Bono de Competencia +5 (CD base 18) Â· Conjuros Nivel 7 (Power Word Pain / Teleport)" },
+      14: { hp: 90, pb: 5, spBase: 14, spFeat: 2, cantrips: 6, prep: 18, psi: 10, slots: "+1Ã—Nv7", milestone: "â­â­â­ Revelation in Flesh (Vuelo, CompresiÃ³n 1 pulgada, Ver Invisible 60ft, Nado)" }
+    };
 
-  <div class="card">
-    <h3>Plan Operativo</h3>
-    <div class="combo-box"><span class="action">Fase 1 — Red de Inteligencia (Mes 1):</span>
-<span class="note">12 espías/día en diferentes ciudades. 360 informantes al mes.</span>
+    // =========================================================================
+    // DATA: SPELLS (100% PSYCHIC DAMAGE & MENTAL CONTROL GRIMOIRE)
+    // =========================================================================
+    const SPELLS = [
+      {
+        name: "Mind Sliver",
+        level: 0,
+        minCharLevel: 3,
+        psi: true,
+        psychicDmg: true,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "INT Save",
+        dmgText: "1d6 PsÃ­quico (2d6 nv5, 3d6 nv11) + -1d4 al prÃ³ximo save",
+        combo: "Quickened + Conjuro de Control",
+        reskin: "Fisura Craneal: clavas una aguja psiÃ³nica que abre las defensas mentales del enemigo.",
+        url: "https://5e.tools/spells.html#mind%20sliver_xphb"
+      },
+      {
+        name: "Sorcerous Burst (PsÃ­quico)",
+        level: 0,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "Ataque Conjuro",
+        dmgText: "1d8 PsÃ­quico (2d8 nv5, 3d8 nv11). Â¡Cada 8 explota (+1d8 extra hasta 5d8)!",
+        combo: "Ventaja automÃ¡tica con HechicerÃ­a Innata",
+        reskin: "RÃ¡faga de VisiÃ³n Marciana: un haz esmeralda de energÃ­a mental pura a 120 pies.",
+        url: "https://5e.tools/spells.html#sorcerous%20burst_xphb"
+      },
+      {
+        name: "Minor Illusion",
+        level: 0,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "InvestigaciÃ³n",
+        dmgText: "Imagen o sonido ilusorio en cubo de 5 pies (1 min)",
+        combo: "DistracciÃ³n silenciosa",
+        reskin: "Ruido Blanco: proyectas susurros marcianos o tu propia silueta en las sombras.",
+        url: "https://5e.tools/spells.html#minor%20illusion_xphb"
+      },
+      {
+        name: "Mage Hand",
+        level: 0,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "Utilidad",
+        dmgText: "Telekinesis menor a 30 pies (manipula hasta 10 lb)",
+        combo: "Utilidad fuera de combate",
+        reskin: "Telekinesis Menor: mueves objetos con una leve inclinaciÃ³n de cabeza.",
+        url: "https://5e.tools/spells.html#mage%20hand_xphb"
+      },
+      {
+        name: "Dissonant Whispers",
+        level: 1,
+        minCharLevel: 3,
+        psi: true,
+        psychicDmg: true,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "SAB Save",
+        dmgText: "3d6 PsÃ­quico + gasta su ReacciÃ³n para huir (provoca Ataques de Oportunidad)",
+        combo: "Nv6 Psionic Sorcery: cuesta solo 1 PH y CERO componentes V/S/M",
+        reskin: "El Aullido de Ma'aleca'andra: inyectas una frecuencia de terror cÃ³smico en su corteza cerebral.",
+        url: "https://5e.tools/spells.html#dissonant%20whispers_xphb"
+      },
+      {
+        name: "Arms of Hadar (Reskin PsÃ­quico / Command)",
+        level: 1,
+        minCharLevel: 3,
+        psi: true,
+        psychicDmg: true,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "FUE Save",
+        dmgText: "2d6 (AoE 10 pies) + objetivo pierde Reacciones (o Swap Tasha â†’ Command)",
+        combo: "Escape cuerpo a cuerpo (1 PH a nv6)",
+        reskin: "ExpansiÃ³n de Biomasa: la silueta del Marciano golpea a todos los que te rodean.",
+        url: "https://5e.tools/spells.html#arms%20of%20hadar_xphb"
+      },
+      {
+        name: "Shield",
+        level: 1,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "ReacciÃ³n",
+        saveOrAtk: "Defensa",
+        dmgText: "+5 CA hasta tu prÃ³ximo turno e inmune a Magic Missile",
+        combo: "Con Foco Gema: +5 CA y te teletransportas 15 pies fuera de peligro",
+        reskin: "Densidad Fantasma: detienes las espadas y flechas a milÃ­metros de tu gabardina.",
+        url: "https://5e.tools/spells.html#shield_xphb"
+      },
+      {
+        name: "Mage Armor",
+        level: 1,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "Defensa",
+        dmgText: "CA = 13 + DES (15) durante 8 horas sin concentraciÃ³n",
+        combo: "Reemplazar a Nivel 6 cuando consigas Elven Chain (CA 16)",
+        reskin: "Dermis Marciana: endureces la densidad molecular de tu piel.",
+        url: "https://5e.tools/spells.html#mage%20armor_xphb"
+      },
+      {
+        name: "Tasha's Mind Whip",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "INT Save",
+        dmgText: "3d6 PsÃ­quico + sin Reacciones y solo puede Moverse O Actuar (sin concentraciÃ³n)",
+        combo: "â­ Twinned Spell (1 PH): golpea a 2 enemigos por 3d6 PsÃ­quico a cada uno",
+        reskin: "Cortocircuito Motor: desconectas el cerebelo del enemigo durante 6 segundos.",
+        url: "https://5e.tools/spells.html#tasha's%20mind%20whip_tce"
+      },
+      {
+        name: "Mind Spike",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n (Conc. 1h)",
+        saveOrAtk: "SAB Save",
+        dmgText: "3d8 PsÃ­quico + conoces siempre la posiciÃ³n del objetivo y no puede ocultarse",
+        combo: "100% XPHB Oficial Â· Rastreador psÃ­quico de fugitivos",
+        reskin: "Baliza SinÃ¡ptica: clavas un receptor telepÃ¡tico en su mente.",
+        url: "https://5e.tools/spells.html#mind%20spike_xphb"
+      },
+      {
+        name: "Phantasmal Force (XPHB 2024)",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "INT Save",
+        dmgText: "2d8 PsÃ­quico AUTOMÃTICO cada turno (buffeado en 2024 de 1d6 a 2d8)",
+        combo: "Castigo constante contra jefes con baja INT",
+        reskin: "AlucinaciÃ³n de Despair: el enemigo cree estar ardiendo en el vacÃ­o marciano.",
+        url: "https://5e.tools/spells.html#phantasmal%20force_xphb"
+      },
+      {
+        name: "Hold Person",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "SAB Save",
+        dmgText: "Paralizado (CrÃ­ticos AutomÃ¡ticos en melee, falla saves FUE/DES)",
+        combo: "â­ Twinned Spell (1 PH): paralizas a 2 enemigos humanoides a la vez",
+        reskin: "Bloqueo de Nervio Central: congelas cada mÃºsculo de sus cuerpos.",
+        url: "https://5e.tools/spells.html#hold%20person_xphb"
+      },
+      {
+        name: "Suggestion",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 8h)",
+        saveOrAtk: "SAB Save",
+        dmgText: "El objetivo obedece una instrucciÃ³n realizable de 1-2 frases hasta por 8 horas",
+        combo: "Subtle Spell (1 PH): control mental indetectable en medio de una conversaciÃ³n",
+        reskin: "Implante Subconsciente: el objetivo jura que la idea fue suya.",
+        url: "https://5e.tools/spells.html#suggestion_xphb"
+      },
+      {
+        name: "Web",
+        level: 2,
+        minCharLevel: 3,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 1h)",
+        saveOrAtk: "DES Save",
+        dmgText: "Cubo 20ft Terreno DifÃ­cil + Restrained (vel. 0, ventaja al atacarlos)",
+        combo: "La Kill Box de Nivel 3â€“6",
+        reskin: "Pozo de Gravedad EctoplÃ¡smica: el suelo los atrapa como brea psÃ­quica.",
+        url: "https://5e.tools/spells.html#web_xphb"
+      },
+      {
+        name: "Detect Thoughts",
+        level: 2,
+        minCharLevel: 3,
+        psi: true,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "SAB Save",
+        dmgText: "Lees pensamientos superficiales a 30ft y sondeas memorias profundas",
+        combo: "Nv6 Psionic Sorcery: 2 PH sin V/S/M (interrogatorio invisible)",
+        reskin: "VisiÃ³n Marciana: ves las verdades flotando como humo de colores sobre sus cabezas.",
+        url: "https://5e.tools/spells.html#detect%20thoughts_xphb"
+      },
+      {
+        name: "Calm Emotions",
+        level: 2,
+        minCharLevel: 3,
+        psi: true,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "CAR Save",
+        dmgText: "Esfera 20ft: suprime Charmed/Frightened en aliados o vuelve Indiferentes a hostiles",
+        combo: "Nv6 Psionic Sorcery: 2 PH para apagar una pelea antes de que empiece",
+        reskin: "Frecuencia Cero: reduces la adrenalina de toda la habitaciÃ³n a cero.",
+        url: "https://5e.tools/spells.html#calm%20emotions_xphb"
+      },
+      {
+        name: "Hypnotic Pattern",
+        level: 3,
+        minCharLevel: 5,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "SAB Save",
+        dmgText: "Cubo 30ft: Charmed + Incapacitated + Velocidad 0 durante 1 minuto",
+        combo: "Subtle Spell (1 PH) + Far Realm Shard (3d6 PsÃ­quico gratis al jefe)",
+        reskin: "Sobrecarga Sensorial: muestras un segundo de la historia de Marte y sus mentes se apagan.",
+        url: "https://5e.tools/spells.html#hypnotic%20pattern_xphb"
+      },
+      {
+        name: "Counterspell",
+        level: 3,
+        minCharLevel: 5,
+        psi: false,
+        psychicDmg: false,
+        time: "ReacciÃ³n",
+        saveOrAtk: "CON Save (XPHB)",
+        dmgText: "Interrumpe el conjuro enemigo (en XPHB el enemigo ni siquiera pierde su slot si usas CS, o falla su acciÃ³n)",
+        combo: "Subtle Spell (1 PH): incontrarrestable + activa tu Far Realm Shard (3d6 PsÃ­quico)",
+        reskin: "Amnesia InstantÃ¡nea: borras la palabra arcana de la mente del mago antes de que la pronuncie.",
+        url: "https://5e.tools/spells.html#counterspell_xphb"
+      },
+      {
+        name: "Sending",
+        level: 3,
+        minCharLevel: 5,
+        psi: true,
+        psychicDmg: false,
+        time: "1 AcciÃ³n",
+        saveOrAtk: "TelepatÃ­a",
+        dmgText: "Mensaje mental de 25 palabras a cualquier distancia o plano de existencia",
+        combo: "Nv6 Psionic Sorcery: 3 PH sin hablar ni mover un dedo",
+        reskin: "Radio CÃ³smica: hablas directamente dentro del crÃ¡neo de cualquier persona en el mundo.",
+        url: "https://5e.tools/spells.html#sending_xphb"
+      },
+      {
+        name: "Summon Aberration",
+        level: 4,
+        minCharLevel: 7,
+        psi: true,
+        psychicDmg: true,
+        time: "1 AcciÃ³n (Conc. 1h)",
+        saveOrAtk: "Ataque Conjuro",
+        dmgText: "Invocas un Star Spawn / Mind Flayer psÃ­quico que hace 2 ataques de 1d8+7 PsÃ­quico por turno",
+        combo: "Psionic Sorcery (4 PH): Â¡Gratis en la lista de sub_aberrant_xphb!",
+        reskin: "ProyecciÃ³n Astral Marciana: separas la silueta del Marciano para que luche a tu lado.",
+        url: "https://5e.tools/spells.html#summon%20aberration_xphb"
+      },
+      {
+        name: "Synaptic Static",
+        level: 5,
+        minCharLevel: 9,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n (SIN Conc.)",
+        saveOrAtk: "INT Save",
+        dmgText: "8d6 PsÃ­quico en esfera de 20ft + restan 1d6 a ataques, habilidades y concentraciÃ³n por 1 min",
+        combo: "â­â­â­ Fireball PsÃ­quico SIN concentraciÃ³n + Empowered Spell",
+        reskin: "El Aneurisma Marciano: detonas una bomba de estÃ¡tica mental que frÃ­e las sinapsis de todo el escuadrÃ³n.",
+        url: "https://5e.tools/spells.html#synaptic%20static_xphb"
+      },
+      {
+        name: "Telekinesis",
+        level: 5,
+        minCharLevel: 9,
+        psi: true,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (Conc. 10m)",
+        saveOrAtk: "Prueba CAR vs FUE",
+        dmgText: "Mueves y apresas (Restrained) en el aire criaturas o hasta 1,000 lb a 60 pies cada turno",
+        combo: "Gratis en sub_aberrant_xphb Â· Se lanza por 5 PH sin componentes V/S",
+        reskin: "Psicoquinesis Absoluta: levantas al enemigo del cuello sin tocarlo.",
+        url: "https://5e.tools/spells.html#telekinesis_xphb"
+      },
+      {
+        name: "Mass Suggestion",
+        level: 6,
+        minCharLevel: 11,
+        psi: false,
+        psychicDmg: false,
+        time: "1 AcciÃ³n (SIN Conc.)",
+        saveOrAtk: "SAB Save",
+        dmgText: "Hasta 12 criaturas obedecen durante 24h (o 1 AÃ‘O Y 1 DÃA a Nivel 9 con Foco Gema)",
+        combo: "ðŸ‘‘ Creador de EjÃ©rcitos (4,380 soldados al aÃ±o sin concentraciÃ³n)",
+        reskin: "ReprogramaciÃ³n Colectiva: reescribes la lealtad de un pelotÃ³n entero en un parpadeo.",
+        url: "https://5e.tools/spells.html#mass%20suggestion_xphb"
+      },
+      {
+        name: "Mental Prison",
+        level: 6,
+        minCharLevel: 11,
+        psi: false,
+        psychicDmg: true,
+        time: "1 AcciÃ³n (Conc. 1m)",
+        saveOrAtk: "INT Save",
+        dmgText: "5d10 PsÃ­quico inicial + Restrained/Cegado + 10d10 PsÃ­quico si se mueve o lo empujan (15d10 total)",
+        combo: "Heightened Spell (2 PH) = 15d10 PsÃ­quico (~82.5 daÃ±o)",
+        reskin: "Celda de Ma'aleca'andra: encierras su mente en una ilusiÃ³n de fuego marciano letal.",
+        url: "https://5e.tools/spells.html#mental%20prison_xge"
+      }
+    ];
 
-<span class="action">Fase 2 — Guardia Personal (Mes 2):</span>
-<span class="note">Mercenarios y veteranos. 360 soldados profesionales.</span>
+    // =========================================================================
+    // DATA: MAGIC ITEMS (LEVEL 6 TRIAL -> LEVEL 15 LEGENDARY)
+    // =========================================================================
+    const ITEMS = [
+      {
+        id: "vial2",
+        name: "Bloodwell Vial (+1 / +2 / +3)",
+        rarity: "Uncommon / Rare / Very Rare",
+        tier: "Nivel 6 Core",
+        attune: true,
+        effect: "+1/+2/+3 a la CD de salvaciÃ³n y ataques de conjuro de Hechicero. 1/dÃ­a al gastar un Dado de Golpe en un Descanso Corto recuperas 5 PH.",
+        martian: "Muestra de Sangre Marciana cristalizada que recarga tus reservas psiÃ³nicas.",
+        url: "https://5e.tools/items.html#bloodwell%20vial_tce"
+      },
+      {
+        id: "far_realm",
+        name: "Far Realm Shard",
+        rarity: "Rare (Nivel 6)",
+        tier: "Nivel 6 Core",
+        attune: true,
+        effect: "Cada vez que usas Metamagia en un conjuro, 1 criatura a 30 pies hace save de CAR contra tu CD o sufre 3d6 de daÃ±o PsÃ­quico y queda Asustada de ti hasta el final de tu prÃ³ximo turno.",
+        martian: "Astilla de la DimensiÃ³n Cero: transforma cada punto de Metamagia en un latigazo de 3d6 PsÃ­quico gratis.",
+        url: "https://5e.tools/items.html#far%20realm%20shard_tce"
+      },
+      {
+        id: "shadowfell",
+        name: "Shadowfell Shard",
+        rarity: "Rare (Nivel 6)",
+        tier: "Nivel 6 Core",
+        attune: true,
+        effect: "Cada vez que usas Metamagia en un conjuro, 1 objetivo del conjuro sufre Desventaja en pruebas de habilidad y tiradas de salvaciÃ³n de un atributo que elijas (ej. SAB o INT).",
+        martian: "Resonancia de Despair: debilita la voluntad del objetivo antes de que intente resistirte.",
+        url: "https://5e.tools/items.html#shadowfell%20shard_tce"
+      },
+      {
+        id: "elven_chain",
+        name: "Elven Chain",
+        rarity: "Rare (Nivel 6)",
+        tier: "Sin SintonizaciÃ³n",
+        attune: false,
+        effect: "CA 14 + DES (+2) = CA 16 permanente. Se considera que tienes competencia aunque no tengas competencia en armadura media. Te libera Mage Armor.",
+        martian: "Tejido de Fibra Marciana oculto bajo tu gabardina de detective.",
+        url: "https://5e.tools/items.html#elven%20chain_xdmg"
+      },
+      {
+        id: "gem_focus",
+        name: "Ascendant Dragon-Touched Focus (Gem)",
+        rarity: "Rare (Stirring) â†’ Legendary (Ascendant)",
+        tier: "Legendario Nv14+",
+        attune: true,
+        effect: "Ventaja en Iniciativa siempre. Gem (Stirring): Teletransporte gratis de 15 pies cada vez que gastas un slot. Wakened: Psychic Lance + Telepathic Bond 1/dÃ­a. Ascendant: 1/dÃ­a un conjuro de nv1+ cuenta como Nivel 9.",
+        martian: "La figurilla de arcilla verde que moldeÃ³ tu hijo Tyler, despierta con poder cÃ³smico.",
+        url: "https://5e.tools/items.html#ascendant%20dragon-touched%20focus_ftd"
+      },
+      {
+        id: "robe_archmagi",
+        name: "Robe of the Archmagi",
+        rarity: "Legendary",
+        tier: "Legendario Nv14+",
+        attune: true,
+        effect: "CA 15 + DES (+2) = 17. Ventaja en todas las salvaciones contra conjuros y efectos mÃ¡gicos. Tu CD de salvaciÃ³n y ataque de conjuros aumentan en +2.",
+        martian: "La Gabardina Definitiva del Detective de Ma'aleca'andra.",
+        url: "https://5e.tools/items.html#robe%20of%20the%20archmagi_xdmg"
+      },
+      {
+        id: "cloak_invis",
+        name: "Cloak of Invisibility",
+        rarity: "Legendary",
+        tier: "Legendario Nv14+",
+        attune: true,
+        effect: "Invisibilidad total hasta 2 horas por dÃ­a que NO se rompe al atacar ni lanzar conjuros. Con Psionic Sorcery (sin V/S/M) eres completamente indetectable.",
+        martian: "Desfase de Densidad Ã“ptica: caminas entre los enemigos sin existir en su espectro visual.",
+        url: "https://5e.tools/items.html#cloak%20of%20invisibility_xdmg"
+      },
+      {
+        id: "tome_cha",
+        name: "Tome of Leadership and Influence",
+        rarity: "Very Rare",
+        tier: "Sin SintonizaciÃ³n",
+        attune: false,
+        effect: "Tras estudiar 48 horas, tu Carisma y tu mÃ¡ximo de Carisma suben en +2 permanentemente (CAR 22 â†’ Mod +6).",
+        martian: "Archivos Neurales de Marte.",
+        url: "https://5e.tools/items.html#tome%20of%20leadership%20and%20influence_xdmg"
+      }
+    ];
 
-<span class="action">Fase 3 — Infiltración Política (Mes 3+):</span>
-<span class="note">Asesores de nobles: "Aconseja paz y cooperación con Jones."</span>
-<span class="result">→ No conquistas reinos. Los reinos se conquistan solos.</span></div>
-  </div>
+    // =========================================================================
+    // STATE & INITIALIZATION
+    // =========================================================================
+    let currentLevel = 6;
+    let buffs = { innate: true, shield: false };
+    let currentSpellFilter = "all";
+    let equippedAttunement = ["vial2", "far_realm", "shadowfell"];
 
-  <div class="tip"><strong>Indetectable:</strong> Subtle Spell (sin V/S) + Sin concentración (sin aura) + Los afectados creen que actúan por voluntad propia. Solo Dispel Magic o Greater Restoration lo rompe, y nadie va a lanzar eso en alguien que parece actuar normalmente.</div>
-</section>
+    function initApp() {
+      // Build level buttons 3 to 14
+      const lvlContainer = document.getElementById("level-buttons");
+      lvlContainer.innerHTML = "";
+      for (let lvl = 3; lvl <= 14; lvl++) {
+        const btn = document.createElement("button");
+        btn.id = `lvl-btn-${lvl}`;
+        btn.className = `lvl-btn px-2.5 py-1 rounded text-xs border border-[var(--border)] transition ${lvl === currentLevel ? "active" : "bg-[var(--background)] text-[var(--muted-foreground)]"}`;
+        btn.textContent = lvl;
+        btn.onclick = () => selectLevel(lvl);
+        lvlContainer.appendChild(btn);
+      }
 
-<!-- ═══════════════════════════════ REROLL ═══════════════════════════════ -->
-<section id="reroll">
-  <h2 class="section-title"><span class="emoji">🎲</span> Guía de Re-Roll Mensual</h2>
+      // Default preset Level 6 Trial
+      applyPreset("nv6");
+      renderSpells();
+      renderItems();
+      renderProgressionTable();
+      updateArmyCalc();
+    }
 
-  <div class="card">
-    <h3>Stats Actuales vs Ideales</h3>
-    <table>
-      <tr><th>Stat</th><th>Actual</th><th>Ideal</th><th>Prioridad</th></tr>
-      <tr><td>CHA</td><td><strong>18</strong> (+2=20)</td><td>18</td><td><span class="badge red">🚫 NUNCA</span></td></tr>
-      <tr><td>CON</td><td>14</td><td><strong>16</strong></td><td><span class="badge gold">#1</span></td></tr>
-      <tr><td>DEX</td><td>14</td><td><strong>16</strong></td><td><span class="badge purple">#2</span></td></tr>
-      <tr><td>WIS</td><td>13</td><td><strong>14</strong></td><td><span class="badge green">#3</span></td></tr>
-      <tr><td>INT</td><td>14</td><td>14</td><td>✅ OK</td></tr>
-      <tr><td>STR</td><td>10</td><td>10</td><td>🚫 Da igual</td></tr>
-    </table>
-  </div>
+    function selectLevel(lvl) {
+      currentLevel = lvl;
+      for (let i = 3; i <= 14; i++) {
+        const b = document.getElementById(`lvl-btn-${i}`);
+        if (b) b.classList.toggle("active", i === lvl);
+      }
+      document.getElementById("lbl-hud-lvl").textContent = lvl;
+      updateHUD();
+      renderSpells();
+      renderProgressionTable();
+    }
 
-  <div class="card important">
-    <h3>Regla Rápida: ¿Cambio el set?</h3>
-    <p>Solo cambia si el nuevo set tiene:</p>
-    <p>✅ <strong>Un 18</strong> (obligatorio, sin excepciones)</p>
-    <p>✅ <strong>Un 15 o 16+</strong> (para CON o DEX)</p>
-    <p>✅ <strong>Total ≥ 80</strong></p>
-    <p style="margin-top:10px">Con 5 tiradas/mes: <strong class="highlight">~16% de probabilidad mensual</strong> de sacar el set dulce. Estimación: <strong>4-8 meses</strong>.</p>
-  </div>
-</section>
+    function toggleBuff(key) {
+      buffs[key] = !buffs[key];
+      const btnInnate = document.getElementById("toggle-innate");
+      const dotInnate = document.getElementById("dot-innate");
+      if (key === "innate") {
+        btnInnate.className = buffs.innate
+          ? "px-2.5 py-1 rounded-lg text-xs font-semibold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 transition flex items-center gap-1.5"
+          : "px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition flex items-center gap-1.5";
+        dotInnate.className = buffs.innate ? "w-2 h-2 rounded-full bg-emerald-400" : "w-2 h-2 rounded-full bg-slate-500";
+      }
+      const btnShield = document.getElementById("toggle-shield");
+      if (key === "shield") {
+        btnShield.className = buffs.shield
+          ? "px-2.5 py-1 rounded-lg text-xs font-semibold border border-sky-500/50 bg-sky-500/15 text-sky-300 transition"
+          : "px-2.5 py-1 rounded-lg text-xs font-semibold border border-[var(--border)] bg-[var(--background)] text-[var(--muted-foreground)] transition";
+      }
+      updateHUD();
+    }
 
-<!-- QUOTE FINAL -->
-<div class="quote" style="margin-top:40px;text-align:center">
-  "Nivel 3: un detective con migrañas. Nivel 14: un dios psíquico que se desliza por debajo de las puertas. El viaje no fue bonito. Pero el Marciano nunca prometió que lo fuera."
-  <span class="author">— John Jones</span>
-</div>
+    function applyPreset(preset) {
+      if (preset === "nv3") {
+        document.getElementById("select-vial").value = "0";
+        document.getElementById("select-armor").value = "15";
+        buffs.innate = true;
+        buffs.shield = false;
+        selectLevel(3);
+        switchTab("tab-roll20");
+      } else if (preset === "nv6") {
+        document.getElementById("select-vial").value = "2";
+        document.getElementById("select-armor").value = "16";
+        buffs.innate = true;
+        buffs.shield = false;
+        selectLevel(6);
+        switchTab("tab-trial6");
+      } else if (preset === "nv9") {
+        document.getElementById("select-vial").value = "2";
+        document.getElementById("select-armor").value = "16";
+        buffs.innate = true;
+        selectLevel(9);
+      } else if (preset === "nv14") {
+        document.getElementById("select-vial").value = "3";
+        document.getElementById("select-armor").value = "17";
+        buffs.innate = true;
+        selectLevel(14);
+      }
+      updateHUD();
+    }
 
-</main>
+    function getCalculatedStats() {
+      const d = LEVEL_DATA[currentLevel];
+      const vialBonus = parseInt(document.getElementById("select-vial").value, 10) || 0;
+      const armorVal = parseInt(document.getElementById("select-armor").value, 10) || 15;
+      const robeBonus = armorVal === 17 ? 2 : 0;
+      const chaMod = 5;
 
-<footer>
-  👽 Arsenal del Marciano — John Jones · Hechicero de Mente Aberrante · D&D 5e (2024)<br>
-  <em>"No encontré estos artefactos. Siempre estuvieron dentro de mí."</em>
-</footer>
+      const ac = armorVal + (buffs.shield ? 5 : 0);
+      const dc = 8 + d.pb + chaMod + vialBonus + robeBonus + (buffs.innate ? 1 : 0);
+      const atk = d.pb + chaMod + vialBonus + robeBonus;
+      const init = 2 + d.pb; // DEX (+2) + Alert (PB)
+      const spTotal = d.spBase + d.spFeat;
 
-<script>
-  // Glow cursor
-  const glow = document.getElementById('glow');
-  document.addEventListener('mousemove', e => {
-    glow.style.left = e.clientX + 'px';
-    glow.style.top = e.clientY + 'px';
-  });
+      return { ...d, ac, dc, atk, init, spTotal, vialBonus, armorVal };
+    }
 
-  // Active nav on scroll
-  const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('nav a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-    });
-  });
-</script>
+    function updateHUD() {
+      const s = getCalculatedStats();
+      document.getElementById("hud-hp").textContent = s.hp;
+      document.getElementById("hud-pb").textContent = `Prof +${s.pb}`;
+      document.getElementById("hud-ac").textContent = s.ac;
+      document.getElementById("hud-ac-note").textContent = buffs.shield ? "+5 Shield ON" : `Base ${s.armorVal}`;
+      document.getElementById("hud-dc").textContent = s.dc;
+      document.getElementById("hud-dc-note").textContent = buffs.innate ? "Innata ON (+1)" : "Base";
+      document.getElementById("hud-atk").textContent = `+${s.atk}`;
+      document.getElementById("hud-atk-adv").textContent = buffs.innate ? "VENTAJA" : "Normal";
+      document.getElementById("hud-atk-adv").className = buffs.innate
+        ? "text-xs px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-semibold"
+        : "text-xs px-1.5 py-0.5 rounded bg-slate-500/15 text-[var(--muted-foreground)]";
+      document.getElementById("hud-init").textContent = `+${s.init}`;
+      document.getElementById("hud-sp").textContent = `${s.spTotal} PH`;
+      document.getElementById("hud-prep").textContent = `${s.prep}+${s.psi} Prep.`;
+    }
+
+    // =========================================================================
+    // TAB SWITCHER
+    // =========================================================================
+    function switchTab(tabId) {
+      const tabs = ["tab-trial6", "tab-roll20", "tab-grimoire", "tab-items", "tab-prog"];
+      tabs.forEach(id => {
+        document.getElementById(id).classList.toggle("hidden", id !== tabId);
+        document.getElementById(`btn-${id}`).classList.toggle("active", id === tabId);
+      });
+    }
+
+    // =========================================================================
+    // COMBAT & PSYCHIC DICE SIMULATOR
+    // =========================================================================
+    function rollDice(count, sides) {
+      const rolls = [];
+      for (let i = 0; i < count; i++) {
+        rolls.push(Math.floor(Math.random() * sides) + 1);
+      }
+      return { rolls, sum: rolls.reduce((a, b) => a + b, 0) };
+    }
+
+    function rollExplodingD8(baseCount, maxExtra = 5) {
+      const baseRolls = [];
+      let extraToRoll = 0;
+      for (let i = 0; i < baseCount; i++) {
+        const r = Math.floor(Math.random() * 8) + 1;
+        baseRolls.push(r);
+        if (r === 8 && extraToRoll < maxExtra) extraToRoll++;
+      }
+      const extraRolls = [];
+      while (extraToRoll > 0 && extraRolls.length < maxExtra) {
+        extraToRoll--;
+        const r = Math.floor(Math.random() * 8) + 1;
+        extraRolls.push(r);
+        if (r === 8 && extraRolls.length + extraToRoll < maxExtra) extraToRoll++;
+      }
+      const total = [...baseRolls, ...extraRolls].reduce((a, b) => a + b, 0);
+      return { baseRolls, extraRolls, total };
+    }
+
+    function appendLog(html) {
+      const log = document.getElementById("combat-log");
+      const entry = document.createElement("div");
+      entry.className = "p-2.5 rounded-lg bg-[var(--card)] border border-[var(--border)] space-y-1";
+      entry.innerHTML = html;
+      log.prepend(entry);
+    }
+
+    function clearCombatLog() {
+      document.getElementById("combat-log").innerHTML = `<div class="text-[var(--muted-foreground)]">ðŸŸ¢ Registro limpiado. Listo para simular...</div>`;
+    }
+
+    function simulateTurn(turn) {
+      const s = getCalculatedStats();
+      if (turn === 1) {
+        const shard = rollDice(3, 6);
+        appendLog(`
+          <div class="flex justify-between text-emerald-400 font-bold">
+            <span>âš¡ TURNO 1: APAGÃ“N CEREBRAL + FAR REALM SHARD</span>
+            <span>CD ${s.dc}</span>
+          </div>
+          <div class="text-[var(--foreground)]">1. <strong>BA HechicerÃ­a Innata:</strong> Ojos verdes encendidos (CD sube a ${s.dc}, Ventaja en ataques).</div>
+          <div class="text-[var(--foreground)]">2. <strong>AcciÃ³n â€” Subtle Hypnotic Pattern (1 PH):</strong> Cubo 30ft â†’ SalvaciÃ³n SAB CD ${s.dc} o quedan <strong>Incapacitados</strong> (inmune a Counterspell).</div>
+          <div class="text-purple-300">3. <strong>Far Realm Shard (Gratis por usar Subtle):</strong> El Jefe hace SalvaciÃ³n CAR CD ${s.dc} o sufre <strong>${shard.sum} DaÃ±o PsÃ­quico</strong> [${shard.rolls.join(", ")}] y queda <strong>Asustado</strong>.</div>
+        `);
+      } else if (turn === 2) {
+        const cantripDice = currentLevel >= 11 ? 3 : currentLevel >= 5 ? 2 : 1;
+        const ms = rollDice(cantripDice, 6);
+        const debuff = rollDice(1, 4).sum;
+        const mw = rollDice(3, 6);
+        const shard = rollDice(3, 6);
+        const total = ms.sum + mw.sum + shard.sum;
+        appendLog(`
+          <div class="flex justify-between text-purple-300 font-bold">
+            <span>ðŸ’€ TURNO 2: NOVA PSÃQUICA (MIND SLIVER + QUICKENED MIND WHIP + SHARD)</span>
+            <span>TOTAL: ${total} DAÃ‘O PSÃQUICO</span>
+          </div>
+          <div class="text-[var(--foreground)]">1. <strong>AcciÃ³n â€” Mind Sliver (${cantripDice}d6):</strong> SalvaciÃ³n INT CD ${s.dc} â†’ <strong>${ms.sum} PsÃ­quico</strong> [${ms.rolls.join(", ")}] y resta <strong>-${debuff} (1d4)</strong> a su prÃ³ximo save.</div>
+          <div class="text-[var(--foreground)]">2. <strong>BA â€” Quickened Tasha's Mind Whip (2 PH):</strong> SalvaciÃ³n INT contra CD efectiva <strong>${s.dc + debuff}</strong> â†’ <strong>${mw.sum} PsÃ­quico</strong> [${mw.rolls.join(", ")}], sin Reacciones y pierde AcciÃ³n o Movimiento.</div>
+          <div class="text-purple-300">3. <strong>Far Realm Shard (Gratis):</strong> SalvaciÃ³n CAR CD ${s.dc} â†’ <strong>${shard.sum} PsÃ­quico</strong> [${shard.rolls.join(", ")}] + <strong>Asustado</strong>.</div>
+        `);
+      } else if (turn === 3) {
+        const cantripDice = currentLevel >= 11 ? 3 : currentLevel >= 5 ? 2 : 1;
+        const dw = rollDice(3, 6);
+        const sb = rollExplodingD8(cantripDice, 5);
+        const shard = rollDice(3, 6);
+        const total = dw.sum + sb.total + shard.sum;
+        const explodeNote = sb.extraRolls.length > 0 ? ` Â¡EXPLOTÃ“ +${sb.extraRolls.length}d8 [${sb.extraRolls.join(", ")}]!` : "";
+        appendLog(`
+          <div class="flex justify-between text-amber-300 font-bold">
+            <span>ðŸ”‡ TURNO 3: EJECUCIÃ“N SILENCIOSA (0 SLOTS USADOS)</span>
+            <span>TOTAL: ${total} DAÃ‘O PSÃQUICO</span>
+          </div>
+          <div class="text-[var(--foreground)]">1. <strong>AcciÃ³n â€” Psionic Dissonant Whispers (1 PH, Sin V/S/M):</strong> SalvaciÃ³n SAB CD ${s.dc} â†’ <strong>${dw.sum} PsÃ­quico</strong> [${dw.rolls.join(", ")}] + huye provocando Ataques de Oportunidad.</div>
+          <div class="text-[var(--foreground)]">2. <strong>BA â€” Quickened Sorcerous Burst (2 PH, Ataque +${s.atk} con VENTAJA):</strong> <strong>${sb.total} PsÃ­quico</strong> [${sb.baseRolls.join(", ")}]${explodeNote}.</div>
+          <div class="text-purple-300">3. <strong>Far Realm Shard (Gratis):</strong> SalvaciÃ³n CAR CD ${s.dc} â†’ <strong>${shard.sum} PsÃ­quico</strong> [${shard.rolls.join(", ")}] + <strong>Asustado</strong>.</div>
+        `);
+      }
+    }
+
+    function rollSpell(type) {
+      const s = getCalculatedStats();
+      const cantripDice = currentLevel >= 11 ? 3 : currentLevel >= 5 ? 2 : 1;
+      if (type === "mind_sliver") {
+        const r = rollDice(cantripDice, 6);
+        appendLog(`ðŸ§  <strong>Mind Sliver (${cantripDice}d6, INT CD ${s.dc}):</strong> <span class="text-purple-300 font-bold">${r.sum} DaÃ±o PsÃ­quico</span> [${r.rolls.join(", ")}] + <strong>-1d4</strong> al siguiente save.`);
+      } else if (type === "sorcerous_burst") {
+        const r = rollExplodingD8(cantripDice, 5);
+        const exp = r.extraRolls.length ? ` ðŸ’¥ Â¡Dados explosivos: [${r.extraRolls.join(", ")}]!` : "";
+        appendLog(`ðŸ’¥ <strong>Sorcerous Burst PsÃ­quico (${cantripDice}d8, Ataque +${s.atk} c/Ventaja):</strong> <span class="text-emerald-400 font-bold">${r.total} DaÃ±o PsÃ­quico</span> [${r.baseRolls.join(", ")}]${exp}`);
+      } else if (type === "dissonant") {
+        const r = rollDice(3, 6);
+        appendLog(`ðŸ”Š <strong>Dissonant Whispers â˜…PSI (3d6, SAB CD ${s.dc}):</strong> <span class="text-purple-300 font-bold">${r.sum} DaÃ±o PsÃ­quico</span> [${r.rolls.join(", ")}] + ReacciÃ³n obligatoria para huir.`);
+      } else if (type === "mind_whip") {
+        const r1 = rollDice(3, 6);
+        const r2 = rollDice(3, 6);
+        appendLog(`âš¡ <strong>Twinned Tasha's Mind Whip (1 PH, INT CD ${s.dc} a 2 objetivos):</strong> Objetivo A: <span class="text-purple-300 font-bold">${r1.sum} PsÃ­quico</span> [${r1.rolls.join(", ")}] Â· Objetivo B: <span class="text-purple-300 font-bold">${r2.sum} PsÃ­quico</span> [${r2.rolls.join(", ")}].`);
+      } else if (type === "phantasmal") {
+        const r = rollDice(2, 8);
+        appendLog(`ðŸ‘ï¸ <strong>Phantasmal Force XPHB (2d8/turno, INT CD ${s.dc}):</strong> <span class="text-purple-300 font-bold">${r.sum} DaÃ±o PsÃ­quico</span> [${r.rolls.join(", ")}] dentro de su mente.`);
+      } else if (type === "shard") {
+        const r = rollDice(3, 6);
+        appendLog(`ðŸ¦‘ <strong>Far Realm Shard (Gratis al usar Metamagia, CAR CD ${s.dc}):</strong> <span class="text-amber-300 font-bold">${r.sum} DaÃ±o PsÃ­quico</span> [${r.rolls.join(", ")}] + Asustado.`);
+      } else if (type === "synaptic") {
+        const r = rollDice(8, 6);
+        appendLog(`ðŸ’€ <strong>Synaptic Static (8d6 AoE 20ft, INT CD ${s.dc}, SIN concentraciÃ³n):</strong> <span class="text-rose-400 font-bold">${r.sum} DaÃ±o PsÃ­quico</span> [${r.rolls.join(", ")}] + <strong>-1d6 a ataques y concentraciÃ³n por 1 min</strong>.`);
+      }
+    }
+
+    // =========================================================================
+    // ROLL20 AUDIT CHECKLIST
+    // =========================================================================
+    function updateAuditProgress() {
+      const checks = document.querySelectorAll("#audit-list input[type='checkbox']");
+      let done = 0;
+      checks.forEach(c => { if (c.checked) done++; });
+      document.getElementById("audit-progress").textContent = `${done} / ${checks.length} Completados`;
+    }
+
+    // =========================================================================
+    // GRIMOIRE RENDERER
+    // =========================================================================
+    function setSpellFilter(filter) {
+      currentSpellFilter = filter;
+      ["all", "psychic", "psi", "0", "1", "2", "3", "high"].forEach(id => {
+        const el = document.getElementById(`pill-${id}`);
+        if (el) el.classList.toggle("active", id === filter);
+      });
+      renderSpells();
+    }
+
+    function renderSpells() {
+      const grid = document.getElementById("spells-grid");
+      const query = (document.getElementById("spell-search").value || "").toLowerCase();
+      const capByLvl = document.getElementById("filter-by-hud-level").checked;
+      const s = getCalculatedStats();
+
+      const filtered = SPELLS.filter(sp => {
+        if (capByLvl && sp.minCharLevel > currentLevel) return false;
+        if (currentSpellFilter === "psychic" && !sp.psychicDmg) return false;
+        if (currentSpellFilter === "psi" && !sp.psi) return false;
+        if (["0", "1", "2", "3"].includes(currentSpellFilter) && String(sp.level) !== currentSpellFilter) return false;
+        if (currentSpellFilter === "high" && sp.level < 4) return false;
+        if (query && !(`${sp.name} ${sp.dmgText} ${sp.combo} ${sp.reskin}`).toLowerCase().includes(query)) return false;
+        return true;
+      });
+
+      grid.innerHTML = filtered.map(sp => {
+        const lvlBadge = sp.level === 0 ? "Truco" : `Nivel ${sp.level}`;
+        const psiBadge = sp.psi
+          ? `<span class="px-2 py-0.5 rounded text-xs font-bold bg-purple-500/20 text-purple-300 border border-purple-500/30">â˜… PSI (${sp.level === 0 ? "Gratis" : sp.level + " PH sin V/S/M"})</span>`
+          : `<span class="px-2 py-0.5 rounded text-xs font-semibold bg-slate-500/15 text-[var(--muted-foreground)]">Preparado XPHB</span>`;
+        const dmgBadge = sp.psychicDmg
+          ? `<span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">ðŸ§  100% PsÃ­quico</span>`
+          : "";
+        const dynamicSave = sp.saveOrAtk.includes("Save")
+          ? `${sp.saveOrAtk} <strong>CD ${s.dc}</strong>`
+          : sp.saveOrAtk.includes("Ataque")
+          ? `Ataque <strong>+${s.atk}</strong> ${buffs.innate ? "(Ventaja)" : ""}`
+          : sp.saveOrAtk;
+
+        return `
+          <div class="bg-[var(--card)] border border-[var(--border)] hover:border-purple-500/50 rounded-xl p-4 flex flex-col justify-between gap-3 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <span class="px-2 py-0.5 rounded text-xs font-bold bg-[var(--background)] border border-[var(--border)]">${lvlBadge}</span>
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  ${psiBadge}
+                  ${dmgBadge}
+                </div>
+              </div>
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-base font-bold text-[var(--foreground)]">${sp.name}</h3>
+                <a href="${sp.url}" target="_blank" class="text-xs font-semibold text-emerald-400 hover:underline whitespace-nowrap">5e.tools â†—</a>
+              </div>
+              <div class="text-xs text-[var(--muted-foreground)] flex items-center gap-2">
+                <span>â±ï¸ ${sp.time}</span> Â· <span>ðŸŽ¯ ${dynamicSave}</span>
+              </div>
+              <p class="text-xs text-[var(--foreground)] font-medium bg-[var(--background)] p-2.5 rounded-lg border border-[var(--border)]">
+                ${sp.dmgText}
+              </p>
+              <div class="text-xs text-purple-300">
+                <strong>âš¡ Sinergia:</strong> ${sp.combo}
+              </div>
+            </div>
+            <div class="text-xs italic text-[var(--muted-foreground)] border-t border-[var(--border)] pt-2">
+              ðŸŸ¢ ${sp.reskin}
+            </div>
+          </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // ITEMS & ATTUNEMENT LOADOUT RENDERER
+    // =========================================================================
+    function setLoadoutPreset(mode) {
+      if (mode === "nv6") {
+        equippedAttunement = ["vial2", "far_realm", "shadowfell"];
+      } else {
+        equippedAttunement = ["robe_archmagi", "gem_focus", "cloak_invis"];
+      }
+      renderItems();
+    }
+
+    function toggleEquipItem(id) {
+      const item = ITEMS.find(i => i.id === id);
+      if (!item || !item.attune) return;
+      if (equippedAttunement.includes(id)) {
+        equippedAttunement = equippedAttunement.filter(x => x !== id);
+      } else if (equippedAttunement.length < 3) {
+        equippedAttunement.push(id);
+      } else {
+        equippedAttunement.shift();
+        equippedAttunement.push(id);
+      }
+      renderItems();
+    }
+
+    function renderItems() {
+      const slotsDiv = document.getElementById("attunement-slots");
+      slotsDiv.innerHTML = [0, 1, 2].map(idx => {
+        const itemId = equippedAttunement[idx];
+        const it = ITEMS.find(i => i.id === itemId);
+        if (!it) {
+          return `<div class="p-3 rounded-lg bg-[var(--background)] border border-dashed border-[var(--border)] text-xs text-[var(--muted-foreground)]">Ranura ${idx + 1}: VacÃ­a (Haz clic en un objeto abajo)</div>`;
+        }
+        return `
+          <div class="p-3 rounded-lg bg-[var(--background)] border border-emerald-500/40 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-xs font-bold text-emerald-400">SintonizaciÃ³n #${idx + 1}</div>
+              <div class="text-sm font-bold text-[var(--foreground)]">${it.name}</div>
+            </div>
+            <button onclick="toggleEquipItem('${it.id}')" class="text-xs px-2 py-1 rounded bg-rose-500/15 text-rose-300 hover:bg-rose-500/25">Quitar</button>
+          </div>
+        `;
+      }).join("");
+
+      const grid = document.getElementById("items-grid");
+      grid.innerHTML = ITEMS.map(it => {
+        const isEquipped = equippedAttunement.includes(it.id);
+        return `
+          <div class="bg-[var(--card)] border ${isEquipped ? "border-emerald-500" : "border-[var(--border)]"} rounded-xl p-4 flex flex-col justify-between gap-3">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between gap-2">
+                <span class="px-2 py-0.5 rounded text-xs font-bold ${it.attune ? "bg-purple-500/15 text-purple-300" : "bg-sky-500/15 text-sky-300"}">
+                  ${it.attune ? "ðŸ”— Requiere SintonizaciÃ³n" : "âšª Sin SintonizaciÃ³n (Gratis)"}
+                </span>
+                <span class="text-xs text-[var(--muted-foreground)]">${it.rarity}</span>
+              </div>
+              <div class="flex items-start justify-between gap-2">
+                <h3 class="text-base font-bold text-[var(--foreground)]">${it.name}</h3>
+                <a href="${it.url}" target="_blank" class="text-xs font-semibold text-emerald-400 hover:underline whitespace-nowrap">5e.tools â†—</a>
+              </div>
+              <p class="text-xs text-[var(--foreground)] bg-[var(--background)] p-2.5 rounded-lg border border-[var(--border)]">
+                ${it.effect}
+              </p>
+              <p class="text-xs italic text-[var(--muted-foreground)]">ðŸŸ¢ ${it.martian}</p>
+            </div>
+            ${it.attune ? `
+              <button onclick="toggleEquipItem('${it.id}')" class="w-full py-1.5 rounded-lg text-xs font-bold border transition ${isEquipped ? "bg-emerald-500 text-slate-950 border-emerald-500" : "bg-[var(--background)] text-[var(--foreground)] border-[var(--border)] hover:border-emerald-400"}">
+                ${isEquipped ? "âœ… Equipado en SintonizaciÃ³n" : "Equipar en SintonizaciÃ³n"}
+              </button>
+            ` : `<div class="text-xs text-center py-1.5 rounded-lg bg-sky-500/10 text-sky-300 font-semibold">Siempre Activo (0 Ranuras)</div>`}
+          </div>
+        `;
+      }).join("");
+    }
+
+    // =========================================================================
+    // PROGRESSION TABLE & ARMY CALCULATOR
+    // =========================================================================
+    function renderProgressionTable() {
+      const tbody = document.getElementById("prog-table-body");
+      let html = "";
+      for (let lvl = 3; lvl <= 14; lvl++) {
+        const d = LEVEL_DATA[lvl];
+        const active = lvl === currentLevel;
+        html += `
+          <tr onclick="selectLevel(${lvl})" class="cursor-pointer transition ${active ? "bg-emerald-500/15 font-semibold" : "hover:bg-[var(--background)]"}">
+            <td class="py-2.5 px-3 font-bold text-emerald-400">Nv ${lvl}</td>
+            <td class="py-2.5 px-3">${d.hp}</td>
+            <td class="py-2.5 px-3">+${d.pb}</td>
+            <td class="py-2.5 px-3 text-purple-300">${d.spBase + d.spFeat} PH</td>
+            <td class="py-2.5 px-3">${d.cantrips} (+1 Psi)</td>
+            <td class="py-2.5 px-3">${d.prep} (+${d.psi} Psi = <strong>${d.prep + d.psi}</strong>)</td>
+            <td class="py-2.5 px-3 text-[var(--foreground)]">${d.milestone}</td>
+          </tr>
+        `;
+      }
+      tbody.innerHTML = html;
+    }
+
+    function updateArmyCalc() {
+      const days = parseInt(document.getElementById("army-slider").value, 10) || 1;
+      document.getElementById("army-days-label").textContent = `${days} dÃ­as`;
+      document.getElementById("army-count").textContent = (days * 12).toLocaleString();
+    }
+
+    window.addEventListener("DOMContentLoaded", initApp);
+  </script>
 </body>
 </html>
+
