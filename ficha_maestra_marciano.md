@@ -1,95 +1,84 @@
-# 📋 FICHA MAESTRA DEL MARCIANO — TODO EN UN DOCUMENTO
-## John Jones | Hechicero de Mente Aberrante | Nivel 3 → 14
-*"Esta es la lista. Si no está aquí, no lo necesitas."*
+# 📋 FICHA MAESTRA DEL MARCIANO — OFICIAL XPHB (5e.tools)
+## John Jones | `sorcerer_xphb` + `sub_aberrant_xphb` | Nivel 3 → 14
+*"Esta es la lista oficial 2024. Sin errores de edición, 100% legal y letal."*
 
 ---
 
-## 🧬 BASE PERMANENTE (No Cambia)
+## 🧬 BASE PERMANENTE (Sincronizada con tu PDF de Roll20)
 
 | Campo | Valor |
 |---|---|
 | **Nombre** | John Jones |
-| **Especie** | Humano |
-| **Clase** | Hechicero — Mente Aberrante |
-| **Trasfondo** | Investigador (Personalizado) |
+| **Especie** | Humano (`human_xphb`) |
+| **Clase** | Hechicero — Hechicería Aberrante (`sorcerer_xphb` + `sub_aberrant_xphb`) |
+| **Trasfondo** | Investigador |
 | **Alineamiento** | Neutral Bueno |
-| **STR** | 10 (+0) |
-| **DEX** | 14 (+2) |
-| **CON** | 14 (+2) |
-| **INT** | 14 (+2) |
-| **WIS** | 13 (+1) |
-| **CHA** | **20 (+5)** |
-| **Saves Proficientes** | **CON**, **CHA** |
-| **Habilidades** | Engaño +7, Persuasión +7, Perspicacia +3, Investigación +4, Percepción +3 |
-| **Idiomas** | Común, Habla Profunda (Deep Speech) |
+| **STR (Fuerza)** | **10 (+0)** |
+| **DEX (Destreza)** | **14 (+2)** |
+| **CON (Constitución)** | **14 (+2)** |
+| **INT (Inteligencia)** | **14 (+2)** |
+| **WIS (Sabiduría)** | **14 (+2)** |
+| **CHA (Carisma)** | **20 (+5)** |
+| **Saves Competentes** | **CON (+4)**, **CHA (+7)** |
+| **Habilidades** | Engaño **+7**, Persuasión **+7**, Perspicacia **+4**, Investigación **+4**, Percepción **+4** |
+| **Percepción Pasiva** | **14** |
 | **Herramientas** | Kit de Disfraz |
-| **Armas** | Armas Sencillas |
 
-### Dotes de Origen (Nivel 1):
-| Dote | Efecto |
-|---|---|
-| **Alert** (Trasfondo) | +Prof a Iniciativa. No puedes ser Sorprendido. Ocultos no tienen ventaja contra ti |
-| **Lucky** (Versátil Humano) | 3 usos/DL. Tiras 1d20 extra y eliges cuál usar en ataques, saves o checks |
+### Dotes de Origen (Nivel 1 — `xphb`):
+| Dote | Origen | Efecto Exacto XPHB |
+|---|---|---|
+| **Alert** | Trasfondo | **+Prof a Iniciativa** (Total **+4** a nv3). Puedes intercambiar tu Iniciativa con un aliado voluntario tras tirar. |
+| **Lucky** | Humano (*Versatile*) | **3 Puntos de Suerte / Descanso Largo**. Gasta 1 punto para darte **Ventaja** en una prueba de d20 o imponer **Desventaja** en un ataque contra ti. |
 
 ---
 
 # ═══════════════════════════════════════
-# NIVEL 3
+# NIVEL 3 (TU NIVEL ACTUAL EN ROLL20)
 # ═══════════════════════════════════════
 
 ## 📊 Números de Combate
 | Stat | Valor |
 |---|---|
-| **HP** | 23 |
-| **CA** | 15 (Mage Armor) / 20 (Shield) |
-| **CD** | **15** (16 con Innate Sorcery) |
-| **Ataque Conjuro** | +7 |
-| **Iniciativa** | +4 (DEX +2 + Prof +2) |
-| **SP** | 3 |
-| **Slots** | 4×nv1, 2×nv2 |
+| **HP** | **24** |
+| **CA** | **12** (base) / **15** (*Mage Armor*) / **20** (*Shield*) |
+| **CD de Conjuros** | **15** (**16** con *Innate Sorcery*) |
+| **Ataque de Conjuro** | **+7** (**Ventaja** con *Innate Sorcery*) |
+| **Iniciativa** | **+4** (+2 DEX + 2 Prof por *Alert*) |
+| **Puntos de Hechicería (PH)** | **3** |
+| **Slots** | 4×Nv1, 2×Nv2 |
+| **Preparados Tabla XPHB** | **6** (+ **4 Psiónicos Nv1-2 gratis** = **10 conjuros Nv1-2**) |
 
-## 🔧 Features de Clase
-| Feature | Efecto |
+## 🔧 Rasgos de Clase y Subclase (`sorcerer_xphb` + `sub_aberrant_xphb`)
+| Rasgo | Efecto Exacto XPHB |
 |---|---|
-| **Hechicería Innata** | BA, 2/DL. 1 min: CD+1, Ventaja ataques conjuro |
-| **Fuente de Magia** | Convierte slots↔SP |
-| **Metamagia (2)** | Quickened (2 SP), Twinned (1 SP/nivel) |
-| **Habla Telepática** | BA. Telepatía 30ft, dura 3 min |
+| **Innate Sorcery** (Nv1) | **Bonus Action**, 2/DL (1 min): **CD +1 (16)** y **Ventaja** en ataques de conjuro de Hechicero. |
+| **Font of Magic** (Nv2) | **3 PH/DL**. Slot → PH: **Sin acción** (ganas PH = nivel del slot). PH → Slot: **Bonus Action** (Nv1=2 PH, Nv2=3 PH). |
+| **Metamagia (2)** (Nv2) | **Quickened Spell** (2 PH: conjuro de 1 Acción → Bonus Action) y **Twinned Spell** (1 PH: sube 1 nivel efectivo un conjuro que agregue 1 objetivo al subir de nivel, ej. *Hold Person*). |
+| **Psionic Spells** (Nv3) | Siempre preparados (fijos en XPHB): *Mind Sliver, Arms of Hadar, Calm Emotions, Detect Thoughts, Dissonant Whispers*. |
+| **Telepathic Speech** (Nv3) | **Bonus Action**, criatura visible a 30ft. Telepatía bidireccional durante **3 min** hasta a **5 millas** (CHA mod) en un idioma conocido. |
 
-## ✨ Cantrips (5)
-| # | Cantrip | Daño/Efecto | Save |
+## ✨ Trucos a Nivel 3 (4 de Hechicero + *Mind Sliver* Gratis = 5)
+| # | Cantrip | Ataque / Save | Daño / Efecto |
 |---|---|---|---|
-| 1 | 🧠 **Mind Sliver** | 1d6 psíquico + **-1d4 próximo save** | INT |
-| 2 | 💀 **Toll the Dead** | 1d8 necrótico (1d12 si herido) | WIS |
-| 3 | 🎭 **Minor Illusion** | Sonido o imagen 5ft, 1 min | — |
-| 4 | 🖐️ **Mage Hand** | Mano a 30ft, 10 lbs | — |
-| 5 | 🔮 **Prestidigitation** | Efectos sensoriales menores | — |
+| 1 | 🧠 **Mind Sliver ★PSI** | INT save **CD 15 (16)** | **1d6 psíquico** + **-1d4** al próximo save antes del final de tu siguiente turno |
+| 2 | 💥 **Sorcerous Burst** *(XPHB)* | Ataque **+7 (Ventaja c/Innata)** | **1d8 psíquico** (120ft). Cada 8 en el dado explota y suma otro d8 (hasta +5d8) |
+| 3 | 🎭 **Minor Illusion** | — | Sonido o imagen en cubo 5ft por 1 min (Investigación CD 15) |
+| 4 | 🖐️ **Mage Hand** | — | Mano espectral a 30ft (10 lb) por 1 min |
+| 5 | 🔮 **Prestidigitation** | — | Efectos sensoriales menores, hasta 3 activos |
 
-## 📖 Hechizos Nivel 1
-| # | Hechizo | Tipo | Efecto Clave |
-|---|---|---|---|
-| 1 | 🛡️ **Shield** | 📋 Reacción | +5 CA hasta tu próximo turno |
-| 2 | 🧥 **Mage Armor** | 📋 8h, sin conc. | CA = 13 + DEX (15) |
-| 3 | 💬 **Charm Person** | 📋 WIS save | Objetivo te considera amigo 1h |
-| 4 | 🔊 **Dissonant Whispers** | 🧠 Psiónico | 3d6 psíquico + huye (provoca AoO) |
-| 5 | 🦑 **Arms of Hadar** | 🧠 Psiónico | 2d6 necrótico AoE 10ft + sin reacciones |
-
-## 📖 Hechizos Nivel 2
-| # | Hechizo | Tipo | Efecto Clave |
-|---|---|---|---|
-| 6 | 💬 **Suggestion** | 📋 WIS save | Obedece 1 instrucción razonable 8h |
-| 7 | 🕸️ **Web** | 📋 DEX save | Cubo 20ft. Restrained (vel. 0, ventaja contra ellos) |
-| 8 | 👤👤 **Mirror Image** | 📋 Sin conc. | 3 duplicados, 1 min |
-| 9 | 🔍 **Detect Thoughts** | 🧠 Psiónico | Lee pensamientos. WIS save = memorias profundas |
-| 10 | 🕊️ **Calm Emotions** | 🧠 Psiónico | Suprime encantamiento/miedo o neutraliza hostilidad |
-
-## ⚔️ Equipo
-| Objeto | Efecto |
-|---|---|
-| Figurilla de Arcilla Verde | Foco Arcano |
-| Gabardina de Cuero | Sabor (no armadura mecánica, usas Mage Armor) |
-| Ballesta Ligera + 20 virotes | +4 golpear, 1d8+2 perforante |
-| Kit de Disfraz | Herramienta de trasfondo |
+## 📖 Conjuros Nivel 1 y 2 a Nivel 3 (4 Psiónicos Gratis + 6 Preparados = 10)
+| # | Conjuro | Nv | Origen | Efecto Clave XPHB |
+|---|---|---|---|---|
+| 1 | 🔊 **Dissonant Whispers ★PSI** | 1 | Psiónico | WIS save CD 15/16. **3d6 psíquico** + gasta Reacción para huir (provoca AoO) |
+| 2 | 🦑 **Arms of Hadar ★PSI** | 1 | Psiónico | Emanación 10ft. STR save CD 15/16. **2d6 necrótico** + sin Reacciones |
+| 3 | 🔍 **Detect Thoughts ★PSI** | 2 | Psiónico | Conc. 1 min. Lee pensamientos superficiales; acción para profundos (WIS save) |
+| 4 | 🕊️ **Calm Emotions ★PSI** | 2 | Psiónico | Esfera 20ft, Conc. 1 min. CHA save CD 15/16. Suprime Charmed/Frightened o hostilidad |
+| 5 | 🛡️ **Shield** | 1 | Prep. #1 | Reacción. **+5 CA** (CA 20) hasta tu próximo turno, inmune a *Magic Missile* |
+| 6 | 🧥 **Mage Armor** | 1 | Prep. #2 | 8h sin conc. **CA = 13 + DEX (15)** |
+| 7 | 🕸️ **Web** | 2 | Prep. #3 | Cubo 20ft, Conc. 1h. DEX save CD 15/16 → **Restrained** (vel. 0, ventaja al golpearlos) |
+| 8 | 💬 **Suggestion** | 2 | Prep. #4 | Conc. 8h. WIS save CD 15/16 → Obedece sugerencia realizable |
+| 9 | ⛓️ **Hold Person** | 2 | Prep. #5 | Conc. 1 min. WIS save CD 15/16 → **Paralizado** (críticos auto). **Combo Twinned (1 PH): 2 objetivos** |
+| 10 | 👤 **Mirror Image** | 2 | Prep. #6 | Sin conc. 1 min. 3 duplicados; tiras 1d6 por imagen al ser impactado (3+ absorbe el golpe) |
 
 ---
 
@@ -97,60 +86,41 @@
 # NIVEL 4 — METAMAGIC ADEPT
 # ═══════════════════════════════════════
 
-## 📊 Cambios
-| Stat | Nuevo Valor |
+| Stat | Valor |
 |---|---|
-| **HP** | ~29 |
-| **SP** | **6** (4 clase + 2 feat) |
-| **Slots** | 4×nv1, **3×nv2** |
-| **Preparados** | 9 + psiónicos |
+| **HP** | ~30 |
+| **PH** | **6** (4 de clase + 2 por *Metamagic Adept*) |
+| **Slots** | 4×Nv1, **3×Nv2** |
+| **Cantrips** | **6** (5 de clase + *Mind Sliver* gratis) → Añade **Friends** o **Light / Message** |
+| **Preparados XPHB** | **7** (+ 4 Psiónicos = 11) → Añade **Misty Step** (Nv2) |
 
-## 🆕 Lo Nuevo
-| Nuevo | Detalle |
-|---|---|
-| **Feat: Metamagic Adept** | +2 SP, +2 metamagias |
-| **Metamagia: Subtle Spell** | 1 SP. Sin componentes V/S |
-| **Metamagia: Heightened Spell** | 3 SP. Desventaja en el save del objetivo |
-| **5º Cantrip: Toll the Dead** | (ya listado arriba) |
-
-## 🎯 Arsenal de Metamagia Completo (4)
-| Metamagia | SP | Cuándo Usar |
-|---|---|---|
-| **Quickened** | 2 | Conjuro como BA + cantrip como Acción |
-| **Twinned** | 1/nv | +1 objetivo (Suggestion a 2 NPCs) |
-| **Subtle** | 1 | Invisible al castear. Counterspell sin contra |
-| **Heightened** | 3 | Jefe tiene Desventaja en save = ~6% de resistir |
+### ⭐ Dote Nivel 4: Metamagic Adept
+- **+2 PH** (para usar en Metamagia).
+- **+2 Opciones de Metamagia (Total 4):**
+  1. **Subtle Spell (1 PH):** En XPHB elimina componentes **Verbales, Somáticos Y Materiales** (salvo coste/consumidos).
+  2. **Heightened Spell (2 PH):** ¡En XPHB bajó de 3 PH a **2 PH**! Impone **Desventaja** en el primer save de un objetivo.
 
 ---
 
 # ═══════════════════════════════════════
-# NIVEL 5 — SLOTS NIVEL 3
+# NIVEL 5 — NIVEL 3 DE CONJUROS Y RESTAURACIÓN
 # ═══════════════════════════════════════
 
-## 📊 Cambios
-| Stat | Nuevo Valor |
+| Stat | Valor |
 |---|---|
-| **HP** | ~35 |
-| **SP** | **7** |
-| **Prof** | **+3** |
-| **CD** | **16** (17 con Innate) |
-| **Ataque** | +8 |
-| **Slots** | 4×nv1, 3×nv2, **2×nv3** |
-| **Cantrips** | Escalan a **2 dados** (Mind Sliver 2d6, TtD 2d8/2d12) |
-| **Sorcerous Restoration** | Recuperas SP en short rest |
+| **HP** | ~36 |
+| **PH** | **7** (5 clase + 2 dote) |
+| **Prof** | **+3** → **CD 16 (17 Innata)** · Ataque **+8** · Iniciativa **+5** |
+| **Slots** | 4×Nv1, 3×Nv2, **2×Nv3** |
+| **Cantrips** | Escalan a **2 dados** (*Mind Sliver* 2d6, *Sorcerous Burst* 2d8) |
+| **Preparados XPHB** | **9** (+ 6 Psiónicos = 15) |
 
-## 🆕 Hechizos Psiónicos Nuevos + Swap
-| Psiónico | Acción |
-|---|---|
-| ~~Hunger of Hadar~~ | 🔄 **SWAP → Enemies Abound** (INT save, el objetivo ataca a sus aliados) |
-| **Sending** | ✅ Mantener. Mensaje telepático ilimitado en distancia |
-
-## 📖 Hechizos Nivel 3 a Preparar
-| # | Hechizo | Efecto Clave |
-|---|---|---|
-| 11 | ⭐ **Hypnotic Pattern** | Cubo 30ft, WIS save. Hechizado + Incapacitado 1 min |
-| 12 | 🚫 **Counterspell** | Reacción. Cancela conjuro nv3 o menos (check para mayor) |
-| 13 | 🕊️ **Fly** | Vuelo 60ft, concentración 10 min |
+### 🆕 Lo Nuevo (`sorcerer_xphb` + `sub_aberrant_xphb`)
+- **Sorcerous Restoration (Nv5):** Al terminar un **Descanso Corto**, recuperas PH gastados hasta la mitad de tu nivel de Hechicero (redondeado hacia abajo = **2 PH** a nv5) 1/DL.
+- **Psiónicos Gratis de Nivel 5:**
+  1. ⭐ **Hunger of Hadar** (Esfera 20ft de oscuridad del Vacío: Cegado, terreno difícil, 2d6 frío + 2d6 ácido).
+  2. ⭐ **Sending** (Transmisión telepática sin límite de distancia ni plano).
+- **Nuevos Preparados (subes de 7 a 9):** Añade **Hypnotic Pattern** (Nv3) y **Counterspell** (Nv3).
 
 ---
 
@@ -158,63 +128,37 @@
 # NIVEL 6 — PSIONIC SORCERY ⭐⭐⭐
 # ═══════════════════════════════════════
 
-## 📊 Cambios
-| Stat | Nuevo Valor |
+| Stat | Valor |
 |---|---|
-| **HP** | ~41 |
-| **SP** | **8** |
-| **Slots** | 4×nv1, 3×nv2, **3×nv3** |
+| **HP** | ~42 |
+| **PH** | **8** (6 clase + 2 dote) |
+| **Slots** | 4×Nv1, 3×Nv2, **3×Nv3** |
+| **Preparados XPHB** | **10** (+ 6 Psiónicos = 16) → Añade **Fly** (Nv3) o **Slow** (Nv3) |
 
-## 🆕 Features de Subclase
-| Feature | Efecto |
-|---|---|
-| ⭐ **Hechicería Psiónica** | Lanzas psiónicos con SP (en vez de slots) **SIN componentes V/S/M**. Invisible, silencioso, indetectable |
-| 🛡️ **Defensas Psíquicas** | **Resistencia a daño psíquico** + **Ventaja vs Hechizado y Asustado** |
-
-### Coste de Psiónicos con SP (sin componentes):
-| Hechizo | Coste en SP |
-|---|---|
-| Dissonant Whispers | 1 SP |
-| Arms of Hadar / Charm Person | 1 SP |
-| Suggestion / Detect Thoughts / Calm Emotions | 2 SP |
-| Enemies Abound / Sending | 3 SP |
+### 🆕 Rasgos de Subclase (`sub_aberrant_xphb` Nivel 6)
+1. **Psionic Sorcery:** Cuando lanzas cualquier conjuro de nivel 1+ de tu lista de **Psionic Spells**, puedes lanzarlo gastando **PH igual al nivel del conjuro** en lugar de un slot. Si lo haces, **NO requiere componentes Verbales, Somáticos ni Materiales** (salvo consumidos/con coste).
+2. **Psychic Defenses:** **Resistencia a daño Psíquico** y **Ventaja en salvaciones contra Charmed y Frightened**.
 
 ---
 
 # ═══════════════════════════════════════
-# NIVEL 7 — SORCERY INCARNATE
+# NIVEL 7 — SORCERY INCARNATE & SUMMON ABERRATION
 # ═══════════════════════════════════════
 
-## 📊 Cambios
-| Stat | Nuevo Valor |
+| Stat | Valor |
 |---|---|
-| **HP** | ~47 |
-| **SP** | **9** |
-| **Slots** | 4×nv1, 3×nv2, 3×nv3, **1×nv4** |
+| **HP** | ~48 |
+| **PH** | **9** (7 clase + 2 dote) |
+| **Slots** | 4×Nv1, 3×Nv2, 3×Nv3, **1×Nv4** |
+| **Preparados XPHB** | **11** (+ 8 Psiónicos = 19) → Añade **Banishment** (Nv4, funciona con Twinned Spell por 1 PH) |
 
-## 🆕 Features
-| Feature | Efecto |
-|---|---|
-| ⭐ **Sorcery Incarnate** | Con Innate Sorcery activa: puedes usar **2 metamagias en 1 conjuro** |
-
-### Combos Doble Metamagia:
-| Combo | SP | Resultado |
-|---|---|---|
-| Quickened + Heightened | 5 | Conjuro como BA con Desventaja en el save |
-| Quickened + Subtle | 3 | Conjuro como BA, invisible |
-| Twinned + Heightened | 3+nv | 2 objetivos, uno con Desventaja |
-| Quickened + Empowered (nv10) | 3 | Conjuro como BA con daño maximizado |
-
-## 🆕 Hechizos Psiónicos Nuevos + Swap
-| Psiónico | Acción |
-|---|---|
-| ✅ **Compulsion** | Mantener. Fuerzas movimiento en dirección elegida |
-| ~~Evard's Black Tentacles~~ | 🔄 **SWAP → Confusion** (WIS save, atacan aleatoriamente) |
-
-## 📖 Hechizos Nivel 4 a Preparar
-| # | Hechizo | Efecto Clave |
-|---|---|---|
-| 14 | ⭐ **Banishment** | CHA save. Desaparece a semiplano 1 min (permanente si es extraplanar) |
+### 🆕 Lo Nuevo (`sorcerer_xphb` + `sub_aberrant_xphb`)
+- **Sorcery Incarnate (Nv7):**
+  1. Si no te quedan usos de *Innate Sorcery*, puedes activarla gastando **2 PH**.
+  2. Mientras *Innate Sorcery* esté activa, puedes aplicar **hasta 2 opciones de Metamagia** a cada conjuro que lances.
+- **Psiónicos Gratis de Nivel 7 (`sub_aberrant_xphb`):**
+  1. ⭐ **Evard's Black Tentacles** (Cuadrado 20ft, DEX save o 3d6 contundente + Restrained).
+  2. ⭐ **Summon Aberration** *(¡Materializas una proyección física del Marciano — Star Spawn / Mind Flayer psíquico — que ataca cada turno!).*
 
 ---
 
@@ -222,298 +166,80 @@
 # NIVEL 8 — WAR CASTER
 # ═══════════════════════════════════════
 
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~53 |
-| **SP** | **10** |
-| **Slots** | 4×nv1, 3×nv2, 3×nv3, **2×nv4** |
-
-## 🆕 Lo Nuevo
-| Nuevo | Detalle |
-|---|---|
-| **Feat: War Caster** | Ventaja en saves de Concentración. Conjuro como AoO. Somáticos con manos ocupadas |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 9 — SYNAPTIC STATIC ⭐⭐⭐
-# ═══════════════════════════════════════
-
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~59 |
-| **SP** | **11** |
-| **Prof** | **+4** |
-| **CD** | **17** (18 con Innate) |
-| **Ataque** | +9 |
-| **Slots** | 4×nv1, 3×nv2, 3×nv3, 2×nv4, **1×nv5** |
-
-## 🆕 Hechizos Psiónicos Nuevos
-| Psiónico | Acción |
-|---|---|
-| ⭐ **Modify Memory** | ✅ Mantener. Reescribes 10 min de memoria. Nv9 = cualquier momento |
-| ⭐ **Rary's Telepathic Bond** | ✅ Mantener. 8 criaturas comparten telepatía 1h, sin conc. |
-
-## 📖 Hechizos Nivel 5 a Preparar
-| # | Hechizo | Efecto Clave |
-|---|---|---|
-| 15 | ⭐⭐⭐ **Synaptic Static** | 8d6 PSÍQUICO AoE 20ft (INT save). -1d6 a ataques/saves/conc. 1 min. **SIN concentración** |
-| 16 | ⭐ **Hold Monster** | WIS save. Paralizado (auto-crit melee, vel. 0, falla saves FUE/DEX) |
-| 17 | 🖐️ **Telekinesis** | Mueve criaturas/objetos 1000 lbs con la mente. Conc. 10 min |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 10 — 5ª METAMAGIA
-# ═══════════════════════════════════════
-
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~65 |
-| **SP** | **12** |
-| **Cantrips** | 6 totales |
-
-## 🆕 Lo Nuevo
-| Nuevo | Detalle |
-|---|---|
-| **5ª Metamagia: Empowered Spell** | 1 SP. Re-tira hasta 5 dados de daño y quédate con los nuevos |
-| **6º Cantrip: Chill Touch** | 3d8 necrótico, impide curación del objetivo 1 turno |
-
-## 🎯 Arsenal de Metamagia Completo (5)
-| Metamagia | SP | Uso |
-|---|---|---|
-| **Quickened** | 2 | Conjuro → BA |
-| **Twinned** | 1/nv | +1 objetivo |
-| **Subtle** | 1 | Sin V/S |
-| **Heightened** | 3 | Desventaja en save |
-| **Empowered** | 1 | Re-tira hasta 5 dados de daño |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 11 — MASS SUGGESTION
-# ═══════════════════════════════════════
-
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~71 |
-| **SP** | **13** |
-| **Slots** | +**1×nv6** |
-| **Cantrips** | Escalan a **3 dados** (Mind Sliver 3d6, TtD 3d12) |
-
-## 📖 Hechizos Nivel 6 a Preparar
-| # | Hechizo | Efecto Clave |
-|---|---|---|
-| 18 | ⭐ **Mass Suggestion** | 12 criaturas, WIS save. Obedecen 24h (nv9 = 1 año). Sin conc. |
-| 19 | 💀 **Mental Prison** | INT save. 5d10 psíquico + si se mueve: 10d10 psíquico |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 12 — 3ER FEAT
-# ═══════════════════════════════════════
-
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~77 |
-| **SP** | **14** |
-
-## 🆕 Lo Nuevo
-| Nuevo | Detalle |
-|---|---|
-| **Feat: Resilient (WIS)** | WIS saves proficientes: +1 + 4 (prof) = **+5**. Con Defensas Psíquicas (ventaja vs charmed/frightened) = mente impenetrable |
-| *Alternativa* | **+2 CON** (14→16). +12 HP retroactivos. CON save +7 con ventaja (War Caster) |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 13 — POWER WORD PAIN
-# ═══════════════════════════════════════
-
-## 📊 Cambios
-| Stat | Nuevo Valor |
-|---|---|
-| **HP** | ~83 |
-| **SP** | **15** |
-| **Prof** | **+5** |
-| **CD** | **18** (19 con Innate) |
-| **Ataque** | +10 |
-| **Slots** | +**1×nv7** |
-
-## 📖 Hechizos Nivel 7 a Preparar
-| # | Hechizo | Efecto Clave |
-|---|---|---|
-| 20 | ⭐ **Power Word Pain** | **SIN SAVE.** Si ≤100 HP: desventaja ataques/checks, no reacciones, CON save para castear |
-
----
-
-# ═══════════════════════════════════════
-# NIVEL 14 — REVELATION IN FLESH ⭐⭐⭐
-# ═══════════════════════════════════════
-
-## 📊 Números Finales
 | Stat | Valor |
 |---|---|
-| **HP** | ~89 |
-| **SP** | **16** |
-| **CD** | **18** (19 con Innate) |
-| **Ataque** | +10 |
-| **CA** | 15 (Mage Armor) / 20 (Shield) |
-| **Iniciativa** | +7 (DEX +2 + Prof +5) |
-| **Prof** | +5 |
-| **Slots** | 4×nv1, 3×nv2, 3×nv3, 2×nv4, 1×nv5, 1×nv6, 1×nv7 |
+| **HP** | ~54 |
+| **PH** | **10** (8 clase + 2 dote) |
+| **Slots** | 4×Nv1, 3×Nv2, 3×Nv3, **2×Nv4** |
+| **Preparados XPHB** | **12** (+ 8 Psiónicos = 20) → Añade **Greater Invisibility** o **Dimension Door** (Nv4) |
 
-## 🆕 Feature de Subclase
-| Feature | Efecto |
+### ⭐ Dote Nivel 8: War Caster (`xphb`)
+- **Concentration:** **Ventaja** en salvaciones de CON para mantener Concentración.
+- **Reactive Spell:** Reacción cuando un enemigo provoca Ataque de Oportunidad para lanzarle un conjuro de 1 Acción de 1 objetivo (ej. *Hold Person*, *Banishment*, *Mind Sliver*, *Dissonant Whispers*).
+- **Somatic Components:** Haces componentes somáticos con manos ocupadas.
+- *(Nota XPHB: En 2024 War Caster además te da **+1 a INT, WIS o CHA** → súbelo a **INT 15** o **WIS 15**, preparando el terreno para Nivel 12).*
+
+---
+
+# ═══════════════════════════════════════
+# NIVEL 9 — SYNAPTIC STATIC & TELEKINESIS GRATIS ⭐⭐⭐
+# ═══════════════════════════════════════
+
+| Stat | Valor |
 |---|---|
-| **Revelation in Flesh** | BA, gasta 1+ SP. Por cada SP (10 min): Vuelo / Compresión (2.5cm) / Ver Invisible 60ft / 1d12 psíquico al ser agarrado |
+| **HP** | ~60 |
+| **PH** | **11** (9 clase + 2 dote) |
+| **Prof** | **+4** → **CD 17 (18 Innata)** · Ataque **+9** · Iniciativa **+6** |
+| **Slots** | 4×Nv1, 3×Nv2, 3×Nv3, 2×Nv4, **1×Nv5** |
+| **Preparados XPHB** | **14** (+ 10 Psiónicos = 24) |
+
+### 🆕 Psiónicos Gratis de Nivel 9 (`sub_aberrant_xphb`) — ¡COMPLETOS!
+1. ⭐ **Rary's Telepathic Bond** (Red telepática grupal hasta 8 criaturas por 1 hora, sin concentración; puedes lanzarlo por 5 PH sin componentes).
+2. ⭐ **Telekinesis** *(¡En XPHB viene GRATIS en tus Hechizos Psiónicos! Mueves criaturas u objetos de 1,000 lb con la mente, y con Psionic Sorcery cuesta 5 PH sin componentes V/S).*
+
+### 📖 Nuevos Preparados Nivel 5 (subes de 12 a 14):
+1. ⭐⭐⭐ **Synaptic Static** (8d6 Psíquico AoE 20ft, INT save, **-1d6 a ataques, habilidades y concentración** por 1 min, **SIN concentración**).
+2. ⭐ **Hold Monster** (WIS save → Paralizado cualquier tipo de criatura; **funciona con Twinned Spell por 1 PH** para paralizar a 2 monstruos).
 
 ---
 
 # ═══════════════════════════════════════
-# 📋 INVENTARIO COMPLETO A NIVEL 14
+# NIVEL 10 — ¡2 METAMAGIAS NUEVAS EN XPHB!
 # ═══════════════════════════════════════
 
-## Dotes (4)
-| # | Dote | Nivel | Efecto |
-|---|---|---|---|
-| 1 | **Alert** | Origen | +Prof a Iniciativa, no sorprendido |
-| 2 | **Lucky** | Origen | 3 usos/DL, re-tira d20 |
-| 3 | **Metamagic Adept** | 4 | +2 SP, +Subtle, +Heightened |
-| 4 | **War Caster** | 8 | Ventaja concentración, conjuro como AoO |
-| 5 | **Resilient WIS** o **+2 CON** | 12 | Según elección |
-
-## Metamagias (5)
-| # | Metamagia | SP | Origen |
-|---|---|---|---|
-| 1 | Quickened Spell | 2 | Clase (nv2) |
-| 2 | Twinned Spell | 1/nv | Clase (nv2) |
-| 3 | Subtle Spell | 1 | Feat (nv4) |
-| 4 | Heightened Spell | 3 | Feat (nv4) |
-| 5 | Empowered Spell | 1 | Clase (nv10) |
-
-## Cantrips (6)
-| # | Cantrip | Daño (nv14) | Save |
-|---|---|---|---|
-| 1 | 🧠 Mind Sliver | 3d6 psíquico + -1d4 | INT |
-| 2 | 💀 Toll the Dead | 3d8/3d12 necrótico | WIS |
-| 3 | 🎭 Minor Illusion | Utilidad | — |
-| 4 | 🖐️ Mage Hand | Utilidad | — |
-| 5 | 🔮 Prestidigitation | Utilidad | — |
-| 6 | ❄️ Chill Touch | 3d8 necrótico, anti-heal | — |
-
-## Hechizos Psiónicos (10 — Todos Gratis, No Cuentan Contra Límite)
-| # | Hechizo | Nv | Obtenido | Nota |
-|---|---|---|---|---|
-| — | 🧠 Mind Sliver | Cantrip | Nv3 | Siempre preparado |
-| 1 | 🧠 Dissonant Whispers | 1 | Nv3 | 3d6 psíquico + huye |
-| 2 | 🔄 ~~Arms of Hadar~~ → **Command** | 1 | Nv3, swap | "Huye/Suelta/Quieto" 1 palabra |
-| 3 | 🧠 Detect Thoughts | 2 | Nv3 | Lee mentes |
-| 4 | 🧠 Calm Emotions | 2 | Nv3 | Pacifica/neutraliza hostilidad |
-| 5 | 🔄 ~~Hunger of Hadar~~ → **Enemies Abound** | 3 | Nv5, swap | INT save, ataca a sus aliados |
-| 6 | 🧠 Sending | 3 | Nv5 | Mensaje telepático ilimitado |
-| 7 | 🧠 Compulsion | 4 | Nv7 | Fuerza movimiento |
-| 8 | 🔄 ~~Evard's~~ → **Confusion** | 4 | Nv7, swap | Atacan aleatoriamente |
-| 9 | 🧠 Modify Memory | 5 | Nv9 | Reescribe recuerdos |
-| 10 | 🧠 Rary's Telepathic Bond | 5 | Nv9 | Red telepática grupal |
-
-## Hechizos Preparados Recomendados (14 + 5 CHA = 19 slots)
-| Nv | Hechizos |
+| Stat | Valor |
 |---|---|
-| **1** | Shield, Mage Armor, Charm Person |
-| **2** | Suggestion, Web, Mirror Image |
-| **3** | Hypnotic Pattern, Counterspell, Fly |
-| **4** | Banishment |
-| **5** | **Synaptic Static** ⭐, Hold Monster, Telekinesis |
-| **6** | **Mass Suggestion**, Mental Prison |
-| **7** | **Power Word Pain** |
+| **HP** | ~66 |
+| **PH** | **12** (10 clase + 2 dote) |
+| **Slots** | 4×Nv1, 3×Nv2, 3×Nv3, 3×Nv4, **2×Nv5** |
+| **Cantrips** | **7** (6 clase + *Mind Sliver* gratis) |
+| **Preparados XPHB** | **15** (+ 10 Psiónicos = 25) |
+
+### 🆕 Lo Nuevo en `sorcerer_xphb` Nivel 10:
+En el PHB 2024, a Nivel 10 ganas **2 opciones de Metamagia adicionales** (no solo 1). Con *Metamagic Adept*, llegas a **6 Metamagias**:
+1. **Quickened Spell** (2 PH)
+2. **Twinned Spell** (1 PH)
+3. **Subtle Spell** (1 PH)
+4. **Heightened Spell** (2 PH)
+5. 🆕 **Empowered Spell** (1 PH — re-tira hasta 5 dados de daño)
+6. 🆕 **Careful Spell** (1 PH — hasta 5 aliados superan automáticamente el save de tus AoE como *Web*, *Hypnotic Pattern* o *Synaptic Static* y no reciben daño).
 
 ---
 
 # ═══════════════════════════════════════
-# 🗡️ OBJETOS MÁGICOS POR TIER
+# NIVELES 11 A 14 — EL MARCIANO DEFINITIVO
 # ═══════════════════════════════════════
 
-## 🟢 TIER 1: UNCOMMON (Niveles 3-5)
-| # | Item | Sintonización | Efecto |
-|---|---|---|---|
-| 1 | ⭐ **Bloodwell Vial +1** | Sí (Hechicero) | +1 CD (→16/17), +1 ataque. Recupera 5 SP en short rest |
-| 2 | **Cloak of Protection** | Sí | +1 CA, +1 a TODAS las salvaciones |
-| 3 | **Pearl of Power** | Sí | 1/día recupera 1 slot de nv1-3 |
+| Nivel | HP | PH | Prof / CD | Preparados (+10 Psi) | Hito Clave |
+|---|---|---|---|---|---|
+| **11** | ~72 | 13 | +4 / CD 17 (18) | **16** (26 tot.) | Slot Nv6: **Mass Suggestion** (12 criaturas, sin conc.). Cantrips a 3 dados. |
+| **12** | ~78 | 14 | +4 / CD 17 (18) | **16** (26 tot.) | **Dote Nv12:** *Resilient (WIS)* (sube WIS a 16 si pusiste +1 en nv8, WIS save **+7**) o *+2 CON*. |
+| **13** | ~84 | 15 | **+5 / CD 18 (19)** | **18** (28 tot.) | Slot Nv7: **Reverse Gravity**, **Teleport** o **Etherealness**. |
+| **14** | ~90 | **16** | **+5 / CD 18 (19)** | **18** (28 tot.) | ⭐⭐⭐ **Revelation in Flesh** (`sub_aberrant_xphb`). |
 
-## 🔵 TIER 2: RARE (Niveles 5-10)
-| # | Item | Sintonización | Efecto |
-|---|---|---|---|
-| 4 | ⭐ **Bloodwell Vial +2** | Sí (Hechicero) | Reemplaza el +1. +2 CD, +2 ataque |
-| 5 | ⭐ **Far Realm Shard** | Sí (Hechicero) | Al usar metamagia: 3d6 psíquico gratis a 1 criatura (CHA save) |
-| 6 | **Shadowfell Shard** | Sí (Hechicero) | Al usar metamagia contra save: Desventaja en el save |
-| 7 | **Ring of Mind Shielding** | Sí | Inmune a Detect Thoughts y telepatía no deseada |
-
-## 🟣 TIER 3: VERY RARE (Niveles 10-14)
-| # | Item | Sintonización | Efecto |
-|---|---|---|---|
-| 8 | ⭐ **Bloodwell Vial +3** | Sí (Hechicero) | Reemplaza el +2. +3 CD, +3 ataque |
-| 9 | **Illusionist's Bracers** | Sí (Hechicero) | Al lanzar cantrip: lánzalo otra vez como BA. Doble Mind Sliver |
-
-## 🔴 TIER 4: LEGENDARY (Niveles 14+)
-| # | Item | Sintonización | Efecto Clave |
-|---|---|---|---|
-| 10 | ⭐ **Robe of the Archmagi** | Sí (Hechicero) | +2 CD, CA 15+DEX, Ventaja saves vs magia |
-| 11 | ⭐ **Ascendant Dragon-Touched Focus (Gem)** | Sí (Caster) | Ventaja Iniciativa. Teleport 15ft cada spell. Psychic Lance + Telepathic Bond gratis 1/día. **1 conjuro a nv9 1/día** |
-| 12 | ⭐ **Cloak of Invisibility** | Sí | Invisible total, no se rompe al castear. 2h/día |
-| 13 | **Tome of Leadership** | NO (permanente) | CHA +2 (→22, +6) |
-
-### Loadout Ideal de 3 Sintonizaciones (nv14+):
-| Slot | Item |
-|---|---|
-| **1** | Túnica del Archimago (+2 CD, CA, saves) |
-| **2** | Foco Gema Ascendente (teleport, iniciativa, nv9 1/día) |
-| **3** | Capa de Invisibilidad (invisible al castear) |
-| **Gratis** | Tomo de Liderazgo (CHA 22) |
-
----
-
-# ═══════════════════════════════════════
-# 💀 COMBOS CLAVE POR NIVEL
-# ═══════════════════════════════════════
-
-## Niveles 3-5: La Kill Box
-```
-R1: BA Innate Sorcery (CD+1) → Acción Web (DEX save, Restrained)
-R2: Mind Sliver al atrapado (-1d4 save) → equipo ataca con Ventaja
-R3: Quickened Dissonant Whispers + Toll the Dead = doble daño
-```
-
-## Niveles 6-8: El Noir Silencioso
-```
-Psionic Sorcery: Suggestion con 2 SP, sin V/S/M
-  → El guardia obedece sin saber por qué
-  → Nadie te vio hablar ni gesticular
-  → Invisible. Perfecto.
-```
-
-## Niveles 9-11: El Aneurisma Marciano
-```
-R1: BA Innate → Acción Synaptic Static (8d6 psíquico AoE, sin conc.)
-  → Grupo enemigo: -1d6 a TODO por 1 minuto
-R2: Web o Hypnotic Pattern ENCIMA (puedes concentrarte, Synaptic no lo requiere)
-  → Enemies con -1d6 fallan el save de Web casi garantizado
-```
-
-## Nivel 14: El Marciano Completo
-```
-BA: Revelation in Flesh (2 SP) → Vuelo + Compresión
-  → Te deslizas bajo la puerta, vuelas al techo
-Acción: Mass Suggestion (12 criaturas, sin conc.)
-  → "Rendíos." → Combate terminado.
-  → Con Foco Gema: teleport 15ft gratis + escala a nv9 (1 año de duración)
-```
-
----
-
-*"Todo lo que necesitas está en esta lista. Hechizos, metamagias, objetos, combos. El resto es instinto. Y el Marciano tiene 8 mil millones de años de instinto."*
+### 🛸 Revelation in Flesh (`sub_aberrant_xphb` Nivel 14 — Texto Oficial 2024)
+Como **Bonus Action**, gastas **1 a 4 PH** para transformar tu cuerpo durante **10 minutos** (sin concentración). Por cada PH gastado, eliges una adaptación:
+1. **See the Invisible (1 PH):** Percibes la ubicación de cualquier criatura u objeto invisible u oculto a **60 pies**.
+2. **Glistening Flight (1 PH):** Ganas **Velocidad de Vuelo** igual a tu Velocidad y puedes **flotar (*hover*)**.
+3. **Wormlike Movement (1 PH):** Puedes moverte por espacios de hasta **1 pulgada (2.5 cm)** sin apretarte, y gastar **5 pies de movimiento** para escapar automáticamente de agarres (*grappled*) o ataduras no mágicas.
+4. **Aquatic Adaptation (1 PH):** Ganas **Velocidad de Nado** igual al doble de tu Velocidad (60 pies) y respiras bajo el agua.

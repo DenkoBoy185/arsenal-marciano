@@ -1,360 +1,163 @@
-# 🕵️ John Jones — El Detective Marciano
-## Hechicero de la Mente Aberrante (Aberrant Mind Sorcerer) | D&D 2024 PHB
+# 🕵️‍♂️👽 John Jones — Ficha Oficial XPHB (Nivel 3)
+## Hechicero: Hechicería Aberrante (`sorcerer_xphb` + `sub_aberrant_xphb`) | D&D 2024
+
+> *"No soy un héroe. Soy un detective cansado con algo de ocho mil millones de años viviendo detrás de mis ojos."*
 
 ---
 
-> *"No soy un héroe. Soy un hombre con algo horrible dentro de la cabeza... y esa cosa horrible resulta ser lo único que puede salvaros."*
-
----
-
-## 📋 RESUMEN RÁPIDO
+## 📋 1. CABECERA Y ESTADÍSTICAS (Sincronizado con tu PDF de Roll20)
 
 | Campo | Valor |
 |---|---|
 | **Nombre** | John Jones |
-| **Especie** | Humano |
-| **Clase** | Hechicero — Mente Aberrante (Aberrant Mind) |
-| **Trasfondo** | Investigador Federal (Personalizado) |
-| **Alineamiento** | Neutral Bueno (con tendencias pragmáticas) |
-| **Tirada usada** | 17, 14, 13, 13, 13, 7 |
+| **Clase y Nivel** | Hechicero 3 — Hechicería Aberrante (*Aberrant Sorcery*, XPHB) |
+| **Especie** | Humano (XPHB) |
+| **Trasfondo** | Investigador |
+| **Alineamiento** | Neutral Bueno |
+| **Experiencia** | 900 PE (Nivel 3) |
+
+### Estadísticas y Salvaciones
+
+| Atributo | Puntuación | Modificador | Salvación | Competencia |
+|---|---|---|---|---|
+| **Fuerza (STR)** | **10** | **+0** | +0 | — |
+| **Destreza (DEX)** | **14** | **+2** | +2 | — |
+| **Constitución (CON)** | **14** | **+2** | **+4** | ✅ Competente |
+| **Inteligencia (INT)** | **14** | **+2** | +2 | — |
+| **Sabiduría (WIS)** | **14** | **+2** | +2 | — |
+| **Carisma (CHA)** | **20** | **+5** | **+7** | ✅ Competente |
 
 ---
 
-## PASO 1: ESPECIE — HUMANO (PHB 2024, p. 18)
+## ⚔️ 2. NÚMEROS DE COMBATE (NIVEL 3)
 
-En el PHB 2024, los Humanos reciben tres rasgos de especie:
+| Estadística | Valor | Desglose Exacto (`sorcerer_xphb`) |
+|---|---|---|
+| **Clase de Armadura (CA)** | **12** / **15** / **20** | 12 (sin armadura) · **15** (*Mage Armor*: 13 + DES) · **20** (con *Shield*) |
+| **Puntos de Golpe (HP)** | **24** | 3d6 + CON (+2 × 3) |
+| **Iniciativa** | **+4** *(corregir en Roll20, dice +2)* | +2 (DES) + 2 (Competencia por dote *Alert*) |
+| **Velocidad** | **30 pies** | Base Humano |
+| **Bono de Competencia** | **+2** | Nivel 3 |
+| **CD de Salvación de Conjuros** | **15** (**16** con *Innate Sorcery*) | 8 + 2 (Comp.) + 5 (CAR) |
+| **Ataque de Conjuro** | **+7** (**Ventaja** con *Innate Sorcery*) | +2 (Comp.) + 5 (CAR) |
+| **Percepción Pasiva** | **14** | 10 + 2 (SAB) + 2 (Comp.) |
 
-| Rasgo | Descripción |
-|---|---|
-| **Tamaño** | Mediano. Velocidad 30 pies. |
-| **Ingenioso (Resourceful)** | Ganas **Inspiración Heroica** cada vez que terminas un **Descanso Largo**. Siempre empiezas el día con un as bajo la manga — el Marciano recalibra tu mente mientras duermes. |
-| **Habilidoso (Skillful)** | Ganas competencia en **1 habilidad adicional** a tu elección. → **Percepción (Perception)**. El Marciano amplifica tus sentidos. |
-| **Versátil (Versatile)** | Ganas **1 Dote de Origen** adicional a tu elección (además de la que recibes del Trasfondo). |
-
-### Dote de Origen por Versátil: **Afortunado (Lucky)**
-
-> **Lucky (PHB 2024).** Tienes 3 usos de Suerte por Descanso Largo. Cuando tú o una criatura que puedas ver haga una tirada de ataque, de habilidad o de salvación, puedes gastar 1 uso para tirar 1d20 adicional y elegir cuál de los dados se usa.
-
-**Justificación narrativa:** El Marciano percibe las líneas de probabilidad y "empuja" la realidad a favor de John en momentos críticos. Cuando esquivas una trampa o un enemigo falla su golpe, no es suerte: es intervención cósmica.
-
----
-
-## PASO 2: TRASFONDO — INVESTIGADOR FEDERAL (Personalizado, PHB 2024 p. 12)
-
-En el PHB 2024, puedes **crear un trasfondo personalizado** eligiendo libremente tus competencias, herramientas, Dote de Origen y la distribución de +2/+1 a tus estadísticas.
-
-| Componente | Elección |
-|---|---|
-| **Bonificadores de Estadística** | **+2 Carisma**, **+1 Constitución** |
-| **Competencias de Habilidad** | **Investigación (Investigation)**, **Perspicacia (Insight)** |
-| **Competencia de Herramienta** | **Kit de Disfraz (Disguise Kit)** — John tiene identidades encubiertas del FBI. |
-| **Dote de Origen** | **Alerta (Alert)** |
-| **Equipo** | 50 po de equipo (ver sección de Equipo) |
-
-### Dote de Origen por Trasfondo: **Alerta (Alert)**
-
-> **Alert (PHB 2024).** Sumas tu bonificador de Competencia a tu Iniciativa. No puedes ser **Sorprendido** mientras estés consciente. Otras criaturas no ganan Ventaja en tiradas de ataque contra ti como resultado de estar Ocultas de ti.
-
-**Justificación narrativa:** El Marciano nunca duerme. Cuando un asesino se acerca en las sombras, John ya lo sabe porque un susurro alienígena le dice: *"Amenaza biológica. 14 metros. Izquierda."*
+### Habilidades Competentes
+- **Engaño (CAR):** **+7**
+- **Persuasión (CAR):** **+7**
+- **Investigación (INT):** **+4**
+- **Perspicacia (SAB):** **+4**
+- **Percepción (SAB):** **+4** *(por rasgo Humano: Hábil / Skillful)*
+- **Herramienta:** Kit de Disfraz
 
 ---
 
-## PASO 3: ESTADÍSTICAS FINALES
+## 🧬 3. RASGOS DE ESPECIE, DOTES Y CLASE (Texto exacto para Roll20)
 
-### Distribución con Tirada 1 (17, 14, 13, 13, 13, 7)
+> [!WARNING]
+> **Corrección crítica para tu PDF de Roll20:** En tu hoja actual pusiste que *Versátil* te da *Alerta* (teniéndola duplicada) y te faltaba **Afortunado (Lucky)**. Además, *Hechicería Innata* decía que subía tu CD a 15, pero con CAR 20 tu CD base ya es **15** y sube a **16**. Copia y pega estos bloques en Roll20:
 
-| Estadística | Base | Bonif. Trasfondo | **Total** | **Mod.** | Narrativa |
-|---|---|---|---|---|---|
-| **CAR** | 17 | +2 | **19** | **+4** | El poder arrollador de la entidad marciana. Tu magia es pura voluntad psíquica. |
-| **CON** | 14 | +1 | **15** | **+2** | Tu resistencia para sobrevivir a la fusión alienígena sin que tu cerebro se derrita. |
-| **DES** | 13 | — | **13** | **+1** | Reflejos de tu entrenamiento como agente de campo. |
-| **SAB** | 13 | — | **13** | **+1** | Tu instinto policial y capacidad de observación natural. |
-| **INT** | 13 | — | **13** | **+1** | La mente analítica del detective bajo la tormenta cósmica. |
-| **FUE** | 7 | — | **7** | **−2** | Tu cuerpo humano, devastado. Sobreviviste a una explosión. Tus músculos están atrofiados, tus costillas soldadas con placas. No eres un guerrero; eres un hombre roto que camina con peso. |
+### Rasgos de Humano (XPHB)
+- **Resurgente (*Resourceful*):** Obtienes **Inspiración Heroica** cada vez que terminas un Descanso Largo. Puedes gastarla para repetir cualquier tirada de d20 después de tirar.
+- **Hábil (*Skillful*):** Ganas competencia en una habilidad a tu elección (**Percepción +4**).
+- **Versátil (*Versatile*):** Ganas una Dote de Origen adicional a tu elección → **Afortunado (*Lucky*)**.
+
+### Dotes de Origen (Nivel 1)
+1. **Afortunado (*Lucky* — por Humano Versátil):**
+   - **Puntos de Suerte:** **3 usos por Descanso Largo**.
+   - **Ventaja:** Cuando tiras un d20 para una prueba de d20 (ataque, salvación o habilidad), puedes gastar 1 Punto de Suerte para darte **Ventaja** en la tirada.
+   - **Desventaja:** Cuando una criatura tira un d20 para una tirada de ataque contra ti, puedes gastar 1 Punto de Suerte para imponerle **Desventaja** en esa tirada.
+2. **Alerta (*Alert* — por Trasfondo Investigador):**
+   - **Competencia en Iniciativa:** Sumas tu Bono de Competencia (+2) a la Iniciativa (**Total: +4**).
+   - **Intercambio Táctico:** Inmediatamente después de tirar Iniciativa, puedes intercambiar tu Iniciativa con la de un aliado voluntario en el mismo combate (si ninguno está Incapacitado).
+
+### Rasgos de Hechicero (`sorcerer_xphb` — Niveles 1 a 3)
+1. **Hechicería Innata (*Innate Sorcery* — Nivel 1):**
+   - **Activación:** Acción Adicional (*Bonus Action*). Dura **1 minuto**.
+   - **Usos:** **2 por Descanso Largo**.
+   - **Efectos:**
+     1. La **CD de salvación** de tus conjuros de Hechicero aumenta en **+1** (sube de **15 a 16**).
+     2. Tienes **Ventaja** en las tiradas de ataque de los conjuros de Hechicero que lances.
+2. **Fuente de Magia (*Font of Magic* — Nivel 2):**
+   - **Puntos de Hechicería (PH):** **3 por Descanso Largo** (igual a tu nivel de Hechicero).
+   - **Convertir Espacios en PH:** **Sin acción requerida** (*No action required*), gastas un espacio de conjuro y ganas PH igual al nivel del espacio.
+   - **Crear Espacios de Conjuro:** Como **Acción Adicional**, gastas PH para crear un espacio de conjuro: Nivel 1 = **2 PH** | Nivel 2 = **3 PH**.
+3. **Metamagia (*Metamagic* — Nivel 2, eliges 2 opciones):**
+   - **Conjuro Acelerado (*Quickened Spell* — 2 PH):** Cuando lanzas un conjuro con tiempo de lanzamiento de 1 Acción, cambias su tiempo de lanzamiento a **1 Acción Adicional**. *(Regla XPHB: No puedes modificar un conjuro así si ya lanzaste un conjuro de nivel 1+ en este turno, ni lanzar otro conjuro de nivel 1+ después en el mismo turno).*
+   - **Conjuro Gemelo (*Twinned Spell* — 1 PH):** Cuando lanzas un conjuro (como *Charm Person* o *Hold Person*) que puede lanzarse con un espacio de nivel superior para **apuntar a una criatura adicional**, puedes gastar **1 PH** para aumentar el nivel efectivo del conjuro en 1. *(Nota XPHB: Ya no funciona con Suggestion porque Suggestion no agrega objetivos al subir de nivel; úsalo con **Hold Person** o **Charm Person**).*
+   - *(Alternativa recomendada si no quieres cambiar hechizos: **Conjuro Sutil / Subtle Spell [1 PH]** — elimina componentes V, S y M).*
+
+### Rasgos de Subclase: Hechicería Aberrante (`sub_aberrant_xphb` — Nivel 3)
+1. **Hechizos Psiónicos (*Psionic Spells* — Nivel 3):**
+   - Siempre los tienes preparados y **no cuentan** contra tu límite de hechizos preparados de Hechicero:
+     - *Mind Sliver* (Truco)
+     - *Arms of Hadar* (Nivel 1)
+     - *Dissonant Whispers* (Nivel 1)
+     - *Calm Emotions* (Nivel 2)
+     - *Detect Thoughts* (Nivel 2)
+2. **Habla Telepática (*Telepathic Speech* — Nivel 3):**
+   - **Activación:** Acción Adicional (*Bonus Action*). Eliges una criatura que puedas ver a **30 pies**.
+   - **Efecto:** Tú y la criatura podéis comunicaros telepáticamente mientras estéis a una distancia máxima en millas igual a tu modificador de Carisma (**5 millas**). Para entenderos, debéis usar mentalmente un idioma que el otro conozca.
+   - **Duración:** **3 minutos** (igual a tu nivel de Hechicero).
+
+---
+
+## 📖 4. GRIMORIO OFICIAL XPHB (NIVEL 3)
+
+En el **PHB 2024 (`sorcerer_xphb`)**, la tabla de Hechicero a Nivel 3 te otorga exactamente:
+- **4 Trucos de Hechicero** + **1 Truco Psiónico gratis (*Mind Sliver*)** = **5 Trucos**.
+- **6 Hechizos Preparados de Hechicero** + **4 Hechizos Psiónicos gratis** = **10 Hechizos de Nivel 1–2**.
+- **Espacios de Conjuro (Slots):** **4 de Nivel 1** | **2 de Nivel 2**.
 
 > [!IMPORTANT]
-> **A Nivel 4** tomarás la dote **Telepático (Telepathic)** con +1 CAR, subiendo a **CAR 20 (+5)**. Tu "Visión Marciana" estará completa.
+> **Cambios clave respecto a tu PDF actual:**
+> 1. En tu PDF `Mind Sliver` tenía **DC 14** por error; cámbialo a **DC 15 (16 con Innata)**.
+> 2. En XPHB 2024, *Toll the Dead* no está en la lista de Hechicero; el truco oficial de `sorcerer_xphb` es **`Sorcerous Burst` (Estallido Hechicero)**, que hace **1d8 Psíquico** a 120 pies, **explota en los 8s** (hasta +5d8 extra) y aprovecha la **Ventaja de Hechicería Innata** porque es tirada de ataque (+7). *(Si tu DM te permite conservar Toll the Dead, asegúrate de ponerle DC 15).*
+> 3. En tu PDF tenías *Suggestion* metido en la lista de Nivel 1 (es de Nivel 2) y tenías 7 preparados en vez de los 6 de la tabla XPHB. Además, incluimos **Hold Person** para que tu **Twinned Spell (1 PH)** paralice a **2 enemigos** legalmente en XPHB.
+
+### 🌟 Trucos (5 en total)
+
+| Truco | Ataque / Salvación | Daño / Efecto | Reskin Marciano |
+|---|---|---|---|
+| **Mind Sliver ★PSI** | Salvación INT **CD 15** *(16 Innata)* | **1d6 Psíquico** + **-1d4** a la siguiente salvación antes del final de tu próximo turno | *Fisura Craneal.* Un latigazo psiónico que abre la mente del enemigo para tu siguiente conjuro. |
+| **Sorcerous Burst** *(o Toll the Dead)* | Ataque Conjuro **+7** *(Ventaja con Innata)* | **1d8 Psíquico** (120 pies). Si sacas 8 en el d8, tiras otro d8 y lo sumas (hasta 5d8 extra) | *Ráfaga de Visión Marciana.* Tus ojos destellan en verde esmeralda y un haz de energía mental perfora al objetivo. |
+| **Minor Illusion** | — (Investigación CD 15) | Sonido o imagen estática (cubo 5 pies) por 1 min a 30 pies | *Ruido Blanco / Silueta.* Proyectas susurros o la silueta distorsionada del Marciano. |
+| **Mage Hand** | — | Mano espectral a 30 pies, manipula hasta 10 lb por 1 min | *Telekinesis Menor.* Mueves objetos a distancia sin tocarlos. |
+| **Prestidigitation** | — | Efectos sensoriales menores, limpiar, calentar/enfriar, marcas (hasta 3 activos) | *Rastro Ectoplásmico.* El aire huele a ozono y arcilla húmeda cuando usas tu poder. |
 
 ---
 
-## PASO 4: CLASE — HECHICERO (Sorcerer, PHB 2024)
+### 🔹 Nivel 1 (4 Slots) — 2 Psiónicos Gratis + 2 Preparados
 
-### Nivel 1
-
-| Característica | Detalle |
-|---|---|
-| **Dado de Golpe** | **d6** por nivel de Hechicero |
-| **Puntos de Golpe Nivel 1** | 6 + CON (+2) = **8 PG** |
-| **PG por nivel adicional** | 1d6 (o 4) + CON (+2) = **6 PG/nivel** |
-| **Salvaciones Competentes** | **Constitución**, **Carisma** |
-| **Competencias de Habilidad (elige 2)** | **Engaño (Deception)** y **Persuasión (Persuasion)** |
-| **Competencias de Armadura** | Ninguna |
-| **Competencias de Arma** | Armas Sencillas |
-
-### Hechicería Innata (Innate Sorcery) — Nivel 1
-
-> Como **Acción Adicional**, activas tu poder innato durante **1 minuto**. Mientras esté activo:
-> - Tienes **Ventaja en las tiradas de ataque** de tus conjuros de Hechicero.
-> - Tu **CD de salvación de conjuros** aumenta en **+1**.
->
-> Usos por Descanso Largo = tu **bonificador de Competencia** (2 a nivel 1).
-
-**Reskin:** Cuando activas Hechicería Innata, el aire alrededor de John se distorsiona. Sus ojos se vuelven completamente blancos y una silueta verde, abstracta y ondulante se superpone a su cuerpo como una doble exposición fotográfica. El Marciano se ha puesto al mando.
+| Hechizo | Origen | Tiempo | Efecto Exacto XPHB |
+|---|---|---|---|
+| **Dissonant Whispers ★PSI** | Subclase (Gratis) | 1 Acción | 60 pies. Salvación **SAB CD 15 (16 Innata)**. **3d6 Psíquico** y debe usar su Reacción para huir lo más lejos posible (provoca Ataques de Oportunidad de tus aliados). Mitad de daño si supera. |
+| **Arms of Hadar ★PSI** | Subclase (Gratis) | 1 Acción | Emanación de 10 pies centrada en ti. Salvación **FUE CD 15 (16 Innata)**. **2d6 Necrótico** y el objetivo no puede hacer Reacciones hasta su próximo turno. |
+| **Shield** | Preparado #1 | Reacción | Al ser impactado por un ataque o *Magic Missile*: **+5 a la CA** (subes a **CA 20**) hasta el inicio de tu próximo turno e inmune a *Magic Missile*. |
+| **Mage Armor** | Preparado #2 | 1 Acción | Duración **8 horas** (sin concentración). Tu CA base pasa a ser **13 + DES (+2) = 15**. |
 
 ---
 
-### Nivel 2: Fuente de Magia y Metamagia
+### 🔸 Nivel 2 (2 Slots) — 2 Psiónicos Gratis + 4 Preparados
 
-#### Fuente de Magia (Font of Magic)
-
-> Ganas **Puntos de Hechicería** = tu nivel de Hechicero (2 a nivel 2).
-> Puedes convertir espacios de conjuro en puntos y viceversa.
-
-#### Metamagia — Elige 2 opciones:
-
-**1. Conjuro Sutil (Subtle Spell)** — *Coste: 1 punto*
-
-> Lanzas un conjuro **sin componentes Verbales ni Somáticos**.
-
-🎬 **EN LA MESA:** El grupo está rodeado por guardias de la secta. John, con las manos en los bolsillos y una expresión cansada, simplemente *mira* al capitán de los guardias. El capitán empieza a gritar, a golpearse la cabeza contra la pared y a atacar a sus propios hombres. Nadie en la sala sabe que John hizo algo. Eres el terror **invisible**.
-
-**2. Conjuro Potenciado (Empowered Spell)** — *Coste: 1 punto*
-
-> Cuando tiras daño de un conjuro, puedes volver a tirar hasta un número de dados de daño igual a tu modificador de Carisma (4) y quedarte con los nuevos resultados.
-
-🎬 **EN LA MESA:** El Marciano canaliza toda su furia alienígena en un único ataque psíquico devastador, reventando las defensas mentales del enemigo.
+| Hechizo | Origen | Tiempo | Efecto Exacto XPHB |
+|---|---|---|---|
+| **Detect Thoughts ★PSI** | Subclase (Gratis) | 1 Acción (Conc. 1 min) | Lees pensamientos superficiales a 30 pies. Como acción mágica puedes sondear más profundo (**SAB CD 15 / 16 Innata**). |
+| **Calm Emotions ★PSI** | Subclase (Gratis) | 1 Acción (Conc. 1 min) | Esfera de 20 pies a 60 pies. Salvación **CAR CD 15 (16 Innata)**. Suprime estados *Charmed/Frightened* o vuelve Indiferentes a criaturas hostiles. |
+| **Web** | Preparado #3 | 1 Acción (Conc. 1 h) | Cubo de 20 pies a 60 pies. Terreno difícil. Salvación **DES CD 15 (16 Innata)** o queda **Apresado (*Restrained*)**: velocidad 0, ataques contra él tienen Ventaja, sus ataques tienen Desventaja. |
+| **Suggestion** | Preparado #4 | 1 Acción (Conc. hasta 8 h) | 30 pies. Salvación **SAB CD 15 (16 Innata)**. Una criatura que pueda oírte y entenderte sigue una sugerencia formulada en 1-2 frases que suene realizable y no le cause daño directo. |
+| **Hold Person** *(Combo Twinned)* | Preparado #5 | 1 Acción (Conc. 1 min) | 60 pies. Salvación **SAB CD 15 (16 Innata)**. Humanoide queda **Paralizado** (incapacitado, no se mueve, falla salvaciones FUE/DES, ataques a 5 pies tienen Ventaja y son **Críticos Automáticos**). **Con Twinned Spell (1 PH) paralizas a 2 enemigos.** |
+| **Mirror Image** *(o Misty Step)* | Preparado #6 | 1 Acción (Sin conc., 1 min) | Creas 3 duplicados ilusorios. Cada vez que un ataque te impactaría, tiras **3d6** (1d6 por imagen activa): si al menos un dado saca **3 o más**, el duplicado absorbe el golpe y se destruye. |
 
 ---
 
-## PASO 5: SUBCLASE — MENTE ABERRANTE (Nivel 3)
+## 🛠️ 5. CHECKLIST RÁPIDO PARA CORREGIR EN TU ROLL20 AHORA MISMO
 
-### Hechizos Psiónicos (Psionic Spells)
-
-Ganas hechizos adicionales que **no cuentan contra tu límite de hechizos preparados**. Están **siempre preparados**. Puedes intercambiar cada uno por un hechizo de adivinación o encantamiento de la lista de Hechicero, Brujo o Mago.
-
-| Nivel de Hechicero | Hechizos Psiónicos | Reskin Marciano |
-|---|---|---|
-| **3** | *Arms of Hadar*, *Calm Emotions*, *Detect Thoughts*, *Dissonant Whispers* | La silueta del Marciano se expande / Pacificación mental / Visión Marciana / Grito psíquico alienígena |
-| **5** | *Hunger of Hadar*, *Sending* | Campo de vacío cósmico / Transmisión telepática de largo alcance |
-| **7** | *Compulsion*, *Evard's Black Tentacles* | Control de voluntad / Materialización de pesadillas |
-| **9** | *Modify Memory*, *Rary's Telepathic Bond* | Reescritura neuronal / Red psíquica del equipo |
-
-### Habla Telepática (Telepathic Speech) — Nivel 3
-
-> Puedes formar un vínculo telepático con una criatura a 30 pies. El vínculo dura un número de minutos igual a tu nivel de Hechicero. Puedes comunicarte telepáticamente con la criatura vinculada.
-
-🎬 John se sienta frente al sospechoso en la sala de interrogatorios. No abre la boca. Simplemente lo mira. Y dentro de la cabeza del criminal, una voz gélida y no humana susurra: *"Sé lo que hiciste. Lo he visto en tus recuerdos."*
-
----
-
-### Hechicería Psiónica (Psionic Sorcery) — Nivel 6
-
-> Cuando lanzas un hechizo psiónico gastando **Puntos de Hechicería** (en lugar de un espacio de conjuro), lo lanzas **sin componentes Verbales, Somáticos ni Materiales** (a menos que el material se consuma).
-
-**Esto es la mecánica definitiva del Detective Noir.** No mueves las manos. No pronuncias palabras. Simplemente *piensas*, y la realidad se dobla.
-
-### Defensas Psíquicas (Psychic Defenses) — Nivel 6
-
-> Ganas **resistencia al daño Psíquico** y **Ventaja en salvaciones contra ser Hechizado o Asustado**.
-
-El Marciano protege tu mente de invasores externos. Has aprendido a coexistir con el horror; el miedo mundano ya no te afecta.
-
----
-
-### Revelación en la Carne (Revelation in Flesh) — Nivel 14
-
-> Gastas 1+ Puntos de Hechicería como Acción Adicional. Por cada punto gastado, ganas UNO de los siguientes beneficios durante 10 minutos:
-> - **Ver lo Invisible**: Puedes ver criaturas y objetos invisibles a 60 pies.
-> - **Vuelo**: Ganas velocidad de vuelo igual a tu velocidad de caminar. Puedes flotar.
-> - **Compresión**: Puedes pasar por espacios de hasta 2.5 cm (1 pulgada) sin comprimir tu equipo. Ventaja en tiradas para escapar agarres.
-> - **Superficie Resbaladiza**: Cualquier criatura que te agarre o te restrinja recibe 1d12 de daño Psíquico.
-
-🎬 **Este es el momento Absolute Martian Manhunter**. John se deforma. Su cuerpo se vuelve translúcido, elástico, imposible de agarrar. Se desliza bajo una puerta como líquido verde. Levita sobre el campo de batalla con los ojos brillando. Ve a los enemigos invisibles que acechan a su equipo. El detective humano desaparece y solo queda **el Marciano**.
-
----
-
-## PASO 6: HECHIZOS RECOMENDADOS
-
-### Trucos (Cantrips) — 4 conocidos
-
-| Truco | Reskin |
-|---|---|
-| **Astilla Mental (Mind Sliver)** | 1d6 daño psíquico + el objetivo resta 1d4 a su próxima salvación. Tu ataque principal. Un pico de presión intracraneal. |
-| **Ilusión Menor (Minor Illusion)** | Proyectas imágenes espectrales: humo verde, figuras de arcilla que cobran vida, la silueta del Marciano rodeándote. |
-| **Mano de Mago (Mage Hand)** | Telekinesis alienígena. Mueves objetos a distancia con un gesto imperceptible. |
-| **Prestidigitación (Prestidigitation)** | Alteras sensorialmente tu entorno: olores, sabores, temperatura. El aroma a ozono y arcilla húmeda precede tu llegada. |
-
-### Hechizos Preparados por Nivel
-
-En el PHB 2024, el Hechicero **prepara** sus hechizos. Número de hechizos preparados = **nivel de Hechicero + mod. CAR**.
-
-#### Nivel 1 (5 hechizos preparados = 1 + 4)
-
-| Hechizo | Nivel | Reskin |
-|---|---|---|
-| **Escudo (Shield)** | 1 | Reacción. +5 CA. El Marciano levanta un muro de estática psíquica alrededor de John. |
-| **Causar Miedo (Cause Fear)** | 1 | Le muestras al objetivo un fragmento de la visión del Marciano: el vacío entre dimensiones, Despair-the-Zero, el sol oscuro. El enemigo huye aterrorizado. |
-| **Encanto de Persona (Charm Person)** | 1 | Sincronizas tu frecuencia mental con la del objetivo. Se vuelve amigable hacia ti. El Marciano le inyecta una falsa familiaridad. |
-| **Disfrazarse (Disguise Self)** | 1 | Moldeas tu apariencia como arcilla. Puedes ser John Jones, el detective cansado, o cualquier otra persona que necesites ser. |
-| **Rayo Cromático (Chromatic Orb)** | 1 | Una esfera de energía alienígena que cambia de color según la emoción del Marciano (verde=calma, rojo=ira, azul=despair). |
-
-#### Nivel 3 — Subclase activa (7 preparados + 4 psiónicos gratis)
-
-Añades a tu repertorio:
-
-| Hechizo | Nivel | Reskin |
-|---|---|---|
-| **Toque Abrasador de Melf (Melf's Acid Arrow)** *(swap opcional)* | 2 | Proyectas una aguja de ácido psíquico que corroe la mente. |
-| **Sugestión (Suggestion)** | 2 | Implantas una idea en el cerebro del objetivo. No es una orden; es una semilla que el Marciano planta y que florece como si fuera pensamiento propio del objetivo. |
-| **Nube de Dagas (Cloud of Daggers)** | 2 | Una zona de interferencia mental donde los pensamientos se fragmentan como cristal. |
-
----
-
-## PASO 7: EQUIPO INICIAL
-
-Con 50 po del trasfondo personalizado (PHB 2024):
-
-| Objeto | Coste | Narrativa |
-|---|---|---|
-| **Foco Arcano: Figurilla de arcilla verde** | 5 po | La figurilla de "el marciano" que Tyler (su hijo) moldeó antes de... antes de todo. John la lleva siempre en el bolsillo interior de su gabardina. Es su foco de lanzamiento. |
-| **Gabardina de cuero** (Armadura de Cuero) | 10 po | CA 11 + DES (+1) = **CA 12**. No es glamurosa. Está manchada. Huele a café y a desastre. |
-| **Ballesta Ligera + 20 virotes** | 27 po | Para cuando necesitas algo más terrenal que la telepatía. John la lleva enfundada bajo la gabardina. |
-| **Pack del Explorador** *(o equivalente)* | 10 po | Mochila, cuerda, raciones, saco de dormir, antorcha. |
-| **Kit de Disfraz** | — | Incluido por el trasfondo. |
-| **Total** | ~52 po | |
-
----
-
-## PASO 8: DOTE DE NIVEL 4 — TELEPÁTICO (Telepathic)
-
-> **Telepathic (PHB 2024).** Prerrequisito: Nivel 4+.
-> - Aumenta tu **Inteligencia, Sabiduría o Carisma** en +1. → **Carisma 20 (+5)**.
-> - Puedes hablar telepáticamente a cualquier criatura a 60 pies. No necesitan compartir idioma. La criatura puede responderte telepáticamente.
-> - Puedes lanzar **Detectar Pensamientos (Detect Thoughts)** una vez por Descanso Largo **sin gastar espacio de conjuro** ni componentes.
-
-🎬 **Tu Visión Marciana está completa.** A nivel 4, John puede:
-1. Hablar directamente dentro del cerebro de cualquiera a 60 pies (**Telepático**).
-2. Leer los pensamientos profundos de cualquier criatura (**Detectar Pensamientos** gratis).
-3. Lanzar sus hechizos mentales **sin hablar, sin moverse, sin material** (**Conjuro Sutil** o **Hechicería Psiónica**).
-4. Ver *humo de colores* alrededor de la gente que delata sus emociones y mentiras.
-
----
-
-## PASO 9: RESUMEN DE CA, ATAQUE Y DEFENSA
-
-### Nivel 1
-
-| Stat | Valor |
-|---|---|
-| **Clase de Armadura** | 12 (Armadura de Cuero 11 + DES +1) |
-| **Puntos de Golpe** | 8 |
-| **Iniciativa** | +1 (DES) + 2 (Competencia por Alert) = **+3** |
-| **Velocidad** | 30 pies |
-| **CD de Salvación de Conjuros** | 8 + 2 (Competencia) + 4 (CAR) = **14** (15 con Hechicería Innata) |
-| **Bonificador de Ataque de Conjuros** | +2 + 4 = **+6** |
-| **Ataque Principal** | *Mind Sliver*: +6 al ataque, 1d6 psíquico + debuff |
-
-### Nivel 4 (Con Telepático)
-
-| Stat | Valor |
-|---|---|
-| **CA** | 12 (o 15 con *Mage Armor* si la preparas) |
-| **PG** | 8 + 6×3 = **26** |
-| **Iniciativa** | +1 + 2 = **+3** |
-| **CD de Salvación** | 8 + 2 + 5 = **15** (16 con Innate Sorcery) |
-| **Bonificador de Ataque** | +2 + 5 = **+7** |
-| **Puntos de Hechicería** | 4 |
-| **Hechizos Preparados** | 4 + 5 = **9** (+ psiónicos gratis) |
-
----
-
-## PASO 10: COMPETENCIAS COMPLETAS
-
-| Tipo | Competencias |
-|---|---|
-| **Salvaciones** | Constitución (+4), Carisma (+6) |
-| **Habilidades** | Engaño (+6), Persuasión (+6), Investigación (+3), Perspicacia (+3), Percepción (+3) |
-| **Herramientas** | Kit de Disfraz |
-| **Armas** | Armas Sencillas |
-| **Idiomas** | Común + 1 adicional (elige: Infracomún, Abismal, o Profundo — el idioma que "el Marciano" te enseñó sin querer) |
-
----
-
-## 🎭 NOTAS DE ROL: EL TRASTORNO DUAL
-
-### Personalidad: Dos Voces, Un Cuerpo
-
-John Jones habla con dos voces distintas que alternas en la mesa:
-
-**Como John (el humano):**
-- Tono cansado, seco, pragmático.
-- Habla con frases cortas y directas. No tiene paciencia para la diplomacia.
-- Dice cosas como: *"No me importa si es un dios. Tiene que morir."*
-- Se frota los ojos constantemente, como si tuviera migraña permanente.
-- Oculta sus poderes al resto del grupo al principio. Dice que "tiene buena intuición".
-
-**Como El Marciano (la entidad):**
-- Tono clínico, frío, casi condescendiente.
-- Se refiere a los demás como *"biomasa"*, *"constructo orgánico"* o *"anomalía psicológica"*.
-- Cuando el Marciano habla a través de John, cambia la cadencia: frases largas, sin contracciones, vocabulario alienígena.
-- Dice cosas como: *"Tu frecuencia cerebral indica engaño. La probabilidad de que sobrevivas a los próximos 4.3 segundos depende de tu cooperación."*
-
-### Defectos y Vulnerabilidades
-
-| Defecto | Mecánica de Rol |
-|---|---|
-| **Pirofobia** | Cada vez que alguien enciende una fogata, una antorcha o usa magia de fuego cerca de ti, roleaes incomodidad extrema. Te quedas hipnotizado mirando las llamas, sudando, con la respiración agitada. El Marciano *odia* el fuego. |
-| **Pesadillas** | Cada Descanso Largo, puedes describir brevemente una pesadilla donde ves a través de los ojos del Marciano: galaxias muriendo, civilizaciones consumidas, el rostro de Despair-the-Zero. |
-| **Aislamiento Social** | Tu CAR es 19-20, pero no porque seas encantador: es porque tu presencia mental es *perturbadora*. La gente te hace caso porque algo dentro de ellos siente que *deberían*. |
-
-### Vinculaciones con el Grupo
-
-| Miembro | Relación Posible |
-|---|---|
-| **Cecilius** | John respeta a los guerreros de fe. El Marciano los considera "anomalías de convicción fascinantes". |
-| **Faelan** | Otro ser conectado a fuerzas primigenias. John siente afinidad; el Marciano siente *curiosidad*. |
-| **Roy** | Otro operador de largo alcance. Coordinación táctica telepática natural. |
-| **Abdias** | Si usa magia, John quiere entender si su fuente mágica es similar a la del Marciano. |
-| **Pompom** | El Marciano no entiende a las mascotas. Las observa con una confusión genuina y alienígena que resulta cómica. |
-
----
-
-## 📈 PROGRESIÓN RECOMENDADA (Niveles 1-10)
-
-| Nivel | Hito Mecánico | Momento Narrativo |
-|---|---|---|
-| **1** | Hechicería Innata, 5 hechizos, 2 Dotes de Origen | John llega al grupo con migrañas y visiones. No controla al Marciano. |
-| **2** | Metamagia (Subtle + Empowered), 2 Puntos de Hechicería | Aprende a lanzar magia en silencio. El grupo no sabe qué eres. |
-| **3** | **Mente Aberrante**: Hechizos Psiónicos + Habla Telepática | Primera manifestación completa. Arms of Hadar = la silueta del Marciano se materializa. |
-| **4** | **Dote: Telepático** → CAR 20. Detect Thoughts gratis. | La Visión Marciana se completa. Puedes leer mentes y proyectar tu voz en cerebros ajenos. |
-| **5** | Conjuros de Nivel 3. *Hunger of Hadar* + *Sending*. | El Marciano puede crear zonas de vacío cósmico y comunicarse a cualquier distancia. |
-| **6** | **Hechicería Psiónica** + Defensas Psíquicas | *El noir silencioso*. Toda tu magia psiónica funciona sin componentes. Resistencia a daño psíquico. |
-| **7** | Conjuros de Nivel 4. *Evard's Black Tentacles* + *Compulsion*. | Materializas pesadillas dimensionales y controlas voluntades. |
-| **8** | **Dote: Lanzador de Guerra (War Caster)** o **Resiliente (SAB)** | Concentración blindada o mente inexpugnable. |
-| **9** | Conjuros de Nivel 5. *Modify Memory* + *Rary's Telepathic Bond*. | Reescribes recuerdos. Creas una red telepática con todo el grupo. |
-| **10** | 5º Truco. Metamagia adicional (Quickened Spell). | Doble conjuro por turno. Acción + Acción Adicional. Devastador. |
-
----
-
-## 🎬 ESCENA DE ENTRADA SUGERIDA
-
-> *El grupo se reagrupa en los túneles, todavía sacudiéndose el polvo y la sangre negra del enfrentamiento. Clark ya no está. El portal abisal palpita a lo lejos.*
->
-> *De las sombras del corredor que ya limpiaron, se escucha un paso irregular. Lento. Pesado. Alguien arrastrándose más que caminando.*
->
-> *Emerge un hombre. Gabardina sucia, cara demacrada, ojos inyectados en sangre. Tiene una figurilla de arcilla verde apretada en la mano izquierda como si fuera un amuleto.*
->
-> *Se detiene. Os mira a todos. Y luego mira más allá de vosotros, al portal, como si pudiera ver algo que vosotros no.*
->
-> *"Ya sé lo que hay al otro lado", dice con voz ronca. "Me lo ha enseñado."*
->
-> *"¿Quién te lo ha enseñado?", pregunta alguien.*
->
-> *Los ojos del hombre parpadean. Por un instante, menos de un segundo, sus iris se vuelven completamente blancos.*
->
-> *"Algo que lleva dentro de mi cabeza más tiempo del que me gustaría admitir."*
-
----
-
-> [!TIP]
-> **Pregunta para tu DM (Mauricio):** ¿A qué nivel entra John? Si es nivel 3+, la subclase ya está activa y puedes hacer la entrada con la silueta espectral del Marciano manifestándose por primera vez. Si es nivel 1-2, la entrada es más sutil: solo migrañas, visiones y el truco Mind Sliver como primer destello de poder.
+1. **Iniciativa (Página 1):** Cámbiala de `2` a **`4`** (+2 DES + 2 Alerta).
+2. **Mind Sliver (Página 1 y 6):** Cambia la CD de `DC14` a **`DC15`** (`CD 15 / 16 con Innata`).
+3. **Hechicería Innata (Página 5):** Cambia el texto de *"CD de conjuros sube a 15 (+1)"* por **"CD de conjuros sube a 16 (+1)"**.
+4. **Rasgo Versátil (Página 2 y 5):** Cambia *"Otorga la dote Alerta"* por **"Afortunado (Lucky): 3 Puntos de Suerte por Descanso Largo. Gasta 1 punto para darte Ventaja en una prueba de d20 o imponer Desventaja a un ataque contra ti."**
+5. **Hechizos en Roll20 (Página 4):**
+   - Mueve **`Suggestion`** de Nivel 1 a **Nivel 2**.
+   - Quita *Absorb Elements* y *Magic Missile* de Nivel 1, y añade **`Hold Person`** en Nivel 2 para que tengas exactamente los **6 Preparados legales de XPHB** (*Mage Armor, Shield, Web, Suggestion, Hold Person, Mirror Image*) + tus **4 Psiónicos gratis** (*Arms of Hadar, Dissonant Whispers, Detect Thoughts, Calm Emotions*).
+   - En *Twinned Spell* (Página 5), cambia el ejemplo de *(ej: Suggestion)* a **(ej: Hold Person o Charm Person — paraliza a 2 objetivos por 1 PH)**.
