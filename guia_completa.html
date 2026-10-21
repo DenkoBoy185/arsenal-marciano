@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>John Jones — Ficha Maestra Nivel 6 a 16 & Simulación Ultra-Meta (D&D 5.5e)</title>
+  <title>John Jones — Ficha Maestra, Sistema de Forja & Simulación Nivel 6-16 (D&D 5.5e)</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,11 +99,11 @@
                 Hechicería Aberrante 5.5e (XPHB) ↗
               </a>
               <span id="badge-mode" class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30">
-                Nivel 16 · Tier 4 (Reliquias + Doble Metamagia)
+                Forja Activa · 1 Foco Fusionado + 2 Reliquias Libres
               </span>
             </div>
             <p id="hero-stats-line" class="text-xs sm:text-sm text-slate-300">
-              <strong>CAR 20 (+5)</strong> · <strong>CON 16 (+3)</strong> · DES 14 (+2) · INT 14 (+2) · SAB 14 (+2) · FUE 10 (+0) · Dotes: <strong>Adepto Metamagia (Nv4), War Caster (Nv8), Resiliente/CON (Nv12), Duro (Nv16)</strong>
+              <strong>CAR 20 (+5)</strong> · <strong>CON 16 (+3)</strong> · DES 14 (+2) · INT 14 (+2) · SAB 14 (+2) · FUE 10 (+0) · <strong>Forja:</strong> Foco Arcano Supremo (Sint. 1) + Túnica Archimago (Sint. 2) + Ornamento Esmeralda (Sint. 3)
             </p>
           </div>
         </div>
@@ -111,19 +111,16 @@
         <!-- Botones de Etapa de Equipo / Presets -->
         <div class="flex flex-wrap items-center gap-2">
           <button id="preset-base" onclick="applyPreset('base6')" class="preset-btn px-3 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-900 text-slate-200 hover:border-emerald-500/50 transition">
-            1. Puro Nv 6 (Base)
+            1. Nv 6 Base (Sin Items)
           </button>
-          <button id="preset-rare6" onclick="applyPreset('rare6')" class="preset-btn px-3 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-900 text-slate-200 hover:border-purple-500/50 transition">
-            2. Meta Nv 6 (Vial +2)
+          <button id="preset-forja6" onclick="applyPreset('forja6')" class="preset-btn px-3 py-2 rounded-xl text-xs font-bold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 hover:bg-emerald-500/25 transition">
+            2. Nv 6 + Forja (CD 21)
           </button>
-          <button id="preset-valka6" onclick="applyPreset('valka6')" class="preset-btn px-3 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-900 text-emerald-300 hover:border-emerald-500/50 transition">
-            3. Nv 6 (Trío Legendario)
+          <button id="preset-nv16" onclick="applyPreset('nv16')" class="preset-btn px-3 py-2 rounded-xl text-xs font-semibold border border-slate-700 bg-slate-900 text-slate-200 hover:border-purple-500/50 transition">
+            3. Nv 16 Estándar (CD 22)
           </button>
-          <button id="preset-nv16" onclick="applyPreset('nv16')" class="preset-btn active px-3 py-2 rounded-xl text-xs font-bold border border-emerald-500 bg-emerald-500/20 text-emerald-300 hover:bg-emerald-500/30 transition">
-            4. Nivel 16 (Vial +3 · CD 22)
-          </button>
-          <button id="preset-ultrameta16" onclick="applyPreset('ultrameta16')" class="preset-btn px-3 py-2 rounded-xl text-xs font-bold border border-amber-500/50 bg-amber-500/15 text-amber-300 hover:bg-amber-500/25 transition">
-            5. Simulación ULTRA-META Nv 16 (CD 24)
+          <button id="preset-ultrameta16" onclick="applyPreset('ultrameta16')" class="preset-btn active px-3 py-2 rounded-xl text-xs font-bold border border-amber-500 bg-amber-500/20 text-amber-300 hover:bg-amber-500/30 transition">
+            4. Nv 16 + FORJA SUPREMA (CD 24)
           </button>
         </div>
       </div>
@@ -138,7 +135,7 @@
         <div class="flex flex-wrap items-center gap-2">
           <button id="toggle-trio" onclick="toggleBuff('trio')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-amber-500/50 bg-amber-500/15 text-amber-300 transition flex items-center gap-1.5">
             <span id="dot-trio" class="w-2 h-2 rounded-full bg-amber-400"></span>
-            Reliquias Activas: ON
+            Foco Forjado + 2 Reliquias: ON
           </button>
 
           <button id="toggle-innate" onclick="toggleBuff('innate')" class="px-3 py-1.5 rounded-lg text-xs font-bold border border-emerald-500/50 bg-emerald-500/15 text-emerald-300 transition flex items-center gap-1.5">
@@ -171,8 +168,8 @@
 
         <div class="bg-[#111827] border border-purple-500/40 rounded-xl p-3.5 flex flex-col justify-between">
           <div class="text-xs font-semibold text-purple-300">CD Salvación</div>
-          <div id="hud-dc" class="text-xl font-extrabold text-purple-300 mt-1">22</div>
-          <div id="hud-dc-note" class="text-[11px] text-purple-200/80">21 Pasiva → 22 Innata</div>
+          <div id="hud-dc" class="text-xl font-extrabold text-purple-300 mt-1">24</div>
+          <div id="hud-dc-note" class="text-[11px] text-purple-200/80">23 Pasiva → 24 Innata</div>
         </div>
 
         <div class="bg-[#111827] border border-emerald-500/30 rounded-xl p-3.5 flex flex-col justify-between">
@@ -180,8 +177,8 @@
             <span class="text-xs font-semibold text-emerald-300">Ataque Conjuro</span>
             <span id="hud-atk-adv" class="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-bold">VENTAJA</span>
           </div>
-          <div id="hud-atk" class="text-xl font-extrabold text-emerald-400 mt-1">+13</div>
-          <div id="hud-atk-note" class="text-[11px] text-slate-400">+5 Comp +5 CAR +3 Vial</div>
+          <div id="hud-atk" class="text-xl font-extrabold text-emerald-400 mt-1">+15</div>
+          <div id="hud-atk-note" class="text-[11px] text-slate-400">+3 Foco +2 Túnica</div>
         </div>
 
         <div class="bg-[#111827] border border-amber-500/30 rounded-xl p-3.5 flex flex-col justify-between">
@@ -212,20 +209,20 @@
   <div class="bg-[#111827] border-b border-slate-800">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-2">
       <nav class="flex items-center gap-2 overflow-x-auto custom-scroll py-0.5">
-        <button onclick="switchTab('tab-nivel16')" id="btn-tab-nivel16" class="tab-btn active px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
-          1. Ficha Nivel 16 (Tier 4) & Simulación Ultra-Meta
+        <button onclick="switchTab('tab-forja')" id="btn-tab-forja" class="tab-btn active px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
+          1. La Forja: Foco Supremo + 2 Reliquias
+        </button>
+        <button onclick="switchTab('tab-nivel16')" id="btn-tab-nivel16" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
+          2. Progresión Nivel 16 & Simulación Meta
         </button>
         <button onclick="switchTab('tab-master6')" id="btn-tab-master6" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
-          2. Ficha Nivel 6 & Panel de Mesa
-        </button>
-        <button onclick="switchTab('tab-items')" id="btn-tab-items" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
-          3. Ruta de Items & Reliquias Legendarias
+          3. Panel de Mesa (PG / PH / Slots) & Nv 6
         </button>
         <button onclick="switchTab('tab-combos')" id="btn-tab-combos" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
           4. Combos Nv 6 / Nv 16 & Simulador de Dados
         </button>
         <button onclick="switchTab('tab-grimoire')" id="btn-tab-grimoire" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
-          5. Grimorio Completo Nv 1 a Nv 8 (35 Conjuros)
+          5. Grimorio Completo Nv 0 a Nv 8 (35)
         </button>
         <button onclick="switchTab('tab-roll20')" id="btn-tab-roll20" class="tab-btn px-4 py-2 rounded-xl text-xs font-bold border border-slate-700 bg-slate-900 text-slate-200 transition whitespace-nowrap">
           6. Tabla Nv 3 → 16
@@ -244,9 +241,223 @@
   <main class="max-w-7xl mx-auto px-4 sm:px-6 pt-8 space-y-10">
 
     <!-- =================================================================== -->
-    <!-- PESTAÑA 1: FICHA NIVEL 16 (TIER 4) & SIMULACIÓN ULTRA-META 5.5e     -->
+    <!-- PESTAÑA 1: SISTEMA DE FORJA (FUSIÓN DE FOCOS + 2 RANURAS LIBRES)    -->
     <!-- =================================================================== -->
-    <section id="tab-nivel16" class="space-y-8">
+    <section id="tab-forja" class="space-y-8">
+
+      <!-- Banner Principal de la Forja -->
+      <div class="bg-[#111827] border-2 border-amber-500/50 rounded-2xl p-6 space-y-6">
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+          <div class="space-y-1.5">
+            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950">
+              SISTEMA DE FORJA DEL SERVIDOR · OPTIMIZACIÓN DE 3 RANURAS DE SINTONIZACIÓN
+            </span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">
+              El Plan Maestro de Forja: Todos tus Focos en 1 Sola Sintonización + 2 Reliquias Defensivas
+            </h2>
+            <p class="text-sm text-slate-300 max-w-4xl">
+              En D&D 5e/5.5e, los mejores objetos ofensivos del Hechicero (<em>Dragon-Touched Focus, Bloodwell Vial y los Shards</em>) son todos <strong>Focos de Lanzamiento de Conjuros (Spellcasting Focuses)</strong>. Al fusionarlos en la Forja del servidor dentro de <strong>un único Foco Arcano</strong>, ocupas <strong>solo 1 ranura de sintonización</strong> y dejas tus otras <strong>2 ranuras libres</strong> para tus reliquias de defensa, vuelo e inmunidad psíquica.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 shrink-0">
+            <button onclick="applyPreset('forja6')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
+              Simular Forja en Nivel 6 (CD 21)
+            </button>
+            <button onclick="applyPreset('ultrameta16')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 hover:bg-amber-400 transition">
+              Simular Forja en Nivel 16 (CD 24)
+            </button>
+          </div>
+        </div>
+
+        <!-- Las 3 Ranuras de Sintonización Definitivas -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+          <!-- RANURA 1 (7 columnas): EL FOCO SUPREMO FORJADO (FUSIÓN DE FOCOS ARCANOS) -->
+          <div class="lg:col-span-7 bg-[#0d1320] border-2 border-emerald-500/50 rounded-2xl p-5 space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500 text-slate-950">
+                  RANURA DE SINTONIZACIÓN 1 · EL FOCO ARCANO FORJADO
+                </span>
+                <h3 class="text-lg font-extrabold text-white mt-1.5">
+                  "El Núcleo Psiónico de Ma'aleca'andra" (4 Focos Fusionados en 1)
+                </h3>
+              </div>
+              <span class="text-xs font-mono text-emerald-300">Ocupa 1 sola Sintonización</span>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2">
+              <img src="dragon_focus.jpg" alt="Ascendant Gem Focus" class="h-24 w-full object-cover rounded-xl border border-emerald-500/40" title="Ascendant Dragon-Touched Focus" />
+              <img src="bloodwell_vial.jpg" alt="Bloodwell Vial" class="h-24 w-full object-cover rounded-xl border border-purple-500/40" title="Bloodwell Vial +2/+3" />
+              <img src="far_realm_shard.jpg" alt="Far Realm & Shadowfell Shards" class="h-24 w-full object-cover rounded-xl border border-amber-500/40" title="Far Realm Shard + Shadowfell Shard" />
+            </div>
+
+            <p class="text-xs text-slate-300">
+              <strong>Receta de Fusión en la Forja (Todos son Focos Arcanos / Cristales de Foco de Tasha y Fizban):</strong>
+            </p>
+
+            <div class="space-y-2.5 text-xs">
+              <!-- Componente 1 -->
+              <div class="p-3 rounded-xl bg-[#111827] border border-emerald-500/30 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-emerald-300">1. Base: Ascendant Dragon-Touched Focus (Emerald Gem)</span>
+                  <a href="https://5e.tools/items.html#ascendant%20dragon-touched%20focus_ftd" target="_blank" class="text-emerald-400 font-bold hover:underline">5e.tools ↗</a>
+                </div>
+                <p class="text-slate-300">
+                  Te da <strong>Ventaja en Iniciativa</strong>, <strong>Teletransporte gratis de 15 pies</strong> cada vez que gastas un espacio de conjuro (nv 1+), <em>Raulothim's Psychic Lance</em> y <em>Rary's Telepathic Bond</em> gratis 1/día, y <strong>1/día lanza un conjuro como si fuera de Nivel 9 gratis</strong>.
+                </p>
+              </div>
+
+              <!-- Componente 2 -->
+              <div class="p-3 rounded-xl bg-[#111827] border border-purple-500/30 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-purple-300">2. Fusión: Bloodwell Vial (+2 en Nv 6 / +3 en Nv 16)</span>
+                  <a href="https://5e.tools/items.html#bloodwell%20vial_tce" target="_blank" class="text-purple-300 font-bold hover:underline">5e.tools ↗</a>
+                </div>
+                <p class="text-slate-300">
+                  Agrega al Foco <strong>+2 o +3 a tu CD de Salvación y Ataques de Conjuro</strong>, y 1/día en un Descanso Corto recuperas <strong>+5 Puntos de Hechicería</strong> al gastar un Dado de Golpe.
+                </p>
+              </div>
+
+              <!-- Componente 3 -->
+              <div class="p-3 rounded-xl bg-[#111827] border border-amber-500/30 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-amber-300">3. Fusión: Far Realm Shard (Fragmento del Reino Lejano)</span>
+                  <a href="https://5e.tools/items.html#far%20realm%20shard_tce" target="_blank" class="text-amber-300 font-bold hover:underline">5e.tools ↗</a>
+                </div>
+                <p class="text-slate-300">
+                  Por regla oficial se acopla a un Foco Arcano: cada vez que usas <strong>Metamagia</strong> en un conjuro, un enemigo a 30 pies sufre <strong>3d6 de daño Psíquico + Asustado</strong> (salvación de CAR contra tu CD).
+                </p>
+              </div>
+
+              <!-- Componente 4 -->
+              <div class="p-3 rounded-xl bg-[#111827] border border-sky-500/30 space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-sky-300">4. Fusión Extra: Shadowfell Shard (Fragmento del Páramo Sombrío)</span>
+                  <a href="https://5e.tools/items.html#shadowfell%20shard_tce" target="_blank" class="text-sky-300 font-bold hover:underline">5e.tools ↗</a>
+                </div>
+                <p class="text-slate-300">
+                  Al usar Metamagia, 1 objetivo del conjuro sufre <strong>Desventaja automática (SIN tirada de salvación) en todas las pruebas de característica y tiradas de salvación</strong> del atributo que elijas (ej. Inteligencia o Sabiduría) hasta el final de tu próximo turno.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RANURAS 2 Y 3 (5 columnas): TUS 2 ESPACIOS LIBRES PARA LOS ITEMS QUE NECESITAS -->
+          <div class="lg:col-span-5 flex flex-col justify-between space-y-4">
+
+            <!-- RANURA 2: ROBE OF THE ARCHMAGI -->
+            <div class="bg-[#0d1320] border-2 border-purple-500/50 rounded-2xl p-5 space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-purple-500 text-white">
+                    RANURA DE SINTONIZACIÓN 2 (LIBRE)
+                  </span>
+                  <h3 class="text-base font-extrabold text-white mt-1.5">
+                    Robe of the Archmagi (Túnica del Archimago)
+                  </h3>
+                </div>
+                <a href="https://5e.tools/items.html#robe%20of%20the%20archmagi_xdmg" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-purple-500/15 text-purple-300 border border-purple-500/30 hover:bg-purple-500/25 shrink-0">
+                  5e.tools ↗
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="noir_cloak.jpg" alt="Robe of the Archmagi" class="w-16 h-16 rounded-xl object-cover border border-purple-500/40 shrink-0" />
+                <p class="text-xs text-slate-300">
+                  <em>La gabardina negra del Detective Jones.</em> Al no ser un foco arcano, ocupa tu <strong>Ranura 2</strong> y sus bonificadores <strong>se suman a los de tu Foco Forjado</strong>:
+                </p>
+              </div>
+              <ul class="text-xs text-slate-200 space-y-1 list-disc pl-4">
+                <li><strong>+2 adicional a tu CD de Salvación y Ataques de Conjuro:</strong> Sumado al <em>Bloodwell Vial</em> de tu Foco Forjado, te da <strong>+4 total a la CD en Nivel 6 (CD 21)</strong> y <strong>+5 total a la CD en Nivel 16 (CD 24)</strong>.</li>
+                <li><strong>Armadura Base 15 + DES (17):</strong> Sin gastar conjuros ni armadura física.</li>
+                <li><strong>Resistencia Mágica:</strong> <strong>Ventaja</strong> en todas las salvaciones contra conjuros y efectos mágicos.</li>
+              </ul>
+            </div>
+
+            <!-- RANURA 3: ASCENDANT SCALED ORNAMENT (EMERALD) -->
+            <div class="bg-[#0d1320] border-2 border-sky-500/50 rounded-2xl p-5 space-y-3">
+              <div class="flex items-start justify-between gap-2">
+                <div>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-sky-400 text-slate-950">
+                    RANURA DE SINTONIZACIÓN 3 (LIBRE)
+                  </span>
+                  <h3 class="text-base font-extrabold text-white mt-1.5">
+                    Ascendant Scaled Ornament (Emerald Dragon)
+                  </h3>
+                </div>
+                <a href="https://5e.tools/items.html#ascendant%20scaled%20ornament_ftd" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 shrink-0">
+                  5e.tools ↗
+                </a>
+              </div>
+              <div class="flex items-center gap-3">
+                <img src="ornamento_esmeralda.jpg" alt="Ascendant Scaled Ornament" class="w-16 h-16 rounded-xl object-cover border border-sky-500/40 shrink-0" />
+                <p class="text-xs text-slate-300">
+                  <em>La Placa del FBI esmeralda del Marciano.</em> Cierra tu <strong>Ranura 3</strong> dándote vuelo, inmunidad mental y curación psíquica:
+                </p>
+              </div>
+              <ul class="text-xs text-slate-200 space-y-1 list-disc pl-4">
+                <li><strong>+1 a la CA:</strong> Se suma a la Túnica para darte <strong>CA 18 permanente (CA 23 con Escudo)</strong>.</li>
+                <li><strong>Vuelo 30 pies con Hover permanente</strong> + <strong>Inmune a Hechizado y Asustado</strong> (y Aura de 30ft para aliados).</li>
+                <li><strong class="text-emerald-300">Reacción — Absorción Psíquica:</strong> Cuando vayas a recibir daño Psíquico, recibes <strong>0 daño y te curas la mitad</strong>.</li>
+              </ul>
+              <div class="p-2.5 rounded-lg bg-[#111827] border border-slate-800 text-[11px] text-slate-300">
+                <strong>Alternativa Opcional para Ranura 3:</strong> <a href="https://5e.tools/items.html#illusionist's%20bracers_ggr" target="_blank" class="text-amber-300 underline">Illusionist's Bracers</a> (si quieres lanzar 2 veces <em>Mind Sliver</em> o <em>Sorcerous Burst</em> por turno sin gastar PH) o <a href="https://5e.tools/items.html#cloak%20of%20invisibility_xdmg" target="_blank" class="text-amber-300 underline">Cloak of Invisibility</a>.
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Tabla Comparativa del Impacto de la Forja -->
+        <div class="bg-[#0d1320] border border-slate-800 rounded-xl p-4 overflow-x-auto custom-scroll">
+          <div class="text-xs font-bold text-amber-300 uppercase mb-2">
+            COMPARATIVA MATEMÁTICA: SIN FORJA VS CON TU FOCO ARCANO FUSIONADO EN LA FORJA
+          </div>
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400">
+                <th class="py-2 px-3">Configuración</th>
+                <th class="py-2 px-3">Ranura 1</th>
+                <th class="py-2 px-3">Ranura 2</th>
+                <th class="py-2 px-3">Ranura 3</th>
+                <th class="py-2 px-3">CD Salvación</th>
+                <th class="py-2 px-3">Ataque</th>
+                <th class="py-2 px-3">Efecto Extra al Usar Metamagia</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/80 text-slate-200">
+              <tr>
+                <td class="py-2.5 px-3 font-bold text-emerald-300">Nivel 6 + Forja</td>
+                <td class="py-2.5 px-3">Foco Forjado (Gem Focus + Vial +2 + Shards)</td>
+                <td class="py-2.5 px-3">Robe of the Archmagi (+2)</td>
+                <td class="py-2.5 px-3">Scaled Ornament (Emerald)</td>
+                <td class="py-2.5 px-3 font-extrabold text-purple-300">CD 21 (20 Pasiva)</td>
+                <td class="py-2.5 px-3 font-bold text-emerald-400">+12 c/Ventaja</td>
+                <td class="py-2.5 px-3">Teleport 15ft + 3d6 Psíquico/Miedo + Desventaja INT/SAB + +5 PH en DC</td>
+              </tr>
+              <tr>
+                <td class="py-2.5 px-3 font-bold text-amber-300">Nivel 16 + Forja Suprema</td>
+                <td class="py-2.5 px-3">Foco Forjado (Ascendant Gem + Vial +3 + Shards)</td>
+                <td class="py-2.5 px-3">Robe of the Archmagi (+2)</td>
+                <td class="py-2.5 px-3">Ascendant Scaled Ornament</td>
+                <td class="py-2.5 px-3 font-extrabold text-amber-300">CD 24 (23 Pasiva)</td>
+                <td class="py-2.5 px-3 font-bold text-emerald-400">+15 c/Ventaja</td>
+                <td class="py-2.5 px-3">1 Conjuro Nv 9/día + Teleport 15ft + 3d6 Psíquico + Desventaja sin Save + +13 PH en DC</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =================================================================== -->
+    <!-- PESTAÑA 2: FICHA NIVEL 16 (TIER 4) & SIMULACIÓN ULTRA-META 5.5e     -->
+    <!-- =================================================================== -->
+    <section id="tab-nivel16" class="hidden space-y-8">
 
       <!-- Banner Principal de Nivel 16 -->
       <div class="bg-[#111827] border border-emerald-500/40 rounded-2xl p-6 space-y-5">
@@ -259,17 +470,8 @@
               John Jones a Nivel 16: El Despertar Completo del Detective Marciano
             </h2>
             <p class="text-sm text-slate-300 max-w-4xl">
-              A <strong>Nivel 16</strong> es donde las reliquias <strong>Muy Raras (+3) y Legendarias (Ascendant)</strong> encajan de forma natural en la progresión de D&D 5.5e. Tienes <strong>3 Dotes adicionales (Niveles 8, 12 y 16)</strong>, <strong>18 Puntos de Hechicería</strong> (+13 recuperados en un solo Descanso Corto), <strong>Doble Metamagia por conjuro</strong> y acceso a conjuros psíquicos devastadores de hasta <strong>Nivel 8</strong>.
+              A <strong>Nivel 16</strong> tienes <strong>3 Dotes adicionales (Niveles 8, 12 y 16)</strong>, <strong>18 Puntos de Hechicería</strong> (+13 recuperados en un solo Descanso Corto), <strong>Doble Metamagia por conjuro</strong> y acceso a conjuros psíquicos devastadores de hasta <strong>Nivel 8</strong>.
             </p>
-          </div>
-
-          <div class="flex flex-wrap gap-2 shrink-0">
-            <button onclick="applyPreset('nv16')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-emerald-500 text-slate-950 hover:bg-emerald-400 transition">
-              Cargar Nv 16 Oficial (CD 22)
-            </button>
-            <button onclick="applyPreset('ultrameta16')" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-amber-500 text-slate-950 hover:bg-amber-400 transition">
-              Cargar Simulación Ultra-Meta (CD 24)
-            </button>
           </div>
         </div>
 
@@ -282,9 +484,6 @@
               <h3 class="text-base font-bold text-emerald-300">1. Tus 3 Dotes de Niveles 8, 12 y 16 (Supervivencia y Concentración)</h3>
               <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-semibold">CAR 20 desde Nv 1</span>
             </div>
-            <p class="text-xs text-slate-300">
-              Como ya tenías <strong>Carisma 20 (+5)</strong> y <strong>Adepto a la Metamagia (Nv 4)</strong>, inviertes las mejoras de nivel 8, 12 y 16 en blindar tu concentración y tus Puntos de Golpe:
-            </p>
             <div class="space-y-2.5 text-xs">
               <div class="p-3 rounded-lg bg-[#111827] border border-slate-800">
                 <div class="font-bold text-white">Nivel 8 — Conjurador de Guerra (<a href="https://5e.tools/feats.html#war%20caster_xphb" target="_blank" class="text-emerald-400 hover:underline">War Caster 5.5e ↗</a>)</div>
@@ -293,7 +492,7 @@
                 </p>
               </div>
               <div class="p-3 rounded-lg bg-[#111827] border border-slate-800">
-                <div class="font-bold text-white">Nivel 12 — +1 CON / Resiliente SAB (o <a href="https://5e.tools/feats.html#aberrant%20anatomy_rhw" target="_blank" class="text-purple-300 hover:underline">Aberrant Anatomy ↗</a> / Mage Slayer)</div>
+                <div class="font-bold text-white">Nivel 12 — +1 CON / Resiliente SAB (o <a href="https://5e.tools/feats.html#aberrant%20anatomy_rhw" target="_blank" class="text-purple-300 hover:underline">Aberrant Anatomy ↗</a>)</div>
                 <p class="text-slate-300 mt-0.5">
                   Subes tu <strong>Constitución a 16 (+3)</strong> ganando <strong>+16 PG retroactivos</strong> (o tomas <em>Resiliente SAB</em> para competencia +9 en salvaciones de Sabiduría).
                 </p>
@@ -301,13 +500,13 @@
               <div class="p-3 rounded-lg bg-[#111827] border border-slate-800">
                 <div class="font-bold text-white">Nivel 16 — Duro (<a href="https://5e.tools/feats.html#tough_xphb" target="_blank" class="text-emerald-400 hover:underline">Tough 5.5e ↗</a>) o +2 Constitución (CON 18)</div>
                 <p class="text-slate-300 mt-0.5">
-                  <strong>Duro (Tough)</strong> te suma <strong>+2 PG por nivel (+32 PG instantáneos)</strong>, o subes tu Constitución a <strong>18 (+4)</strong> para salvaciones de CON de +9 con Ventaja.
+                  <strong>Duro (Tough)</strong> te suma <strong>+2 PG por nivel (+32 PG instantáneos)</strong>, o subes tu Constitución a <strong>18 (+4)</strong>.
                 </p>
               </div>
             </div>
           </div>
 
-          <!-- Derecha 6 cols: Tabla Interactiva de Vida Máxima a Nivel 16 + Números con Bloodwell Vial +3 -->
+          <!-- Derecha 6 cols: Tabla Interactiva de Vida Máxima a Nivel 16 -->
           <div class="lg:col-span-6 bg-[#0d1320] border border-slate-800 rounded-xl p-5 space-y-4">
             <div class="flex items-center justify-between">
               <h3 class="text-base font-bold text-amber-300">Cálculo de Vida Máxima a Nivel 16 (Dado Máx d6 = 6/nv)</h3>
@@ -340,15 +539,12 @@
               </button>
             </div>
 
-            <!-- Resumen de Números con Bloodwell Vial +3 -->
             <div class="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/30 text-xs space-y-1">
-              <div class="font-bold text-purple-300">Tus Números de Ataque y Control Mental (Con Bloodwell Vial +3):</div>
+              <div class="font-bold text-purple-300">Tus Números con Foco Forjado (+3) + Robe of the Archmagi (+2):</div>
               <ul class="text-slate-200 space-y-0.5 list-disc pl-4">
-                <li><strong>Bonificador de Competencia:</strong> <strong>+5</strong></li>
-                <li><strong>CD de Salvación Pasiva:</strong> <strong>21</strong> (8 base + 5 comp + 5 CAR + 3 Vial +3).</li>
-                <li><strong>CD con Hechicería Innata:</strong> <strong class="text-emerald-300">CD 22</strong> (o <strong>CD 24</strong> si combinas <em>Robe of the Archmagi +2</em> + <em>Vial +3</em>).</li>
-                <li><strong>Ataque de Conjuro:</strong> <strong>+13 al impacto</strong> (con <strong>Ventaja</strong> todos los turnos).</li>
-                <li><strong>Puntos de Hechicería:</strong> <strong>18 PH</strong> (16 Clase + 2 Dote) y recuperas <strong>+13 PH en un solo Descanso Corto</strong> (8 por <em>Restauración Hechicera</em> + 5 por el <em>Bloodwell Vial</em>).</li>
+                <li><strong>CD con Bloodwell +3 solo:</strong> <strong>21 Pasiva / 22 con Innata</strong> (+13 Ataque).</li>
+                <li><strong>CD con Foco Forjado (+3) + Túnica (+2):</strong> <strong class="text-amber-300">23 Pasiva / 24 con Innata</strong> (<strong>+15 Ataque c/Ventaja</strong>).</li>
+                <li><strong>Puntos de Hechicería:</strong> <strong>18 PH</strong> (+13 PH recuperados en un solo Descanso Corto).</li>
               </ul>
             </div>
           </div>
@@ -357,22 +553,19 @@
 
         <!-- Bloque 2: Nuevos Rasgos de Clase y Subclase (Niveles 7, 10 y 14) -->
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
-          <!-- Nivel 7 -->
           <div class="p-4 rounded-xl bg-[#0d1320] border border-purple-500/40 space-y-2">
             <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-purple-500/20 text-purple-300">NIVEL 7 · SORCERY INCARNATE</span>
             <h4 class="text-base font-bold text-white">1. Hechicería Encarnada (Doble Metamagia)</h4>
             <ul class="text-xs text-slate-300 space-y-1.5 list-disc pl-4">
-              <li>Mientras tu <strong>Hechicería Innata</strong> esté activa, puedes <strong>aplicar hasta DOS opciones de Metamagia al mismo tiempo en un solo conjuro</strong> (ej. <em>Conjuro Elevado + Conjuro Acelerado</em>, o <em>Conjuro Cuidadoso + Conjuro Elevado</em>).</li>
+              <li>Mientras tu <strong>Hechicería Innata</strong> esté activa, puedes <strong>aplicar hasta DOS opciones de Metamagia al mismo tiempo en un solo conjuro</strong> (ej. <em>Conjuro Elevado + Conjuro Acelerado</em>).</li>
               <li>Si se te acaban los 2 usos gratuitos de <em>Hechicería Innata</em>, puedes reactivarla gastando solo <strong>2 PH</strong>.</li>
             </ul>
           </div>
 
-          <!-- Nivel 10 -->
           <div class="p-4 rounded-xl bg-[#0d1320] border border-emerald-500/40 space-y-2">
             <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-emerald-500/20 text-emerald-300">NIVEL 10 · 6 METAMAGIAS</span>
             <h4 class="text-base font-bold text-white">2. Tus 6 Opciones de Metamagia</h4>
-            <p class="text-xs text-slate-300">Sumas 2 opciones más a las 4 que ya tenías:</p>
-            <div class="grid grid-cols-2 gap-1.5 text-xs">
+            <div class="grid grid-cols-2 gap-1.5 text-xs pt-1">
               <div class="p-1.5 rounded bg-[#111827] border border-slate-800 text-emerald-300 font-semibold">1. Cuidadoso (1 PH)</div>
               <div class="p-1.5 rounded bg-[#111827] border border-slate-800 text-purple-300 font-semibold">2. Gemelo (1 PH)</div>
               <div class="p-1.5 rounded bg-[#111827] border border-slate-800 text-amber-300 font-semibold">3. Elevado (2 PH)</div>
@@ -382,11 +575,9 @@
             </div>
           </div>
 
-          <!-- Nivel 14 -->
           <div class="p-4 rounded-xl bg-[#0d1320] border border-amber-500/40 space-y-2">
             <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-500/20 text-amber-300">NIVEL 14 · REVELATION IN FLESH</span>
             <h4 class="text-base font-bold text-white">3. Revelación en la Carne (10 min)</h4>
-            <p class="text-xs text-slate-300">Como Acción Adicional, gastas 1+ PH para activar la fisiología marciana durante 10 min (1 PH por efecto):</p>
             <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
               <li><strong>Intangibilidad Marciana (Fase):</strong> Atraviesas huecos de <strong>1 pulgada (2.5 cm)</strong> sin apretujarte y escapas de agarres con 5ft de movimiento.</li>
               <li><strong>Ver lo Invisible:</strong> Ves criaturas y objetos invisibles a <strong>60 pies</strong>.</li>
@@ -396,103 +587,10 @@
         </div>
       </div>
 
-      <!-- ================================================================= -->
-      <!-- LABORATORIO DE SIMULACIÓN ULTRA-META 5.5e (HACER A JOHN LO MÁS META) -->
-      <!-- ================================================================= -->
-      <div class="bg-[#111827] border-2 border-amber-500/50 rounded-2xl p-6 space-y-6">
-        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-3">
-          <div>
-            <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950">
-              LABORATORIO DE OPTIMIZACIÓN · SIMULACIÓN ULTRA-META 5.5e
-            </span>
-            <h3 class="text-xl sm:text-2xl font-extrabold text-white mt-2">
-              Cómo Hacer a John Jones lo Más Meta Posible (Análisis Matemático y Secretos RAW 2024)
-            </h3>
-            <p class="text-sm text-slate-300 mt-1">
-              Cruzando las reglas oficiales de <a href="https://5e.tools/classes.html#sorcerer_xphb,state:sub_aberrant_xphb=b1" target="_blank" class="text-emerald-400 underline">Sorcerer 5.5e (XPHB)</a>, <a href="https://5e.tools/spells.html#acid%20splash_xphb" target="_blank" class="text-emerald-400 underline">conjuros 5.5e</a> y <a href="https://5e.tools/feats.html#aberrant%20anatomy_rhw" target="_blank" class="text-emerald-400 underline">dotes aberrantes</a>, estos son los <strong>4 secretos mecánicos</strong> que llevan a John al techo absoluto del juego:
-            </p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
-
-          <!-- Secreto Meta 1: Apilamiento Legal de CD 24 (Robe +2 y Bloodwell +3) -->
-          <div class="p-5 rounded-xl bg-[#0d1320] border border-amber-500/40 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold text-amber-300 uppercase">Secreto Meta #1 · Sinergia de Reliquias</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-amber-500/20 text-amber-300">CD 24 Real (99.75% Éxito)</span>
-            </div>
-            <h4 class="text-base font-bold text-white">Apilar Robe of the Archmagi (+2) + Bloodwell Vial (+3) = ¡CD 24!</h4>
-            <p class="text-xs text-slate-300">
-              En D&D 5.5e, los bonificadores de objetos mágicos con distinto nombre <strong>se suman entre sí</strong>. Si tus 3 ranuras de sintonización a Nivel 16 son <strong>1) Robe of the Archmagi (+2 CD)</strong>, <strong>2) Bloodwell Vial +3 (+3 CD)</strong> y <strong>3) Ascendant Dragon-Touched Focus (o Far Realm Shard)</strong>:
-            </p>
-            <div class="p-3 rounded-lg bg-[#111827] border border-slate-800 mono text-xs text-emerald-300">
-              CD Pasiva = 8 + 5 (Comp) + 5 (CAR) + 2 (Túnica) + 3 (Vial +3) = <strong>CD 23 Pasiva</strong><br>
-              Con Hechicería Innata (+1 CD) = <strong>¡¡CD 24 ACTIVA!!</strong> (Ataque de Conjuro <strong>+15 c/Ventaja</strong>)
-            </div>
-            <p class="text-xs text-slate-300">
-              <strong>Simulación Monte Carlo (10,000 tiradas):</strong> Contra un Jefe con +6 al Save de Inteligencia, si le lanzas un conjuro con <strong>Conjuro Elevado (Desventaja)</strong> a <strong>CD 24</strong>, el jefe necesita sacar 18+ en <em>ambos</em> dados d20: tiene <strong>97.75% de probabilidad de fallar</strong> (y <strong>99.75% de fallar</strong> si antes recibió <em>Astilla Mental -1d4</em>).
-            </p>
-          </div>
-
-          <!-- Secreto Meta 2: El Vacío Legal de 5.5e para Lanzar 2 o 3 Conjuros Nivelados en 1 Turno -->
-          <div class="p-5 rounded-xl bg-[#0d1320] border border-emerald-500/40 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold text-emerald-400 uppercase">Secreto Meta #2 · Regla de Conjuros 2024 (XPHB p.236)</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-emerald-500/20 text-emerald-300">2 a 3 Conjuros en 1 Turno</span>
-            </div>
-            <h4 class="text-base font-bold text-white">Explotar "1 Espacio de Conjuro por Turno" con Hechicería Psiónica + War Caster</h4>
-            <p class="text-xs text-slate-300">
-              En 5.5e (2024) desapareció la antigua restricción de "Acción Adicional = solo Truco". Ahora la regla solo prohíbe gastar <strong>más de 1 Espacio de Conjuro (Spell Slot) por turno</strong>. Como tus conjuros de <strong>Hechicería Psiónica gastan PH (no espacios)</strong> y <strong>War Caster</strong> usa tu Reacción:
-            </p>
-            <div class="p-3 rounded-lg bg-[#111827] border border-slate-800 text-xs text-slate-200 space-y-1">
-              <div><strong>1. Acción (Sin gastar Slot):</strong> Lanzas <em>Susurros Disonantes</em> pagando <strong>1 PH</strong> (3d6 psíquico + el jefe gasta su Reacción para huir corriendo de ti).</div>
-              <div><strong>2. Reacción en tu propio turno (War Caster):</strong> Al salir de tu alcance huyendo, usas tu Reacción de <em>Conjurador de Guerra</em> para clavarle <strong>Prisión Mental (15d10)</strong> o <strong>Inmovilizar Monstruo</strong> gastando tu único Espacio de Conjuro del turno.</div>
-              <div class="text-emerald-300"><strong>Resultado:</strong> ¡El enemigo sufre <em>Susurros Disonantes</em> y <em>activas inmediatamente los +10d10 de Prisión Mental</em> porque ya estaba en movimiento!</div>
-            </div>
-          </div>
-
-          <!-- Secreto Meta 3: Quemar las 3 Resistencias Legendarias de un Jefe en 1 Sola Ronda -->
-          <div class="p-5 rounded-xl bg-[#0d1320] border border-purple-500/40 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold text-purple-300 uppercase">Secreto Meta #3 · Anti-Jefes Tier 4</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-purple-500/20 text-purple-300">3 Saves en 1 Turno</span>
-            </div>
-            <h4 class="text-base font-bold text-white">El Destructor de Resistencias Legendarias ("Triple Save Turn 1")</h4>
-            <p class="text-xs text-slate-300">
-              El único obstáculo de un Hechicero a Nivel 16 son las <strong>3 Resistencias Legendarias</strong> de los jefes. Así le quemas hasta 3 salvaciones en un solo turno:
-            </p>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
-              <li><strong>Salvación 1 (Acción):</strong> <em>Astilla Mental</em> (INT Save CD 22/24: 4d6 psíquico + <strong>-1d4 a su siguiente save</strong>).</li>
-              <li><strong>Salvación 2 (Impacto de Metamagia · Far Realm Shard):</strong> Al declarar <em>Conjuro Acelerado</em>, el <em>Far Realm Shard</em> fuerza una salvación de CAR contra CD 22/24 (<strong>3d6 psíquico + Asustado</strong>).</li>
-              <li><strong>Salvación 3 (Acción Adicional · Doble Metamagia):</strong> <em>Lanza Psíquica de Raulothim</em> o <em>Inmovilizar Monstruo</em> con <strong>Conjuro Acelerado + Conjuro Elevado (Desventaja)</strong> contra CD 22/24 con el -1d4 activo.</li>
-            </ul>
-          </div>
-
-          <!-- Secreto Meta 4: Sinergia de Trucos 5.5e + Aberrant Anatomy + Palabra de Poder Aturdir -->
-          <div class="p-5 rounded-xl bg-[#0d1320] border border-sky-500/40 space-y-2.5">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-extrabold text-sky-300 uppercase">Secreto Meta #4 · Ejecución Sin Salvación</span>
-              <span class="px-2 py-0.5 rounded text-xs font-bold bg-sky-500/20 text-sky-300">0 Salvación Permitida</span>
-            </div>
-            <h4 class="text-base font-bold text-white">Power Word Stun (≤150 PG) + Telekinesis Psiónica (Prueba de Habilidad, No Save)</h4>
-            <p class="text-xs text-slate-300">
-              Cuando un jefe aún tiene Resistencias Legendarias, usas dos herramientas contra las que <strong>las Resistencias Legendarias NO funcionan</strong>:
-            </p>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
-              <li><strong>Telequinesis Psiónica (5 PH sin V/S/M):</strong> Es una <em>prueba enfrentada de característica</em> (tu CAR contra su FUE), <strong>NO una tirada de salvación</strong>, por lo que el jefe <strong>no puede usar Resistencia Legendaria</strong> para evitar quedar Restringido en el aire.</li>
-              <li><strong>Palabra de Poder: Aturdir (Nivel 8):</strong> En cuanto el jefe baje a <strong>150 PG o menos</strong>, queda <strong>Aturdido automáticamente sin tirada de salvación inicial</strong>.</li>
-              <li><strong>Trucos 5.5e (<a href="https://5e.tools/spells.html#acid%20splash_xphb" target="_blank" class="text-sky-300 underline">Acid Splash 5.5e ↗</a> / Sorcerous Burst):</strong> En 5.5e <em>Acid Splash</em> ahora es una esfera de 5ft de radio (golpea hasta 4 enemigos en área) y escala a 3d6 (4d6 a Nv17).</li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-
     </section>
 
     <!-- =================================================================== -->
-    <!-- PESTAÑA 2: FICHA MAESTRA NIVEL 6 & PANEL DE RECURSOS EN MESA        -->
+    <!-- PESTAÑA 3: PANEL DE MESA (PG / PH / SLOTS) & BASE NIVEL 6           -->
     <!-- =================================================================== -->
     <section id="tab-master6" class="hidden space-y-6">
 
@@ -573,9 +671,9 @@
           <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 space-y-3">
             <div class="flex items-center justify-between flex-wrap gap-2">
               <h3 class="text-base font-bold text-emerald-300">Cálculo Exacto de tu Vida (PG) a Nivel 6</h3>
-              <span class="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                Dado de Golpe: d6 · CON 14 (+2)
-              </span>
+              <button onclick="applyPreset('forja6')" class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                Cargar Nivel 6 + Forja (CD 21)
+              </button>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div class="p-3.5 rounded-xl bg-[#0d1320] border border-slate-800 space-y-1.5">
@@ -599,12 +697,7 @@
 
           <!-- Dote Nivel 4: Adepto a la Metamagia y Rasgos de Nivel 6 -->
           <div class="bg-[#111827] border border-slate-800 rounded-2xl p-5 space-y-4">
-            <div class="flex items-center justify-between flex-wrap gap-2">
-              <h3 class="text-base font-bold text-purple-300">Tu Base de Nivel 6: Adepto a la Metamagia + Hechicería Psiónica</h3>
-              <button onclick="applyPreset('valka6')" class="px-3 py-1 rounded-lg text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
-                Cambiar Vista a Nivel 6
-              </button>
-            </div>
+            <h3 class="text-base font-bold text-purple-300">Tu Base de Nivel 6: Adepto a la Metamagia + Hechicería Psiónica</h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               <div class="p-3.5 rounded-xl bg-[#0d1320] border border-slate-800 space-y-1">
                 <div class="font-bold text-emerald-400">1. Conjuro Cuidadoso (Careful Spell · 1 PH)</div>
@@ -630,215 +723,48 @@
     </section>
 
     <!-- =================================================================== -->
-    <!-- PESTAÑA 3: RUTA PROGRESIVA DE ITEMS & TRÍO LEGENDARIO ESMERALDA     -->
-    <!-- =================================================================== -->
-    <section id="tab-items" class="hidden space-y-8">
-
-      <div class="space-y-4">
-        <div>
-          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">PROGRESIÓN REALISTA DE EQUIPO (TIER 1 → TIER 4)</span>
-          <h2 class="text-xl sm:text-2xl font-extrabold text-white mt-0.5">
-            Ruta de Objetos Mágicos: De Nivel 6 a Nivel 16
-          </h2>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <!-- Paso 1: Uncommon -->
-          <div class="bg-[#111827] border border-slate-800 border-t-4 border-t-emerald-400 rounded-2xl p-5 flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300">PASO 1 · UNCOMMON</span>
-                <span class="text-xs text-slate-400">Niveles 3 a 5</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Base del Detective</h3>
-              <div class="space-y-2 text-xs">
-                <div class="p-3 rounded-xl bg-[#0d1320] border border-slate-800">
-                  <div class="flex justify-between font-bold text-white">
-                    <span>1. Bloodwell Vial +1</span>
-                    <a href="https://5e.tools/items.html#bloodwell%20vial_tce" target="_blank" class="text-emerald-400 hover:underline">5e.tools ↗</a>
-                  </div>
-                  <p class="text-slate-300 mt-1">+1 CD/Ataque y recuperas <strong>+5 PH</strong> al gastar un Dado de Golpe en Descanso Corto.</p>
-                </div>
-                <div class="p-3 rounded-xl bg-[#0d1320] border border-slate-800">
-                  <div class="flex justify-between font-bold text-white">
-                    <span>2. Cloak of Protection</span>
-                    <a href="https://5e.tools/items.html#cloak%20of%20protection_xdmg" target="_blank" class="text-emerald-400 hover:underline">5e.tools ↗</a>
-                  </div>
-                  <p class="text-slate-300 mt-1"><strong>+1 a la CA y +1 a todas las salvaciones.</strong></p>
-                </div>
-              </div>
-            </div>
-            <button onclick="applyPreset('base6')" class="w-full py-2 rounded-xl text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 transition">
-              Simular Nivel 6 Base
-            </button>
-          </div>
-
-          <!-- Paso 2: Rare Nivel 6 -->
-          <div class="bg-[#111827] border border-purple-500/40 border-t-4 border-t-purple-400 rounded-2xl p-5 flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-purple-500/20 text-purple-300">PASO 2 · RARE (META NV 6-10)</span>
-                <span class="text-xs text-purple-300 font-semibold">Tier 2 Oficial</span>
-              </div>
-              <h3 class="text-base font-bold text-white">El Despertar Psíquico</h3>
-              <div class="space-y-2 text-xs">
-                <div class="p-3 rounded-xl bg-[#0d1320] border border-slate-800">
-                  <div class="flex justify-between font-bold text-white">
-                    <span>1. Bloodwell Vial +2 (Rare)</span>
-                    <a href="https://5e.tools/items.html#bloodwell%20vial_tce" target="_blank" class="text-purple-300 hover:underline">5e.tools ↗</a>
-                  </div>
-                  <p class="text-slate-300 mt-1">Sube tu <strong>CD a 18 (19 c/Innata)</strong>, ataque a <strong>+10</strong> y +5 PH en descanso corto.</p>
-                </div>
-                <div class="p-3 rounded-xl bg-[#0d1320] border border-slate-800">
-                  <div class="flex justify-between font-bold text-white">
-                    <span>2. Far Realm Shard (Rare)</span>
-                    <a href="https://5e.tools/items.html#far%20realm%20shard_tce" target="_blank" class="text-purple-300 hover:underline">5e.tools ↗</a>
-                  </div>
-                  <p class="text-slate-300 mt-1">Cada vez que usas Metamagia, 1 enemigo a 30ft sufre <strong>3d6 Psíquico + Asustado</strong>.</p>
-                </div>
-              </div>
-            </div>
-            <button onclick="applyPreset('rare6')" class="w-full py-2 rounded-xl text-xs font-bold bg-purple-500 text-white hover:bg-purple-400 transition">
-              Simular Meta Nivel 6 (Raros)
-            </button>
-          </div>
-
-          <!-- Paso 3: Nivel 16 Very Rare & Legendary -->
-          <div class="bg-[#111827] border border-amber-500/40 border-t-4 border-t-amber-400 rounded-2xl p-5 flex flex-col justify-between space-y-4">
-            <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="px-2.5 py-0.5 rounded text-xs font-bold bg-amber-500/15 text-amber-300">PASO 3 · NIVEL 16 (TIER 4)</span>
-                <span class="text-xs text-amber-300 font-semibold">Very Rare + Legendary</span>
-              </div>
-              <h3 class="text-base font-bold text-white">Bloodwell +3 & Reliquias Ascendant</h3>
-              <div class="grid grid-cols-3 gap-2">
-                <img src="dragon_focus.jpg" alt="Foco Gema" class="h-20 w-full object-cover rounded-lg border border-slate-700" />
-                <img src="noir_cloak.jpg" alt="Túnica Archimago" class="h-20 w-full object-cover rounded-lg border border-slate-700" />
-                <img src="ornamento_esmeralda.jpg" alt="Ornamento Esmeralda" class="h-20 w-full object-cover rounded-lg border border-slate-700" />
-              </div>
-              <p class="text-xs text-slate-300">
-                A Nivel 16 combinas <strong>Bloodwell Vial +3 (CD 22 / +13 Atk / +13 PH en DC)</strong> con tus reliquias <strong>Ascendant</strong> (o <em>Robe of the Archmagi +2</em> para llegar a <strong>CD 24</strong>).
-              </p>
-            </div>
-            <button onclick="applyPreset('nv16')" class="w-full py-2 rounded-xl text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500/30 transition">
-              Simular Nivel 16 (Tier 4)
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Detalle Completo del Trío Legendario -->
-      <div class="bg-[#111827] border border-amber-500/30 rounded-2xl p-6 space-y-4">
-        <div class="flex items-center justify-between flex-wrap gap-2">
-          <div>
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-500/15 text-amber-300 border border-amber-500/30">
-              DETALLE DE RELIQUIAS · 5E.TOOLS
-            </span>
-            <h3 class="text-lg font-bold text-white mt-1">Tus Reliquias Legendarias (Ascendant & Archmagi)</h3>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-          <div class="p-4 rounded-xl bg-[#0d1320] border border-emerald-500/40 space-y-2">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class="text-[11px] font-bold text-emerald-400 uppercase">Legendary (FTD)</span>
-                <h4 class="text-sm font-bold text-white">1. Ascendant Dragon-Touched Focus (Emerald)</h4>
-              </div>
-              <a href="https://5e.tools/items.html#ascendant%20dragon-touched%20focus_ftd" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 hover:bg-emerald-500/25 shrink-0">
-                5e.tools ↗
-              </a>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
-              <li><strong>Ventaja en Iniciativa</strong> permanente.</li>
-              <li><strong>Teletransporte Gema (Ilimitado):</strong> Al gastar un espacio de conjuro (nv 1+), te <strong>teletransportas 15 pies</strong> gratis.</li>
-              <li><strong>Conjuros Despiertos (1/día gratis c/u):</strong> <em>Raulothim's Psychic Lance</em> y <em>Rary's Telepathic Bond</em>.</li>
-              <li><strong class="text-amber-300">Poder Ascendente (1/día):</strong> Un conjuro de nivel 1+ se lanza como si fuera de <strong>Nivel 9</strong> gratis (ej. <em>Psychic Lance 12d6</em> o <em>Hold Monster a 5 jefes</em>).</li>
-            </ul>
-          </div>
-
-          <div class="p-4 rounded-xl bg-[#0d1320] border border-purple-500/40 space-y-2">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class="text-[11px] font-bold text-purple-300 uppercase">Legendary (XDMG)</span>
-                <h4 class="text-sm font-bold text-white">2. Robe of the Archmagi</h4>
-              </div>
-              <a href="https://5e.tools/items.html#robe%20of%20the%20archmagi_xdmg" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-purple-500/15 text-purple-300 border border-purple-500/30 hover:bg-purple-500/25 shrink-0">
-                5e.tools ↗
-              </a>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
-              <li><strong>Armadura Dimensional:</strong> Tu CA base sin armadura es <strong>15 + DES (17)</strong>.</li>
-              <li><strong>Amplificador Psiónico:</strong> <strong>+2 a la CD de Salvación y Ataques de Conjuro</strong> (se apila con <em>Bloodwell Vial +3</em> para llegar a <strong>CD 24</strong>).</li>
-              <li><strong>Resistencia Mágica:</strong> Tienes <strong>Ventaja</strong> en todas las tiradas de salvación contra conjuros y efectos mágicos.</li>
-            </ul>
-          </div>
-
-          <div class="p-4 rounded-xl bg-[#0d1320] border border-sky-500/40 space-y-2">
-            <div class="flex items-start justify-between gap-2">
-              <div>
-                <span class="text-[11px] font-bold text-sky-300 uppercase">Legendary (FTD)</span>
-                <h4 class="text-sm font-bold text-white">3. Ascendant Scaled Ornament (Emerald)</h4>
-              </div>
-              <a href="https://5e.tools/items.html#ascendant%20scaled%20ornament_ftd" target="_blank" class="px-2.5 py-1 rounded text-xs font-bold bg-sky-500/15 text-sky-300 border border-sky-500/30 hover:bg-sky-500/25 shrink-0">
-                5e.tools ↗
-              </a>
-            </div>
-            <ul class="text-xs text-slate-300 space-y-1 list-disc pl-4">
-              <li><strong>+1 a la CA:</strong> Te lleva a <strong>CA 18</strong> (y <strong>CA 23</strong> con <em>Escudo</em>).</li>
-              <li><strong>Levitación Marciana:</strong> Velocidad de <strong>Vuelo de 30 pies con Hover</strong> permanente.</li>
-              <li><strong>Fortaleza Mental:</strong> <strong>Inmune</strong> a <em>Hechizado</em> y <em>Asustado</em> (aliados a 30ft tienen Ventaja).</li>
-              <li><strong class="text-emerald-400">Absorción Psíquica (Reacción):</strong> El daño <strong>Psíquico</strong> se reduce a 0 y <strong>te curas la mitad</strong>.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- =================================================================== -->
     <!-- PESTAÑA 4: COMBOS DE NIVEL 16 + NIVEL 6 & SIMULADOR DE DADOS        -->
     <!-- =================================================================== -->
     <section id="tab-combos" class="hidden space-y-6">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
 
-        <!-- Columna Izquierda (7 cols): Combos Nivel 16 (Doble Metamagia) + Combos Nivel 6 -->
+        <!-- Columna Izquierda (7 cols): Combos Nivel 16 (Doble Metamagia + Foco Forjado) + Combos Nivel 6 -->
         <div class="lg:col-span-7 space-y-4">
-          <h2 class="text-lg font-bold text-white">Combos Devastadores de Nivel 16 (Doble Metamagia + Reliquias)</h2>
+          <h2 class="text-lg font-bold text-white">Combos con Foco Forjado + Doble Metamagia (Haz clic para tirar dados)</h2>
 
           <!-- Combo Nv 16 #1: La Jaula del Trauma -->
           <div onclick="executeCombo('jaula_trauma')" class="cursor-pointer p-4 rounded-2xl bg-[#111827] border-2 border-purple-500/60 hover:bg-purple-500/10 transition space-y-1.5">
             <div class="flex items-center justify-between flex-wrap gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-purple-500 text-white">COMBO NV 16 #1 · DOBLE METAMAGIA (ELEVADO + ACELERADO)</span>
-              <span class="text-xs mono text-purple-300">15d10 + 3d6 + 4d6 Psíquico</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-purple-500 text-white">COMBO #1 · FOCO FORJADO + DOBLE METAMAGIA</span>
+              <span class="text-xs mono text-purple-300">15d10 + 3d6 Shard + 3d6 Astilla</span>
             </div>
-            <h3 class="text-base font-bold text-white">1. "La Jaula del Trauma" (Prisión Mental + Far Realm Shard + Astilla Mental)</h3>
+            <h3 class="text-base font-bold text-white">1. "La Jaula del Trauma" (Prisión Mental + Shards del Foco + Astilla Mental)</h3>
             <p class="text-xs text-slate-300">
-              Activas <em>Hechicería Innata</em> (<strong>CD 22 / 24</strong>). Lanzas <strong>Prisión Mental (Nv 6)</strong> aplicando <strong>Conjuro Elevado (Desventaja) + Conjuro Acelerado</strong>. El jefe tira INT con Desventaja: sufre <strong>5d10 psíquico</strong> + <strong>3d6 psíquico y Miedo</strong> del <em>Far Realm Shard</em>, queda ciego y encerrado; si se mueve o ataca, explota por <strong>otros 10d10 psíquicos (15d10 total)</strong> + tu Acción libre de <strong>Astilla Mental (3d6/4d6 psíquico)</strong>.
+              Lanzas <strong>Prisión Mental (Nv 6)</strong> aplicando <strong>Conjuro Elevado + Conjuro Acelerado</strong>. Tu Foco Forjado activa a la vez el <em>Shadowfell Shard</em> (Desventaja sin salvación en INT), el <em>Far Realm Shard</em> (<strong>3d6 psíquico + Miedo</strong>) y <strong>Teleport 15ft</strong>. El jefe sufre <strong>5d10 + 10d10 psíquicos</strong> + tu Acción de <strong>Astilla Mental (3d6 psíquico)</strong> contra <strong>CD 24</strong>.
             </p>
           </div>
 
           <!-- Combo Nv 16 #2: Bomba de Estática Sináptica sin Fuego Amigo -->
           <div onclick="executeCombo('bomba_sinaptica')" class="cursor-pointer p-4 rounded-2xl bg-[#111827] border-2 border-emerald-500/60 hover:bg-emerald-500/10 transition space-y-1.5">
             <div class="flex items-center justify-between flex-wrap gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500 text-slate-950">COMBO NV 16 #2 · DOBLE METAMAGIA (CUIDADOSO + ELEVADO)</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-emerald-500 text-slate-950">COMBO #2 · DOBLE METAMAGIA (CUIDADOSO + ELEVADO)</span>
               <span class="text-xs mono text-emerald-300">8d6 AoE + -1d6 Ataques + 3d6 Shard</span>
             </div>
             <h3 class="text-base font-bold text-white">2. "Bomba de Estática Sináptica sin Fuego Amigo" (Synaptic Static Nv 5)</h3>
             <p class="text-xs text-slate-300">
-              Lanzas <strong>Estática Sináptica</strong> en medio de toda la pelea aplicando <strong>Conjuro Cuidadoso (1 PH: tus 5 aliados reciben 0 daño) + Conjuro Elevado (2 PH: el jefe tiene Desventaja)</strong>. Toda la sala recibe <strong>8d6 psíquico</strong> contra CD 22/24 y queda con <strong>-1d6 a todos sus ataques y concentración</strong> durante 1 minuto sin gastar tu concentración + <strong>3d6 psíquico</strong> del <em>Far Realm Shard</em>.
+              Lanzas <strong>Estática Sináptica</strong> en medio de toda la pelea aplicando <strong>Conjuro Cuidadoso (1 PH: tus 5 aliados reciben 0 daño) + Conjuro Elevado (2 PH: el jefe tiene Desventaja)</strong>. Toda la sala recibe <strong>8d6 psíquico</strong> contra CD 24 y queda con <strong>-1d6 a todos sus ataques y concentración</strong> sin gastar tu concentración + <strong>3d6 psíquico</strong> del Foco Forjado.
             </p>
           </div>
 
           <!-- Combo Nv 16 #3: Asalto de Nivel 9 (Amuleto Ascendant) -->
           <div onclick="executeCombo('asalto_nv9')" class="cursor-pointer p-4 rounded-2xl bg-[#111827] border-2 border-amber-500/60 hover:bg-amber-500/10 transition space-y-1.5">
             <div class="flex items-center justify-between flex-wrap gap-2">
-              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950">COMBO NV 16 #3 · AMULETO ASCENDANT (NIVEL 9 GRATIS)</span>
+              <span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-500 text-slate-950">COMBO #3 · PODER ASCENDENTE DEL FOCO FORJADO (NV 9 GRATIS)</span>
               <span class="text-xs mono text-amber-300">12d6 + Incapacitado o 5 Jefes Paralizados</span>
             </div>
             <h3 class="text-base font-bold text-white">3. "Asalto de Nivel 9" (Psychic Lance Nv 9 o Hold Monster Nv 9)</h3>
             <p class="text-xs text-slate-300">
-              Usas la carga diaria de tu <strong>Ascendant Dragon-Touched Focus</strong> para subir gratis a <strong>Nivel 9</strong> tu <strong>Lanza Psíquica de Raulothim (12d6 de daño psíquico + Incapacitado 1 ronda)</strong> o <strong>Inmovilizar Monstruo a Nivel 9 (paralizando a 5 jefes/monstruos a la vez contra CD 22/24)</strong>.
+              Usas la carga diaria de tu <strong>Foco Forjado</strong> para subir gratis a <strong>Nivel 9</strong> tu <strong>Lanza Psíquica de Raulothim (12d6 de daño psíquico + Incapacitado 1 ronda)</strong> o <strong>Inmovilizar Monstruo a Nivel 9 (paralizando a 5 jefes/monstruos a la vez contra CD 24)</strong>.
             </p>
           </div>
 
@@ -858,7 +784,7 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div onclick="executeCombo('jugada_maestra')" class="cursor-pointer p-3.5 rounded-xl bg-[#111827] border border-amber-500/40 hover:border-amber-400 transition space-y-1">
-              <div class="text-xs font-bold text-amber-300">Jugada Maestra Nv 6 (Foco Gema)</div>
+              <div class="text-xs font-bold text-amber-300">Jugada Maestra Nv 6 (Foco Forjado)</div>
               <div class="text-xs text-white font-semibold">Látigo Mental Nv 9 (8 Enemigos · 24d6)</div>
             </div>
             <div onclick="executeCombo('combo1')" class="cursor-pointer p-3.5 rounded-xl bg-[#111827] border border-purple-500/40 hover:border-purple-400 transition space-y-1">
@@ -915,7 +841,7 @@
 
             <div id="combat-log" class="bg-[#0d1320] border border-slate-800 rounded-xl p-4 mono text-xs space-y-2.5 max-h-[460px] overflow-y-auto custom-scroll">
               <div class="text-slate-400">
-                Haz clic en cualquiera de los combos de Nivel 16 o Nivel 6 a la izquierda o en un conjuro arriba para simular la tirada con tu CD actual...
+                Haz clic en cualquiera de los combos a la izquierda o en un conjuro arriba para simular la tirada con tu CD de Forja...
               </div>
             </div>
           </div>
@@ -935,7 +861,7 @@
               Todos (35)
             </button>
             <button onclick="setSpellFilter('high')" id="pill-high" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-amber-500/40 text-amber-300 transition">
-              ★ Alto Nivel Nv 4 a Nv 8 (13)
+              ★ Alto Nivel Nv 4 a Nv 8 (11)
             </button>
             <button onclick="setSpellFilter('psi')" id="pill-psi" class="filter-pill px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-slate-700 transition">
               10 Psiónicos Subclase (1-5 PH sin V/S/M)
@@ -1004,33 +930,30 @@
       13: { hpBase: 104, hpMeta: 117, pb: 5, spBase: 13, spFeat: 2, prep: 17, psi: 10, slots: {1:4, 2:3, 3:3, 4:3, 5:2, 6:1, 7:1}, milestone: "Competencia +5 · Conjuros de Nivel 7 (Excursión Etérea / Invertir la Gravedad)" },
       14: { hpBase: 112, hpMeta: 126, pb: 5, spBase: 14, spFeat: 2, prep: 17, psi: 10, slots: {1:4, 2:3, 3:3, 4:3, 5:2, 6:1, 7:1}, milestone: "★★★ Revelación en la Carne (Fase 1 pulgada, Ver Invisible 60ft, Vuelo, Adaptación Acuática)" },
       15: { hpBase: 120, hpMeta: 135, pb: 5, spBase: 15, spFeat: 2, prep: 18, psi: 10, slots: {1:4, 2:3, 3:3, 4:3, 5:2, 6:1, 7:1, 8:1}, milestone: "★★★ Conjuros de Nivel 8: Dominar Monstruo & Palabra de Poder: Aturdir (Aturdir automático ≤150 PG)" },
-      16: { hpBase: 128, hpMeta: 176, pb: 5, spBase: 16, spFeat: 2, prep: 18, psi: 10, slots: {1:4, 2:3, 3:3, 4:3, 5:2, 6:1, 7:1, 8:1}, milestone: "★★★ Dote Nv 16: Duro (+32 PG → 176 PG) o CON 18 (192 PG) · Reliquias +3 / Ascendant · CD 22 a 24" }
+      16: { hpBase: 128, hpMeta: 176, pb: 5, spBase: 16, spFeat: 2, prep: 18, psi: 10, slots: {1:4, 2:3, 3:3, 4:3, 5:2, 6:1, 7:1, 8:1}, milestone: "★★★ Dote Nv 16: Duro (+32 PG → 176 PG) o CON 18 (192 PG) · Foco Forjado (+3) + Túnica (+2) → CD 24" }
     };
 
     // =========================================================================
     // DATA: 35 CONJUROS (NIVEL 0 A NIVEL 8)
     // =========================================================================
     const SPELLS = [
-      // CONJUROS DE ALTO NIVEL (NV 4 A NV 8) Y PSIÓNICOS NV 4-5
       { name: "Prisión Mental (Mental Prison)", cat: "high", level: 6, badge: "★★★ Nivel 6 · Tortura Cerebral", time: "1 Acción (Conc.)", save: "INT Save", dmg: "5d10 Psíquico inicial y encierra su mente en una ilusión claustrofóbica (ciego/sordo afuera). Si se mueve, ataca o lo empujan: +10d10 Psíquico extra al instante (15d10 total).", combo: "Combo 'Jaula del Trauma': Elevado (Desventaja) + Acelerado + Susurros para detonar los 15d10", url: "https://5e.tools/spells.html#mental%20prison_xge" },
       { name: "Estática Sináptica (Synaptic Static)", cat: "high", level: 5, badge: "★★★ Nivel 5 · AoE Sin Conc.", time: "1 Acción (Sin Conc.)", save: "INT Save", dmg: "Explosión psíquica de 20ft de radio: 8d6 de daño Psíquico y resta -1d6 a todos sus ataques, pruebas y concentración durante 1 min SIN gastar tu concentración.", combo: "Combo 'Bomba Sináptica': Cuidadoso (5 aliados inmunes) + Elevado (Jefe con Desventaja)", url: "https://5e.tools/spells.html#synaptic%20static_xphb" },
       { name: "Palabra de Poder: Aturdir (Power Word Stun)", cat: "high", level: 8, badge: "★★★ Nivel 8 · Sin Salvación", time: "1 Acción", save: "Automático (≤150 PG)", dmg: "Si el objetivo tiene 150 PG o menos, queda Aturdido (Stunned) automáticamente SIN tirada de salvación inicial.", combo: "Ignora Resistencias Legendarias en el impacto inicial", url: "https://5e.tools/spells.html#power%20word%20stun_xphb" },
-      { name: "Dominar Monstruo (Dominate Monster)", cat: "high", level: 8, badge: "★★★ Nivel 8 · Control Total", time: "1 Acción (Conc. 1h)", save: "SAB Save", dmg: "Controlas telepáticamente a cualquier criatura del juego (dragones, demonios, jefes) para que luche a tu favor.", combo: "Con Conjuro Elevado (2 PH) el jefe tira con Desventaja contra CD 22/24", url: "https://5e.tools/spells.html#dominate%20monster_xphb" },
+      { name: "Dominar Monstruo (Dominate Monster)", cat: "high", level: 8, badge: "★★★ Nivel 8 · Control Total", time: "1 Acción (Conc. 1h)", save: "SAB Save", dmg: "Controlas telepáticamente a cualquier criatura del juego (dragones, demonios, jefes) para que luche a tu favor.", combo: "Con Conjuro Elevado (2 PH) el jefe tira con Desventaja contra CD 24", url: "https://5e.tools/spells.html#dominate%20monster_xphb" },
       { name: "Excursión Etérea (Etherealness)", cat: "high", level: 7, badge: "★★ Nivel 7 · Fase Absoluta", time: "1 Acción (Hasta 8h)", save: "Intangibilidad", dmg: "Entras en el Plano Etéreo durante 8 horas: caminas a través de muros, fortalezas y ataques físicos siendo invisible e intangible.", combo: "La intangibilidad total del Detective Marciano", url: "https://5e.tools/spells.html#etherealness_xphb" },
       { name: "Invertir la Gravedad (Reverse Gravity)", cat: "high", level: 7, badge: "★★ Nivel 7 · Control Masivo", time: "1 Acción (Conc.)", save: "DES Save", dmg: "Cilindro de 50ft de radio y 100ft de alto: todos los enemigos caen hacia el techo y luego se estrellan contra el suelo (hasta 10d6 + 10d6).", combo: "Control de ejércitos enteros al aire libre o en salas grandes", url: "https://5e.tools/spells.html#reverse%20gravity_xphb" },
       { name: "Sugestión en Masa (Mass Suggestion)", cat: "high", level: 6, badge: "★★★ Nivel 6 · Sin Conc.", time: "1 Acción (24h Sin Conc.)", save: "SAB Save", dmg: "Controlas hasta a 12 criaturas a la vez durante 24 horas SIN requerir concentración.", combo: "Con Conjuro Cuidadoso o Elevado cambias un encuentro entero sin gastar concentración", url: "https://5e.tools/spells.html#mass%20suggestion_xphb" },
-      { name: "Inmovilizar Monstruo (Hold Monster)", cat: "high", level: 5, badge: "★★★ Nivel 5 · Parálisis", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Paraliza a cualquier tipo de criatura (ataques cuerpo a cuerpo de tus aliados son Críticos Automáticos).", combo: "Con el Foco Gema a Nivel 9 paralizas a 5 monstruos/jefes a la vez", url: "https://5e.tools/spells.html#hold%20monster_xphb" },
+      { name: "Inmovilizar Monstruo (Hold Monster)", cat: "high", level: 5, badge: "★★★ Nivel 5 · Parálisis", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Paraliza a cualquier tipo de criatura (ataques cuerpo a cuerpo de tus aliados son Críticos Automáticos).", combo: "Con el Foco Forjado a Nivel 9 paralizas a 5 monstruos/jefes a la vez", url: "https://5e.tools/spells.html#hold%20monster_xphb" },
       { name: "Dominar Persona (Dominate Person)", cat: "high", level: 5, badge: "★★ Nivel 5 · Control", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Control mental absoluto sobre un humanoide enemigo.", combo: "Gemelo (1 PH) para dominar a 2 humanoides a la vez", url: "https://5e.tools/spells.html#dominate%20person_xphb" },
       { name: "Lanza Psíquica de Raulothim (Psychic Lance)", cat: "high", level: 4, badge: "★★★ Nivel 4 + Foco Gema", time: "1 Acción", save: "INT Save", dmg: "7d6 de daño Psíquico (12d6 a Nivel 9 con el Foco) y deja al enemigo Incapacitado 1 ronda. Puedes disparar a través de muros si sabes su nombre.", combo: "1/día gratis por el Foco Gema + preparado para lanzarlo con Doble Metamagia", url: "https://5e.tools/spells.html#raulothim's%20psychic%20lance_ftd" },
       { name: "Destierro / Confusión (Banishment / Confusion)", cat: "high", level: 4, badge: "★★ Nivel 4 · Control", time: "1 Acción (Conc.)", save: "CAR / SAB Save", dmg: "Saca a un enemigo a otro plano (Destierro) o desata el caos mental en una esfera de 10ft (Confusión).", combo: "Con Conjuro Gemelo (1 PH) destierras a 2 enemigos", url: "https://5e.tools/spells.html#banishment_xphb" },
 
-      // 4 NUEVOS PSIÓNICOS DE SUBCLASE (NV 7 Y NV 9 -> SE LANZAN CON 4 Y 5 PH SIN V/S/M)
       { name: "Invocar Aberración (Summon Aberration)", cat: "psi", level: 4, badge: "★ Psiónico Nv 4 (4 PH sin V/S/M)", time: "1 Acción (Conc. 1h)", save: "Invocación Psíquica", dmg: "Invocas una proyección física del Marciano (Mind Flayer / Star Spawn / Slaad) que hace múltiples ataques psíquicos en cada turno.", combo: "Cuesta solo 4 PH (0 espacios de conjuro) y puedes subirlo de nivel", url: "https://5e.tools/spells.html#summon%20aberration_xphb" },
       { name: "Tentáculos Negros de Evard (Black Tentacles)", cat: "psi", level: 4, badge: "★ Psiónico Nv 4 (4 PH sin V/S/M)", time: "1 Acción (Conc.)", save: "FUE / DES Save", dmg: "Cuadrado de 20 pies de terreno difícil que causa 3d6 de daño y deja Restringidos (Restrained) a los enemigos.", combo: "4 PH sin componentes V/S/M + Conjuro Cuidadoso para proteger aliados", url: "https://5e.tools/spells.html#evard's%20black%20tentacles_xphb" },
       { name: "Telequinesis (Telekinesis)", cat: "psi", level: 5, badge: "★ Psiónico Nv 5 (5 PH sin V/S/M)", time: "1 Acción (Conc. 10m)", save: "Prueba CAR vs FUE", dmg: "Mueves objetos de media tonelada o inmovilizas criaturas en el aire con una prueba enfrentada (¡ignora Resistencias Legendarias!).", combo: "5 PH sin componentes; el jefe no puede usar Resistencia Legendaria porque es prueba de habilidad", url: "https://5e.tools/spells.html#telekinesis_xphb" },
       { name: "Vínculo Telepático de Rary (Telepathic Bond)", cat: "psi", level: 5, badge: "★ Psiónico Nv 5 + Foco Gema", time: "1 Acción", save: "Red Grupal", dmg: "Conecta mentalmente hasta a 8 criaturas durante 1 hora sin concentración a cualquier distancia en el mismo plano.", combo: "Gratis 1/día con tu Foco Gema o por 5 PH sin componentes", url: "https://5e.tools/spells.html#rary's%20telepathic%20bond_xphb" },
 
-      // 6 PSIÓNICOS DE SUBCLASE NIVELES 1 A 3
       { name: "Susurros Disonantes (Dissonant Whispers)", cat: "psi", level: 1, badge: "★ Psiónico Nv 1 (1 PH)", time: "1 Acción", save: "SAB Save", dmg: "3d6 Psíquico + gasta su Reacción para huir corriendo (provoca Ataques de Oportunidad y activa tu War Caster).", combo: "Combo Ultra-Meta: 1 PH sin usar Spell Slot + Reacción War Caster", url: "https://5e.tools/spells.html#dissonant%20whispers_xphb" },
       { name: "Calmar Emociones (Calm Emotions)", cat: "psi", level: 2, badge: "★ Psiónico Nv 2 (2 PH)", time: "1 Acción (Conc.)", save: "CAR Save", dmg: "Suprime Hechizado/Asustado en aliados o apaga la hostilidad de un grupo enemigo.", combo: "Pacificación mental sin componentes por 2 PH", url: "https://5e.tools/spells.html#calm%20emotions_xphb" },
       { name: "Brazos de Hadar (Arms of Hadar)", cat: "psi", level: 1, badge: "★ Psiónico Nv 1 (1 PH)", time: "1 Acción", save: "FUE Save", dmg: "2d6 en área de 10 pies y quita reacciones para escapar sin ataques de oportunidad.", combo: "Con Conjuro Cuidadoso (1 PH) no toca a tus aliados", url: "https://5e.tools/spells.html#arms%20of%20hadar_xphb" },
@@ -1038,7 +961,6 @@
       { name: "Hambre de Hadar (Hunger of Hadar)", cat: "psi", level: 3, badge: "★ Psiónico Nv 3 (3 PH)", time: "1 Acción (Conc.)", save: "Área 20ft", dmg: "Esfera de oscuridad ancestral que ciega, ralentiza y daña en área (2d6 + 2d6).", combo: "3 PH sin componentes V/S/M", url: "https://5e.tools/spells.html#hunger%20of%20hadar_xphb" },
       { name: "Recado (Sending)", cat: "psi", level: 3, badge: "★ Psiónico Nv 3 (3 PH)", time: "1 Acción", save: "Telepatía Global", dmg: "Telepatía a distancia ilimitada e interplanar de 25 palabras.", combo: "3 PH sin componentes", url: "https://5e.tools/spells.html#sending_xphb" },
 
-      // 10 PREPARADOS DE NIVELES 1 A 3
       { name: "Escudo (Shield)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "Reacción", save: "Defensa", dmg: "+5 a la CA hasta tu próximo turno (CA 23) + Teleport 15ft gratis por el Foco.", combo: "Precognición defensiva + reposicionamiento", url: "https://5e.tools/spells.html#shield_xphb" },
       { name: "Absorber Elementos (Absorb Elements)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "Reacción", save: "Defensa", dmg: "Mitad de daño de Ácido, Frío, Fuego, Rayo o Trueno + Teleport 15ft por el Foco.", combo: "Cubre el daño elemental mientras el Ornamento cubre el Psíquico", url: "https://5e.tools/spells.html#absorb%20elements_xge" },
       { name: "Risa Horrible de Tasha (Hideous Laughter)", cat: "prep", level: 1, badge: "Preparado Nv 1", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Deja al enemigo Derribado (Prone) e Incapacitado.", combo: "Gemelo 1 PH = 2 objetivos por un slot de nivel 1", url: "https://5e.tools/spells.html#tasha's%20hideous%20laughter_xphb" },
@@ -1048,11 +970,10 @@
       { name: "Inmovilizar Persona (Hold Person)", cat: "prep", level: 2, badge: "Preparado Nv 2", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Paraliza humanoides (Críticos Automáticos cuerpo a cuerpo para tu grupo).", combo: "Gemelo 1 PH (2 paralizados)", url: "https://5e.tools/spells.html#hold%20person_xphb" },
       { name: "Los Enemigos Abundan (Enemies Abound)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "1 Acción (Conc.)", save: "INT Save", dmg: "Paranoia pura: el monstruo más fuerte ve a todos como enemigos y ataca a sus aliados.", combo: "Astilla Mental (-1d4) + Quickened Enemies Abound", url: "https://5e.tools/spells.html#enemies%20abound_xge" },
       { name: "Patrón Hipnótico / Miedo (Hypnotic Pattern / Fear)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "1 Acción (Conc.)", save: "SAB Save", dmg: "Colapso mental en área (Cubo 30ft Incapacitados o Cono 30ft huyen soltando armas).", combo: "Conjuro Cuidadoso (1 PH) protege a tus 5 aliados", url: "https://5e.tools/spells.html#hypnotic%20pattern_xphb" },
-      { name: "Contrahechizo (Counterspell 5.5e)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "Reacción", save: "CON Save", dmg: "Obliga al lanzador enemigo a superar Salvación de CON contra tu CD 22/24 o pierde el conjuro y la acción.", combo: "+ Teletransporte gratis de 15 pies al lanzarlo por tu Foco Gema", url: "https://5e.tools/spells.html#counterspell_xphb" },
+      { name: "Contrahechizo (Counterspell 5.5e)", cat: "prep", level: 3, badge: "Preparado Nv 3", time: "Reacción", save: "CON Save", dmg: "Obliga al lanzador enemigo a superar Salvación de CON contra tu CD 21/24 o pierde el conjuro y la acción.", combo: "+ Teletransporte gratis de 15 pies al lanzarlo por tu Foco Gema", url: "https://5e.tools/spells.html#counterspell_xphb" },
 
-      // 7 TRUCOS 5.5e (ESCALAN A 3 DADOS EN NV 11 Y 4 DADOS EN NV 17)
       { name: "Astilla Mental (Mind Sliver)", cat: "0", level: 0, badge: "Truco ★ PSI", time: "1 Acción", save: "INT Save", dmg: "3d6 Psíquico a Nv16 (2d6 a Nv6) + -1d4 a la siguiente salvación del enemigo antes del final de tu próximo turno.", combo: "Acción Astilla Mental + BA Doble Metamagia (Acelerado + Elevado)", url: "https://5e.tools/spells.html#mind%20sliver_xphb" },
-      { name: "Estallido Hechicero (Sorcerous Burst 5.5e)", cat: "0", level: 0, badge: "Truco 5.5e", time: "1 Acción", save: "Ataque Conjuro", dmg: "3d8 Psíquico a Nv16 (2d8 a Nv6). Cada 8 en el dado explota (+1d8 extra hasta +5d8).", combo: "Con Ventaja por Hechicería Innata (+13/+15 al impacto)", url: "https://5e.tools/spells.html#sorcerous%20burst_xphb" },
+      { name: "Estallido Hechicero (Sorcerous Burst 5.5e)", cat: "0", level: 0, badge: "Truco 5.5e", time: "1 Acción", save: "Ataque Conjuro", dmg: "3d8 Psíquico a Nv16 (2d8 a Nv6). Cada 8 en el dado explota (+1d8 extra hasta +5d8).", combo: "Con Ventaja por Hechicería Innata (+12/+15 al impacto)", url: "https://5e.tools/spells.html#sorcerous%20burst_xphb" },
       { name: "Salpicadura Ácida (Acid Splash 5.5e)", cat: "0", level: 0, badge: "Truco Área 5.5e", time: "1 Acción", save: "DES Save", dmg: "En 5.5e ahora es una Esfera de 5 pies de radio a 60ft: 3d6 de daño a TODAS las criaturas dentro de la esfera.", combo: "Truco de daño en área sin gastar recursos", url: "https://5e.tools/spells.html#acid%20splash_xphb" },
       { name: "Amigos (Friends 5.5e)", cat: "0", level: 0, badge: "Truco 5.5e", time: "1 Acción", save: "SAB Save", dmg: "Sin concentración en 5.5e: objetivo a 10ft queda Hechizado al instante durante 1 min.", combo: "Infiltración rápida social", url: "https://5e.tools/spells.html#friends_xphb" },
       { name: "Ilusión Menor (Minor Illusion)", cat: "0", level: 0, badge: "Truco", time: "1 Acción", save: "Investigación", dmg: "Sonido o imagen estática en cubo de 5 pies durante 1 min sin concentración.", combo: "Distracción táctica", url: "https://5e.tools/spells.html#minor%20illusion_xphb" },
@@ -1061,10 +982,10 @@
     ];
 
     // =========================================================================
-    // STATE (POR DEFECTO NIVEL 16 ACTIVO)
+    // STATE (POR DEFECTO NIVEL 16 + FORJA SUPREMA ACTIVA)
     // =========================================================================
     let currentLevel = 16;
-    let currentPreset = "nv16";
+    let currentPreset = "ultrameta16";
     let buffs = { trio: true, innate: true, shield: false };
     let currentSpellFilter = "all";
     let lv16CustomHP = 176;
@@ -1137,7 +1058,7 @@
 
     function applyPreset(mode) {
       currentPreset = mode;
-      ["base", "rare6", "valka6", "nv16", "ultrameta16"].forEach(k => {
+      ["base", "forja6", "nv16", "ultrameta16"].forEach(k => {
         const el = document.getElementById(`preset-${k}`);
         if (el) el.classList.remove("active");
       });
@@ -1147,14 +1068,8 @@
         buffs.innate = true;
         buffs.shield = false;
         selectLevel(6);
-      } else if (mode === "rare6") {
-        document.getElementById("preset-rare6")?.classList.add("active");
-        buffs.trio = true;
-        buffs.innate = true;
-        buffs.shield = false;
-        selectLevel(6);
-      } else if (mode === "valka6") {
-        document.getElementById("preset-valka6")?.classList.add("active");
+      } else if (mode === "forja6") {
+        document.getElementById("preset-forja6")?.classList.add("active");
         buffs.trio = true;
         buffs.innate = true;
         buffs.shield = false;
@@ -1189,7 +1104,7 @@
       btnTrio.className = buffs.trio
         ? "px-3 py-1.5 rounded-lg text-xs font-bold border border-amber-500/50 bg-amber-500/15 text-amber-300 transition flex items-center gap-1.5"
         : "px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 bg-slate-900 text-slate-400 transition flex items-center gap-1.5";
-      btnTrio.innerHTML = `<span id="dot-trio" class="${dotTrio}"></span> Reliquias Activas: ${buffs.trio ? "ON" : "OFF"}`;
+      btnTrio.innerHTML = `<span id="dot-trio" class="${dotTrio}"></span> Foco Forjado + 2 Reliquias: ${buffs.trio ? "ON" : "OFF"}`;
 
       const btnInnate = document.getElementById("toggle-innate");
       const dotInnate = buffs.innate ? "w-2 h-2 rounded-full bg-emerald-400" : "w-2 h-2 rounded-full bg-slate-500";
@@ -1212,17 +1127,20 @@
       let itemNote = "Sin Bonus Item";
       if (buffs.trio) {
         if (currentPreset === "ultrameta16") {
-          itemBonus = 5; // Robe +2 + Bloodwell Vial +3
-          itemNote = "+2 Túnica +3 Vial";
+          itemBonus = 5; // Foco Forjado (+3 Vial) + Robe (+2)
+          itemNote = "+3 Foco +2 Túnica";
+        } else if (currentPreset === "forja6") {
+          itemBonus = 4; // Foco Forjado (+2 Vial) + Robe (+2)
+          itemNote = "+2 Foco +2 Túnica";
         } else if (currentLevel >= 13 && currentPreset === "nv16") {
-          itemBonus = 3; // Bloodwell Vial +3
+          itemBonus = 3; // Vial +3 solo
           itemNote = "+3 Vial +3";
         } else {
-          itemBonus = 2; // Bloodwell +2 or Robe +2
+          itemBonus = 2;
           itemNote = "+2 Reliquia";
         }
       }
-      const baseAC = !buffs.trio ? (13 + dexMod) : (currentPreset === "rare6" ? 16 : (15 + 1 + dexMod));
+      const baseAC = !buffs.trio ? (13 + dexMod) : (15 + 1 + dexMod);
       const ac = baseAC + (buffs.shield ? 5 : 0);
       const passiveDC = 8 + d.pb + chaMod + itemBonus;
       const activeDC = passiveDC + (buffs.innate ? 1 : 0);
@@ -1244,7 +1162,7 @@
       document.getElementById("hud-dc").textContent = s.activeDC;
       document.getElementById("hud-dc-note").textContent = buffs.innate ? `${s.passiveDC} Pasiva → ${s.activeDC} Innata` : `${s.passiveDC} Pasiva`;
       document.getElementById("hud-atk").textContent = `+${s.atk}`;
-      document.getElementById("hud-atk-note").textContent = `+${s.pb} Comp +5 CAR (${s.itemNote})`;
+      document.getElementById("hud-atk-note").textContent = s.itemNote;
       document.getElementById("hud-atk-adv").textContent = buffs.innate ? "VENTAJA" : "Normal";
       document.getElementById("hud-init").textContent = `+${s.init}`;
       document.getElementById("hud-init-note").textContent = `+2 DES +${s.pb} Alerta`;
@@ -1253,11 +1171,9 @@
       document.getElementById("hud-tp").textContent = `+${s.shortRestRec} en DC`;
       document.getElementById("hud-move").textContent = currentLevel >= 14 ? "Vuelo 30ft + Fase 1\"" : (buffs.trio ? "Vuelo 30ft Hover" : "30 pies");
 
-      document.getElementById("badge-mode").textContent = currentPreset === "ultrameta16"
-        ? `Nivel ${currentLevel} · SIMULACIÓN ULTRA-META (Robe +2 & Vial +3 → CD ${s.activeDC})`
-        : currentLevel >= 15
-        ? `Nivel ${currentLevel} · Tier 4 (Bloodwell +3 & Ascendant → CD ${s.activeDC})`
-        : `Nivel ${currentLevel} · CD ${s.activeDC} Activa`;
+      document.getElementById("badge-mode").textContent = !buffs.trio
+        ? `Nivel ${currentLevel} · Sin Objetos Mágicos (CD ${s.activeDC})`
+        : `Nivel ${currentLevel} · Forja Activa: 1 Foco Fusionado + 2 Reliquias (CD ${s.activeDC})`;
     }
 
     // =========================================================================
@@ -1347,7 +1263,7 @@
     // =========================================================================
     // TAB SWITCHER & SHOW ALL MODE
     // =========================================================================
-    const ALL_TABS = ["tab-nivel16", "tab-master6", "tab-items", "tab-combos", "tab-grimoire", "tab-roll20"];
+    const ALL_TABS = ["tab-forja", "tab-nivel16", "tab-master6", "tab-combos", "tab-grimoire", "tab-roll20"];
 
     function switchTab(tabId) {
       showAllMode = false;
@@ -1365,7 +1281,7 @@
         btn.textContent = "Volver a Vista por Pestañas";
         ALL_TABS.forEach(id => document.getElementById(id).classList.remove("hidden"));
       } else {
-        switchTab("tab-nivel16");
+        switchTab("tab-forja");
       }
     }
 
@@ -1421,11 +1337,12 @@
         const total = mpInit.sum + mpMove.sum + shard.sum + sliver.sum;
         appendLog(`
           <div class="flex justify-between text-purple-300 font-bold">
-            <span>COMBO NV 16: LA JAULA DEL TRAUMA (DOBLE METAMAGIA)</span>
+            <span>COMBO FORJA: LA JAULA DEL TRAUMA (DOBLE METAMAGIA)</span>
             <span>CD ${s.activeDC} C/DESVENTAJA</span>
           </div>
           <div class="text-white">1. <strong>Prisión Mental (Elevado + Acelerado):</strong> ${mpInit.sum} Psíquico inicial [${mpInit.rolls.join(",")}] + <strong>${mpMove.sum} Psíquico al romper la jaula</strong> [${mpMove.rolls.join(",")}].</div>
-          <div class="text-amber-300">2. <strong>Far Realm Shard:</strong> +${shard.sum} Psíquico y Asustado · <strong>Acción Astilla Mental:</strong> +${sliver.sum} Psíquico (-1d4 al save).</div>
+          <div class="text-amber-300">2. <strong>Foco Forjado (Far Realm + Shadowfell Shard):</strong> +${shard.sum} Psíquico, Asustado y Desventaja en INT sin salvación + Teleport 15ft.</div>
+          <div class="text-sky-300">3. <strong>Acción Astilla Mental:</strong> +${sliver.sum} Psíquico (-1d4 al save).</div>
           <div class="text-emerald-400 font-extrabold">DAÑO TOTAL EN EL TURNO: ${total} PSÍQUICO</div>
         `);
       } else if (id === "bomba_sinaptica") {
@@ -1433,17 +1350,17 @@
         const shard = rollDice(3, 6);
         appendLog(`
           <div class="flex justify-between text-emerald-400 font-bold">
-            <span>COMBO NV 16: BOMBA DE ESTÁTICA SINÁPTICA (CUIDADOSO + ELEVADO)</span>
+            <span>COMBO FORJA: BOMBA DE ESTÁTICA SINÁPTICA (CUIDADOSO + ELEVADO)</span>
             <span>CD ${s.activeDC}</span>
           </div>
           <div class="text-white"><strong>Estática Sináptica (Radio 20ft, Sin Conc.):</strong> <span class="text-purple-300 font-bold">${syn.sum} Psíquico en área</span> [${syn.rolls.join(", ")}] + <strong>-1d6 a todos los ataques enemigos</strong>.</div>
-          <div class="text-emerald-300">Tus 5 aliados reciben 0 daño (Cuidadoso) · El jefe tira con Desventaja (Elevado) y recibe +${shard.sum} Psíquico del Shard.</div>
+          <div class="text-emerald-300">Tus 5 aliados reciben 0 daño (Cuidadoso) · El jefe tira con Desventaja (Elevado + Shadowfell Shard) y recibe +${shard.sum} Psíquico del Far Realm Shard.</div>
         `);
       } else if (id === "asalto_nv9") {
         const lance9 = rollDice(12, 6);
         appendLog(`
           <div class="flex justify-between text-amber-300 font-bold">
-            <span>COMBO NV 16: ASALTO DE NIVEL 9 (AMULETO ASCENDANT)</span>
+            <span>COMBO FORJA: ASALTO DE NIVEL 9 (NÚCLEO ASCENDANT)</span>
             <span>CD ${s.activeDC}</span>
           </div>
           <div class="text-white"><strong>Lanza Psíquica de Raulothim a Nivel 9 Gratis:</strong> <span class="text-amber-300 font-extrabold">${lance9.sum} Psíquico</span> [${lance9.rolls.join(", ")}] + <strong>Incapacitado 1 ronda</strong>.</div>
