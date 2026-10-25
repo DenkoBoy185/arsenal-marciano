@@ -80,18 +80,18 @@
       <!-- Selector Interactivo de Etapa (Para ver tus números reales sin inflar) -->
       <div class="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-slate-800/80">
         <div class="flex flex-wrap items-center gap-1.5">
-          <span class="text-xs font-bold text-slate-400 mr-1">ETAPA DE EQUIPO:</span>
+          <span class="text-xs font-bold text-slate-400 mr-1">EVOLUCIÓN DE FOCOS:</span>
           <button onclick="setStage('base')" id="stage-base" class="stage-btn px-3 py-1 rounded-lg text-xs border border-slate-700 bg-slate-900 text-slate-200 transition">
-            1. Puro Nivel 6 (Sin Items)
+            1. Puro (Sin Items)
           </button>
           <button onclick="setStage('uncommon')" id="stage-uncommon" class="stage-btn px-3 py-1 rounded-lg text-xs border border-slate-700 bg-slate-900 text-slate-200 transition">
-            2. Inicial (Bloodwell +1)
+            2. Focos +1 (Uncommon)
           </button>
           <button onclick="setStage('rare6')" id="stage-rare6" class="stage-btn active px-3 py-1 rounded-lg text-xs border border-slate-700 bg-slate-900 text-slate-200 transition">
-            3. Meta Nivel 6 (Bloodwell +2 + Shards)
+            3. Nivel 6: Focos +2 (Vial +2 + Shard + Gem)
           </button>
           <button onclick="setStage('legendary')" id="stage-legendary" class="stage-btn px-3 py-1 rounded-lg text-xs border border-slate-700 bg-slate-900 text-slate-200 transition">
-            4. Futuro Endgame (Legendarios)
+            4. Nivel 8+: Fusión 3-en-1 (+3 CD/Atk) + Legendarios
           </button>
         </div>
 
@@ -392,10 +392,10 @@
 
             <div class="space-y-2 text-xs">
               <div class="surface-sub p-2.5 border-l-2 border-amber-400">
-                <strong class="text-amber-300">Sintonización 1/3 — El Foco Arcano Fusionado (Nv 8+):</strong> Une <em>Bloodwell Vial (+2/+3 CD y Ataque + 5 PH en DC)</em> + <em>Far Realm Shard (3d6 psíquico + Asustado gratis al usar Metamagia)</em> + <em>Ascendant Gem Focus (Ventaja Iniciativa, Teleport 15ft, 1/día conjuro a Nv 9 gratis y Psychic Lance gratis)</em> en <strong>1 sola ranura</strong>.
+                <strong class="text-amber-300">Sintonización 1/3 — El Foco Arcano Fusionado (+3 CD y Ataque):</strong> Los 3 focos van juntos y evolucionan juntos a <strong>+3</strong> en <strong>1 sola ranura</strong>: <em>Bloodwell Vial +3 (+3 a CD de Salvación y Ataque + 5 PH en DC)</em> + <em>Far Realm Shard (3d6 psíquico + Asustado gratis al usar Metamagia contra tu CD +3)</em> + <em>Ascendant Gem Focus (Ventaja Iniciativa, Teleport 15ft, 1/día conjuro a Nv 9 gratis y Psychic Lance gratis)</em>.
               </div>
               <div class="surface-sub p-2.5 border-l-2 border-purple-400">
-                <strong class="text-purple-300">Sintonización 2/3 — Robe of the Archmagi:</strong> CA 15+DES, <strong>+2 adicional a CD y Ataque</strong> (¡se suma al +2/+3 de tu Foco Fusionado para un <strong>+4/+5 total</strong>!) y Ventaja en salvaciones contra magia.
+                <strong class="text-purple-300">Sintonización 2/3 — Robe of the Archmagi (+2 Adicional):</strong> CA 15+DES, <strong>+2 adicional a CD y Ataque</strong> (¡se suma al <strong>+3 de tu Foco Fusionado</strong> para un brutal <strong>+5 total por objetos</strong>!) y Ventaja en salvaciones contra magia.
               </div>
               <div class="surface-sub p-2.5 border-l-2 border-emerald-400">
                 <strong class="text-emerald-300">Sintonización 3/3 — Ascendant Scaled Ornament (Emerald):</strong> +1 CA (CA 18 / 23 Escudo), <strong>Vuelo 30ft Hover</strong>, Inmune a Charmed/Frightened (+ Aura 30ft) y <strong>Reacción: 0 daño psíquico + te curas la mitad</strong>.
@@ -1235,16 +1235,16 @@
         hasShard: true
       },
       legendary: {
-        name: "Nivel 8+ (Foco Fusionado 1/3 + Túnica 2/3 + Ornamento 3/3)",
-        bonusDC: 4,
-        bonusAtk: 4,
+        name: "Nivel 8+ (Foco Fusionado +3 [1/3] + Túnica +2 [2/3] + Ornamento [3/3])",
+        bonusDC: 5,
+        bonusAtk: 5,
         acText: "18 (23 con Escudo)",
         acSub: "Túnica 15 + Ornamento 1 + DES 2 (Vuelo 30ft)",
         initText: "+5 (Con Ventaja)",
         initSub: "Alerta + Foco Fusionado (+TP 15ft)",
         spSub: "8 Base (+3 Restauración +5 Foco = 16/día + 1 Nv9 Gratis)",
-        formulaDC: "8 + 3 Comp + 5 CAR + 2 Foco + 2 Túnica",
-        formulaAtk: "+3 Comp + 5 CAR + 2 Foco + 2 Túnica",
+        formulaDC: "8 + 3 Comp + 5 CAR + 3 Foco Fusionado + 2 Túnica",
+        formulaAtk: "+3 Comp + 5 CAR + 3 Foco Fusionado + 2 Túnica",
         hasShard: true
       }
     };
